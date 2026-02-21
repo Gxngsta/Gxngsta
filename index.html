@@ -19,7 +19,6 @@ font-family:Inter,sans-serif;
 text-align:center;
 }
 
-/* container */
 .container{
 max-width:520px;
 margin:auto;
@@ -39,7 +38,6 @@ align-items:center;
 justify-content:center;
 }
 
-/* glow aura */
 .hero::before{
 content:"";
 position:absolute;
@@ -54,7 +52,6 @@ filter:blur(30px);
 animation:heroGlow 5s ease-in-out infinite;
 }
 
-/* depth light */
 .hero::after{
 content:"";
 position:absolute;
@@ -66,7 +63,7 @@ filter:blur(18px);
 opacity:.7;
 }
 
-/* image */
+/* ⭐ PROFILE IMAGE (thin border added) */
 .hero img{
 width:160px;
 height:160px;
@@ -74,19 +71,21 @@ border-radius:50%;
 object-fit:cover;
 position:relative;
 z-index:2;
+
+/* thin premium border */
+border:1.5px solid rgba(255,255,255,.25);
+
 box-shadow:
 0 10px 40px rgba(0,0,0,.8),
 0 0 25px rgba(255,0,0,.35);
 }
 
-/* animation */
 @keyframes heroGlow{
 0%{transform:scale(1);opacity:.7;}
 50%{transform:scale(1.07);opacity:1;}
 100%{transform:scale(1);opacity:.7;}
 }
 
-/* logo text */
 h1{
 font-family:Orbitron,sans-serif;
 font-size:34px;
@@ -104,7 +103,6 @@ letter-spacing:2px;
 margin-bottom:25px;
 }
 
-/* section title */
 .section{
 margin-top:30px;
 font-size:12px;
@@ -112,7 +110,6 @@ letter-spacing:3px;
 color:#ff2a2a;
 }
 
-/* buttons */
 .btn{
 display:block;
 margin:12px 0;
@@ -131,7 +128,6 @@ transform:translateY(-2px);
 box-shadow:0 0 20px rgba(255,0,0,.5);
 }
 
-/* footer */
 .footer{
 margin-top:40px;
 font-size:11px;
