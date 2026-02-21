@@ -6,8 +6,7 @@
 
 <title>GXNGSTA | Independent Hip-Hop Artist</title>
 
-<meta name="description" content="GXNGSTA Official Artist Page. Stream music on Spotify, Apple Music, JioSaavn and more.">
-<meta name="keywords" content="GXNGSTA, hip hop artist, Indian rapper">
+<meta name="description" content="GXNGSTA Official Artist Page. Stream music worldwide.">
 <meta name="author" content="GXNGSTA">
 <link rel="canonical" href="https://gxngsta.github.io/Gxngsta/">
 
@@ -23,158 +22,132 @@
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 html{
-    scroll-behavior:smooth;
+scroll-behavior:smooth;
 }
 
-/* PREMIUM BACKGROUND */
 body{
-    font-family:'Orbitron', sans-serif;
-    background: linear-gradient(135deg, #0a0a0a, #111111, #0d0d0d);
-    color:white;
-    text-align:center;
-    overflow-x:hidden;
+font-family:'Orbitron', sans-serif;
+background:linear-gradient(135deg,#0a0a0a,#121212,#0d0d0d);
+color:white;
+text-align:center;
+overflow-x:hidden;
 }
 
-/* Subtle Red Lighting Effect */
+/* Soft Red Ambient Light */
 body::before{
-    content:"";
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:
-        radial-gradient(circle at 20% 30%, rgba(255,0,0,0.15), transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(255,0,0,0.08), transparent 40%);
-    z-index:-1;
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+background:
+radial-gradient(circle at 25% 30%, rgba(255,0,0,0.12), transparent 45%),
+radial-gradient(circle at 75% 70%, rgba(255,0,0,0.08), transparent 45%);
+z-index:-1;
 }
 
-/* Fade In */
 .container{
-    padding:60px 20px;
-    max-width:520px;
-    margin:auto;
-    animation:fadeIn 1.2s ease;
+padding:60px 20px;
+max-width:520px;
+margin:auto;
+animation:fadeIn 1s ease;
 }
 
 @keyframes fadeIn{
-    from{opacity:0; transform:translateY(30px);}
-    to{opacity:1; transform:translateY(0);}
+from{opacity:0; transform:translateY(25px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 /* Profile */
-.hero{
-    margin-bottom:25px;
-}
-
 .hero img{
-    width:170px;
-    height:170px;
-    object-fit:cover;
-    border-radius:50%;
-    border:3px solid #ff0000;
-    box-shadow:0 0 40px rgba(255,0,0,0.9);
-    transition:0.4s;
-    filter:contrast(110%) saturate(110%);
+width:170px;
+height:170px;
+object-fit:cover;
+border-radius:50%;
+border:2px solid #ff2a2a;
+box-shadow:0 0 30px rgba(255,0,0,0.6);
+margin-bottom:20px;
 }
 
 /* Title */
 h1{
-    font-size:44px;
-    letter-spacing:5px;
-    font-weight:900;
-    background: linear-gradient(90deg,#ff0000,#ffffff);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    text-shadow:0 0 15px rgba(255,0,0,0.6);
+font-size:42px;
+letter-spacing:5px;
+font-weight:900;
+background:linear-gradient(90deg,#ff2a2a,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .tagline{
-    color:#bbb;
-    font-size:14px;
-    margin-bottom:40px;
-    letter-spacing:2px;
+color:#aaa;
+font-size:14px;
+margin-bottom:35px;
+letter-spacing:2px;
 }
 
 /* Section */
 .section-title{
-    margin:40px 0 20px;
-    font-size:14px;
-    color:#ff2a2a;
-    letter-spacing:3px;
+margin:35px 0 18px;
+font-size:13px;
+color:#ff2a2a;
+letter-spacing:3px;
 }
 
-/* Buttons */
+/* PREMIUM BUTTONS */
 .link-btn{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:12px;
-    margin:12px 0;
-    padding:16px;
-    border-radius:50px;
-    text-decoration:none;
-    font-weight:600;
-    font-size:15px;
-    color:white;
-    background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,0,0,0.4);
-    backdrop-filter: blur(12px);
-    transition:0.4s ease;
-    position:relative;
-    overflow:hidden;
-    -webkit-tap-highlight-color: transparent;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+margin:12px 0;
+padding:16px;
+border-radius:50px;
+text-decoration:none;
+font-weight:600;
+font-size:15px;
+color:white;
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,0,0,0.35);
+backdrop-filter:blur(10px);
+transition:all 0.25s ease;
+-webkit-tap-highlight-color:transparent;
 }
 
-.link-btn::before{
-    content:"";
-    position:absolute;
-    width:0%;
-    height:100%;
-    left:0;
-    top:0;
-    background:linear-gradient(90deg,#ff0000,#ff4d4d);
-    transition:0.4s;
-    z-index:-1;
+/* Desktop Hover */
+@media (hover:hover){
+.link-btn:hover{
+background:rgba(255,0,0,0.18);
+border:1px solid rgba(255,0,0,0.6);
+box-shadow:0 0 25px rgba(255,0,0,0.6);
+transform:translateY(-2px);
+}
 }
 
-@media (hover: hover){
-    .link-btn:hover::before{
-        width:100%;
-    }
-    .link-btn:hover{
-        transform:translateY(-3px) scale(1.04);
-        box-shadow:0 0 35px rgba(255,0,0,0.9);
-    }
-}
-
-.link-btn:active::before{
-    width:100%;
-}
-
+/* Click Press Effect */
 .link-btn:active{
-    transform:scale(0.98);
+transform:scale(0.96);
+background:rgba(255,0,0,0.25);
+box-shadow:0 0 15px rgba(255,0,0,0.5);
 }
 
 /* Footer */
 .footer{
-    margin-top:50px;
-    font-size:12px;
-    color:#666;
-    letter-spacing:1px;
+margin-top:45px;
+font-size:12px;
+color:#666;
+letter-spacing:1px;
 }
 
-/* Mobile */
 @media(max-width:480px){
-    h1{
-        font-size:32px;
-    }
+h1{font-size:30px;}
 }
 </style>
 </head>
@@ -184,7 +157,7 @@ h1{
 <div class="container">
 
 <div class="hero">
-    <img src="profile.png" alt="GXNGSTA" loading="lazy">
+<img src="profile.png" alt="GXNGSTA" loading="lazy">
 </div>
 
 <h1>GXNGSTA</h1>
