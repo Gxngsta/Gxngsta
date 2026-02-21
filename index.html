@@ -17,6 +17,26 @@ background:radial-gradient(circle at top,#0b0b0b,#050505 60%);
 color:#fff;
 font-family:Inter,system-ui,-apple-system,sans-serif;
 text-align:center;
+position:relative;
+overflow-x:hidden;
+}
+
+/* cinematic moving light background */
+body::after{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+background:
+radial-gradient(circle at 20% 10%, rgba(255,0,0,.12), transparent 40%),
+radial-gradient(circle at 80% 0%, rgba(255,120,0,.08), transparent 40%);
+mix-blend-mode:screen;
+animation:bgMove 12s ease-in-out infinite alternate;
+}
+
+@keyframes bgMove{
+0%{transform:translateY(0)}
+100%{transform:translateY(-40px)}
 }
 
 .container{
@@ -47,7 +67,7 @@ background:radial-gradient(circle,rgba(255,0,0,.28),transparent 70%);
 filter:blur(26px);
 }
 
-/* profile image */
+/* profile image cinematic ring */
 .hero img{
 width:160px;
 height:160px;
@@ -55,13 +75,16 @@ border-radius:50%;
 object-fit:cover;
 position:relative;
 z-index:2;
-border:2px solid rgba(255,0,0,.42);
+
+border:2px solid rgba(255,0,0,.45);
+outline:6px solid rgba(255,0,0,.06);
+
 box-shadow:
 0 6px 25px rgba(0,0,0,.7),
 0 0 12px rgba(255,0,0,.22);
 }
 
-/* logo */
+/* logo cinematic glow */
 h1{
 font-family:Orbitron,sans-serif;
 font-size:34px;
@@ -70,6 +93,12 @@ margin-top:16px;
 background:linear-gradient(90deg,#ff0000,#ff7a00);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+animation:logoGlow 4s ease-in-out infinite;
+}
+
+@keyframes logoGlow{
+0%,100%{filter:drop-shadow(0 0 0 rgba(255,0,0,.4))}
+50%{filter:drop-shadow(0 0 18px rgba(255,0,0,.6))}
 }
 
 .tag{
@@ -86,7 +115,7 @@ letter-spacing:3px;
 color:#ff2a2a;
 }
 
-/* buttons */
+/* buttons premium glass */
 .btn{
 display:block;
 margin:12px 0;
@@ -100,7 +129,28 @@ background:rgba(255,255,255,.04);
 backdrop-filter:blur(8px);
 border:1px solid rgba(255,0,0,.28);
 
+box-shadow:0 6px 18px rgba(0,0,0,.45);
+
+position:relative;
+overflow:hidden;
+
 transition:transform .25s, box-shadow .25s, border .25s;
+}
+
+/* light sweep */
+.btn::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,.08),transparent);
+opacity:0;
+transform:translateX(-100%);
+transition:.5s;
+}
+
+.btn:hover::before{
+opacity:1;
+transform:translateX(100%);
 }
 
 .btn:hover{
