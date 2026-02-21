@@ -135,11 +135,25 @@ h1{
   transition: all 0.3s ease;
   box-shadow:0 0 4px rgba(138,43,226,0.4),0 0 6px rgba(0,255,255,0.25);
 }
+
+/* Hover effect - normal glow only */
 .link-btn:hover{
   transform:translateY(-2px) scale(1.05);
   box-shadow:0 0 12px #8a2be2,0 0 15px #00ffff,0 0 20px #8a2be2 inset;
   background: rgba(138,43,226,0.1);
 }
+
+/* Click (active) effect - blink once */
+.link-btn:active {
+  animation: blinkClick 0.3s ease-in-out 1;
+}
+
+@keyframes blinkClick {
+  0% { background: rgba(138,43,226,0.1); box-shadow:0 0 12px #8a2be2,0 0 15px #00ffff,0 0 20px #8a2be2 inset; }
+  50% { background: rgba(138,43,226,0.4); box-shadow:0 0 20px #8a2be2,0 0 25px #00ffff,0 0 30px #8a2be2 inset; }
+  100% { background: rgba(138,43,226,0.1); box-shadow:0 0 12px #8a2be2,0 0 15px #00ffff,0 0 20px #8a2be2 inset; }
+}
+
 .link-btn i, .link-btn svg{font-size:16px;width:16px;height:16px;}
 
 /* Footer */
