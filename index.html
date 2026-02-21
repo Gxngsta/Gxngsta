@@ -12,7 +12,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -21,20 +24,38 @@
 html{scroll-behavior:smooth;}
 
 body{
-font-family:'Orbitron',sans-serif;
+font-family:'Inter',sans-serif;
 background:
-radial-gradient(circle at 50% 0%, rgba(255,0,0,0.2), transparent 50%),
-linear-gradient(to bottom,#0a0a0a,#000000 80%);
+radial-gradient(circle at 50% 0%, rgba(255,0,0,0.15), transparent 55%),
+linear-gradient(to bottom,#0a0a0a,#000000 85%);
 color:#fff;
 text-align:center;
 overflow-x:hidden;
 }
 
+/* Top branding line */
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:3px;
+background:linear-gradient(90deg,#ff0000,#990000);
+z-index:1000;
+}
+
 /* Container */
 .container{
 max-width:480px;
-margin:50px auto;
+margin:60px auto;
 padding:20px;
+animation:fadeIn 1s ease forwards;
+opacity:0;
+}
+
+@keyframes fadeIn{
+to{opacity:1;}
 }
 
 /* Hero */
@@ -43,68 +64,49 @@ position:relative;
 display:flex;
 justify-content:center;
 align-items:center;
-margin-bottom:15px;
+margin-bottom:20px;
 }
 
-.hero::before{
-content:"";
-position:absolute;
-width:240px;
-height:240px;
-background:radial-gradient(circle, rgba(255,0,0,0.2), transparent 70%);
-border-radius:50%;
-z-index:-1;
-}
-
-/* Profile Image */
 .hero img{
 width:170px;
 height:170px;
 border-radius:50%;
 object-fit:cover;
-border:2px solid rgba(255,0,0,0.7);
-box-shadow:0 0 25px rgba(255,0,0,0.4);
-transition:0.4s ease;
+border:3px solid #ff0000;
+box-shadow:
+0 0 0 6px rgba(255,0,0,0.15),
+0 0 40px rgba(255,0,0,0.6);
+transition:.4s;
 }
 
 .hero img:hover{
 transform:scale(1.05);
-box-shadow:0 0 45px rgba(255,0,0,0.8);
 }
 
 /* Title */
 h1{
+font-family:'Orbitron',sans-serif;
 font-size:38px;
 letter-spacing:4px;
 font-weight:900;
 margin-top:15px;
-background:linear-gradient(90deg,#ff0000,#ffffff,#ff0000);
-background-size:200%;
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-animation:shine 5s linear infinite;
-text-shadow:0 0 20px rgba(255,0,0,0.4);
-}
-
-@keyframes shine{
-0%{background-position:0%;}
-100%{background-position:200%;}
+color:#fff;
+text-shadow:0 0 15px rgba(255,0,0,0.6);
 }
 
 .tagline{
 color:#aaa;
 font-size:13px;
-margin:10px 0 25px;
+margin:12px 0 30px;
 letter-spacing:2px;
 }
 
 /* Section Titles */
 .section-title{
-margin:30px 0 10px;
+margin:35px 0 10px;
 font-size:12px;
 color:#ff2a2a;
 letter-spacing:3px;
-position:relative;
 }
 
 .section-title::after{
@@ -122,9 +124,9 @@ display:flex;
 align-items:center;
 justify-content:center;
 gap:10px;
-margin:12px 0;
-padding:14px;
-border-radius:40px;
+margin:14px 0;
+padding:15px;
+border-radius:50px;
 text-decoration:none;
 font-size:14px;
 font-weight:600;
@@ -140,20 +142,33 @@ box-shadow:0 0 20px rgba(255,0,0,0.6);
 background:#1a0000;
 }
 
-.link-btn:active{
-transform:scale(.96);
+.link-btn i{
+font-size:16px;
 }
+
+/* Platform Icon Colors */
+.link-btn[href*="spotify"] i{color:#1DB954;}
+.link-btn[href*="apple"] i{color:#ffffff;}
+.link-btn[href*="amazon"] i{color:#ff9900;}
+.link-btn[href*="jiosaavn"] i{color:#2bc5b4;}
+.link-btn[href*="deezer"] i{color:#ff2a2a;}
+.link-btn[href*="tidal"] i{color:#ffffff;}
+.link-btn[href*="instagram"] i{color:#E1306C;}
+.link-btn[href*="youtube"] i{color:#FF0000;}
+.link-btn[href*="x.com"] i{color:#1DA1F2;}
 
 /* Footer */
 .footer{
-margin-top:40px;
-font-size:11px;
-color:#555;
-letter-spacing:1px;
+margin-top:50px;
+font-size:10px;
+color:#666;
+letter-spacing:2px;
+line-height:1.8;
 }
 
+/* Mobile */
 @media(max-width:480px){
-h1{font-size:30px;}
+h1{font-size:28px;}
 }
 </style>
 </head>
@@ -192,7 +207,9 @@ h1{font-size:30px;}
 <a class="link-btn" href="mailto:gxngstaofficial@gmail.com"><i class="fas fa-envelope"></i> Email</a>
 
 <div class="footer">
-© <span id="year"></span> GXNGSTA — All Rights Reserved.
+© <span id="year"></span> GXNGSTA  
+<br>
+Official Artist Page • All Rights Reserved
 </div>
 
 </div>
