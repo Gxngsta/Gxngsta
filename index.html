@@ -127,6 +127,8 @@ h1{
   margin-top:50px; font-size:10px; color:#aaa; letter-spacing:2px; line-height:1.8;
   text-shadow:0 0 3px #5a00ff,0 0 6px #00ffff;
   animation: footerGlow 2s infinite alternate;
+  white-space: nowrap; /* ek hi line me footer */
+  overflow-x: auto; /* zarurat par horizontal scroll */
 }
 @keyframes footerGlow{0%{text-shadow:0 0 3px #5a00ff;}100%{text-shadow:0 0 8px #00ffff;}}
 
@@ -134,7 +136,10 @@ h1{
 @keyframes fadeUp{0%{opacity:0; transform:translateY(20px);}60%{opacity:0.7; transform:translateY(5px);}100%{opacity:1; transform:translateY(0);}}
 
 /* Mobile */
-@media(max-width:480px){h1{font-size:32px;} .hero img{width:150px;height:150px;}}
+@media(max-width:480px){
+  h1{font-size:32px;} 
+  .hero img{width:150px;height:150px;}
+}
 </style>
 </head>
 <body>
