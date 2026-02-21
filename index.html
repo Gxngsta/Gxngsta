@@ -64,8 +64,9 @@ body::after{
   animation: pulseGlow 2.5s infinite alternate;
 }
 @keyframes pulseGlow{
-  0%{transform:scale(1);}
-  100%{transform:scale(1.1);}
+  0%{transform:scale(1); background: rgba(138,43,226,0.4);}
+  50%{transform:scale(1.05); background: rgba(0,255,255,0.3);}
+  100%{transform:scale(1); background: rgba(138,43,226,0.4);}
 }
 .hero img{
   width:180px; height:180px; border-radius:50%; object-fit:cover;
@@ -104,13 +105,18 @@ h1{
 /* Section Titles */
 .section-title{
   margin:35px 0 12px; font-size:13px; color:#8a2be2; letter-spacing:3px;
-  opacity:0; transform: translateY(20px); animation: fadeUp 0.8s forwards;
+  opacity:0; transform: translateY(20px); animation: fadeUp 0.8s forwards, colorShift 2s infinite alternate;
 }
 .section-title::after{
   content:""; display:block; width:40px; height:2px; background:#00ffff; margin:6px auto 0;
 }
+@keyframes colorShift{
+  0%{color:#8a2be2;}
+  50%{color:#00ffff;}
+  100%{color:#8a2be2;}
+}
 
-/* Buttons - subtle neon glow */
+/* Buttons - neon glow + staggered */
 .link-btn{
   display:flex; align-items:center; justify-content:center; gap:10px; margin:12px 0;
   padding:14px; border-radius:50px; text-decoration:none; font-size:14px; font-weight:600;
@@ -121,12 +127,12 @@ h1{
 }
 .link-btn:hover{
   transform:translateY(-2px) scale(1.05);
-  box-shadow:0 0 12px #8a2be2,0 0 15px #00ffff;
-  background: rgba(138,43,226,0.07);
+  box-shadow:0 0 12px #8a2be2,0 0 15px #00ffff,0 0 20px #8a2be2 inset;
+  background: rgba(138,43,226,0.1);
 }
 .link-btn i, .link-btn svg{font-size:16px;width:16px;height:16px;}
 
-/* Footer - scroll removed */
+/* Footer */
 .footer{
   margin-top:50px; 
   font-size:12px; 
@@ -134,17 +140,23 @@ h1{
   letter-spacing:1px; 
   line-height:1.8;
   text-align:center;
-  white-space: normal; /* wrap allowed */
+  white-space: normal; 
   overflow-x: visible;
+}
+.footer:hover{
+  color:#00ffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #8a2be2;
+  transition: all 0.3s ease;
 }
 
 /* FadeUp Animation */
 @keyframes fadeUp{0%{opacity:0; transform:translateY(20px);}60%{opacity:0.7; transform:translateY(5px);}100%{opacity:1; transform:translateY(0);}}
 
-/* Mobile Responsive */
+/* Responsive */
 @media(max-width:480px){
   h1{font-size:32px;} 
   .hero img{width:150px;height:150px;}
+  .link-btn{width:100%; justify-content:center; padding:16px;}
 }
 </style>
 </head>
@@ -163,27 +175,27 @@ h1{
 
   <!-- Streaming Links -->
   <div class="section-title">STREAMING</div>
-  <a class="link-btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank"><i class="fab fa-spotify"></i> Spotify</a>
-  <a class="link-btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank"><i class="fab fa-apple"></i> Apple Music</a>
-  <a class="link-btn" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank"><i class="fab fa-amazon"></i> Amazon</a>
-  <a class="link-btn" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank"><i class="fas fa-music"></i> JioSaavn</a>
-  <a class="link-btn" href="https://www.deezer.com/us/artist/304158961" target="_blank"><i class="fab fa-deezer"></i> Deezer</a>
-  <a class="link-btn" href="https://tidal.com/artist/54713043" target="_blank"><i class="fas fa-wave-square"></i> TIDAL</a>
-  <a class="link-btn" href="https://audiomack.com/GxngstaOfficial" target="_blank"><i class="fas fa-play"></i> Audiomack</a>
-  <a class="link-btn" href="https://m.soundcloud.com/gangsta-769519727" target="_blank"><i class="fab fa-soundcloud"></i> SoundCloud</a>
-  <a class="link-btn" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank"><i class="fas fa-bolt"></i> Shazam</a>
-  <a class="link-btn" href="https://www.boomplay.com/share/artist/106853408?srModel=byWH&srList=ANDROID" target="_blank"><i class="fas fa-play"></i> Boomplay</a>
+  <a class="link-btn" style="--i:1;" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank"><i class="fab fa-spotify"></i> Spotify</a>
+  <a class="link-btn" style="--i:2;" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank"><i class="fab fa-apple"></i> Apple Music</a>
+  <a class="link-btn" style="--i:3;" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank"><i class="fab fa-amazon"></i> Amazon</a>
+  <a class="link-btn" style="--i:4;" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank"><i class="fas fa-music"></i> JioSaavn</a>
+  <a class="link-btn" style="--i:5;" href="https://www.deezer.com/us/artist/304158961" target="_blank"><i class="fab fa-deezer"></i> Deezer</a>
+  <a class="link-btn" style="--i:6;" href="https://tidal.com/artist/54713043" target="_blank"><i class="fas fa-wave-square"></i> TIDAL</a>
+  <a class="link-btn" style="--i:7;" href="https://audiomack.com/GxngstaOfficial" target="_blank"><i class="fas fa-play"></i> Audiomack</a>
+  <a class="link-btn" style="--i:8;" href="https://m.soundcloud.com/gangsta-769519727" target="_blank"><i class="fab fa-soundcloud"></i> SoundCloud</a>
+  <a class="link-btn" style="--i:9;" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank"><i class="fas fa-bolt"></i> Shazam</a>
+  <a class="link-btn" style="--i:10;" href="https://www.boomplay.com/share/artist/106853408?srModel=byWH&srList=ANDROID" target="_blank"><i class="fas fa-play"></i> Boomplay</a>
 
   <!-- Social Links -->
   <div class="section-title">FOLLOW</div>
-  <a class="link-btn" href="https://www.instagram.com/gxngstaofficial" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-  <a class="link-btn" href="https://youtube.com/@GxngstaOfficial" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-  <a class="link-btn" href="https://x.com/GxngstaOfficial" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-  <a class="link-btn" href="https://www.facebook.com/profile.php?id=61573079602732" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+  <a class="link-btn" style="--i:11;" href="https://www.instagram.com/gxngstaofficial" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+  <a class="link-btn" style="--i:12;" href="https://youtube.com/@GxngstaOfficial" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+  <a class="link-btn" style="--i:13;" href="https://x.com/GxngstaOfficial" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+  <a class="link-btn" style="--i:14;" href="https://www.facebook.com/profile.php?id=61573079602732" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
 
   <!-- Business Contact -->
   <div class="section-title">BUSINESS</div>
-  <a class="link-btn" href="mailto:gxngstaofficial@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+  <a class="link-btn" style="--i:15;" href="mailto:gxngstaofficial@gmail.com"><i class="fas fa-envelope"></i> Email</a>
 
   <!-- Footer -->
   <div class="footer">
@@ -196,19 +208,21 @@ h1{
 // Update year
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Hero tilt effect
-const hero = document.querySelector('.hero');
-hero.addEventListener('mousemove', e => {
-  const rect = hero.getBoundingClientRect();
-  const x = e.clientX - rect.left - rect.width/2;
-  const y = e.clientY - rect.top - rect.height/2;
-  hero.style.setProperty('--tiltX', `${y/10}deg`);
-  hero.style.setProperty('--tiltY', `${-x/10}deg`);
-});
-hero.addEventListener('mouseleave', ()=> {
-  hero.style.setProperty('--tiltX','0deg');
-  hero.style.setProperty('--tiltY','0deg');
-});
+// Hero tilt effect - desktop only
+if(window.innerWidth > 480){
+  const hero = document.querySelector('.hero');
+  hero.addEventListener('mousemove', e => {
+    const rect = hero.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width/2;
+    const y = e.clientY - rect.top - rect.height/2;
+    hero.style.setProperty('--tiltX', `${y/10}deg`);
+    hero.style.setProperty('--tiltY', `${-x/10}deg`);
+  });
+  hero.addEventListener('mouseleave', ()=> {
+    hero.style.setProperty('--tiltX','0deg');
+    hero.style.setProperty('--tiltY','0deg');
+  });
+}
 </script>
 
 </body>
