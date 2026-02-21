@@ -3,9 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GXNGSTA | Independent Hip-Hop Artist</title>
+
+<title>GXNGSTA | Official Artist</title>
 <meta name="description" content="GXNGSTA Official Artist Page. Stream music worldwide.">
-<meta name="author" content="GXNGSTA">
+<meta name="theme-color" content="#0a0a0a">
+
+<!-- SEO / Social -->
+<meta property="og:title" content="GXNGSTA Official Artist">
+<meta property="og:description" content="Stream GXNGSTA music worldwide">
+<meta property="og:image" content="profile.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,107 +19,138 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* Reset & Base */
+
+:root{
+--accent:#ff1a1a;
+--glass:rgba(255,255,255,0.05);
+}
+
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
 body{
-    font-family:'Inter',sans-serif;
-    background:#0a0a0a;
-    color:#fff;
-    text-align:center;
-    overflow-x:hidden;
-    position:relative;
+font-family:'Inter',sans-serif;
+background:#050505;
+color:#fff;
+text-align:center;
+overflow-x:hidden;
 }
 
-/* Subtle background */
+/* animated bg */
 body::before{
-    content:"";
-    position:fixed; top:0; left:0; width:100%; height:100%;
-    background: radial-gradient(circle at 50% 50%, rgba(255,0,0,0.03), transparent 80%);
-    z-index:-1;
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 30%, rgba(255,0,0,0.08), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(255,0,0,0.06), transparent 40%);
+z-index:-1;
+animation:bgMove 12s linear infinite alternate;
+}
+@keyframes bgMove{
+from{transform:translateY(0)}
+to{transform:translateY(-60px)}
 }
 
-/* Top line */
-body::after{
-    content:"";
-    position:fixed; top:0; left:0; width:100%; height:3px;
-    background:linear-gradient(90deg,#ff0000,#ff6600,#ff0000);
-    z-index:1000;
+.container{
+max-width:520px;
+margin:60px auto;
+padding:20px;
 }
 
-/* Container */
-.container{max-width:480px;margin:60px auto;padding:20px;}
-
-/* Hero */
-.hero{display:flex;justify-content:center;align-items:center;margin-bottom:20px;perspective:1000px;}
+/* hero */
 .hero img{
-    width:170px;height:170px;border-radius:50%;object-fit:cover;
-    border:3px solid #ff0000;box-shadow:0 0 25px rgba(255,0,0,0.6);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+width:170px;
+height:170px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid var(--accent);
+box-shadow:0 0 40px rgba(255,0,0,0.6);
+transition:.35s;
 }
-.hero:hover img{
-    transform: rotateY(var(--tiltX,0deg)) rotateX(var(--tiltY,0deg)) scale(1.05);
-    box-shadow:0 0 45px rgba(255,0,0,0.8);
+.hero img:hover{
+transform:scale(1.06);
+box-shadow:0 0 70px rgba(255,0,0,0.9);
 }
 
-/* Title */
+/* title */
 h1{
-    font-family:'Orbitron',sans-serif;font-size:36px;font-weight:900;letter-spacing:4px;
-    background: linear-gradient(90deg,#ff0000,#ff9900,#ff0000);
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    background-size:200% auto;animation: gradientShift 3s linear infinite;
-    margin:10px 0;
+font-family:'Orbitron';
+font-size:38px;
+letter-spacing:4px;
+background:linear-gradient(90deg,#ff1a1a,#ff9900,#ff1a1a);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:shine 4s linear infinite;
 }
-@keyframes gradientShift{0%{background-position:0% 50%;}100%{background-position:100% 50%;}}
-.tagline{color:#ff5555;font-size:14px;letter-spacing:1.5px;margin-bottom:25px;}
-
-/* Section titles */
-.section-title{
-    margin:30px 0 10px;font-size:13px;color:#ff2a2a;letter-spacing:3px;
-    opacity:0;transform:translateY(20px);animation: fadeUp 0.8s forwards;
-}
-.section-title::after{
-    content:"";display:block;width:30px;height:2px;background:#ff0000;margin:5px auto;
+@keyframes shine{
+0%{background-position:0%}
+100%{background-position:200%}
 }
 
-/* Buttons */
-.link-btn{
-    display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 0;padding:12px 0;
-    border-radius:50px;text-decoration:none;font-size:14px;font-weight:600;
-    color:#fff;background:#111;border:1px solid rgba(255,0,0,0.5);
-    opacity:0;transform:translateY(20px);transition: all 0.3s ease;
-}
-.link-btn:hover{
-    transform:translateY(-2px) scale(1.03);box-shadow:0 0 25px rgba(255,0,0,0.7);
+.tagline{
+color:#ff5a5a;
+font-size:13px;
+letter-spacing:2px;
+margin-bottom:25px;
 }
 
-/* Platform colors */
-.link-btn[href*="spotify"] i{color:#1DB954;}
-.link-btn[href*="apple"] i{color:#fff;}
-.link-btn[href*="amazon"] i{color:#ff9900;}
-.link-btn[href*="jiosaavn"] i{color:#2bc5b4;}
-.link-btn[href*="deezer"] i{color:#ff2a2a;}
-.link-btn[href*="tidal"] i{color:#fff;}
-.link-btn[href*="soundcloud"] i{color:#FF7700;}
-.link-btn[href*="shazam"] i{color:#0088FF;}
-.link-btn[href*="boomplay"] i{color:#FFCC00;}
-.link-btn[href*="instagram"] i{color:#E1306C;}
-.link-btn[href*="youtube"] i{color:#FF0000;}
-.link-btn[href*="x.com"] i{color:#1DA1F2;}
-.link-btn[href*="facebook"] i{color:#1877F2;}
-
-/* Footer */
-.footer{margin-top:40px;font-size:10px;color:#666;letter-spacing:2px;line-height:1.8;}
-.footer span{color:#fff;}
-
-/* Animations */
-@keyframes fadeUp{0%{opacity:0;transform:translateY(20px);}60%{opacity:0.7;transform:translateY(5px);}100%{opacity:1;transform:translateY(0);}}
-
-/* Mobile */
-@media(max-width:480px){
-    h1{font-size:28px;}
-    .hero img{width:150px;height:150px;}
+/* glass card */
+.card{
+background:var(--glass);
+backdrop-filter:blur(14px);
+border-radius:18px;
+padding:14px;
+margin:12px 0;
+border:1px solid rgba(255,0,0,0.25);
+transition:.3s;
 }
+.card:hover{
+transform:translateY(-4px);
+box-shadow:0 0 40px rgba(255,0,0,0.3);
+}
+
+/* buttons */
+.link{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+padding:12px;
+text-decoration:none;
+color:#fff;
+font-weight:600;
+border-radius:50px;
+background:#111;
+transition:.25s;
+}
+.link:hover{
+transform:scale(1.03);
+box-shadow:0 0 20px rgba(255,0,0,0.6);
+}
+
+/* sticky CTA */
+.cta{
+position:fixed;
+bottom:18px;
+left:50%;
+transform:translateX(-50%);
+background:var(--accent);
+padding:12px 22px;
+border-radius:40px;
+font-weight:700;
+text-decoration:none;
+color:#fff;
+box-shadow:0 0 30px rgba(255,0,0,0.7);
+z-index:999;
+}
+
+/* footer */
+.footer{
+margin-top:40px;
+font-size:11px;
+color:#777;
+letter-spacing:2px;
+}
+
 </style>
 </head>
 <body>
@@ -121,62 +158,46 @@ h1{
 <div class="container">
 
 <div class="hero">
-  <img src="profile.jpg" alt="GXNGSTA">
+<img src="profile.jpg" alt="GXNGSTA">
 </div>
 
 <h1>GXNGSTA</h1>
-<p class="tagline">INDEPENDENT HIP-HOP ARTIST</p>
+<div class="tagline">INDEPENDENT HIP-HOP ARTIST</div>
 
-<div class="section-title">STREAMING</div>
-<a class="link-btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank"><i class="fab fa-spotify"></i> Spotify</a>
-<a class="link-btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank"><i class="fab fa-apple"></i> Apple Music</a>
-<a class="link-btn" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank"><i class="fab fa-amazon"></i> Amazon</a>
-<a class="link-btn" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank"><i class="fas fa-music"></i> JioSaavn</a>
-<a class="link-btn" href="https://www.deezer.com/us/artist/304158961" target="_blank"><i class="fab fa-deezer"></i> Deezer</a>
-<a class="link-btn" href="https://tidal.com/artist/54713043" target="_blank"><i class="fas fa-wave-square"></i> TIDAL</a>
-<a class="link-btn" href="https://audiomack.com/GxngstaOfficial" target="_blank"><i class="fas fa-play"></i> Audiomack</a>
-<a class="link-btn" href="https://m.soundcloud.com/gangsta-769519727" target="_blank"><i class="fab fa-soundcloud"></i> SoundCloud</a>
-<a class="link-btn" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank"><i class="fas fa-bolt"></i> Shazam</a>
-<a class="link-btn" href="https://www.boomplay.com/share/artist/106853408?srModel=byWH&srList=ANDROID" target="_blank"><i class="fas fa-play"></i> Boomplay</a>
+<!-- Latest Release -->
+<div class="card">
+<a class="link" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank">
+<i class="fab fa-spotify"></i> Latest Release
+</a>
+</div>
 
-<div class="section-title">FOLLOW</div>
-<a class="link-btn" href="https://www.instagram.com/gxngstaofficial" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-<a class="link-btn" href="https://youtube.com/@GxngstaOfficial" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-<a class="link-btn" href="https://x.com/GxngstaOfficial" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-<a class="link-btn" href="https://www.facebook.com/profile.php?id=61573079602732" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+<!-- Streaming -->
+<div class="card"><a class="link" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank"><i class="fab fa-spotify"></i> Spotify</a></div>
+<div class="card"><a class="link" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank"><i class="fab fa-apple"></i> Apple Music</a></div>
+<div class="card"><a class="link" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank"><i class="fab fa-amazon"></i> Amazon</a></div>
+<div class="card"><a class="link" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank"><i class="fas fa-music"></i> JioSaavn</a></div>
+<div class="card"><a class="link" href="https://www.deezer.com/us/artist/304158961" target="_blank"><i class="fab fa-deezer"></i> Deezer</a></div>
+<div class="card"><a class="link" href="https://tidal.com/artist/54713043" target="_blank"><i class="fas fa-wave-square"></i> TIDAL</a></div>
+<div class="card"><a class="link" href="https://audiomack.com/GxngstaOfficial" target="_blank"><i class="fas fa-play"></i> Audiomack</a></div>
+<div class="card"><a class="link" href="https://m.soundcloud.com/gangsta-769519727" target="_blank"><i class="fab fa-soundcloud"></i> SoundCloud</a></div>
 
-<div class="section-title">BUSINESS</div>
-<a class="link-btn" href="mailto:gxngstaofficial@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+<!-- Social -->
+<div class="card"><a class="link" href="https://www.instagram.com/gxngstaofficial" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></div>
+<div class="card"><a class="link" href="https://youtube.com/@GxngstaOfficial" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></div>
 
 <div class="footer">
-© <span id="year"></span> GXNGSTA • Official Artist Page • All Rights Reserved
+© <span id="year"></span> GXNGSTA • Official
 </div>
 
 </div>
+
+<a class="cta" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank">
+Listen on Spotify
+</a>
 
 <script>
-// Update year
-document.getElementById("year").textContent = new Date().getFullYear();
-
-// Hero tilt
-const hero=document.querySelector('.hero');
-hero.addEventListener('mousemove',e=>{
-    const rect=hero.getBoundingClientRect();
-    const x=e.clientX-rect.left-rect.width/2;
-    const y=e.clientY-rect.top-rect.height/2;
-    hero.style.setProperty('--tiltX',`${y/10}deg`);
-    hero.style.setProperty('--tiltY',`${-x/10}deg`);
-});
-hero.addEventListener('mouseleave',()=>{hero.style.setProperty('--tiltX','0deg');hero.style.setProperty('--tiltY','0deg');});
-
-// Scroll fade-in
-const faders=document.querySelectorAll('.section-title,.link-btn');
-const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){entry.target.style.opacity=1;entry.target.style.transform='translateY(0)';observer.unobserve(entry.target);}
-    });
-},{threshold:0.2});
-faders.forEach(fader=>observer.observe(fader));
+document.getElementById("year").textContent=new Date().getFullYear();
 </script>
+
 </body>
 </html>
