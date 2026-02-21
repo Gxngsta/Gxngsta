@@ -17,19 +17,19 @@
 html{scroll-behavior:smooth;}
 body{
   font-family:'Inter',sans-serif;
-  background:#0a0a0a; /* deep black */
+  background:#0a0a0a;
   color:#fff;
   text-align:center;
   overflow-x:hidden;
   position:relative;
 }
 
-/* Cinematic Red + Silver background */
+/* Cinematic Red + Black + Bronze background */
 body::before{
   content:"";
   position:fixed; top:0; left:0; width:100%; height:100%;
-  background: radial-gradient(circle at 30% 30%, rgba(255,0,0,0.06), transparent 70%), /* red glow */
-              radial-gradient(circle at 70% 70%, rgba(192,192,192,0.05), transparent 70%); /* silver glow */
+  background: radial-gradient(circle at 30% 30%, rgba(255,0,0,0.07), transparent 70%),
+              radial-gradient(circle at 70% 70%, rgba(184,115,51,0.05), transparent 70%);
   background-size: 200% 200%;
   animation: cinematicBG 35s linear infinite;
   z-index:-1;
@@ -40,12 +40,12 @@ body::before{
   100%{background-position:0% 0%,100% 100%;}
 }
 
-/* Top gradient line */
+/* Top cinematic gradient line */
 body::after{
   content:"";
   position:fixed; top:0; left:0; width:100%; height:4px;
-  background: linear-gradient(90deg,#ff0000,#c0c0c0,#ff0000);
-  box-shadow:0 0 12px #ff0000,0 0 25px #c0c0c0;
+  background: linear-gradient(90deg,#ff0000,#b87333,#ff0000);
+  box-shadow:0 0 12px #ff0000,0 0 25px #b87333;
   z-index:1000;
 }
 
@@ -57,8 +57,8 @@ body::after{
 }
 .hero::before{
   content:""; position:absolute; width:260px; height:260px; border-radius:50%;
-  background: radial-gradient(circle, rgba(255,0,0,0.5), rgba(192,192,192,0.3));
-  filter: blur(45px); z-index:0;
+  background: radial-gradient(circle, rgba(255,0,0,0.5), rgba(184,115,51,0.3));
+  filter: blur(50px); z-index:0;
   animation: pulseGlow 2.5s infinite alternate;
 }
 @keyframes pulseGlow{
@@ -68,20 +68,20 @@ body::after{
 .hero img{
   width:180px; height:180px; border-radius:50%; object-fit:cover;
   border:2px solid #ff0000;
-  box-shadow:0 0 30px rgba(255,0,0,0.7),0 0 50px rgba(192,192,192,0.5);
+  box-shadow:0 0 30px rgba(255,0,0,0.7),0 0 50px rgba(184,115,51,0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   z-index:1;
 }
 .hero:hover img{
   transform: rotateY(var(--tiltX,0deg)) rotateX(var(--tiltY,0deg)) scale(1.06);
-  box-shadow:0 0 60px rgba(255,0,0,0.85),0 0 90px rgba(192,192,192,0.6);
+  box-shadow:0 0 60px rgba(255,0,0,0.85),0 0 90px rgba(184,115,51,0.6);
 }
 
 /* Title */
 h1{
   font-family:'Orbitron',sans-serif;
   font-size:42px; letter-spacing:5px; font-weight:900; margin-top:20px;
-  background: linear-gradient(90deg,#ff0000,#c0c0c0,#ff0000);
+  background: linear-gradient(90deg,#ff0000,#b87333,#ff0000);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent;
   background-size:200% auto;
   animation: gradientShift 4s linear infinite, flicker 1.5s infinite;
@@ -92,8 +92,8 @@ h1{
   20%,22%,24%,55%{opacity:0.92;}
 }
 .tagline{
-  color:#c0c0c0; font-size:14px; margin:12px 0 35px; letter-spacing:2px;
-  text-shadow:0 0 5px #ff0000,0 0 10px #c0c0c0;
+  color:#b87333; font-size:14px; margin:12px 0 35px; letter-spacing:2px;
+  text-shadow:0 0 5px #ff0000,0 0 10px #b87333;
   animation: pulseTag 2s infinite alternate;
 }
 @keyframes pulseTag{0%{opacity:0.9;}100%{opacity:1;}}
@@ -104,7 +104,7 @@ h1{
   opacity:0; transform: translateY(20px); animation: fadeUp 0.8s forwards;
 }
 .section-title::after{
-  content:""; display:block; width:40px; height:2px; background:#c0c0c0; margin:6px auto 0;
+  content:""; display:block; width:40px; height:2px; background:#b87333; margin:6px auto 0;
 }
 
 /* Buttons */
@@ -117,20 +117,20 @@ h1{
 }
 .link-btn:hover{
   transform:translateY(-2px) scale(1.05);
-  box-shadow:0 0 25px #ff0000,0 0 35px #c0c0c0;
-  background:rgba(255,0,0,0.08);
+  box-shadow:0 0 25px #ff0000,0 0 35px #b87333;
+  background: rgba(255,0,0,0.08);
 }
 .link-btn i, .link-btn svg{font-size:16px;width:16px;height:16px;}
 
 /* Footer */
 .footer{
   margin-top:50px; font-size:10px; color:#aaa; letter-spacing:2px; line-height:1.8;
-  text-shadow:0 0 5px #ff0000,0 0 10px #c0c0c0;
+  text-shadow:0 0 5px #ff0000,0 0 10px #b87333;
   animation: footerGlow 3s ease-in-out infinite alternate;
   white-space: nowrap;
   overflow-x: auto;
 }
-@keyframes footerGlow{0%{text-shadow:0 0 5px #ff0000,0 0 10px #c0c0c0;}100%{text-shadow:0 0 12px #ff0000,0 0 20px #c0c0c0;}}
+@keyframes footerGlow{0%{text-shadow:0 0 5px #ff0000,0 0 10px #b87333;}100%{text-shadow:0 0 12px #ff0000,0 0 20px #b87333;}}
 
 /* FadeUp */
 @keyframes fadeUp{0%{opacity:0; transform:translateY(20px);}60%{opacity:0.7; transform:translateY(5px);}100%{opacity:1; transform:translateY(0);}}
