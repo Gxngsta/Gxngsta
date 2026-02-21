@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+/* ---------------- Reset & Base ---------------- */
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
@@ -29,15 +30,16 @@ body{
     position:relative;
 }
 
-/* Moving particle background */
+/* ---------------- Animated Particle BG ---------------- */
 body::before{
     content:"";
-    position:fixed;
-    top:0; left:0;
+    position:fixed; top:0; left:0;
     width:100%; height:100%;
-    background: radial-gradient(circle at 20% 20%, rgba(255,0,0,0.05), transparent 70%), radial-gradient(circle at 80% 80%, rgba(255,153,0,0.05), transparent 70%);
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,0,0,0.05), transparent 70%),
+      radial-gradient(circle at 80% 80%, rgba(255,153,0,0.05), transparent 70%);
     background-size: 200% 200%;
-    animation: moveBG 20s linear infinite;
+    animation: moveBG 25s linear infinite;
     z-index:-1;
 }
 @keyframes moveBG {
@@ -46,42 +48,46 @@ body::before{
     100%{background-position:0% 0%, 100% 100%;}
 }
 
-/* Top branding line */
+/* ---------------- Top Branding Line ---------------- */
 body::after{
     content:"";
     position:fixed;
     top:0; left:0;
     width:100%; height:3px;
-    background:linear-gradient(90deg,#ff0000,#990000);
+    background:linear-gradient(90deg,#ff0000,#ff9900,#ff0000);
     z-index:1000;
 }
 
-/* Container */
+/* ---------------- Container ---------------- */
 .container{
     max-width:480px;
     margin:60px auto;
     padding:20px;
 }
 
-/* Hero Section */
+/* ---------------- Hero Section ---------------- */
 .hero{
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     margin-bottom:20px;
     perspective:1000px;
 }
 .hero::before{
     content:"";
-    position: absolute;
+    position:absolute;
     width:220px;
     height:220px;
     border-radius:50%;
-    background: radial-gradient(circle, rgba(255,0,0,0.4) 0%, transparent 60%);
-    filter: blur(30px);
+    background: radial-gradient(circle, rgba(255,0,0,0.4), transparent 70%);
+    filter: blur(40px);
     z-index:0;
-    transition: transform 0.2s ease;
+    animation: pulseGlow 2.5s infinite alternate;
+}
+@keyframes pulseGlow{
+    0%{transform:scale(1);}
+    100%{transform:scale(1.15);}
 }
 .hero img{
     width:170px;
@@ -94,13 +100,13 @@ body::after{
     z-index:1;
 }
 
-/* Hero mouse hover tilt */
+/* 3D Tilt Hover */
 .hero:hover img{
     transform: rotateY(var(--tiltX,0deg)) rotateX(var(--tiltY,0deg)) scale(1.08);
-    box-shadow:0 0 40px rgba(255,0,0,0.8),0 0 60px rgba(255,153,0,0.5);
+    box-shadow:0 0 45px rgba(255,0,0,0.8),0 0 70px rgba(255,153,0,0.5);
 }
 
-/* Title */
+/* ---------------- Title ---------------- */
 h1{
     font-family:'Orbitron',sans-serif;
     font-size:38px;
@@ -108,9 +114,9 @@ h1{
     font-weight:900;
     margin-top:15px;
     background: linear-gradient(90deg, #ff0000, #ff9900, #ff0000);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% auto;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-size:200% auto;
     animation: gradientShift 3s linear infinite;
 }
 @keyframes gradientShift{
@@ -124,15 +130,16 @@ h1{
     letter-spacing:2px;
 }
 
-/* Section Titles */
+/* ---------------- Section Titles ---------------- */
 .section-title{
     margin:35px 0 10px;
     font-size:12px;
     color:#ff2a2a;
     letter-spacing:3px;
     opacity:0;
-    transform: translateY(20px);
+    transform:translateY(20px);
     animation: fadeUp 0.8s forwards;
+    position:relative;
 }
 .section-title::after{
     content:"";
@@ -141,9 +148,14 @@ h1{
     height:2px;
     background:#ff0000;
     margin:8px auto 0;
+    animation: lineGrow 0.5s forwards;
+}
+@keyframes lineGrow{
+    0%{width:0;}
+    100%{width:40px;}
 }
 
-/* Buttons */
+/* ---------------- Buttons ---------------- */
 .link-btn{
     display:flex;
     align-items:center;
@@ -161,18 +173,18 @@ h1{
     position:relative;
     overflow:hidden;
     opacity:0;
-    transform: translateY(20px);
+    transform:translateY(20px);
     animation: fadeUp 0.8s forwards;
     transition: all 0.3s ease;
 }
 .link-btn:hover{
     transform:translateY(-3px) scale(1.05);
-    box-shadow:0 0 25px rgba(255,0,0,0.6);
-    background:#1a0000;
+    box-shadow:0 0 28px rgba(255,0,0,0.7);
+    background:linear-gradient(90deg,#ff0000,#ff6600,#ff0000);
 }
 .link-btn i, .link-btn svg{font-size:16px;width:16px;height:16px;}
 
-/* Platform Icon Colors */
+/* ---------------- Platform Icon Colors ---------------- */
 .link-btn[href*="spotify"] i{color:#1DB954;}
 .link-btn[href*="apple"] i{color:#ffffff;}
 .link-btn[href*="amazon"] i{color:#ff9900;}
@@ -187,7 +199,7 @@ h1{
 .link-btn[href*="x.com"] i{color:#1DA1F2;}
 .link-btn[href*="facebook"] i{color:#1877F2;}
 
-/* Footer */
+/* ---------------- Footer ---------------- */
 .footer{
     margin-top:50px;
     font-size:10px;
@@ -202,14 +214,14 @@ h1{
     100%{text-shadow:0 0 15px rgba(255,0,0,0.8);}
 }
 
-/* FadeUp Animation */
+/* ---------------- Animations ---------------- */
 @keyframes fadeUp{
-    0%{opacity:0; transform: translateY(20px);}
-    60%{opacity:0.7; transform: translateY(5px);}
-    100%{opacity:1; transform: translateY(0);}
+    0%{opacity:0; transform:translateY(20px);}
+    60%{opacity:0.7; transform:translateY(5px);}
+    100%{opacity:1; transform:translateY(0);}
 }
 
-/* Mobile */
+/* ---------------- Mobile ---------------- */
 @media(max-width:480px){
     h1{font-size:28px;}
     .hero img{width:150px;height:150px;}
