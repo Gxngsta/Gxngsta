@@ -29,6 +29,7 @@ body{
     text-align:center;
     overflow-x:hidden;
 }
+
 /* Top branding line */
 body::before{
     content:"";
@@ -40,6 +41,7 @@ body::before{
     background:linear-gradient(90deg,#ff0000,#990000);
     z-index:1000;
 }
+
 /* Container */
 .container{
     max-width:480px;
@@ -50,26 +52,42 @@ body::before{
 }
 @keyframes fadeIn{ to{opacity:1;} }
 
-/* Hero */
+/* Hero / Profile Section */
 .hero{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom:20px;
 }
 
+/* Glowing background ring behind profile pic */
+.hero::before{
+    content:"";
+    position: absolute;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background: radial-gradient(circle, rgba(255,0,0,0.4) 0%, transparent 60%);
+    filter: blur(25px);
+    z-index:0;
+}
+
+/* Profile Image */
 .hero img{
     width:170px;
     height:170px;
     border-radius:50%;
     object-fit:cover;
     border:3px solid #ff0000;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow:0 0 20px rgba(255,0,0,0.5), 0 0 40px rgba(255,0,0,0.2);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    z-index:1;
 }
 
 .hero img:hover{
-    transform: scale(1.05);
-    box-shadow:0 0 30px rgba(255,0,0,0.8);
+    transform: scale(1.08) rotateY(5deg);
+    box-shadow:0 0 40px rgba(255,0,0,0.8), 0 0 60px rgba(255,153,0,0.5);
 }
 
 /* Title */
@@ -202,6 +220,7 @@ h1{
 @media(max-width:480px){
     h1{font-size:28px;}
     .hero img{width:150px;height:150px;}
+    .hero::before{width:180px;height:180px;}
 }
 </style>
 </head>
@@ -224,7 +243,6 @@ h1{
 <a class="link-btn" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank" rel="noopener"><i class="fas fa-music"></i> JioSaavn</a>
 <a class="link-btn" href="https://www.deezer.com/us/artist/304158961" target="_blank" rel="noopener"><i class="fab fa-deezer"></i> Deezer</a>
 <a class="link-btn" href="https://tidal.com/artist/54713043" target="_blank" rel="noopener"><i class="fas fa-wave-square"></i> TIDAL</a>
-<!-- Audiomack SVG icon -->
 <a class="link-btn" href="https://audiomack.com/GxngstaOfficial" target="_blank" rel="noopener">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#F37225" width="16" height="16">
     <path d="M256 0C114.836 0 0 114.836 0 256s114.836 256 256 256 256-114.836 256-256S397.164 0 256 0zm0 472c-119.103 0-216-96.897-216-216S136.897 40 256 40s216 96.897 216 216-96.897 216-216 216zm0-320a104 104 0 1 0 0 208 104 104 0 0 0 0-208z"/>
