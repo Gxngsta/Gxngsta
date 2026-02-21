@@ -32,16 +32,21 @@ html{
     scroll-behavior:smooth;
 }
 
-/* Smooth Dark Luxury Background */
+/* ===== ULTRA PREMIUM BACKGROUND ===== */
+
 body{
     font-family:'Orbitron', sans-serif;
-    background: radial-gradient(circle at top, #141414 0%, #0a0a0a 70%);
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,0,0,0.15), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(255,0,0,0.08), transparent 40%),
+        linear-gradient(135deg, #0d0d0d 0%, #141414 50%, #0a0a0a 100%);
     color:white;
     text-align:center;
     overflow-x:hidden;
+    position:relative;
 }
 
-/* Subtle Red Lighting */
+/* Slow Moving Ambient Light */
 body::before{
     content:"";
     position:fixed;
@@ -50,18 +55,32 @@ body::before{
     top:-50%;
     left:-50%;
     background:
-        radial-gradient(circle at 30% 30%, rgba(255,0,0,0.12), transparent 40%),
-        radial-gradient(circle at 70% 70%, rgba(255,0,0,0.06), transparent 40%);
-    animation: bgMove 18s linear infinite;
-    z-index:-1;
+        radial-gradient(circle at 30% 30%, rgba(255,0,0,0.08), transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(255,0,0,0.05), transparent 50%);
+    animation: ambientMove 40s linear infinite;
+    z-index:-2;
 }
 
-@keyframes bgMove{
+@keyframes ambientMove{
     from{ transform:rotate(0deg); }
     to{ transform:rotate(360deg); }
 }
 
-/* Premium Glass Card */
+/* Subtle Texture Layer */
+body::after{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-image:url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+    opacity:0.15;
+    z-index:-1;
+}
+
+/* ===== GLASS CARD ===== */
+
 .container{
     padding:60px 30px;
     max-width:520px;
@@ -95,7 +114,7 @@ body::before{
     transition:0.4s;
 }
 
-/* Clean Strong Branding Title */
+/* Title */
 h1{
     font-size:42px;
     letter-spacing:8px;
@@ -120,7 +139,7 @@ h1{
     letter-spacing:4px;
 }
 
-/* Buttons - Luxury Finish */
+/* Buttons */
 .link-btn{
     display:flex;
     align-items:center;
