@@ -20,132 +20,108 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-
 html{scroll-behavior:smooth;}
-
 body{
-font-family:'Inter',sans-serif;
-background:
-radial-gradient(circle at 50% 0%, rgba(255,0,0,0.15), transparent 55%),
-linear-gradient(to bottom,#0a0a0a,#000000 85%);
-color:#fff;
-text-align:center;
-overflow-x:hidden;
+    font-family:'Inter',sans-serif;
+    background:
+    radial-gradient(circle at 50% 0%, rgba(255,0,0,0.15), transparent 55%),
+    linear-gradient(to bottom,#0a0a0a,#000000 85%);
+    color:#fff;
+    text-align:center;
+    overflow-x:hidden;
 }
-
 /* Top branding line */
 body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:3px;
-background:linear-gradient(90deg,#ff0000,#990000);
-z-index:1000;
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:3px;
+    background:linear-gradient(90deg,#ff0000,#990000);
+    z-index:1000;
 }
-
 /* Container */
 .container{
-max-width:480px;
-margin:60px auto;
-padding:20px;
-animation:fadeIn 1s ease forwards;
-opacity:0;
+    max-width:480px;
+    margin:60px auto;
+    padding:20px;
+    animation:fadeIn 1s ease forwards;
+    opacity:0;
 }
-
-@keyframes fadeIn{
-to{opacity:1;}
-}
-
+@keyframes fadeIn{ to{opacity:1;} }
 /* Hero */
 .hero{
-position:relative;
-display:flex;
-justify-content:center;
-align-items:center;
-margin-bottom:20px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:20px;
 }
-
 .hero img{
-width:170px;
-height:170px;
-border-radius:50%;
-object-fit:cover;
-border:3px solid #ff0000;
-box-shadow:
-0 0 0 6px rgba(255,0,0,0.15),
-0 0 40px rgba(255,0,0,0.6);
-transition:.4s;
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #ff0000;
+    box-shadow:0 0 0 6px rgba(255,0,0,0.15),0 0 40px rgba(255,0,0,0.6);
+    transition:.4s;
 }
-
-.hero img:hover{
-transform:scale(1.05);
-}
-
+.hero img:hover{ transform:scale(1.05); }
 /* Title */
 h1{
-font-family:'Orbitron',sans-serif;
-font-size:38px;
-letter-spacing:4px;
-font-weight:900;
-margin-top:15px;
-color:#fff;
-text-shadow:0 0 15px rgba(255,0,0,0.6);
+    font-family:'Orbitron',sans-serif;
+    font-size:38px;
+    letter-spacing:4px;
+    font-weight:900;
+    margin-top:15px;
+    color:#fff;
+    text-shadow:0 0 15px rgba(255,0,0,0.6);
 }
-
 .tagline{
-color:#aaa;
-font-size:13px;
-margin:12px 0 30px;
-letter-spacing:2px;
+    color:#aaa;
+    font-size:13px;
+    margin:12px 0 30px;
+    letter-spacing:2px;
 }
-
 /* Section Titles */
 .section-title{
-margin:35px 0 10px;
-font-size:12px;
-color:#ff2a2a;
-letter-spacing:3px;
+    margin:35px 0 10px;
+    font-size:12px;
+    color:#ff2a2a;
+    letter-spacing:3px;
 }
-
 .section-title::after{
-content:"";
-display:block;
-width:40px;
-height:2px;
-background:#ff0000;
-margin:8px auto 0;
+    content:"";
+    display:block;
+    width:40px;
+    height:2px;
+    background:#ff0000;
+    margin:8px auto 0;
 }
-
 /* Buttons */
 .link-btn{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-margin:14px 0;
-padding:15px;
-border-radius:50px;
-text-decoration:none;
-font-size:14px;
-font-weight:600;
-color:#fff;
-background:#111;
-border:1px solid rgba(255,0,0,0.5);
-transition:all .3s ease;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin:14px 0;
+    padding:15px;
+    border-radius:50px;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    color:#fff;
+    background:#111;
+    border:1px solid rgba(255,0,0,0.5);
+    transition:all .3s ease;
 }
-
 .link-btn:hover{
-transform:translateY(-3px);
-box-shadow:0 0 20px rgba(255,0,0,0.6);
-background:#1a0000;
+    transform:translateY(-3px);
+    box-shadow:0 0 20px rgba(255,0,0,0.6);
+    background:#1a0000;
 }
-
-.link-btn i{
-font-size:16px;
-}
-
+.link-btn i{ font-size:16px; }
 /* Platform Icon Colors */
 .link-btn[href*="spotify"] i{color:#1DB954;}
 .link-btn[href*="apple"] i{color:#ffffff;}
@@ -153,36 +129,33 @@ font-size:16px;
 .link-btn[href*="jiosaavn"] i{color:#2bc5b4;}
 .link-btn[href*="deezer"] i{color:#ff2a2a;}
 .link-btn[href*="tidal"] i{color:#ffffff;}
+.link-btn[href*="audiomack"] i{color:#F37225;}
+.link-btn[href*="soundcloud"] i{color:#FF7700;}
+.link-btn[href*="shazam"] i{color:#0088FF;}
+.link-btn[href*="boomplay"] i{color:#FFCC00;}
 .link-btn[href*="instagram"] i{color:#E1306C;}
 .link-btn[href*="youtube"] i{color:#FF0000;}
 .link-btn[href*="x.com"] i{color:#1DA1F2;}
-
 /* Footer */
 .footer{
-margin-top:50px;
-font-size:10px;
-color:#666;
-letter-spacing:2px;
-line-height:1.8;
+    margin-top:50px;
+    font-size:10px;
+    color:#666;
+    letter-spacing:2px;
+    line-height:1.8;
 }
-
 /* Mobile */
 @media(max-width:480px){
-h1{font-size:28px;}
+    h1{font-size:28px;}
 }
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
 <div class="hero">
-<img src="profile.jpg"
-     alt="GXNGSTA"
-     width="170"
-     height="170"
-     decoding="async">
+<img src="profile.jpg" alt="GXNGSTA" width="170" height="170" decoding="async">
 </div>
 
 <h1>GXNGSTA</h1>
@@ -196,6 +169,10 @@ h1{font-size:28px;}
 <a class="link-btn" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank" rel="noopener"><i class="fas fa-music"></i> JioSaavn</a>
 <a class="link-btn" href="https://www.deezer.com/us/artist/304158961" target="_blank" rel="noopener"><i class="fab fa-deezer"></i> Deezer</a>
 <a class="link-btn" href="https://tidal.com/artist/54713043" target="_blank" rel="noopener"><i class="fas fa-wave-square"></i> TIDAL</a>
+<a class="link-btn" href="https://audiomack.com/GxngstaOfficial" target="_blank" rel="noopener"><i class="fab fa-audiomack"></i> Audiomack</a>
+<a class="link-btn" href="https://m.soundcloud.com/gangsta-769519727" target="_blank" rel="noopener"><i class="fab fa-soundcloud"></i> SoundCloud</a>
+<a class="link-btn" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank" rel="noopener"><i class="fas fa-bolt"></i> Shazam</a>
+<a class="link-btn" href="https://www.boomplay.com/share/artist/106853408?srModel=byWH&srList=ANDROID" target="_blank" rel="noopener"><i class="fas fa-play"></i> Boomplay</a>
 
 <div class="section-title">FOLLOW</div>
 
