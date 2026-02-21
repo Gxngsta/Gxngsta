@@ -24,12 +24,12 @@ body{
   position:relative;
 }
 
-/* Cinematic blue/purple background */
+/* Cinematic background */
 body::before{
   content:"";
   position:fixed; top:0; left:0; width:100%; height:100%;
-  background: radial-gradient(circle at 25% 25%, rgba(85,0,255,0.05), transparent 70%),
-              radial-gradient(circle at 75% 75%, rgba(0,255,255,0.05), transparent 70%);
+  background: radial-gradient(circle at 25% 25%, rgba(85,0,255,0.04), transparent 70%),
+              radial-gradient(circle at 75% 75%, rgba(0,255,255,0.04), transparent 70%);
   background-size: 200% 200%;
   animation: cinematicBG 30s linear infinite;
   z-index:-1;
@@ -45,7 +45,7 @@ body::after{
   content:"";
   position:fixed; top:0; left:0; width:100%; height:4px;
   background: linear-gradient(90deg,#5a00ff,#00ffff,#5a00ff);
-  box-shadow:0 0 15px #5a00ff,0 0 30px #00ffff;
+  box-shadow:0 0 8px #5a00ff,0 0 15px #00ffff;
   z-index:1000;
 }
 
@@ -57,24 +57,24 @@ body::after{
 }
 .hero::before{
   content:""; position:absolute; width:240px; height:240px; border-radius:50%;
-  background: radial-gradient(circle, rgba(85,0,255,0.6), transparent 70%);
-  filter: blur(50px); z-index:0;
+  background: radial-gradient(circle, rgba(85,0,255,0.5), transparent 70%);
+  filter: blur(35px); z-index:0;
   animation: pulseGlow 2.5s infinite alternate;
 }
 @keyframes pulseGlow{
   0%{transform:scale(1);}
-  100%{transform:scale(1.2);}
+  100%{transform:scale(1.1);}
 }
 .hero img{
   width:180px; height:180px; border-radius:50%; object-fit:cover;
-  border:3px solid #5a00ff;
-  box-shadow:0 0 40px rgba(85,0,255,0.8),0 0 60px rgba(0,255,255,0.5);
+  border:2px solid #5a00ff;
+  box-shadow:0 0 25px rgba(85,0,255,0.6),0 0 40px rgba(0,255,255,0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   z-index:1;
 }
 .hero:hover img{
-  transform: rotateY(var(--tiltX,0deg)) rotateX(var(--tiltY,0deg)) scale(1.1);
-  box-shadow:0 0 80px rgba(85,0,255,1),0 0 120px rgba(0,255,255,0.7);
+  transform: rotateY(var(--tiltX,0deg)) rotateX(var(--tiltY,0deg)) scale(1.05);
+  box-shadow:0 0 50px rgba(85,0,255,0.8),0 0 70px rgba(0,255,255,0.5);
 }
 
 /* Title */
@@ -89,14 +89,14 @@ h1{
 @keyframes gradientShift{0%{background-position:0% 50%;}100%{background-position:100% 50%;}}
 @keyframes flicker{
   0%,19%,21%,23%,25%,54%,56%,100%{opacity:1;}
-  20%,22%,24%,55%{opacity:0.85;}
+  20%,22%,24%,55%{opacity:0.9;}
 }
 .tagline{
   color:#00ffff; font-size:14px; margin:12px 0 35px; letter-spacing:2px;
-  text-shadow:0 0 5px #5a00ff,0 0 10px #00ffff;
+  text-shadow:0 0 3px #5a00ff,0 0 6px #00ffff;
   animation: pulseTag 2s infinite alternate;
 }
-@keyframes pulseTag{0%{opacity:0.85;}100%{opacity:1;}}
+@keyframes pulseTag{0%{opacity:0.9;}100%{opacity:1;}}
 
 /* Section Titles */
 .section-title{
@@ -116,18 +116,19 @@ h1{
   transition: all 0.3s ease;
 }
 .link-btn:hover{
-  transform:translateY(-2px) scale(1.05); box-shadow:0 0 35px #5a00ff,0 0 50px #00ffff;
-  background:rgba(0,85,255,0.1);
+  transform:translateY(-2px) scale(1.05);
+  box-shadow:0 0 15px #5a00ff,0 0 25px #00ffff; /* glow reduced */
+  background:rgba(0,85,255,0.05);
 }
 .link-btn i, .link-btn svg{font-size:16px;width:16px;height:16px;}
 
 /* Footer */
 .footer{
   margin-top:50px; font-size:10px; color:#aaa; letter-spacing:2px; line-height:1.8;
-  text-shadow:0 0 5px #5a00ff,0 0 10px #00ffff;
+  text-shadow:0 0 3px #5a00ff,0 0 6px #00ffff;
   animation: footerGlow 2s infinite alternate;
 }
-@keyframes footerGlow{0%{text-shadow:0 0 5px #5a00ff;}100%{text-shadow:0 0 15px #00ffff;}}
+@keyframes footerGlow{0%{text-shadow:0 0 3px #5a00ff;}100%{text-shadow:0 0 8px #00ffff;}}
 
 /* FadeUp */
 @keyframes fadeUp{0%{opacity:0; transform:translateY(20px);}60%{opacity:0.7; transform:translateY(5px);}100%{opacity:1; transform:translateY(0);}}
