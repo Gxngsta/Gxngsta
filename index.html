@@ -15,11 +15,10 @@
 body{
 background:radial-gradient(circle at top,#0b0b0b,#050505 60%);
 color:#fff;
-font-family:Inter,sans-serif;
+font-family:Inter,system-ui,-apple-system,sans-serif;
 text-align:center;
 }
 
-/* container */
 .container{
 max-width:520px;
 margin:auto;
@@ -37,7 +36,7 @@ align-items:center;
 justify-content:center;
 }
 
-/* glow aura softer */
+/* glow */
 .hero::before{
 content:"";
 position:absolute;
@@ -48,7 +47,7 @@ background:radial-gradient(circle,rgba(255,0,0,.28),transparent 70%);
 filter:blur(26px);
 }
 
-/* profile image medium border */
+/* profile image */
 .hero img{
 width:160px;
 height:160px;
@@ -56,13 +55,13 @@ border-radius:50%;
 object-fit:cover;
 position:relative;
 z-index:2;
-border:2px solid rgba(255,0,0,.45);
+border:2px solid rgba(255,0,0,.42);
 box-shadow:
 0 6px 25px rgba(0,0,0,.7),
-0 0 12px rgba(255,0,0,.25);
+0 0 12px rgba(255,0,0,.22);
 }
 
-/* logo text */
+/* logo */
 h1{
 font-family:Orbitron,sans-serif;
 font-size:34px;
@@ -80,7 +79,6 @@ letter-spacing:2px;
 margin-bottom:28px;
 }
 
-/* section title */
 .section{
 margin-top:28px;
 font-size:12px;
@@ -88,7 +86,7 @@ letter-spacing:3px;
 color:#ff2a2a;
 }
 
-/* buttons glass premium */
+/* buttons */
 .btn{
 display:block;
 margin:12px 0;
@@ -100,26 +98,17 @@ font-weight:600;
 
 background:rgba(255,255,255,.04);
 backdrop-filter:blur(8px);
-
 border:1px solid rgba(255,0,0,.28);
 
-transition:.25s;
+transition:transform .25s, box-shadow .25s, border .25s;
 }
 
-/* arrow style */
-.btn::after{
-content:" →";
-opacity:.6;
-}
-
-/* hover */
 .btn:hover{
 transform:translateY(-3px) scale(1.02);
 box-shadow:0 0 20px rgba(255,0,0,.45);
 border-color:rgba(255,0,0,.6);
 }
 
-/* footer */
 .footer{
 margin-top:42px;
 font-size:11px;
@@ -134,7 +123,7 @@ letter-spacing:1px;
 <div class="container">
 
 <div class="hero">
-<img src="profile.jpg" alt="GXNGSTA profile">
+<img src="profile.jpg" alt="GXNGSTA profile photo" loading="lazy">
 </div>
 
 <h1>GXNGSTA</h1>
@@ -142,23 +131,23 @@ letter-spacing:1px;
 
 <div class="section">STREAMING</div>
 
-<a class="btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank">Spotify</a>
-<a class="btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank">Apple Music</a>
-<a class="btn" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank">Amazon Music</a>
-<a class="btn" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank">JioSaavn</a>
-<a class="btn" href="https://www.deezer.com/us/artist/304158961" target="_blank">Deezer</a>
-<a class="btn" href="https://tidal.com/artist/54713043" target="_blank">TIDAL</a>
-<a class="btn" href="https://audiomack.com/GxngstaOfficial" target="_blank">Audiomack</a>
-<a class="btn" href="https://m.soundcloud.com/gangsta-769519727" target="_blank">SoundCloud</a>
-<a class="btn" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank">Shazam</a>
-<a class="btn" href="https://www.boomplay.com/share/artist/106853408" target="_blank">Boomplay</a>
+<a class="btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank" rel="noopener">Spotify</a>
+<a class="btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank" rel="noopener">Apple Music</a>
+<a class="btn" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank" rel="noopener">Amazon Music</a>
+<a class="btn" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank" rel="noopener">JioSaavn</a>
+<a class="btn" href="https://www.deezer.com/us/artist/304158961" target="_blank" rel="noopener">Deezer</a>
+<a class="btn" href="https://tidal.com/artist/54713043" target="_blank" rel="noopener">TIDAL</a>
+<a class="btn" href="https://audiomack.com/GxngstaOfficial" target="_blank" rel="noopener">Audiomack</a>
+<a class="btn" href="https://m.soundcloud.com/gangsta-769519727" target="_blank" rel="noopener">SoundCloud</a>
+<a class="btn" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank" rel="noopener">Shazam</a>
+<a class="btn" href="https://www.boomplay.com/share/artist/106853408" target="_blank" rel="noopener">Boomplay</a>
 
 <div class="section">FOLLOW</div>
 
-<a class="btn" href="https://www.instagram.com/gxngstaofficial" target="_blank">Instagram</a>
-<a class="btn" href="https://youtube.com/@GxngstaOfficial" target="_blank">YouTube</a>
-<a class="btn" href="https://x.com/GxngstaOfficial" target="_blank">Twitter / X</a>
-<a class="btn" href="https://www.facebook.com/profile.php?id=61573079602732" target="_blank">Facebook</a>
+<a class="btn" href="https://www.instagram.com/gxngstaofficial" target="_blank" rel="noopener">Instagram</a>
+<a class="btn" href="https://youtube.com/@GxngstaOfficial" target="_blank" rel="noopener">YouTube</a>
+<a class="btn" href="https://x.com/GxngstaOfficial" target="_blank" rel="noopener">Twitter / X</a>
+<a class="btn" href="https://www.facebook.com/profile.php?id=61573079602732" target="_blank" rel="noopener">Facebook</a>
 
 <div class="section">BUSINESS</div>
 <a class="btn" href="mailto:gxngstaofficial@gmail.com">Email</a>
