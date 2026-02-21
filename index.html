@@ -8,7 +8,6 @@
 <meta name="description" content="GXNGSTA Official Artist Page. Stream music worldwide.">
 <meta name="author" content="GXNGSTA">
 
-<!-- Performance Boost -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -29,14 +28,34 @@ text-align:center;
 overflow-x:hidden;
 }
 
-/* Container compact */
+/* Container */
 .container{
 max-width:480px;
 margin:60px auto;
 padding:30px 20px;
 }
 
-/* Profile */
+/* Hero section */
+.hero{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+margin-bottom:10px;
+}
+
+/* Soft Halo Behind Image */
+.hero::before{
+content:"";
+position:absolute;
+width:260px;
+height:260px;
+background:radial-gradient(circle, rgba(255,0,0,0.25), transparent 65%);
+border-radius:50%;
+z-index:-1;
+}
+
+/* Profile Image */
 .hero img{
 width:170px;
 height:170px;
@@ -79,7 +98,7 @@ margin:15px 0 30px;
 letter-spacing:2px;
 }
 
-/* Section */
+/* Section Titles */
 .section-title{
 margin:30px 0 15px;
 font-size:12px;
@@ -87,7 +106,7 @@ color:#ff2a2a;
 letter-spacing:3px;
 }
 
-/* Buttons compact */
+/* Buttons */
 .link-btn{
 display:flex;
 align-items:center;
@@ -105,7 +124,6 @@ border:1px solid rgba(255,0,0,0.4);
 transition:all .25s ease;
 }
 
-/* Hover desktop */
 @media (hover:hover){
 .link-btn:hover{
 transform:translateY(-2px);
@@ -114,7 +132,6 @@ background:rgba(255,0,0,0.18);
 }
 }
 
-/* Click */
 .link-btn:active{
 transform:scale(.96);
 }
