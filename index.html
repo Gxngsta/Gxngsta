@@ -10,7 +10,6 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -53,7 +52,6 @@ body::before{
 
 /* Hero */
 .hero{
-    position:relative;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -159,7 +157,11 @@ h1{
     background:#1a0000;
 }
 
-.link-btn i{ font-size:16px; }
+.link-btn i, .link-btn svg{
+    font-size:16px;
+    width:16px;
+    height:16px;
+}
 
 /* Platform Icon Colors */
 .link-btn[href*="spotify"] i{color:#1DB954;}
@@ -168,7 +170,6 @@ h1{
 .link-btn[href*="jiosaavn"] i{color:#2bc5b4;}
 .link-btn[href*="deezer"] i{color:#ff2a2a;}
 .link-btn[href*="tidal"] i{color:#ffffff;}
-.link-btn[href*="audiomack"] i{color:#F37225;} /* Audiomack icon fix */
 .link-btn[href*="soundcloud"] i{color:#FF7700;}
 .link-btn[href*="shazam"] i{color:#0088FF;}
 .link-btn[href*="boomplay"] i{color:#FFCC00;}
@@ -223,7 +224,13 @@ h1{
 <a class="link-btn" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank" rel="noopener"><i class="fas fa-music"></i> JioSaavn</a>
 <a class="link-btn" href="https://www.deezer.com/us/artist/304158961" target="_blank" rel="noopener"><i class="fab fa-deezer"></i> Deezer</a>
 <a class="link-btn" href="https://tidal.com/artist/54713043" target="_blank" rel="noopener"><i class="fas fa-wave-square"></i> TIDAL</a>
-<a class="link-btn" href="https://audiomack.com/GxngstaOfficial" target="_blank" rel="noopener"><i class="fab fa-audiomack"></i> Audiomack</a>
+<!-- Audiomack SVG icon -->
+<a class="link-btn" href="https://audiomack.com/GxngstaOfficial" target="_blank" rel="noopener">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#F37225" width="16" height="16">
+    <path d="M256 0C114.836 0 0 114.836 0 256s114.836 256 256 256 256-114.836 256-256S397.164 0 256 0zm0 472c-119.103 0-216-96.897-216-216S136.897 40 256 40s216 96.897 216 216-96.897 216-216 216zm0-320a104 104 0 1 0 0 208 104 104 0 0 0 0-208z"/>
+  </svg>
+  Audiomack
+</a>
 <a class="link-btn" href="https://m.soundcloud.com/gangsta-769519727" target="_blank" rel="noopener"><i class="fab fa-soundcloud"></i> SoundCloud</a>
 <a class="link-btn" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank" rel="noopener"><i class="fas fa-bolt"></i> Shazam</a>
 <a class="link-btn" href="https://www.boomplay.com/share/artist/106853408?srModel=byWH&srList=ANDROID" target="_blank" rel="noopener"><i class="fas fa-play"></i> Boomplay</a>
@@ -247,7 +254,7 @@ Official Artist Page • All Rights Reserved
 </div>
 
 <script>
-document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
 </body>
