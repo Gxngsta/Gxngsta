@@ -41,7 +41,7 @@ body::before{
   100%{background-position:0% 0%,100% 100%;}
 }
 
-/* Top neon gradient line */
+/* Top neon line */
 body::after{
   content:"";
   position:fixed; top:0; left:0; width:100%; height:4px;
@@ -54,7 +54,7 @@ body::after{
 .container{
   max-width:480px;
   margin:60px auto;
-  padding:20px;
+  padding:0 15px;
   width:90%;
 }
 
@@ -70,9 +70,7 @@ body::after{
 .hero::before{
   content:""; 
   position:absolute; 
-  width:80%; 
-  max-width:260px; 
-  aspect-ratio:1/1;
+  width:80%; max-width:260px; aspect-ratio:1/1;
   border-radius:50%;
   background: radial-gradient(circle, rgba(138,43,226,0.4), rgba(0,255,255,0.2));
   filter: blur(50px); z-index:0;
@@ -84,11 +82,8 @@ body::after{
   100%{transform:scale(1);}
 }
 .hero img{
-  width:80%;
-  max-width:180px;
-  aspect-ratio:1/1;
-  border-radius:50%;
-  object-fit:cover;
+  width:80%; max-width:180px; aspect-ratio:1/1;
+  border-radius:50%; object-fit:cover;
   border:2px solid #8a2be2;
   box-shadow:0 0 25px rgba(138,43,226,0.6),0 0 40px rgba(0,255,255,0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -130,7 +125,7 @@ h1{
 @keyframes colorShift{0%{color:#8a2be2;}50%{color:#00ffff;}100%{color:#8a2be2;}}
 @keyframes fadeSlide{0%{opacity:0;transform:translateY(20px) translateX(-20px);}100%{opacity:1;transform:translateY(0) translateX(0);}}
 
-/* Buttons - neon glow + responsive */
+/* Buttons */
 .link-btn{
   display:flex; align-items:center; justify-content:center; gap:10px; margin:12px 0;
   padding:14px; border-radius:50px; text-decoration:none; font-size:14px; font-weight:600;
@@ -149,16 +144,14 @@ h1{
 
 /* Footer */
 .footer{
-  margin-top:50px; font-size:12px; color:#aaa; letter-spacing:1px; line-height:1.8;
-  text-align:center; white-space:normal; overflow-x:visible;
+  margin-top:50px;
+  font-size:12px; color:#aaa; letter-spacing:1px; line-height:1.8;
+  text-align:center; white-space:nowrap; overflow-x:auto; padding:10px 5px;
 }
 @media(min-width:481px){
   .footer{position:fixed; bottom:0; left:0; width:100%; background:#0b0b1e80; padding:10px 0;}
 }
 .footer:hover{color:#00ffff; text-shadow:0 0 5px #00ffff,0 0 10px #8a2be2; transition:all 0.3s ease;}
-
-/* FadeUp Animation */
-@keyframes fadeUp{0%{opacity:0; transform:translateY(20px);}60%{opacity:0.7; transform:translateY(5px);}100%{opacity:1; transform:translateY(0);}}
 
 /* Responsive */
 @media(max-width:480px){
