@@ -6,18 +6,6 @@
 
 <title>GXNGSTA | Independent Hip-Hop Artist</title>
 
-<meta name="description" content="GXNGSTA Official Artist Page. Stream music on Spotify, Apple Music, JioSaavn and more.">
-<meta name="keywords" content="GXNGSTA, hip hop artist, Indian rapper">
-<meta name="author" content="GXNGSTA">
-<link rel="canonical" href="https://gxngsta.github.io/Gxngsta/">
-
-<meta property="og:title" content="GXNGSTA Official Artist Page">
-<meta property="og:description" content="Stream GXNGSTA music worldwide.">
-<meta property="og:image" content="https://gxngsta.github.io/Gxngsta/profile.png">
-<meta property="og:type" content="website">
-
-<link rel="icon" type="image/png" href="favicon.png">
-
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -28,25 +16,16 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
-/* ===== ULTRA PREMIUM BACKGROUND ===== */
-
 body{
     font-family:'Orbitron', sans-serif;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(255,0,0,0.15), transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(255,0,0,0.08), transparent 40%),
-        linear-gradient(135deg, #0d0d0d 0%, #141414 50%, #0a0a0a 100%);
+    background:#0a0a0a;
     color:white;
     text-align:center;
     overflow-x:hidden;
     position:relative;
 }
 
-/* Slow Moving Ambient Light */
+/* ===== ANIMATED GRID BACKGROUND ===== */
 body::before{
     content:"";
     position:fixed;
@@ -55,43 +34,42 @@ body::before{
     top:-50%;
     left:-50%;
     background:
-        radial-gradient(circle at 30% 30%, rgba(255,0,0,0.08), transparent 50%),
-        radial-gradient(circle at 70% 70%, rgba(255,0,0,0.05), transparent 50%);
-    animation: ambientMove 40s linear infinite;
+        radial-gradient(circle at 30% 40%, rgba(255,0,0,0.15), transparent 40%),
+        radial-gradient(circle at 70% 60%, rgba(255,0,0,0.1), transparent 40%),
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,0,0,0.05) 0px,
+            rgba(255,0,0,0.05) 1px,
+            transparent 1px,
+            transparent 80px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,0,0,0.05) 0px,
+            rgba(255,0,0,0.05) 1px,
+            transparent 1px,
+            transparent 80px
+        );
+    animation: bgMove 25s linear infinite;
     z-index:-2;
 }
 
-@keyframes ambientMove{
-    from{ transform:rotate(0deg); }
-    to{ transform:rotate(360deg); }
-}
-
-/* Subtle Texture Layer */
-body::after{
-    content:"";
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background-image:url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-    opacity:0.15;
-    z-index:-1;
+@keyframes bgMove{
+    from{ transform:translate(0,0); }
+    to{ transform:translate(200px,200px); }
 }
 
 /* ===== GLASS CARD ===== */
-
 .container{
     padding:60px 30px;
     max-width:520px;
     margin:60px auto;
-    animation:fadeIn 1.2s ease;
-
-    background: rgba(20,20,20,0.65);
-    border:1px solid rgba(255,0,0,0.25);
-    backdrop-filter: blur(20px);
-    border-radius:24px;
-    box-shadow: 0 0 40px rgba(255,0,0,0.15);
+    background:rgba(20,20,20,0.7);
+    border:1px solid rgba(255,0,0,0.3);
+    backdrop-filter:blur(20px);
+    border-radius:25px;
+    box-shadow:0 0 50px rgba(255,0,0,0.15);
+    animation:fadeIn 1s ease;
 }
 
 @keyframes fadeIn{
@@ -99,39 +77,39 @@ body::after{
     to{opacity:1; transform:translateY(0);}
 }
 
-/* Profile */
-.hero{
-    margin-bottom:25px;
-}
-
+/* ===== PROFILE ===== */
 .hero img{
     width:170px;
     height:170px;
     object-fit:cover;
     border-radius:50%;
     border:3px solid #ff0000;
-    box-shadow:0 0 35px rgba(255,0,0,0.7);
-    transition:0.4s;
+    animation:profileGlow 4s ease-in-out infinite;
 }
 
-/* Title */
+@keyframes profileGlow{
+    0%{ box-shadow:0 0 25px rgba(255,0,0,0.5); }
+    50%{ box-shadow:0 0 55px rgba(255,0,0,0.9); }
+    100%{ box-shadow:0 0 25px rgba(255,0,0,0.5); }
+}
+
+/* ===== TITLE ===== */
 h1{
     font-size:42px;
     letter-spacing:8px;
     font-weight:900;
-    color:white;
-    text-shadow:0 0 25px rgba(255,0,0,0.4);
-    margin-bottom:8px;
+    margin:15px 0;
+    text-shadow:0 0 25px rgba(255,0,0,0.6);
 }
 
 .tagline{
     color:#bbb;
     font-size:14px;
-    margin-bottom:40px;
+    margin-bottom:35px;
     letter-spacing:2px;
 }
 
-/* Section Titles */
+/* ===== SECTION TITLE ===== */
 .section-title{
     margin:40px 0 20px;
     font-size:13px;
@@ -139,7 +117,7 @@ h1{
     letter-spacing:4px;
 }
 
-/* Buttons */
+/* ===== BUTTONS ===== */
 .link-btn{
     display:flex;
     align-items:center;
@@ -152,91 +130,45 @@ h1{
     font-weight:600;
     font-size:15px;
     color:white;
-
     background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,0,0,0.25);
-
-    transition:all 0.35s ease;
+    border:1px solid rgba(255,0,0,0.3);
     position:relative;
     overflow:hidden;
-    -webkit-tap-highlight-color: transparent;
+    transition:0.3s;
 }
 
-@media (hover: hover){
-    .link-btn:hover{
-        transform:translateY(-3px);
-        box-shadow:0 10px 25px rgba(255,0,0,0.25);
-        border:1px solid rgba(255,0,0,0.6);
-    }
+/* Shine Effect */
+.link-btn::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:-100%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.2),
+        transparent
+    );
+    transition:0.6s;
+}
+
+.link-btn:hover::before{
+    left:100%;
+}
+
+.link-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 30px rgba(255,0,0,0.3);
 }
 
 .link-btn:active{
-    transform:scale(0.98);
+    transform:scale(0.97);
 }
 
-/* Footer */
+/* ===== FOOTER ===== */
 .footer{
     margin-top:60px;
     font-size:11px;
-    color:#888;
-    letter-spacing:2px;
-    opacity:0.7;
-}
-
-/* Mobile */
-@media(max-width:480px){
-    h1{
-        font-size:32px;
-        letter-spacing:4px;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-<div class="hero">
-    <img src="profile.png" alt="GXNGSTA" loading="lazy">
-</div>
-
-<h1>GXNGSTA</h1>
-<p class="tagline">INDEPENDENT HIP-HOP ARTIST</p>
-
-<div class="section-title">STREAMING PLATFORMS</div>
-
-<a class="link-btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank"><i class="fab fa-spotify"></i> Spotify</a>
-<a class="link-btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank"><i class="fab fa-apple"></i> Apple Music</a>
-<a class="link-btn" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank"><i class="fab fa-amazon"></i> Amazon Music</a>
-<a class="link-btn" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank"><i class="fas fa-music"></i> JioSaavn</a>
-<a class="link-btn" href="https://www.deezer.com/us/artist/304158961" target="_blank"><i class="fab fa-deezer"></i> Deezer</a>
-<a class="link-btn" href="https://tidal.com/artist/54713043" target="_blank"><i class="fas fa-wave-square"></i> TIDAL</a>
-<a class="link-btn" href="https://audiomack.com/GxngstaOfficial" target="_blank"><i class="fas fa-headphones"></i> Audiomack</a>
-<a class="link-btn" href="https://m.soundcloud.com/gangsta-769519727" target="_blank"><i class="fab fa-soundcloud"></i> SoundCloud</a>
-<a class="link-btn" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank"><i class="fas fa-magnifying-glass"></i> Shazam</a>
-<a class="link-btn" href="https://www.boomplay.com/share/artist/106853408" target="_blank"><i class="fas fa-bolt"></i> Boomplay</a>
-
-<div class="section-title">FOLLOW GXNGSTA</div>
-
-<a class="link-btn" href="https://www.instagram.com/gxngstaofficial" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-<a class="link-btn" href="https://youtube.com/@GxngstaOfficial" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-<a class="link-btn" href="https://x.com/GxngstaOfficial" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-<a class="link-btn" href="https://www.facebook.com/profile.php?id=61573079602732" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-
-<div class="section-title">BUSINESS</div>
-
-<a class="link-btn" href="mailto:gxngstaofficial@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-
-<div class="footer">
-© <span id="year"></span> GXNGSTA — All Rights Reserved.
-</div>
-
-</div>
-
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
-</body>
-</html>
+    color
