@@ -50,6 +50,7 @@ body::before{
     opacity:0;
 }
 @keyframes fadeIn{ to{opacity:1;} }
+
 /* Hero */
 .hero{
     position:relative;
@@ -65,30 +66,12 @@ body::before{
     border-radius:50%;
     object-fit:cover;
     border:3px solid #ff0000;
-    position:relative;
-    z-index:2;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .hero img:hover{
     transform: scale(1.05);
     box-shadow:0 0 30px rgba(255,0,0,0.8);
-}
-
-/* Rotating glow ring */
-.glow-ring{
-    position:absolute;
-    width:210px; /* thoda bada than image */
-    height:210px;
-    border-radius:50%;
-    border:3px solid rgba(255,0,0,0.4);
-    box-shadow:0 0 20px rgba(255,0,0,0.6),0 0 40px rgba(255,0,0,0.3);
-    z-index:1;
-    animation:rotateRing 6s linear infinite;
-}
-@keyframes rotateRing{
-    0%{ transform: rotate(0deg); }
-    100%{ transform: rotate(360deg); }
 }
 
 /* Title */
@@ -185,14 +168,14 @@ h1{
 .link-btn[href*="jiosaavn"] i{color:#2bc5b4;}
 .link-btn[href*="deezer"] i{color:#ff2a2a;}
 .link-btn[href*="tidal"] i{color:#ffffff;}
-.link-btn[href*="audiomack"] i{color:#F37225;}
+.link-btn[href*="audiomack"] i{color:#F37225;} /* Audiomack icon fix */
 .link-btn[href*="soundcloud"] i{color:#FF7700;}
 .link-btn[href*="shazam"] i{color:#0088FF;}
 .link-btn[href*="boomplay"] i{color:#FFCC00;}
 .link-btn[href*="instagram"] i{color:#E1306C;}
 .link-btn[href*="youtube"] i{color:#FF0000;}
 .link-btn[href*="x.com"] i{color:#1DA1F2;}
-.link-btn[href*="facebook"] i{color:#1877F2;} /* Facebook color */
+.link-btn[href*="facebook"] i{color:#1877F2;}
 
 /* Footer */
 .footer{
@@ -217,7 +200,6 @@ h1{
 /* Mobile */
 @media(max-width:480px){
     h1{font-size:28px;}
-    .glow-ring{width:180px;height:180px;}
     .hero img{width:150px;height:150px;}
 }
 </style>
@@ -227,7 +209,6 @@ h1{
 <div class="container">
 
 <div class="hero">
-  <div class="glow-ring"></div>
   <img src="profile.jpg" alt="GXNGSTA" width="170" height="170" decoding="async">
 </div>
 
