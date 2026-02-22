@@ -55,7 +55,6 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100vw; height:100
   position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; 
   background: var(--bg-color); z-index: 999999; 
   display: flex; justify-content: center; align-items: center; 
-  /* Smooth overlay fade */
   transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
   will-change: opacity; 
 }
@@ -63,14 +62,12 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100vw; height:100
   position: relative; padding: 4px; border-radius: 50%; 
   background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8)); 
   box-shadow: 0 0 40px rgba(255,0,79,0.2), 0 0 40px rgba(0,240,255,0.2); 
-  /* CD base transition for smooth shrink */
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
 }
 .preloader-cd { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #050505; overflow: hidden; position: relative; }
 .preloader-cd img { width: 100%; height: 100%; object-fit: cover; display: block; animation: spinImage 4s linear infinite; }
 .preloader-cd::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(rgba(255,255,255,0.05) 0deg, transparent 45deg, rgba(255,255,255,0.15) 90deg, transparent 135deg, rgba(255,255,255,0.05) 180deg, transparent 225deg, rgba(255,255,255,0.15) 270deg, transparent 315deg, rgba(255,255,255,0.05) 360deg); z-index: 5; pointer-events: none; mix-blend-mode: overlay; }
 
-/* The class added via JS to trigger the cinematic exit */
 #preloader.hide-anim { opacity: 0; pointer-events: none; }
 #preloader.hide-anim .preloader-avatar { transform: scale(0.6); opacity: 0; }
   
@@ -84,7 +81,7 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100vw; height:100
 .spin-pic { width: 100%; height: 100%; object-fit: cover; display: block; animation: spinImage 10s linear infinite; will-change: transform; }  
 @keyframes spinImage { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   
-/* --- 🌕 BRIGHT CHROME TYPOGRAPHY (CONTAINED GLOW) 🌕 --- */  
+/* --- 🌕 BRIGHT CHROME TYPOGRAPHY --- */  
 .name-container { display: flex; align-items: center; gap: 8px; position: relative;}
 h1 {  
   font-family:'Orbitron',sans-serif; font-size: clamp(28px, 8vw, 36px); 
@@ -121,7 +118,7 @@ h1 {
 /* 🔥 ALWAYS ON BRAND ICONS 🔥 */
 .link-btn i.brand-icon, .link-btn .custom-icon { font-size: clamp(20px, 6vw, 24px); width: 26px; text-align: center; color: var(--brand-color); text-shadow: 0 0 12px var(--brand-color); transition: transform 0.2s ease, text-shadow 0.2s ease; will-change: transform, text-shadow; }  
 .link-btn:hover i.brand-icon, .link-btn:active i.brand-icon, .link-btn:hover .custom-icon, .link-btn:active .custom-icon { transform: scale(1.15); text-shadow: 0 0 20px var(--brand-color); }
-.custom-icon { font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -2px; display: inline-block; line-height: 1; transform: skewX(-10deg); }
+.custom-icon { font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -1px; display: inline-block; line-height: 1; transform: skewX(-10deg); }
 .link-btn i.arrow-icon { font-size: 14px; color: #555; background: rgba(255,255,255,0.03); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease; }
 .link-btn:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.6); }  
 .link-btn:active { transform: scale(0.96) !important; box-shadow: 0 2px 10px rgba(0,0,0,0.4); background: rgba(40, 40, 40, 0.6); transition: transform 0.05s ease; }
@@ -133,18 +130,8 @@ h1 {
 @media(max-width:480px){ .container{ padding:0 15px; margin: 25px auto;} .link-btn{padding:16px 18px; border-radius: 14px;} .link-left {font-size: 14px;} .hero { margin-bottom: 25px; } }  
 
 /* --- SMOOTH PARALLAX ENTRANCE (CINEMATIC) --- */
-.reveal-item { 
-  opacity: 0; 
-  /* Elements start slightly scaled down and lower */
-  transform: translate3d(0, 40px, 0) scale(0.95); 
-  /* Buttery smooth easing for entering elements */
-  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); 
-  will-change: opacity, transform; 
-}
-.reveal-item.visible { 
-  opacity: 1; 
-  transform: translate3d(0, 0, 0) scale(1); 
-}
+.reveal-item { opacity: 0; transform: translate3d(0, 40px, 0) scale(0.95); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); will-change: opacity, transform; }
+.reveal-item.visible { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
 noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { display: none; }
 </style>  
 </head>  
@@ -295,7 +282,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     // 1. SPARKS
     try { const sparkContainer = document.getElementById('spark-container'); if(sparkContainer) { for (let i = 0; i < 15; i++) { let spark = document.createElement('div'); spark.classList.add('spark'); spark.style.left = `${Math.random() * 100}vw`; spark.style.setProperty('--speed', `${Math.random() * 4 + 4}s`); spark.style.setProperty('--max-opacity', `${Math.random() * 0.4 + 0.1}`); spark.style.animationDelay = `${Math.random() * 5}s`; sparkContainer.appendChild(spark); } } } catch(e) {}
     
-    // 2. CINEMATIC PRELOADER REVEAL
+    // 2. DELIBERATE CINEMATIC PRELOADER REVEAL
     const preloader = document.getElementById('preloader'); 
     let isLoaded = false; 
     
@@ -303,24 +290,23 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
       if(isLoaded || !preloader) return; 
       isLoaded = true; 
       
-      // Add the animation class that shrinks and fades the CD
       preloader.classList.add('hide-anim');
       
-      // Delay bringing in the content slightly to let the CD shrink first
       const items = document.querySelectorAll('.reveal-item'); 
       items.forEach((item, index) => { 
-        setTimeout(() => { item.classList.add('visible'); }, (index * 80) + 200); // 200ms delay for smooth cross-fade
+        setTimeout(() => { item.classList.add('visible'); }, (index * 80) + 200); 
       }); 
       
-      // Completely remove from DOM after CSS transition finishes
       setTimeout(() => { 
         preloader.style.display = 'none'; 
         document.body.style.overflow = 'auto'; 
       }, 800); 
     }
     
-    window.addEventListener('load', hideLoader); 
-    setTimeout(hideLoader, 1500); 
+    // DELIBERATELY WAIT 2.5 SECONDS FOR THE FULL VIBE
+    setTimeout(hideLoader, 2500); 
+    
+    // Allow manual skip on tap
     if(preloader) preloader.addEventListener('click', hideLoader);
 
     // 3. 3D EFFECTS
