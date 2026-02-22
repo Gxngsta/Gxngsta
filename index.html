@@ -12,15 +12,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  
 <style>  
-/* --- ULTRA-PREMIUM RESET --- */  
+/* --- PURE PREMIUM RESET --- */  
 :root {
   --bg-color: #030303;
   --card-bg: rgba(20, 20, 20, 0.4);
   --card-border: rgba(255, 255, 255, 0.06);
 }
 *{margin:0;padding:0;box-sizing:border-box;}  
-html, body { width: 100%; overflow-x: hidden; cursor: none; }
-@media (max-width: 768px) { html, body { cursor: auto; } } 
+html, body { width: 100%; overflow-x: hidden; }
 html{ scroll-behavior: smooth; }  
 body{  
   font-family: 'Inter', sans-serif;  
@@ -30,74 +29,6 @@ body{
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }  
-
-/* --- 🔥 ADVANCED GLITCH PRELOADER 🔥 --- */
-#preloader {
-  position: fixed; inset: 0; background: #030303; z-index: 99999;
-  display: flex; justify-content: center; align-items: center;
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
-}
-.loader-content {
-  display: flex; flex-direction: column; align-items: center; gap: 20px;
-}
-/* Cyber Glitch Text */
-.glitch-logo {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(35px, 12vw, 55px);
-  letter-spacing: 10px; font-weight: 900;
-  text-transform: uppercase; color: #fff;
-  position: relative;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-}
-.glitch-logo::before, .glitch-logo::after {
-  content: attr(data-text); position: absolute; top: 0; left: 0;
-  width: 100%; height: 100%; background: #030303;
-}
-.glitch-logo::before {
-  left: 3px; text-shadow: -2px 0 #ff004f;
-  clip-path: inset(20% 0 80% 0);
-  animation: glitch-anim-1 2s infinite linear alternate-reverse;
-}
-.glitch-logo::after {
-  left: -3px; text-shadow: -2px 0 #00f0ff;
-  clip-path: inset(80% 0 5% 0);
-  animation: glitch-anim-2 3s infinite linear alternate-reverse;
-}
-@keyframes glitch-anim-1 {
-  0% { clip-path: inset(20% 0 80% 0); } 20% { clip-path: inset(60% 0 10% 0); }
-  40% { clip-path: inset(10% 0 50% 0); } 60% { clip-path: inset(80% 0 5% 0); }
-  80% { clip-path: inset(30% 0 40% 0); } 100% { clip-path: inset(50% 0 30% 0); }
-}
-@keyframes glitch-anim-2 {
-  0% { clip-path: inset(10% 0 60% 0); } 20% { clip-path: inset(80% 0 5% 0); }
-  40% { clip-path: inset(40% 0 20% 0); } 60% { clip-path: inset(20% 0 80% 0); }
-  80% { clip-path: inset(60% 0 10% 0); } 100% { clip-path: inset(5% 0 70% 0); }
-}
-/* Cyber Progress Bar */
-.loading-bar {
-  width: 160px; height: 2px; background: rgba(255,255,255,0.05);
-  border-radius: 2px; overflow: hidden; position: relative;
-}
-.loading-bar .progress {
-  width: 0%; height: 100%;
-  background: linear-gradient(90deg, #ff004f, #00f0ff);
-  box-shadow: 0 0 10px #00f0ff;
-  animation: loadProgress 1.4s cubic-bezier(0.85, 0, 0.15, 1) forwards;
-}
-@keyframes loadProgress { 0% { width: 0%; } 100% { width: 100%; } }
-
-/* --- CUSTOM CURSOR (DESKTOP) --- */
-.cursor-dot {
-  width: 6px; height: 6px; background: #fff; border-radius: 50%;
-  position: fixed; pointer-events: none; z-index: 9999;
-  transform: translate(-50%, -50%); box-shadow: 0 0 10px #fff;
-  transition: width 0.2s, height 0.2s;
-}
-.cursor-ring {
-  width: 30px; height: 30px; border: 1px solid rgba(255,255,255,0.3); border-radius: 50%;
-  position: fixed; pointer-events: none; z-index: 9998;
-  transform: translate(-50%, -50%); transition: transform 0.1s ease-out;
-}
   
 /* --- CINEMATIC GRAIN & AMBIENT BG --- */  
 body::before{  
@@ -114,7 +45,7 @@ body::before{
   max-width:500px; margin:40px auto; padding:0 20px; width:100%; position: relative; z-index: 1;
 }  
   
-/* --- HERO SECTION & REALISTIC CD PLAYER --- */  
+/* --- HERO SECTION & CD PLAYER --- */  
 .hero{ display:flex; flex-direction: column; justify-content:center; align-items:center; margin-bottom:30px; }  
 
 .cd-player-base {
@@ -183,7 +114,7 @@ h1{
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   position: relative; overflow: hidden;
   transition: transform 0.1s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  transform-style: preserve-3d; will-change: transform; cursor: none;
+  transform-style: preserve-3d; will-change: transform;
 }  
 
 .link-btn::before {
@@ -197,7 +128,7 @@ h1{
 .link-left { display: flex; align-items: center; gap: 16px; font-size:15px; font-weight:700; z-index: 2; transform: translateZ(20px); }
 .link-btn i.arrow-icon { transform: translateZ(20px); z-index: 2; }
 
-/* INTELLIGENT BRAND BLINKING */
+/* BRAND BLINKING */
 .link-btn i.brand-icon {
   font-size: clamp(20px, 6vw, 24px); width:26px; text-align: center;
   animation: brandPulse 4s infinite alternate ease-in-out;
@@ -261,27 +192,14 @@ h1{
   .link-btn{padding:16px 18px; border-radius: 14px;}
   .link-left {font-size: 14px;}
   .hero { margin-bottom: 25px; }
-  .cursor-dot, .cursor-ring { display: none; } 
 }  
 
-/* --- 🌟 STAGGERED ENTRANCE ANIMATION 🌟 --- */
-.reveal-item { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+/* --- STAGGERED ENTRANCE ANIMATION --- */
+.reveal-item { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .reveal-item.visible { opacity: 1; transform: translateY(0); }
 </style>  
 </head>  
 <body>  
-
-<div id="preloader">
-  <div class="loader-content">
-    <h1 class="glitch-logo" data-text="GXNGSTA">GXNGSTA</h1>
-    <div class="loading-bar">
-      <div class="progress"></div>
-    </div>
-  </div>
-</div>
-
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
 
 <div class="container">    
   
@@ -392,54 +310,15 @@ h1{
 </div>  
 
 <script>
-  // 1. Cinematic Preloader & Progress Bar Logic
-  window.addEventListener('load', () => {
-    // Waiting 1.5 seconds so the progress bar animation finishes smoothly
-    setTimeout(() => {
-      const preloader = document.getElementById('preloader');
-      preloader.style.opacity = '0';
-      preloader.style.visibility = 'hidden';
-      
-      // Trigger staggered reveal AFTER loading screen fades
-      const items = document.querySelectorAll('.reveal-item');
-      items.forEach((item, index) => {
-        setTimeout(() => { item.classList.add('visible'); }, index * 100); 
-      });
-    }, 1500); 
+  // 1. Instant Cinematic Staggered Reveal
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll('.reveal-item');
+    items.forEach((item, index) => {
+      setTimeout(() => { item.classList.add('visible'); }, index * 60); // Faster reveal
+    });
   });
 
-  // 2. Custom Cursor Logic (Desktop Only)
-  if (window.innerWidth > 768) {
-    const dot = document.querySelector('.cursor-dot');
-    const ring = document.querySelector('.cursor-ring');
-    
-    window.addEventListener('mousemove', (e) => {
-      dot.style.left = `${e.clientX}px`;
-      dot.style.top = `${e.clientY}px`;
-      
-      setTimeout(() => {
-        ring.style.left = `${e.clientX}px`;
-        ring.style.top = `${e.clientY}px`;
-      }, 50);
-    });
-
-    document.querySelectorAll('a').forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        dot.style.transform = 'translate(-50%, -50%) scale(2)';
-        ring.style.width = '50px';
-        ring.style.height = '50px';
-        ring.style.borderColor = '#ff004f';
-      });
-      link.addEventListener('mouseleave', () => {
-        dot.style.transform = 'translate(-50%, -50%) scale(1)';
-        ring.style.width = '30px';
-        ring.style.height = '30px';
-        ring.style.borderColor = 'rgba(255,255,255,0.3)';
-      });
-    });
-  }
-
-  // 3. 3D Magnetic Tilt & Mouse Spotlight
+  // 2. 3D Magnetic Tilt & Mouse Spotlight Logic
   document.querySelectorAll('.magnetic-btn').forEach(btn => {
     btn.addEventListener('mousemove', e => {
       const rect = btn.getBoundingClientRect();
@@ -463,7 +342,7 @@ h1{
     });
   });
 
-  // 4. Dynamic Audio Waveform on Scroll
+  // 3. Dynamic Audio Waveform on Scroll
   let scrollTimeout;
   window.addEventListener('scroll', () => {
     document.documentElement.style.setProperty('--eq-speed', '0.2s');
