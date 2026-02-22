@@ -160,14 +160,6 @@ h1{
 .link-left { display: flex; align-items: center; gap: 16px; font-size:15px; font-weight:700; z-index: 2; transform: translateZ(20px); }
 .link-btn i.arrow-icon { transform: translateZ(20px); z-index: 2; }
 
-/* 🌟 OUT NOW BADGE 🌟 */
-.out-now-badge {
-  font-size: 9px; background: rgba(255,0,79,0.2); border: 1px solid #ff004f;
-  color: #ff004f; padding: 3px 8px; border-radius: 12px; margin-left: 10px;
-  letter-spacing: 1px; animation: pulseBadge 1.5s infinite alternate;
-}
-@keyframes pulseBadge { 0% { box-shadow: 0 0 5px transparent; } 100% { box-shadow: 0 0 10px #ff004f; } }
-
 /* INTELLIGENT BRAND BLINKING */
 .link-btn i.brand-icon {
   font-size: clamp(20px, 6vw, 24px); width:26px; text-align: center;
@@ -194,6 +186,7 @@ h1{
   0%, 30% { color: rgba(255,255,255,0.3); text-shadow: 0 0 0px transparent; }
   70%, 100% { color: var(--brand-color); text-shadow: 0 0 12px var(--brand-color); }
 }
+
 .links-grid > a:nth-child(even) .brand-icon { animation-delay: 1.5s; }
 .links-grid > a:nth-child(3n) .brand-icon { animation-delay: 0.7s; }
 
@@ -274,7 +267,7 @@ h1{
     <a class="link-btn reveal-item magnetic-btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank">
       <div class="link-left">
         <i class="fab fa-spotify brand-icon"></i> Spotify 
-        <span class="out-now-badge">OUT NOW</span> </div>
+      </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
     <a class="link-btn reveal-item magnetic-btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank">
