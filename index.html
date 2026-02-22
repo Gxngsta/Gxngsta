@@ -16,6 +16,7 @@
   --bg-color: #030303;
   --card-bg: rgba(20, 20, 20, 0.4);
   --card-border: rgba(255, 255, 255, 0.06);
+  --accent-color: #fff;
 }
 *{margin:0;padding:0;box-sizing:border-box;}  
 html, body { width: 100%; overflow-x: hidden; }
@@ -44,12 +45,15 @@ body::before{
   max-width:500px; margin:40px auto; padding:0 20px; width:100%; position: relative; z-index: 1;
 }  
   
-/* --- HERO SECTION & REALISTIC CD PLAYER --- */  
+/* --- HERO SECTION & SMOOTH CD PLAYER --- */  
 .hero{ display:flex; flex-direction: column; justify-content:center; align-items:center; margin-bottom:30px; }  
 
-/* Glowing Floating Aura Base */
+/* The CD Case/Base */
 .cd-player-base {
-  position: relative; padding: 4px; border-radius: 50%; margin-bottom: 20px;
+  position: relative;
+  padding: 4px;
+  border-radius: 50%;
+  margin-bottom: 20px;
   background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8));
   box-shadow: 0 0 40px rgba(255,0,79,0.15), 0 0 40px rgba(0,240,255,0.15);
   animation: liquidAura 4s ease-in-out infinite alternate;
@@ -60,7 +64,7 @@ body::before{
   100% { box-shadow: 0 0 50px rgba(255,0,79,0.3), 0 0 60px rgba(0,240,255,0.2); transform: translateY(-5px); }
 }
 
-/* CD Container */
+/* The actual spinning CD record (No hole, just pure image and vinyl reflection) */
 .cd-record {
   width: clamp(110px, 30vw, 130px); 
   height: clamp(110px, 30vw, 130px);
@@ -68,32 +72,43 @@ body::before{
   position: relative;
   border: 3px solid #050505;
   overflow: hidden;
-}
-
-/* 🌟 Static Light Reflection Overlay (Makes it look real) 🌟 */
-.cd-record::after {
-  content: ''; position: absolute; inset: 0; border-radius: 50%;
-  background: conic-gradient(
-    rgba(255,255,255,0.05) 0deg, transparent 45deg,
-    rgba(255,255,255,0.15) 90deg, transparent 135deg,
-    rgba(255,255,255,0.05) 180deg, transparent 225deg,
-    rgba(255,255,255,0.15) 270deg, transparent 315deg,
-    rgba(255,255,255,0.05) 360deg
-  );
-  z-index: 5; pointer-events: none; mix-blend-mode: overlay;
-}
-
-/* 💿 The Actual Spinning Image 💿 */
-.spin-pic {  
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-  animation: spinImage 10s linear infinite; /* FIXED SPINNING HERE */
+  /* Hardware Accelerated Spin for 0% Lag */
+  animation: spinRecord 12s linear infinite;
   transform: translateZ(0); 
   will-change: transform;
-}  
-@keyframes spinImage { 
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); } 
+}
+
+/* CD Light Reflection Overlay (The shiny grooves) */
+.cd-record::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    rgba(255,255,255,0.05) 0deg,
+    transparent 45deg,
+    rgba(255,255,255,0.15) 90deg,
+    transparent 135deg,
+    rgba(255,255,255,0.05) 180deg,
+    transparent 225deg,
+    rgba(255,255,255,0.15) 270deg,
+    transparent 315deg,
+    rgba(255,255,255,0.05) 360deg
+  );
+  z-index: 5;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.cd-record img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes spinRecord { 
+  100% { transform: rotate(360deg) translateZ(0); } 
 }
   
 /* --- TYPOGRAPHY --- */  
@@ -132,11 +147,12 @@ h1{
   padding:18px 20px; border-radius:16px; text-decoration:none; color:#ffffff; 
   background: var(--card-bg); border: 1px solid var(--card-border);  
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  position: relative; overflow: hidden;
+  position: relative; overflow: hidden; 
   transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease;
   will-change: transform;
 }  
 
+/* 🔦 The Spotlight Effect Layer (Controlled by JS) 🔦 */
 .link-btn::before {
   content: ""; position: absolute; top: var(--y, 50%); left: var(--x, 50%);
   transform: translate(-50%, -50%); width: 200px; height: 200px;
@@ -155,6 +171,7 @@ h1{
   will-change: color, text-shadow; z-index: 2;
 }  
 
+/* Brand Colors */
 .fa-spotify { --brand-color: #1DB954; }
 .fa-apple, .fa-wave-square { --brand-color: #ffffff; }
 .fa-youtube { --brand-color: #FF0000; }
@@ -254,7 +271,7 @@ h1{
 
   <div class="links-grid">
     <a class="link-btn reveal-item" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank">
-      <div class="link-left"><i class="fab fa-spotify brand-icon"></i> Listen on Spotify</div>
+      <div class="link-left"><i class="fab fa-spotify brand-icon"></i> Spotify</div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
     <a class="link-btn reveal-item" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank">
@@ -328,7 +345,7 @@ h1{
   </div>  
   <div class="links-grid">
     <a class="link-btn reveal-item" href="mailto:gxngstaofficial@gmail.com">
-      <div class="link-left"><i class="fas fa-envelope brand-icon"></i> Booking & Inquiries</div>
+      <div class="link-left"><i class="fas fa-envelope brand-icon"></i> Email</div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a> 
   </div>
