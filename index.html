@@ -1,249 +1,438 @@
 <!DOCTYPE html>  
 <html lang="en">  
 <head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">  
-    <meta name="theme-color" content="#030303">
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">  
+<meta name="theme-color" content="#030303">
+<title>GXNGSTA | Independent Hip-Hop Artist</title>  
+<meta name="description" content="GXNGSTA - Independent Hip-Hop Artist. Stream the latest tracks worldwide.">  
+<meta name="author" content="GXNGSTA">  
 
-    <!-- PRIMARY SEO TAGS -->
-    <title>GXNGSTA | Official Links - Independent Hip-Hop Artist</title>  
-    <meta name="title" content="GXNGSTA | Official Links">
-    <meta name="description" content="Official landing page for GXNGSTA. Stream the latest Hip-Hop tracks on Spotify, Apple Music, YouTube, and more.">  
-    <meta name="keywords" content="GXNGSTA, Hip Hop Artist, Independent Music, Spotify, GXNGSTA Official, Rap Music">
-    <meta name="author" content="GXNGSTA">  
-    <link rel="canonical" href="https://yourusername.github.io/"> <!-- REPLACE WITH YOUR ACTUAL URL -->
+<!-- IMAGE PRELOAD -->
+<link rel="preload" href="profile.jpg" as="image" fetchpriority="high">
 
-    <!-- OPEN GRAPH / FACEBOOK (Social Sharing) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourusername.github.io/"> <!-- REPLACE WITH YOUR ACTUAL URL -->
-    <meta property="og:title" content="GXNGSTA | Official Links">
-    <meta property="og:description" content="Stream the latest tracks and connect with GXNGSTA worldwide.">
-    <meta property="og:image" content="profile.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">  
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  
+<style>  
+/* --- PURE PREMIUM RESET --- */  
+:root {
+  --bg-color: #030303;
+  --card-bg: rgba(20, 20, 20, 0.4);
+  --card-border: rgba(255, 255, 255, 0.06);
+}
+*{margin:0;padding:0;box-sizing:border-box;}  
+html, body { width: 100%; overflow-x: hidden; }
+html{ scroll-behavior: smooth; }  
+body{  
+  font-family: 'Inter', sans-serif;  
+  background-color: var(--bg-color);  
+  color: #ffffff;  
+  position: relative;  
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}  
+  
+/* --- 🌟 VIP PROFILE PRELOADER 🌟 --- */
+#preloader {
+  position: fixed; inset: 0; width: 100vw; height: 100vh;
+  background: var(--bg-color); z-index: 999999; 
+  display: flex; justify-content: center; align-items: center; flex-direction: column;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-    <!-- TWITTER (Social Sharing) -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yourusername.github.io/"> <!-- REPLACE WITH YOUR ACTUAL URL -->
-    <meta property="twitter:title" content="GXNGSTA | Official Links">
-    <meta property="twitter:description" content="Independent Hip-Hop Artist. Stream everywhere.">
-    <meta property="twitter:image" content="profile.jpg">
+.preloader-avatar {
+  position: relative; padding: 4px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8));
+  box-shadow: 0 0 40px rgba(255,0,79,0.2), 0 0 40px rgba(0,240,255,0.2);
+  animation: preloaderBreathe 1s infinite alternate ease-in-out;
+  will-change: transform, box-shadow;
+}
 
-    <!-- JSON-LD FOR GOOGLE (Structured Data) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "MusicGroup",
-      "name": "GXNGSTA",
-      "description": "Independent Hip-Hop Artist",
-      "genre": "Hip-Hop/Rap",
-      "image": "profile.jpg",
-      "sameAs": [
-        "https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb",
-        "https://www.instagram.com/gxngstaofficial",
-        "https://youtube.com/@GxngstaOfficial"
-      ]
-    }
-    </script>
+@keyframes preloaderBreathe {
+  0% { transform: scale(0.95); box-shadow: 0 0 20px rgba(255,0,79,0.3), 0 0 20px rgba(0,240,255,0.3); }
+  100% { transform: scale(1.05); box-shadow: 0 0 60px rgba(255,0,79,0.7), 0 0 60px rgba(0,240,255,0.7); }
+}
 
-    <!-- PRELOADS -->
-    <link rel="preload" href="profile.jpg" as="image" fetchpriority="high">
-    <link rel="preconnect" href="https://fonts.googleapis.com">  
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  
+.preloader-cd {
+  width: 120px; height: 120px; border-radius: 50%;
+  border: 3px solid #050505; overflow: hidden; position: relative;
+  transform: translateZ(0);
+}
+.preloader-cd img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  animation: spinImage 4s linear infinite; 
+  will-change: transform;
+}
+.preloader-cd::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(rgba(255,255,255,0.05) 0deg, transparent 45deg, rgba(255,255,255,0.15) 90deg, transparent 135deg, rgba(255,255,255,0.05) 180deg, transparent 225deg, rgba(255,255,255,0.15) 270deg, transparent 315deg, rgba(255,255,255,0.05) 360deg);
+  z-index: 5; pointer-events: none; mix-blend-mode: overlay;
+}
+  
+/* --- CINEMATIC GRAIN & AMBIENT BG --- */  
+body::before{  
+  content:""; position:fixed; top:0; left:0; width:100vw; height:100vh;  
+  background: 
+    radial-gradient(circle at 15% 50%, rgba(220, 20, 60, 0.08), transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(0, 200, 255, 0.06), transparent 40%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E"); 
+  z-index:-1; pointer-events: none;
+}  
 
-    <style>  
-    /* --- PURE PREMIUM RESET --- */  
-    :root {
-      --bg-color: #030303;
-      --card-bg: rgba(20, 20, 20, 0.4);
-      --card-border: rgba(255, 255, 255, 0.06);
-    }
-    *{margin:0;padding:0;box-sizing:border-box;}  
-    html, body { width: 100%; overflow-x: hidden; }
-    html{ scroll-behavior: smooth; }  
-    body{  
-      font-family: 'Inter', sans-serif;  
-      background-color: var(--bg-color);  
-      color: #ffffff;  
-      position: relative;  
-      -webkit-font-smoothing: antialiased;
-    }  
+/* --- CONTAINER --- */  
+.container{  
+  max-width:500px; margin:40px auto; padding:0 20px; width:100%; position: relative; z-index: 1;
+}  
+  
+/* --- HERO SECTION & MAIN CD PLAYER --- */  
+.hero{ display:flex; flex-direction: column; justify-content:center; align-items:center; margin-bottom:30px; }  
 
-    /* --- VIBE OVERLAY (CRT EFFECT) --- */
-    body::after {
-      content: " ";
-      position: fixed; top: 0; left: 0; bottom: 0; right: 0;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
-                  linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
-      z-index: 9999; background-size: 100% 3px, 3px 100%;
-      pointer-events: none; opacity: 0.3;
-    }
-      
-    /* --- PRELOADER --- */
-    #preloader {
-      position: fixed; inset: 0; width: 100vw; height: 100vh;
-      background: var(--bg-color); z-index: 999999; 
-      display: flex; justify-content: center; align-items: center; flex-direction: column;
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+.cd-player-base {
+  position: relative; padding: 4px; border-radius: 50%; margin-bottom: 20px;
+  background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8));
+  box-shadow: 0 0 40px rgba(255,0,79,0.15), 0 0 40px rgba(0,240,255,0.15);
+  animation: liquidAura 4s ease-in-out infinite alternate;
+  will-change: box-shadow, transform;
+}
 
-    .preloader-avatar {
-      position: relative; padding: 4px; border-radius: 50%;
-      background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8));
-      animation: preloaderBreathe 1s infinite alternate ease-in-out;
-    }
+.cd-record {
+  width: clamp(110px, 30vw, 130px); height: clamp(110px, 30vw, 130px);
+  border-radius: 50%; position: relative; border: 3px solid #050505;
+  overflow: hidden; transform: translateZ(0); 
+}
 
-    @keyframes preloaderBreathe {
-      0% { transform: scale(0.95); box-shadow: 0 0 20px rgba(255,0,79,0.3); }
-      100% { transform: scale(1.05); box-shadow: 0 0 60px rgba(0,240,255,0.7); }
-    }
+.cd-record::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(rgba(255,255,255,0.05) 0deg, transparent 45deg, rgba(255,255,255,0.15) 90deg, transparent 135deg, rgba(255,255,255,0.05) 180deg, transparent 225deg, rgba(255,255,255,0.15) 270deg, transparent 315deg, rgba(255,255,255,0.05) 360deg);
+  z-index: 5; pointer-events: none; mix-blend-mode: overlay;
+}
 
-    .preloader-cd { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #050505; overflow: hidden; position: relative; }
-    .preloader-cd img { width: 100%; height: 100%; object-fit: cover; animation: spinImage 4s linear infinite; }
-      
-    /* --- BG EFFECTS --- */  
-    body::before{  
-      content:""; position:fixed; top:0; left:0; width:100vw; height:100vh;  
-      background: 
-        radial-gradient(circle at 15% 50%, rgba(220, 20, 60, 0.08), transparent 40%),
-        radial-gradient(circle at 85% 30%, rgba(0, 200, 255, 0.06), transparent 40%),
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E"); 
-      z-index:-1; pointer-events: none;
-    }  
+.spin-pic {  
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  animation: spinImage 10s linear infinite; transform: translateZ(0); will-change: transform;
+}  
+@keyframes spinImage { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  
+/* --- TYPOGRAPHY --- */  
+.name-container { display: flex; align-items: center; gap: 8px; }
+h1{  
+  font-family:'Orbitron',sans-serif; font-size: clamp(28px, 8vw, 36px); 
+  letter-spacing: 5px; font-weight:900; color: #ffffff; text-transform: uppercase;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.9);
+}  
+.verified { color: #1DA1F2; font-size: clamp(16px, 5vw, 20px); filter: drop-shadow(0 0 8px rgba(29, 161, 242, 0.6)); }
+.tagline{ color:#999; font-size:12px; margin-top: 5px; letter-spacing:5px; font-weight: 600; text-transform: uppercase; }  
+  
+/* --- SECTION TITLES & DYNAMIC EQUALIZERS --- */  
+.section-title{  
+  margin:45px 0 15px; font-size:11px; color:#888; letter-spacing:4px;  
+  text-transform: uppercase; font-weight: 800; display: flex; align-items: center; gap: 12px;
+}  
+.section-title::after{ content:""; flex-grow: 1; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,0.08), transparent); }  
 
-    .container{ max-width:500px; margin:40px auto; padding:0 20px; width:100%; position: relative; z-index: 1; }  
-      
-    /* --- HERO --- */  
-    .hero{ display:flex; flex-direction: column; justify-content:center; align-items:center; margin-bottom:30px; }  
-    .cd-player-base {
-      position: relative; padding: 4px; border-radius: 50%; margin-bottom: 20px;
-      background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8));
-    }
-    .cd-record { width: 130px; height: 130px; border-radius: 50%; position: relative; border: 3px solid #050505; overflow: hidden; }
-    .spin-pic { width: 100%; height: 100%; object-fit: cover; animation: spinImage 10s linear infinite; }  
-    @keyframes spinImage { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-      
-    .name-container { display: flex; align-items: center; gap: 8px; }
-    h1{ font-family:'Orbitron',sans-serif; font-size: 32px; letter-spacing: 5px; font-weight:900; color: #ffffff; text-transform: uppercase; }  
-    .verified { color: #1DA1F2; font-size: 18px; filter: drop-shadow(0 0 8px rgba(29, 161, 242, 0.6)); }
-    .tagline{ color:#999; font-size:12px; margin-top: 5px; letter-spacing:5px; text-transform: uppercase; }  
-      
-    /* --- ELEMENTS --- */  
-    .section-title{ margin:45px 0 15px; font-size:11px; color:#888; letter-spacing:4px; text-transform: uppercase; font-weight: 800; display: flex; align-items: center; gap: 12px; }  
-    .section-title::after{ content:""; flex-grow: 1; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,0.08), transparent); }  
+.equalizer { display: flex; gap: 3px; height: 12px; align-items: flex-end; }
+.bar { 
+  width: 3px; height: 12px; background: #666; border-radius: 3px 3px 0 0; 
+  transform-origin: bottom; animation: eqPlay var(--eq-speed, 0.8s) infinite alternate ease-in-out; will-change: transform;
+}
+.bar:nth-child(2) { animation-delay: -0.2s; background: #aaa; }
+.bar:nth-child(3) { animation-delay: -0.4s; background: #fff; }
+@keyframes eqPlay { 0% { transform: scaleY(0.2); } 100% { transform: scaleY(var(--eq-max, 1)); } }
+  
+/* --- 3D MAGNETIC BUTTONS --- */  
+.links-grid { display: flex; flex-direction: column; gap: 14px; perspective: 1000px; }
 
-    .equalizer { display: flex; gap: 3px; height: 12px; align-items: flex-end; }
-    .bar { width: 3px; height: 12px; background: #666; border-radius: 3px 3px 0 0; animation: eqPlay var(--eq-speed, 0.8s) infinite alternate ease-in-out; }
-    @keyframes eqPlay { 0% { transform: scaleY(0.2); } 100% { transform: scaleY(var(--eq-max, 1)); } }
-      
-    /* --- BUTTONS --- */  
-    .links-grid { display: flex; flex-direction: column; gap: 14px; perspective: 1000px; }
-    .link-btn{  
-      display:flex; align-items:center; justify-content:space-between; 
-      padding:18px 20px; border-radius:16px; text-decoration:none; color:#ffffff; 
-      background: var(--card-bg); border: 1px solid var(--card-border);  
-      backdrop-filter: blur(20px); transition: all 0.3s ease; position: relative; overflow: hidden;
-    }  
+.link-btn{  
+  display:flex; align-items:center; justify-content:space-between; 
+  padding:18px 20px; border-radius:16px; text-decoration:none; color:#ffffff; 
+  background: var(--card-bg); border: 1px solid var(--card-border);  
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  position: relative; overflow: hidden;
+  transition: transform 0.1s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d; will-change: transform;
+}  
 
-    .link-btn::after {
-      content: ""; position: absolute; inset: 0; border-radius: inherit;
-      border: 1px solid var(--brand-color);
-      box-shadow: 0 0 15px var(--brand-color), inset 0 0 10px var(--brand-color);
-      opacity: 0; transition: opacity 0.3s ease;
-    }
-    .link-btn:hover::after { opacity: 0.6; }
+/* 🔦 SPOTLIGHT EFFECT 🔦 */
+.link-btn::before {
+  content: ""; position: absolute; top: var(--y, 50%); left: var(--x, 50%);
+  transform: translate(-50%, -50%); width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.3s ease; pointer-events: none; z-index: 0;
+}
+.link-btn:hover::before { opacity: 1; }
 
-    .link-left { display: flex; align-items: center; gap: 16px; font-size:15px; font-weight:700; z-index: 2; }
-    .brand-icon { font-size: 20px; width: 26px; transition: 0.3s; color: var(--brand-color); }
-    .arrow-icon { font-size: 14px; opacity: 0.5; transition: 0.3s; }
-    .link-btn:hover .arrow-icon { transform: translateX(5px) rotate(-45deg); opacity: 1; }
+/* ✨ HOVER BORDER & INNER GLOW (UPDATED) ✨ */
+.link-btn::after {
+  content: ""; position: absolute; inset: 0; 
+  border-radius: inherit;
+  
+  /* 1. Border Color */
+  border: 1px solid var(--brand-color);
+  
+  /* 2. GLOW EFFECT: 
+      - First value: small outer glow
+      - Second value (inset): light glow INSIDE the tab
+  */
+  box-shadow: 
+    0 0 15px var(--brand-color),
+    inset 0 0 25px var(--brand-color);
+    
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none; z-index: 1;
+}
 
-    .footer{ margin-top:50px; font-size:11px; color:#555; text-align:center; padding:30px 0; letter-spacing:2px; }
-    .footer span { color: #fff; font-family: 'Orbitron'; }
+/* Activate glow on hover/active */
+.link-btn:hover::after, .link-btn:active::after {
+  opacity: 1; 
+}
 
-    .reveal-item { opacity: 0; transform: translateY(20px); transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-    .reveal-item.visible { opacity: 1; transform: translateY(0); }
-    </style>  
+.link-left { display: flex; align-items: center; gap: 16px; font-size:15px; font-weight:700; z-index: 2; transform: translateZ(20px); }
+.link-btn i.arrow-icon { transform: translateZ(20px); z-index: 2; }
+
+/* ✨ BRAND ICON ANIMATION ✨ */
+.link-btn i.brand-icon {
+  font-size: clamp(20px, 6vw, 24px); width:26px; text-align: center;
+  animation: brandPulse 4s infinite alternate ease-in-out; /* Breathing is back! */
+  transition: transform 0.2s ease;
+  will-change: color, text-shadow, transform;
+}  
+
+@keyframes brandPulse {
+  0%, 30% { color: rgba(255,255,255,0.3); text-shadow: 0 0 0px transparent; }
+  70%, 100% { color: var(--brand-color); text-shadow: 0 0 12px var(--brand-color); }
+}
+
+.links-grid > a:nth-child(even) .brand-icon { animation-delay: 1.5s; }
+.links-grid > a:nth-child(3n) .brand-icon { animation-delay: 0.7s; }
+
+.link-btn:hover i.brand-icon, .link-btn:active i.brand-icon {
+  transform: scale(1.15); 
+  color: var(--brand-color); 
+  animation: none; 
+  text-shadow: 0 0 15px var(--brand-color);
+}
+
+.link-btn i.arrow-icon {
+  font-size: 14px; color: #555; background: rgba(255,255,255,0.03);
+  width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease; 
+}
+
+/* Main Box Hover & Active States */
+.link-btn:hover {  
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}  
+.link-btn:active {
+  transform: scale(0.96) !important; box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  background: rgba(40, 40, 40, 0.6); transition: transform 0.05s ease;
+}
+.link-btn:hover i.arrow-icon, .link-btn:active i.arrow-icon { 
+  background: #ffffff; color: #000; transform: rotate(-45deg) translateZ(20px); 
+}
+  
+/* --- FOOTER --- */  
+.footer{  
+  margin-top:50px; font-size:11px; color:#555; letter-spacing:2px; 
+  text-align:center; padding:20px 0 30px; font-weight: 500; text-transform: uppercase;
+}  
+.footer span { color: #888; font-family: 'Orbitron', sans-serif; letter-spacing: 3px; }
+  
+/* --- RESPONSIVE FIXES --- */  
+@media(max-width:480px){  
+  .container{ padding:0 15px; margin: 25px auto;}
+  .link-btn{padding:16px 18px; border-radius: 14px;}
+  .link-left {font-size: 14px;}
+  .hero { margin-bottom: 25px; }
+}  
+
+/* --- 🌟 STAGGERED ENTRANCE ANIMATION 🌟 --- */
+.reveal-item { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal-item.visible { opacity: 1; transform: translateY(0); }
+</style>  
 </head>  
 <body>  
 
 <div id="preloader">
   <div class="preloader-avatar">
-    <div class="preloader-cd"><img src="profile.jpg" alt="GXNGSTA"></div>
+    <div class="preloader-cd">
+      <!-- REPLACE WITH YOUR IMAGE -->
+      <img src="profile.jpg" alt="GXNGSTA" fetchpriority="high">
+    </div>
   </div>
 </div>
 
 <div class="container">    
+  
   <div class="hero reveal-item">  
     <div class="cd-player-base">
-      <div class="cd-record"><img src="profile.jpg" alt="GXNGSTA" class="spin-pic"></div>  
+      <div class="cd-record">
+        <!-- REPLACE WITH YOUR IMAGE -->
+        <img src="profile.jpg" alt="GXNGSTA" class="spin-pic" fetchpriority="high">
+      </div>  
     </div>
     <div class="name-container">
       <h1>GXNGSTA</h1>  
-      <i class="fas fa-check-circle verified"></i>
+      <i class="fas fa-check-circle verified" title="Verified Artist"></i>
     </div>
     <p class="tagline">Independent Hip-Hop Artist</p>    
   </div>
   
   <div class="section-title reveal-item">
-    <div class="equalizer"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
-    Streaming Platforms
+    <div class="equalizer">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    Streaming
   </div>  
 
   <div class="links-grid">
-    <a class="link-btn reveal-item" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank" style="--brand-color: #1DB954;">
+    <a class="link-btn reveal-item magnetic-btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank" style="--brand-color: #1DB954;">
       <div class="link-left"><i class="fab fa-spotify brand-icon"></i> Spotify</div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
-    <a class="link-btn reveal-item" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #ff2d55;">
+    <a class="link-btn reveal-item magnetic-btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #ff2d55;">
       <div class="link-left"><i class="fab fa-apple brand-icon"></i> Apple Music</div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
-    <a class="link-btn reveal-item" href="https://youtube.com/@GxngstaOfficial" target="_blank" style="--brand-color: #FF0000;">
+    <a class="link-btn reveal-item magnetic-btn" href="https://youtube.com/@GxngstaOfficial" target="_blank" style="--brand-color: #FF0000;">
       <div class="link-left"><i class="fab fa-youtube brand-icon"></i> YouTube</div>
       <i class="fas fa-arrow-right arrow-icon"></i>
+    </a> 
+    <a class="link-btn reveal-item magnetic-btn" href="https://music.youtube.com/channel/UCDYkzqzuppjtsfV4RatUqaA?si=jmzacLufpzK7ECmH" target="_blank" style="--brand-color: #FF0000;">
+      <div class="link-left"><i class="fab fa-youtube brand-icon"></i> YouTube Music</div>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a>
-    <a class="link-btn reveal-item" href="https://www.instagram.com/gxngstaofficial" target="_blank" style="--brand-color: #E1306C;">
+    <a class="link-btn reveal-item magnetic-btn" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank" style="--brand-color: #FF9900;">
+      <div class="link-left"><i class="fab fa-amazon brand-icon"></i> Amazon Music</div>
+      <i class="fas fa-arrow-right arrow-icon"></i>
+    </a>  
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank" style="--brand-color: #2BC5B4;">
+      <div class="link-left"><i class="fas fa-music brand-icon"></i> JioSaavn</div>
+      <i class="fas fa-arrow-right arrow-icon"></i>
+    </a>  
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.deezer.com/us/artist/304158961" target="_blank" style="--brand-color: #EF5466;">
+      <div class="link-left"><i class="fab fa-deezer brand-icon"></i> Deezer</div>
+      <i class="fas fa-arrow-right arrow-icon"></i>
+    </a>  
+    <a class="link-btn reveal-item magnetic-btn" href="https://tidal.com/artist/54713043" target="_blank" style="--brand-color: #00FFFF;">
+      <div class="link-left"><i class="fas fa-wave-square brand-icon"></i> TIDAL</div>
+      <i class="fas fa-arrow-right arrow-icon"></i>
+    </a>  
+    <a class="link-btn reveal-item magnetic-btn" href="https://audiomack.com/GxngstaOfficial" target="_blank" style="--brand-color: #FFA200;">
+      <div class="link-left"><i class="fas fa-play brand-icon"></i> Audiomack</div>
+      <i class="fas fa-arrow-right arrow-icon"></i>
+    </a>  
+    <a class="link-btn reveal-item magnetic-btn" href="https://m.soundcloud.com/gangsta-769519727" target="_blank" style="--brand-color: #FF5500;">
+      <div class="link-left"><i class="fab fa-soundcloud brand-icon"></i> SoundCloud</div>
+      <i class="fas fa-arrow-right arrow-icon"></i>
+    </a>  
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #0088FF;">
+      <div class="link-left"><i class="fas fa-bolt brand-icon"></i> Shazam</div>
+      <i class="fas fa-arrow-right arrow-icon"></i>
+    </a>  
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.boomplay.com/share/artist/106853408?srModel=byWH&srList=ANDROID" target="_blank" style="--brand-color: #00E5FF;">
+      <div class="link-left"><i class="fas fa-play brand-icon"></i> Boomplay</div>
+      <i class="fas fa-arrow-right arrow-icon"></i>
+    </a>  
+  </div>
+
+  <div class="section-title reveal-item">
+    <div class="equalizer">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    Connect
+  </div>  
+  <div class="links-grid">
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.instagram.com/gxngstaofficial" target="_blank" style="--brand-color: #E1306C;">
       <div class="link-left"><i class="fab fa-instagram brand-icon"></i> Instagram</div>
       <i class="fas fa-arrow-right arrow-icon"></i>
+    </a>  
+    <a class="link-btn reveal-item magnetic-btn" href="https://x.com/GxngstaOfficial" target="_blank" style="--brand-color: #ffffff;">
+      <div class="link-left"><i class="fab fa-twitter brand-icon"></i> X (Twitter)</div>
+      <i class="fas fa-arrow-right arrow-icon"></i>
+    </a>  
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.facebook.com/profile.php?id=61573079602732" target="_blank" style="--brand-color: #1877F2;">
+      <div class="link-left"><i class="fab fa-facebook-f brand-icon"></i> Facebook</div>
+      <i class="fas fa-arrow-right arrow-icon"></i>
+    </a>  
+  </div>
+
+  <div class="section-title reveal-item">
+    <div class="equalizer">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    Management
+  </div>  
+  <div class="links-grid">
+    <a class="link-btn reveal-item magnetic-btn" href="mailto:gxngstaofficial@gmail.com" style="--brand-color: #00f0ff;">
+      <div class="link-left"><i class="fas fa-envelope brand-icon"></i> Email</div>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a> 
-    <!-- ADD OTHER LINKS SIMILARLY -->
   </div>
 
   <div class="footer reveal-item">  
-    © <script>document.write(new Date().getFullYear())</script> <span>GXNGSTA</span> <br> ALL RIGHTS RESERVED  
+    © <script>document.write(new Date().getFullYear())</script> <span>GXNGSTA</span> <br> All Rights Reserved  
   </div>  
 </div>  
 
 <script>
-  // 1. PRELOADER & REVEAL
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('preloader').style.opacity = '0';
-      document.querySelectorAll('.reveal-item').forEach((item, i) => {
-        setTimeout(() => item.classList.add('visible'), i * 100 + 200);
+  // 1. SEAMLESS PRELOADER LOGIC
+  document.body.style.overflow = 'hidden';
+  
+  setTimeout(() => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+      preloader.style.opacity = '0'; 
+      
+      const items = document.querySelectorAll('.reveal-item');
+      items.forEach((item, index) => {
+        setTimeout(() => { item.classList.add('visible'); }, (index * 80) + 200); 
       });
-      setTimeout(() => document.getElementById('preloader').style.display = 'none', 800);
-    }, 1000);
-  });
+      
+      setTimeout(() => {
+        preloader.style.display = 'none';
+        document.body.style.overflow = 'auto'; 
+      }, 800); 
+    }
+  }, 1500); 
 
-  // 2. HAPTIC FEEDBACK FOR MOBILE
-  document.querySelectorAll('.link-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (navigator.vibrate) navigator.vibrate(15);
+  // 2. 3D Magnetic Tilt & Mouse Spotlight Logic
+  document.querySelectorAll('.magnetic-btn').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      btn.style.setProperty('--x', `${x}px`);
+      btn.style.setProperty('--y', `${y}px`);
+
+      if (window.innerWidth > 768) {
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -10; 
+        const rotateY = ((x - centerX) / centerX) * 10;
+        btn.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      }
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
     });
   });
 
-  // 3. DYNAMIC SCROLL EQUALIZER
+  // 3. Dynamic Audio Waveform on Scroll
   let scrollTimeout;
   window.addEventListener('scroll', () => {
     document.documentElement.style.setProperty('--eq-speed', '0.2s');
-    document.documentElement.style.setProperty('--eq-max', '1.6');
+    document.documentElement.style.setProperty('--eq-max', '1.5'); 
+    
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(() => {
       document.documentElement.style.setProperty('--eq-speed', '0.8s');
       document.documentElement.style.setProperty('--eq-max', '1');
-    }, 150);
+    }, 150); 
   });
 </script>
 </body>  
