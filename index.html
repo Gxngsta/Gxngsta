@@ -7,12 +7,15 @@
 <title>GXNGSTA | Independent Hip-Hop Artist</title>  
 <meta name="description" content="GXNGSTA - Independent Hip-Hop Artist. Stream the latest tracks worldwide.">  
 <meta name="author" content="GXNGSTA">  
+
+<link rel="preload" href="profile.jpg" as="image" fetchpriority="high">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">  
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  
 <style>  
-/* --- ULTRA-PREMIUM RESET --- */  
+/* --- PURE PREMIUM RESET --- */  
 :root {
   --bg-color: #030303;
   --card-bg: rgba(20, 20, 20, 0.4);
@@ -29,11 +32,11 @@ body{
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }  
-
-/* --- 🌟 VIP PROFILE PRELOADER (FIXED) 🌟 --- */
+  
+/* --- 🌟 VIP PROFILE PRELOADER 🌟 --- */
 #preloader {
   position: fixed; inset: 0; width: 100vw; height: 100vh;
-  background: var(--bg-color); z-index: 999999; /* Highest priority */
+  background: var(--bg-color); z-index: 999999; 
   display: flex; justify-content: center; align-items: center; flex-direction: column;
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -237,7 +240,7 @@ h1{
 <div id="preloader">
   <div class="preloader-avatar">
     <div class="preloader-cd">
-      <img src="profile.jpg" alt="GXNGSTA">
+      <img src="profile.jpg" alt="GXNGSTA" fetchpriority="high">
     </div>
   </div>
 </div>
@@ -247,7 +250,7 @@ h1{
   <div class="hero reveal-item">  
     <div class="cd-player-base">
       <div class="cd-record">
-        <img src="profile.jpg" alt="GXNGSTA" class="spin-pic">
+        <img src="profile.jpg" alt="GXNGSTA" class="spin-pic" fetchpriority="high">
       </div>  
     </div>
     <div class="name-container">
@@ -351,28 +354,24 @@ h1{
 </div>  
 
 <script>
-  // 1. GUARANTEED PRELOADER LOGIC (Runs exactly 2 seconds even on direct open)
+  // 1. GUARANTEED PRELOADER LOGIC
   document.addEventListener("DOMContentLoaded", () => {
-    // Lock scrolling while preloader is active
     document.body.style.overflow = 'hidden';
     
-    // Force the preloader to stay for 2 seconds
     setTimeout(() => {
       const preloader = document.getElementById('preloader');
       preloader.style.opacity = '0';
       
-      // Wait for fade out, then hide it completely and unlock scrolling
       setTimeout(() => {
         preloader.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Unlock Scroll
+        document.body.style.overflow = 'auto'; 
         
-        // Trigger staggered reveal AFTER preloader is gone
         const items = document.querySelectorAll('.reveal-item');
         items.forEach((item, index) => {
           setTimeout(() => { item.classList.add('visible'); }, index * 80); 
         });
-      }, 800); // This matches the 0.8s CSS transition time
-    }, 2000); // Exactly 2 seconds forced delay
+      }, 800); 
+    }, 2000); 
   });
 
   // 2. 3D Magnetic Tilt & Mouse Spotlight Logic
