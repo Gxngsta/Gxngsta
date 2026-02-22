@@ -33,36 +33,11 @@ body{
   text-rendering: optimizeLegibility;
 }  
 
-/* --- 🌌 INTERACTIVE NEON AURA & SPARKS (GPU OPTIMIZED) 🌌 --- */
+/* --- 🌌 CLEAN SPARKS BACKGROUND (Orb Removed) 🌌 --- */
 .ambient-canvas {
   position: fixed; inset: 0; width: 100vw; height: 100vh;
   z-index: -2; pointer-events: none;
   background: var(--bg-color);
-}
-
-/* Moving Neon Orb */
-.neon-orb {
-  position: absolute;
-  width: 50vw; height: 50vw;
-  max-width: 400px; max-height: 400px;
-  background: radial-gradient(circle, rgba(255,0,79,0.15) 0%, rgba(0,240,255,0.1) 40%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(40px);
-  transform: translate(-50%, -50%);
-  top: 50%; left: 50%;
-  transition: top 1s ease-out, left 1s ease-out; /* Smooth follow for mouse */
-  will-change: top, left;
-}
-
-@media (max-width: 768px) {
-  /* On mobile, it just floats slowly since there's no mouse */
-  .neon-orb {
-    animation: floatOrb 10s infinite alternate ease-in-out;
-  }
-  @keyframes floatOrb {
-    0% { transform: translate(-30%, -30%) scale(1); }
-    100% { transform: translate(-70%, -70%) scale(1.2); }
-  }
 }
 
 .spark {
@@ -161,7 +136,6 @@ body::before{
   background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.1) 100%);
   z-index: 10; pointer-events: none; mix-blend-mode: soft-light;
   border-radius: 50%;
-  /* It doesn't spin, giving the illusion of a shiny glass surface over the spinning image */
 }
 
 .spin-pic {  
@@ -216,12 +190,11 @@ h1 {
 .equalizer { display: flex; gap: 3px; height: 12px; align-items: flex-end; }
 .bar { 
   width: 3px; height: 12px; 
-  /* Cyberpunk Gradient for Equalizer */
   background: linear-gradient(to top, #00f0ff, #ff004f); 
   border-radius: 3px 3px 0 0; 
   transform-origin: bottom; animation: eqPlay 0.8s infinite alternate ease-in-out; 
   will-change: transform;
-  box-shadow: 0 0 5px rgba(255,0,79,0.5); /* Slight neon glow */
+  box-shadow: 0 0 5px rgba(255,0,79,0.5); 
 }
 .bar:nth-child(2) { animation-delay: -0.2s; }
 .bar:nth-child(3) { animation-delay: -0.4s; }
@@ -279,9 +252,10 @@ h1 {
 .link-left { display: flex; align-items: center; gap: 16px; font-size:15px; font-weight:700; z-index: 2; transform: translateZ(20px); }
 .link-btn i.arrow-icon { transform: translateZ(20px); z-index: 2; }
 
-/* CONTINUOUS BRAND ICON BLINKING */
+/* 🔥 PERFECT ODD-EVEN BLINKING 🔥 */
 .link-btn i.brand-icon {
   font-size: clamp(20px, 6vw, 24px); width:26px; text-align: center;
+  /* Base animation for ODD items (starts at 0s) */
   animation: brandPulse 4s infinite alternate ease-in-out; 
   transition: transform 0.2s ease;
   will-change: color, text-shadow, transform;
@@ -292,8 +266,10 @@ h1 {
   70%, 100% { color: var(--brand-color); text-shadow: 0 0 12px var(--brand-color); }
 }
 
-.links-grid > a:nth-child(even) .brand-icon { animation-delay: 1.5s; }
-.links-grid > a:nth-child(3n) .brand-icon { animation-delay: 0.7s; }
+/* EVEN items start exactly half a cycle later (-2s), creating perfect alternation */
+.links-grid > a:nth-child(even) .brand-icon { 
+  animation-delay: -2s; 
+}
 
 .link-btn:hover i.brand-icon, .link-btn:active i.brand-icon {
   transform: scale(1.15); color: var(--brand-color); animation: none; text-shadow: 0 0 15px var(--brand-color);
@@ -337,9 +313,7 @@ h1 {
 </head>  
 <body>  
 
-<div class="ambient-canvas" id="spark-container">
-  <div class="neon-orb" id="neon-orb"></div>
-</div>
+<div class="ambient-canvas" id="spark-container"></div>
 
 <div id="preloader">
   <div class="preloader-avatar">
@@ -509,15 +483,6 @@ h1 {
 
   // 3. PERFORMANCE FIX: Only run 3D JS effects on Desktop (Real Mouse)
   if (window.matchMedia("(pointer: fine)").matches) {
-    
-    // Neon Orb Mouse Follow
-    const orb = document.getElementById('neon-orb');
-    document.addEventListener('mousemove', (e) => {
-      requestAnimationFrame(() => {
-        orb.style.top = `${e.clientY}px`;
-        orb.style.left = `${e.clientX}px`;
-      });
-    });
     
     // Magnetic Buttons
     document.querySelectorAll('.magnetic-btn').forEach(btn => {
