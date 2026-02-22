@@ -20,7 +20,6 @@
 <meta property="twitter:description" content="Stream the latest tracks from GXNGSTA worldwide. Click to listen.">
 <meta property="twitter:image" content="profile.jpg">
 
-<link rel="apple-touch-icon" href="profile.jpg">
 <link rel="preload" href="profile.jpg" as="image" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">  
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
@@ -84,7 +83,7 @@ body{
   text-rendering: optimizeLegibility;
 }  
 
-/* --- 🌌 CLEAN SPARKS BACKGROUND 🌌 --- */
+/* --- 🌌 CLEAN SPARKS BACKGROUND (Orb Removed) 🌌 --- */
 .ambient-canvas {
   position: fixed; inset: 0; width: 100vw; height: 100vh;
   z-index: -2; pointer-events: none;
@@ -306,6 +305,7 @@ h1 {
 /* 🔥 PERFECT ODD-EVEN BLINKING 🔥 */
 .link-btn i.brand-icon {
   font-size: clamp(20px, 6vw, 24px); width:26px; text-align: center;
+  /* Base animation for ODD items (starts at 0s) */
   animation: brandPulse 4s infinite alternate ease-in-out; 
   transition: transform 0.2s ease;
   will-change: color, text-shadow, transform;
