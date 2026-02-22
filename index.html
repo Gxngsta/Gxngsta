@@ -11,78 +11,61 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  
 <style>  
-/* --- PREMIUM STUDIO RESET --- */  
+/* --- PREMIUM BULLETPROOF RESET --- */  
 *{margin:0;padding:0;box-sizing:border-box;}  
 html, body {
-  max-width: 100%; 
+  width: 100%;
   overflow-x: hidden; 
-  background-color: #020202; /* Deep base black */
-}
-body{  
-  font-family:'Inter',sans-serif;  
-  color:#ffffff;  
-  min-height: 100vh;
-  position:relative;  
+  background-color: #020202; 
+  font-family: 'Inter', sans-serif;  
+  color: #ffffff;  
   -webkit-font-smoothing: antialiased;
-  display: flex; justify-content: center;
-}  
+}
 
-/* --- 🌟 ALIVE DYNAMIC BACKGROUND (CINEMATIC AURORA) 🌟 --- */
-.ambient-bg {
+/* --- 🌟 ALIVE DYNAMIC BACKGROUND 🌟 --- */
+.alive-bg {
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
+  top: 0; left: 0; right: 0; bottom: 0;
   z-index: -2;
   overflow: hidden;
-  background-color: #050505;
+  background-color: #030303;
 }
-.ambient-light-1, .ambient-light-2, .ambient-light-3 {
+.orb-1, .orb-2 {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px); /* Massive blur for smooth aura */
-  opacity: 0.4;
-  animation: floatLights infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  filter: blur(80px);
+  opacity: 0.35;
+  animation: floatLights infinite alternate ease-in-out;
 }
-/* Deep Red Orb */
-.ambient-light-1 {
-  top: -10%; left: -20%; width: 70vw; height: 70vw;
-  background: radial-gradient(circle, #8a0303, transparent 60%);
-  animation-duration: 18s;
+/* Deep Red Light */
+.orb-1 {
+  top: -10%; left: -20%; width: 300px; height: 300px;
+  background: #8a0303;
+  animation-duration: 15s;
 }
-/* Dark Purple/Blue Orb */
-.ambient-light-2 {
-  bottom: -20%; right: -10%; width: 60vw; height: 60vw;
-  background: radial-gradient(circle, #2a0845, transparent 60%);
-  animation-duration: 22s;
+/* Dark Purple Light */
+.orb-2 {
+  bottom: -10%; right: -20%; width: 250px; height: 250px;
+  background: #2a0845;
+  animation-duration: 20s;
   animation-delay: -5s;
 }
-/* Center Subtle Highlight */
-.ambient-light-3 {
-  top: 30%; left: 30%; width: 40vw; height: 40vw;
-  background: radial-gradient(circle, rgba(255,255,255,0.03), transparent 60%);
-  animation-duration: 15s;
-  animation-delay: -10s;
-}
-
 @keyframes floatLights {
   0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(5vw, 8vh) scale(1.1); }
-  100% { transform: translate(-5vw, -5vh) scale(0.95); }
+  100% { transform: translate(30px, 40px) scale(1.3); }
 }
-
-/* Subtle moving noise overlay to make it feel like raw camera film */
-.noise-layer {
-  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.03; pointer-events: none;
-  animation: noiseJitter 0.5s steps(2) infinite;
-}
-@keyframes noiseJitter { 0% { transform: translate(0,0); } 100% { transform: translate(1px, 1px); } }
 
 /* --- MAIN CONTAINER --- */  
 .container{  
-  max-width:480px; margin:50px auto; padding: 0 20px; width:100%; position: relative; z-index: 2;
+  max-width:480px; 
+  margin: 50px auto; /* Centered perfectly */
+  padding: 0 20px; 
+  width: 100%; 
+  position: relative; 
+  z-index: 1;
   animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  opacity: 0; transform: translateY(30px);
+  opacity: 0; 
+  transform: translateY(20px);
 }  
 @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
@@ -99,21 +82,21 @@ body{
 }
 
 .spin-pic {
-  width: 135px; 
-  height: 135px; 
+  width: 130px; 
+  height: 130px; 
   border-radius: 50%; 
   object-fit: cover;
   border: 3px solid #0a0a0a;
   display: block;
-  animation: spinRecord 12s linear infinite;
+  animation: spinRecord 10s linear infinite;
   box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
 }
 @keyframes spinRecord { 100% { transform: rotate(360deg); } }
   
-/* --- TYPOGRAPHY (HEAVY METAL) --- */  
+/* --- TYPOGRAPHY --- */  
 .name-container { display: flex; align-items: center; justify-content: center; gap: 8px; }
 h1{  
-  font-family:'Orbitron', sans-serif; font-size: 40px; letter-spacing: 5px; font-weight: 900; 
+  font-family:'Orbitron', sans-serif; font-size: 38px; letter-spacing: 4px; font-weight: 900; 
   text-transform: uppercase; margin: 0; color: #fff;
   background: linear-gradient(180deg, #ffffff 0%, #a0a0a0 70%, #666666 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -124,7 +107,7 @@ h1{
   filter: drop-shadow(0 0 8px rgba(29, 161, 242, 0.5)); 
 }
 .tagline{  
-  color:#888; font-size:12px; margin-top: 8px; letter-spacing:5px; font-weight: 600; 
+  color:#888; font-size:12px; margin-top: 8px; letter-spacing:4px; font-weight: 600; 
   text-transform: uppercase; text-align: center;
 }  
 
@@ -145,24 +128,24 @@ h1{
 .links-grid { display: flex; flex-direction: column; gap: 12px; width: 100%; }
 .link-btn{  
   display:flex; align-items:center; justify-content:space-between; 
-  padding:16px 20px; border-radius:14px; text-decoration:none; color:#ffffff; 
-  background: rgba(25, 25, 25, 0.5); /* Semi-transparent to let the alive background show */
-  backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+  padding:16px 20px; border-radius:12px; text-decoration:none; color:#ffffff; 
+  background: rgba(25, 25, 25, 0.6); 
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.05);
-  border-top: 1px solid rgba(255,255,255,0.15); 
-  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); width: 100%;
+  border-top: 1px solid rgba(255,255,255,0.12); 
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+  transition: all 0.3s ease; width: 100%;
 }  
-.link-left { display: flex; align-items: center; gap: 16px; font-size:14px; font-weight:600; color: #eee;}
+.link-left { display: flex; align-items: center; gap: 16px; font-size:14px; font-weight:600; color: #ddd;}
 .link-btn i.brand-icon { font-size:20px; width:24px; text-align: center; color: #888; transition: all 0.3s ease; }  
 .link-btn i.arrow-icon { font-size: 13px; color: #555; transition: all 0.3s ease; }
 
 /* Premium Hover States */
 .link-btn:hover { 
-  background: rgba(40, 40, 40, 0.7);
-  border-top: 1px solid rgba(255,255,255,0.3);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.9);
+  background: rgba(35, 35, 35, 0.8);
+  border-top: 1px solid rgba(255,255,255,0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.8);
 }
 .link-btn:hover .link-left { color: #fff; }
 .link-btn:hover i.brand-icon { transform: scale(1.1); filter: drop-shadow(0 0 10px currentColor); }
@@ -186,40 +169,34 @@ h1{
 
 /* Footer */  
 .footer{ 
-  margin-top:50px; font-size:10px; color:#555; letter-spacing:2px; 
+  margin-top:40px; font-size:10px; color:#555; letter-spacing:2px; 
   text-align:center; padding-bottom: 30px; font-weight: 600; text-transform: uppercase; 
 }  
 .footer span { color: #888; font-family: 'Orbitron', sans-serif; letter-spacing: 3px;}
   
-/* --- 📱 MOBILE OPTIMIZATIONS --- */  
+/* --- 📱 STRICT MOBILE OPTIMIZATIONS --- */  
 @media(max-width:480px){  
-  .container { margin: 30px auto; padding: 0 18px; }
+  .container { margin: 30px auto; padding: 0 15px; }
   .hero { margin-bottom: 25px; }
-  .spin-pic { width: 115px; height: 115px; } 
+  .spin-pic { width: 110px; height: 110px; } 
   
-  h1 { font-size: 32px; letter-spacing: 4px; } 
-  .tagline { font-size: 11px; letter-spacing: 4px; }
+  h1 { font-size: 32px; letter-spacing: 3px; } 
+  .tagline { font-size: 11px; letter-spacing: 3px; }
   
   .section-title { margin: 25px 0 12px; }
   
-  .link-btn { padding: 16px 18px; border-radius: 12px; } 
+  .link-btn { padding: 15px 16px; border-radius: 12px; } 
   .link-left { font-size: 13px; gap: 14px; }
   .link-btn i.brand-icon { font-size: 18px; width: 20px; }
-  
-  /* Mobile pe orbs thode chhote kar diye taaki fast load ho */
-  .ambient-light-1 { width: 100vw; height: 100vw; top: -10%; left: -30%; }
-  .ambient-light-2 { width: 90vw; height: 90vw; bottom: -10%; right: -20%; }
 }  
 </style>  
 </head>  
 <body>  
 
-<div class="ambient-bg">
-  <div class="ambient-light-1"></div>
-  <div class="ambient-light-2"></div>
-  <div class="ambient-light-3"></div>
+<div class="alive-bg">
+  <div class="orb-1"></div>
+  <div class="orb-2"></div>
 </div>
-<div class="noise-layer"></div>
 
 <div class="container">    
   
@@ -292,4 +269,37 @@ h1{
     Connect
   </div>  
   <div class="links-grid">
-    <a class="link-btn" href="
+    <a class="link-btn" href="https://www.instagram.com/gxngstaofficial" target="_blank">
+      <div class="link-left"><i class="fab fa-instagram brand-icon"></i> Instagram</div>
+      <i class="fas fa-chevron-right arrow-icon"></i>
+    </a>  
+    <a class="link-btn" href="https://youtube.com/@GxngstaOfficial" target="_blank">
+      <div class="link-left"><i class="fab fa-youtube brand-icon"></i> YouTube</div>
+      <i class="fas fa-chevron-right arrow-icon"></i>
+    </a> 
+    <a class="link-btn" href="https://x.com/GxngstaOfficial" target="_blank">
+      <div class="link-left"><i class="fab fa-twitter brand-icon"></i> X (Twitter)</div>
+      <i class="fas fa-chevron-right arrow-icon"></i>
+    </a>  
+    <a class="link-btn" href="https://www.facebook.com/profile.php?id=61573079602732" target="_blank">
+      <div class="link-left"><i class="fab fa-facebook-f brand-icon"></i> Facebook</div>
+      <i class="fas fa-chevron-right arrow-icon"></i>
+    </a>  
+  </div>
+
+  <div class="section-title">
+    <div class="equalizer">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    Management
+  </div>  
+  <div class="links-grid">
+    <a class="link-btn" href="mailto:gxngstaofficial@gmail.com">
+      <div class="link-left"><i class="fas fa-envelope brand-icon"></i> Email</div>
+      <i class="fas fa-chevron-right arrow-icon"></i>
+    </a> 
+  </div>
+
+  <div class="footer">  
+    © <script>document.write(new Date().getFullYear())</script> <span>GXNGSTA</span> <br> All Rights Reserved  
+  </div>
