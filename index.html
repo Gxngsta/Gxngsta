@@ -54,16 +54,58 @@ body{
   100% { transform: scale(1.05); box-shadow: 0 0 60px rgba(255,0,79,0.7), 0 0 60px rgba(0,240,255,0.7); }
 }
 
-.preloader-cd {
-  width: 120px; height: 120px; border-radius: 50%;
-  border: 3px solid #050505; overflow: hidden; position: relative;
-  transform: translateZ(0);
+/* --- 🌊 OCEAN WAVE REVEAL LOGIC 🌊 --- */
+.cd-record {
+  width: clamp(110px, 30vw, 130px); height: clamp(110px, 30vw, 130px);
+  border-radius: 50%; position: relative; border: 3px solid #050505;
+  overflow: hidden; transform: translateZ(0); 
 }
-.preloader-cd::after {
+
+/* The actual water waves */
+.water-wave {
+  position: absolute; top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  /* Organic fluid border radius creates the wave shape */
+  border-radius: 40% 60% 50% 40% / 40% 50% 60% 50%;
+  z-index: 10;
+  transition: top 1.5s cubic-bezier(0.45, 0, 0.15, 1);
+}
+
+/* Cyan Glowing Water Edge */
+.wave-back {
+  background: rgba(0, 240, 255, 0.2); 
+  animation: spinWater 3s linear infinite;
+  box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.5);
+}
+
+/* Dark Water Core */
+.wave-front {
+  background: #030303; 
+  animation: spinWater 4s linear infinite reverse;
+}
+
+@keyframes spinWater {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 🌊 When image loads, water flows down! 🌊 */
+.cd-record.is-loaded .water-wave { top: 150%; } /* Pushes water outside the circle */
+.cd-record.is-loaded .wave-back { transition-delay: 0s; }
+.cd-record.is-loaded .wave-front { transition-delay: 0.1s; }
+
+/* The Grooves (Shiny Reflection) */
+.cd-record::after {
   content: ''; position: absolute; inset: 0; border-radius: 50%;
   background: conic-gradient(rgba(255,255,255,0.05) 0deg, transparent 45deg, rgba(255,255,255,0.15) 90deg, transparent 135deg, rgba(255,255,255,0.05) 180deg, transparent 225deg, rgba(255,255,255,0.15) 270deg, transparent 315deg, rgba(255,255,255,0.05) 360deg);
   z-index: 5; pointer-events: none; mix-blend-mode: overlay;
 }
+
+.spin-pic {  
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  animation: spinImage 10s linear infinite; transform: translateZ(0); will-change: transform;
+}  
+@keyframes spinImage { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   
 /* --- CINEMATIC GRAIN & AMBIENT BG --- */  
 body::before{  
@@ -90,40 +132,6 @@ body::before{
   animation: liquidAura 4s ease-in-out infinite alternate;
   will-change: box-shadow, transform;
 }
-
-.cd-record {
-  width: clamp(110px, 30vw, 130px); height: clamp(110px, 30vw, 130px);
-  border-radius: 50%; position: relative; border: 3px solid #050505;
-  overflow: hidden; transform: translateZ(0); 
-  /* ✨ Skeleton Background Flow Effect ✨ */
-  background: linear-gradient(90deg, #0a0a0a 25%, #1a1a1a 50%, #0a0a0a 75%);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite linear;
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.cd-record::after {
-  content: ''; position: absolute; inset: 0; border-radius: 50%;
-  background: conic-gradient(rgba(255,255,255,0.05) 0deg, transparent 45deg, rgba(255,255,255,0.15) 90deg, transparent 135deg, rgba(255,255,255,0.05) 180deg, transparent 225deg, rgba(255,255,255,0.15) 270deg, transparent 315deg, rgba(255,255,255,0.05) 360deg);
-  z-index: 5; pointer-events: none; mix-blend-mode: overlay;
-}
-
-/* ✨ WATER-FLOW BLUR IMAGE REVEAL ✨ */
-.spin-pic {  
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  opacity: 0; filter: blur(10px); /* Hidden & blurred initially */
-  transition: opacity 0.8s ease-in-out, filter 0.8s ease-in-out;
-  animation: spinImage 10s linear infinite; transform: translateZ(0); will-change: transform;
-}  
-.spin-pic.loaded {
-  opacity: 1; filter: blur(0px); /* Smooth reveal when loaded */
-}
-
-@keyframes spinImage { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   
 /* --- TYPOGRAPHY --- */  
 .name-container { display: flex; align-items: center; gap: 8px; }
@@ -250,8 +258,10 @@ h1{
 
 <div id="preloader">
   <div class="preloader-avatar">
-    <div class="preloader-cd">
-      <img src="profile.jpg" alt="GXNGSTA" class="spin-pic" fetchpriority="high" onload="this.classList.add('loaded')">
+    <div class="cd-record">
+      <div class="water-wave wave-back"></div>
+      <div class="water-wave wave-front"></div>
+      <img src="profile.jpg" alt="GXNGSTA" class="spin-pic" fetchpriority="high" onload="this.parentElement.classList.add('is-loaded')">
     </div>
   </div>
 </div>
@@ -261,7 +271,9 @@ h1{
   <div class="hero reveal-item">  
     <div class="cd-player-base">
       <div class="cd-record">
-        <img src="profile.jpg" alt="GXNGSTA" class="spin-pic" fetchpriority="high" onload="this.classList.add('loaded')">
+        <div class="water-wave wave-back"></div>
+        <div class="water-wave wave-front"></div>
+        <img src="profile.jpg" alt="GXNGSTA" class="spin-pic" fetchpriority="high" onload="this.parentElement.classList.add('is-loaded')">
       </div>  
     </div>
     <div class="name-container">
@@ -369,7 +381,7 @@ h1{
 </div>  
 
 <script>
-  // 1. GUARANTEED PRELOADER LOGIC
+  // 1. GUARANTEED PRELOADER LOGIC (2s delay to show off the Ocean Wave & Aura)
   document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = 'hidden';
     
