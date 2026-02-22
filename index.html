@@ -50,13 +50,29 @@ body{ font-family: 'Inter', sans-serif; background-color: var(--bg-color); color
 @keyframes floatUp { 0% { transform: translate3d(0, 100vh, 0) scale(0); opacity: 0; } 50% { opacity: var(--max-opacity); } 100% { transform: translate3d(0, -10vh, 0) scale(1.5); opacity: 0; } }
 body::before{ content:""; position:fixed; top:0; left:0; width:100vw; height:100vh; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E"); z-index:-1; pointer-events: none; }  
 
-/* --- 🌟 PRELOADER (100% CENTERED) 🌟 --- */
-#preloader { position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background: var(--bg-color); z-index: 999999; display: flex; justify-content: center; align-items: center; transition: opacity 0.6s ease-in-out; will-change: opacity; }
-.preloader-avatar { position: relative; padding: 4px; border-radius: 50%; background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8)); box-shadow: 0 0 40px rgba(255,0,79,0.2), 0 0 40px rgba(0,240,255,0.2); animation: preloaderBreathe 1s infinite alternate ease-in-out; }
-@keyframes preloaderBreathe { 0% { transform: scale(0.95); box-shadow: 0 0 20px rgba(255,0,79,0.3), 0 0 20px rgba(0,240,255,0.3); } 100% { transform: scale(1.05); box-shadow: 0 0 60px rgba(255,0,79,0.7), 0 0 60px rgba(0,240,255,0.7); } }
+/* --- 🌟 PRELOADER (CINEMATIC TRANSITION) 🌟 --- */
+#preloader { 
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; 
+  background: var(--bg-color); z-index: 999999; 
+  display: flex; justify-content: center; align-items: center; 
+  /* Smooth overlay fade */
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+  will-change: opacity; 
+}
+.preloader-avatar { 
+  position: relative; padding: 4px; border-radius: 50%; 
+  background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8)); 
+  box-shadow: 0 0 40px rgba(255,0,79,0.2), 0 0 40px rgba(0,240,255,0.2); 
+  /* CD base transition for smooth shrink */
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
+}
 .preloader-cd { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #050505; overflow: hidden; position: relative; }
 .preloader-cd img { width: 100%; height: 100%; object-fit: cover; display: block; animation: spinImage 4s linear infinite; }
 .preloader-cd::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(rgba(255,255,255,0.05) 0deg, transparent 45deg, rgba(255,255,255,0.15) 90deg, transparent 135deg, rgba(255,255,255,0.05) 180deg, transparent 225deg, rgba(255,255,255,0.15) 270deg, transparent 315deg, rgba(255,255,255,0.05) 360deg); z-index: 5; pointer-events: none; mix-blend-mode: overlay; }
+
+/* The class added via JS to trigger the cinematic exit */
+#preloader.hide-anim { opacity: 0; pointer-events: none; }
+#preloader.hide-anim .preloader-avatar { transform: scale(0.6); opacity: 0; }
   
 /* --- CONTAINER & HERO --- */  
 .container{ max-width:500px; margin:40px auto; padding:0 20px; width:100%; position: relative; z-index: 1; }  
@@ -74,14 +90,8 @@ h1 {
   font-family:'Orbitron',sans-serif; font-size: clamp(28px, 8vw, 36px); 
   letter-spacing: 5px; font-weight:900; text-transform: uppercase;
   position: relative; transform: translateZ(30px);
-  
-  /* BRIGHT WHITE & SILVER GRADIENT */
   background: linear-gradient(180deg, #ffffff 0%, #e0e0e0 50%, #b0b0b0 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  
-  /* SHARP, CONTAINED EDGE GLOW (No spill) */
+  -webkit-background-clip: text; background-clip: text; color: transparent;
   filter: drop-shadow(0 1px 1px rgba(255,255,255,0.8)) drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
@@ -111,10 +121,7 @@ h1 {
 /* 🔥 ALWAYS ON BRAND ICONS 🔥 */
 .link-btn i.brand-icon, .link-btn .custom-icon { font-size: clamp(20px, 6vw, 24px); width: 26px; text-align: center; color: var(--brand-color); text-shadow: 0 0 12px var(--brand-color); transition: transform 0.2s ease, text-shadow 0.2s ease; will-change: transform, text-shadow; }  
 .link-btn:hover i.brand-icon, .link-btn:active i.brand-icon, .link-btn:hover .custom-icon, .link-btn:active .custom-icon { transform: scale(1.15); text-shadow: 0 0 20px var(--brand-color); }
-
-/* CUSTOM TEXT ICON (For JS & S) */
-.custom-icon { font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -1px; display: inline-block; line-height: 1; transform: skewX(-10deg); }
-
+.custom-icon { font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -2px; display: inline-block; line-height: 1; transform: skewX(-10deg); }
 .link-btn i.arrow-icon { font-size: 14px; color: #555; background: rgba(255,255,255,0.03); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease; }
 .link-btn:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.6); }  
 .link-btn:active { transform: scale(0.96) !important; box-shadow: 0 2px 10px rgba(0,0,0,0.4); background: rgba(40, 40, 40, 0.6); transition: transform 0.05s ease; }
@@ -124,8 +131,20 @@ h1 {
 .footer{ margin-top:50px; font-size:11px; color:#555; letter-spacing:2px; text-align:center; padding:20px 0 30px; font-weight: 500; text-transform: uppercase; }  
 .footer span { color: #888; font-family: 'Orbitron', sans-serif; letter-spacing: 3px; }
 @media(max-width:480px){ .container{ padding:0 15px; margin: 25px auto;} .link-btn{padding:16px 18px; border-radius: 14px;} .link-left {font-size: 14px;} .hero { margin-bottom: 25px; } }  
-.reveal-item { opacity: 0; transform: translate3d(0, 30px, 0); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: opacity, transform; }
-.reveal-item.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+
+/* --- SMOOTH PARALLAX ENTRANCE (CINEMATIC) --- */
+.reveal-item { 
+  opacity: 0; 
+  /* Elements start slightly scaled down and lower */
+  transform: translate3d(0, 40px, 0) scale(0.95); 
+  /* Buttery smooth easing for entering elements */
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); 
+  will-change: opacity, transform; 
+}
+.reveal-item.visible { 
+  opacity: 1; 
+  transform: translate3d(0, 0, 0) scale(1); 
+}
 noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { display: none; }
 </style>  
 </head>  
@@ -218,7 +237,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     </a>  
     <a class="link-btn reveal-item magnetic-btn" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #0088FF;" aria-label="Find on Shazam">
       <div class="glass-sweep"></div>
-      <div class="link-left"><span class="custom-icon" style="letter-spacing: 0;">S</span> Shazam</div>
+      <div class="link-left"><i class="fab fa-shazam brand-icon"></i> Shazam</div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
     <a class="link-btn reveal-item magnetic-btn" href="https://www.boomplay.com/share/artist/106853408?srModel=byWH&srList=ANDROID" target="_blank" style="--brand-color: #00E5FF;" aria-label="Listen on Boomplay">
@@ -272,86 +291,41 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
 </div>  
 
 <script>
-  // 🛡️ 1. BULLETPROOF PRELOADER (Runs instantly without waiting) 🛡️
-  document.body.style.overflow = 'hidden';
-  const preloader = document.getElementById('preloader');
-  let isLoaded = false;
-  
-  function hideLoader() {
-    if(isLoaded || !preloader) return;
-    isLoaded = true;
-    preloader.style.opacity = '0'; 
-    const items = document.querySelectorAll('.reveal-item');
-    items.forEach((item, index) => { 
-      setTimeout(() => { item.classList.add('visible'); }, (index * 80) + 100); 
-    });
-    setTimeout(() => { 
-      preloader.style.display = 'none'; 
-      document.body.style.overflow = 'auto'; 
-    }, 600); 
-  }
-
-  // Force close preloader after exactly 1.5 seconds NO MATTER WHAT
-  setTimeout(hideLoader, 1500);
-  // Optional: If user clicks the spinning CD, it skips loading instantly
-  if(preloader) preloader.addEventListener('click', hideLoader);
-  // Optional: If page loads super fast, hide it early
-  window.addEventListener('load', hideLoader);
-
-
-  // 🌌 2. SPARKS BACKGROUND 🌌
-  try { 
-    const sparkContainer = document.getElementById('spark-container'); 
-    if(sparkContainer) { 
-      for (let i = 0; i < 15; i++) { 
-        let spark = document.createElement('div'); 
-        spark.classList.add('spark'); 
-        spark.style.left = `${Math.random() * 100}vw`; 
-        spark.style.setProperty('--speed', `${Math.random() * 4 + 4}s`); 
-        spark.style.setProperty('--max-opacity', `${Math.random() * 0.4 + 0.1}`); 
-        spark.style.animationDelay = `${Math.random() * 5}s`; 
-        sparkContainer.appendChild(spark); 
-      } 
-    } 
-  } catch(e) {}
-
-
-  // 💻 3. 3D HOVER EFFECTS (Desktop Only for Performance) 💻
-  try { 
-    if (window.matchMedia("(pointer: fine)").matches) { 
-      document.querySelectorAll('.magnetic-btn').forEach(btn => { 
-        btn.addEventListener('mousemove', e => { 
-          const rect = btn.getBoundingClientRect(); 
-          const x = e.clientX - rect.left; 
-          const y = e.clientY - rect.top; 
-          btn.style.setProperty('--x', `${x}px`); 
-          btn.style.setProperty('--y', `${y}px`); 
-          const centerX = rect.width / 2; 
-          const centerY = rect.height / 2; 
-          const rotateX = ((y - centerY) / centerY) * -8; 
-          const rotateY = ((x - centerX) / centerX) * 8; 
-          btn.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`; 
-        }); 
-        btn.addEventListener('mouseleave', () => { 
-          btn.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`; 
-        }); 
+  window.addEventListener('DOMContentLoaded', () => {
+    // 1. SPARKS
+    try { const sparkContainer = document.getElementById('spark-container'); if(sparkContainer) { for (let i = 0; i < 15; i++) { let spark = document.createElement('div'); spark.classList.add('spark'); spark.style.left = `${Math.random() * 100}vw`; spark.style.setProperty('--speed', `${Math.random() * 4 + 4}s`); spark.style.setProperty('--max-opacity', `${Math.random() * 0.4 + 0.1}`); spark.style.animationDelay = `${Math.random() * 5}s`; sparkContainer.appendChild(spark); } } } catch(e) {}
+    
+    // 2. CINEMATIC PRELOADER REVEAL
+    const preloader = document.getElementById('preloader'); 
+    let isLoaded = false; 
+    
+    function hideLoader() { 
+      if(isLoaded || !preloader) return; 
+      isLoaded = true; 
+      
+      // Add the animation class that shrinks and fades the CD
+      preloader.classList.add('hide-anim');
+      
+      // Delay bringing in the content slightly to let the CD shrink first
+      const items = document.querySelectorAll('.reveal-item'); 
+      items.forEach((item, index) => { 
+        setTimeout(() => { item.classList.add('visible'); }, (index * 80) + 200); // 200ms delay for smooth cross-fade
       }); 
       
-      const hero = document.querySelector('.hero-parallax'); 
-      const parallaxItems = document.querySelectorAll('.parallax-item'); 
-      if (hero) { 
-        document.addEventListener('mousemove', (e) => { 
-          requestAnimationFrame(() => { 
-            const xAxis = (window.innerWidth / 2 - e.pageX) / 30; 
-            const yAxis = (window.innerHeight / 2 - e.pageY) / 30; 
-            parallaxItems[0].style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`; 
-            if(parallaxItems[1]) parallaxItems[1].style.transform = `translateZ(30px) rotateY(${xAxis*0.4}deg) rotateX(${yAxis*0.4}deg)`; 
-            if(parallaxItems[2]) parallaxItems[2].style.transform = `translateZ(10px) rotateY(${xAxis*0.2}deg) rotateX(${yAxis*0.2}deg)`; 
-          }); 
-        }); 
-      } 
-    } 
-  } catch(e) {}
+      // Completely remove from DOM after CSS transition finishes
+      setTimeout(() => { 
+        preloader.style.display = 'none'; 
+        document.body.style.overflow = 'auto'; 
+      }, 800); 
+    }
+    
+    window.addEventListener('load', hideLoader); 
+    setTimeout(hideLoader, 1500); 
+    if(preloader) preloader.addEventListener('click', hideLoader);
+
+    // 3. 3D EFFECTS
+    try { if (window.matchMedia("(pointer: fine)").matches) { document.querySelectorAll('.magnetic-btn').forEach(btn => { btn.addEventListener('mousemove', e => { const rect = btn.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top; btn.style.setProperty('--x', `${x}px`); btn.style.setProperty('--y', `${y}px`); const centerX = rect.width / 2; const centerY = rect.height / 2; const rotateX = ((y - centerY) / centerY) * -8; const rotateY = ((x - centerX) / centerX) * 8; btn.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`; }); btn.addEventListener('mouseleave', () => { btn.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`; }); }); const hero = document.querySelector('.hero-parallax'); const parallaxItems = document.querySelectorAll('.parallax-item'); if (hero) { document.addEventListener('mousemove', (e) => { requestAnimationFrame(() => { const xAxis = (window.innerWidth / 2 - e.pageX) / 30; const yAxis = (window.innerHeight / 2 - e.pageY) / 30; parallaxItems[0].style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`; if(parallaxItems[1]) parallaxItems[1].style.transform = `translateZ(30px) rotateY(${xAxis*0.4}deg) rotateX(${yAxis*0.4}deg)`; if(parallaxItems[2]) parallaxItems[2].style.transform = `translateZ(10px) rotateY(${xAxis*0.2}deg) rotateX(${yAxis*0.2}deg)`; }); }); } } } catch(e) {}
+  });
 </script>
 </body>  
 </html>
