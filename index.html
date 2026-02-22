@@ -57,12 +57,18 @@ body{
 .preloader-cd {
   width: 120px; height: 120px; border-radius: 50%;
   border: 3px solid #050505; overflow: hidden; position: relative;
-  transform: translateZ(0);
+  transform: translateZ(0); 
+  background-color: #111; /* ✨ Fix: Dark background instead of white flash ✨ */
 }
 .preloader-cd img {
   width: 100%; height: 100%; object-fit: cover; display: block;
   animation: spinImage 4s linear infinite; 
   will-change: transform;
+  opacity: 0; /* ✨ Fix: Hidden until fully loaded ✨ */
+  transition: opacity 0.5s ease-in-out;
+}
+.preloader-cd img.loaded {
+  opacity: 1; /* ✨ Fix: Smooth fade-in when ready ✨ */
 }
 .preloader-cd::after {
   content: ''; position: absolute; inset: 0; border-radius: 50%;
@@ -100,6 +106,7 @@ body::before{
   width: clamp(110px, 30vw, 130px); height: clamp(110px, 30vw, 130px);
   border-radius: 50%; position: relative; border: 3px solid #050505;
   overflow: hidden; transform: translateZ(0); 
+  background-color: #111; /* ✨ Fix: Dark background placeholder ✨ */
 }
 
 .cd-record::after {
@@ -111,7 +118,13 @@ body::before{
 .spin-pic {  
   width: 100%; height: 100%; object-fit: cover; display: block;
   animation: spinImage 10s linear infinite; transform: translateZ(0); will-change: transform;
+  opacity: 0; /* ✨ Fix: Hidden initially ✨ */
+  transition: opacity 0.5s ease-in-out;
 }  
+.spin-pic.loaded {
+  opacity: 1; /* ✨ Fix: Fades in once fully loaded ✨ */
+}
+
 @keyframes spinImage { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   
 /* --- TYPOGRAPHY --- */  
@@ -240,7 +253,7 @@ h1{
 <div id="preloader">
   <div class="preloader-avatar">
     <div class="preloader-cd">
-      <img src="profile.jpg" alt="GXNGSTA" fetchpriority="high">
+      <img src="profile.jpg" alt="GXNGSTA" class="spin-pic" fetchpriority="high" onload="this.classList.add('loaded')">
     </div>
   </div>
 </div>
@@ -250,7 +263,7 @@ h1{
   <div class="hero reveal-item">  
     <div class="cd-player-base">
       <div class="cd-record">
-        <img src="profile.jpg" alt="GXNGSTA" class="spin-pic" fetchpriority="high">
+        <img src="profile.jpg" alt="GXNGSTA" class="spin-pic" fetchpriority="high" onload="this.classList.add('loaded')">
       </div>  
     </div>
     <div class="name-container">
@@ -416,8 +429,4 @@ h1{
     scrollTimeout = setTimeout(() => {
       document.documentElement.style.setProperty('--eq-speed', '0.8s');
       document.documentElement.style.setProperty('--eq-max', '1');
-    }, 150); 
-  });
-</script>
-</body>  
-</html>
+    },
