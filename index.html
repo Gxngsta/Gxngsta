@@ -45,12 +45,15 @@ body::before{
   max-width:500px; margin:40px auto; padding:0 20px; width:100%; position: relative; z-index: 1;
 }  
   
-/* --- HERO SECTION --- */  
+/* --- HERO SECTION & SMOOTH CD PLAYER --- */  
 .hero{ display:flex; flex-direction: column; justify-content:center; align-items:center; margin-bottom:30px; }  
 
-/* Liquid Neon Aura */
-.profile-wrapper {
-  position: relative; padding: 4px; border-radius: 50%; margin-bottom: 20px;
+/* The CD Case/Base */
+.cd-player-base {
+  position: relative;
+  padding: 4px;
+  border-radius: 50%;
+  margin-bottom: 20px;
   background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8));
   box-shadow: 0 0 40px rgba(255,0,79,0.15), 0 0 40px rgba(0,240,255,0.15);
   animation: liquidAura 4s ease-in-out infinite alternate;
@@ -61,14 +64,52 @@ body::before{
   100% { box-shadow: 0 0 50px rgba(255,0,79,0.3), 0 0 60px rgba(0,240,255,0.2); transform: translateY(-5px); }
 }
 
-/* GPU Accelerated Smooth Spin */
-.spin-pic {  
-  width: clamp(110px, 30vw, 130px); height: clamp(110px, 30vw, 130px);  
-  border-radius:50%; object-fit:cover; border: 3px solid #050505; display: block;
+/* The actual spinning CD record (No hole, just pure image and vinyl reflection) */
+.cd-record {
+  width: clamp(110px, 30vw, 130px); 
+  height: clamp(110px, 30vw, 130px);
+  border-radius: 50%;
+  position: relative;
+  border: 3px solid #050505;
+  overflow: hidden;
+  /* Hardware Accelerated Spin for 0% Lag */
   animation: spinRecord 12s linear infinite;
-  transform: translateZ(0); will-change: transform;
-}  
-@keyframes spinRecord { 100% { transform: rotate(360deg) translateZ(0); } }
+  transform: translateZ(0); 
+  will-change: transform;
+}
+
+/* CD Light Reflection Overlay (The shiny grooves) */
+.cd-record::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    rgba(255,255,255,0.05) 0deg,
+    transparent 45deg,
+    rgba(255,255,255,0.15) 90deg,
+    transparent 135deg,
+    rgba(255,255,255,0.05) 180deg,
+    transparent 225deg,
+    rgba(255,255,255,0.15) 270deg,
+    transparent 315deg,
+    rgba(255,255,255,0.05) 360deg
+  );
+  z-index: 5;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.cd-record img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes spinRecord { 
+  100% { transform: rotate(360deg) translateZ(0); } 
+}
   
 /* --- TYPOGRAPHY --- */  
 .name-container { display: flex; align-items: center; gap: 8px; }
@@ -106,7 +147,7 @@ h1{
   padding:18px 20px; border-radius:16px; text-decoration:none; color:#ffffff; 
   background: var(--card-bg); border: 1px solid var(--card-border);  
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  position: relative; overflow: hidden; /* For Spotlight */
+  position: relative; overflow: hidden; 
   transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease;
   will-change: transform;
 }  
@@ -209,8 +250,10 @@ h1{
 <div class="container">    
   
   <div class="hero reveal-item">  
-    <div class="profile-wrapper">
-      <img src="profile.jpg" alt="GXNGSTA" class="spin-pic">  
+    <div class="cd-player-base">
+      <div class="cd-record">
+        <img src="profile.jpg" alt="GXNGSTA">
+      </div>  
     </div>
     <div class="name-container">
       <h1>GXNGSTA</h1>  
