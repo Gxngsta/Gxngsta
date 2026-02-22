@@ -19,8 +19,8 @@
   --card-border: rgba(255, 255, 255, 0.06);
 }
 *{margin:0;padding:0;box-sizing:border-box;}  
-html, body { width: 100%; overflow-x: hidden; cursor: none; /* Custom Cursor Ke Liye */ }
-@media (max-width: 768px) { html, body { cursor: auto; } } /* Mobile pe normal cursor */
+html, body { width: 100%; overflow-x: hidden; cursor: none; }
+@media (max-width: 768px) { html, body { cursor: auto; } } 
 html{ scroll-behavior: smooth; }  
 body{  
   font-family: 'Inter', sans-serif;  
@@ -31,23 +31,60 @@ body{
   text-rendering: optimizeLegibility;
 }  
 
-/* --- 🌟 CINEMATIC PRELOADER 🌟 --- */
+/* --- 🔥 ADVANCED GLITCH PRELOADER 🔥 --- */
 #preloader {
   position: fixed; inset: 0; background: #030303; z-index: 99999;
   display: flex; justify-content: center; align-items: center;
-  transition: opacity 0.8s ease-in-out, visibility 0.8s;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
 }
-#preloader h1 {
-  font-family: 'Orbitron', sans-serif; font-size: clamp(30px, 10vw, 45px);
-  letter-spacing: 8px; font-weight: 900; text-transform: uppercase;
-  background: linear-gradient(135deg, #ff004f, #00f0ff);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  animation: pulseLogo 1.5s infinite alternate ease-in-out;
+.loader-content {
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
 }
-@keyframes pulseLogo {
-  0% { transform: scale(0.95); filter: drop-shadow(0 0 10px rgba(255,0,79,0.5)); }
-  100% { transform: scale(1.05); filter: drop-shadow(0 0 30px rgba(0,240,255,0.8)); }
+/* Cyber Glitch Text */
+.glitch-logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(35px, 12vw, 55px);
+  letter-spacing: 10px; font-weight: 900;
+  text-transform: uppercase; color: #fff;
+  position: relative;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
+.glitch-logo::before, .glitch-logo::after {
+  content: attr(data-text); position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; background: #030303;
+}
+.glitch-logo::before {
+  left: 3px; text-shadow: -2px 0 #ff004f;
+  clip-path: inset(20% 0 80% 0);
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+.glitch-logo::after {
+  left: -3px; text-shadow: -2px 0 #00f0ff;
+  clip-path: inset(80% 0 5% 0);
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+@keyframes glitch-anim-1 {
+  0% { clip-path: inset(20% 0 80% 0); } 20% { clip-path: inset(60% 0 10% 0); }
+  40% { clip-path: inset(10% 0 50% 0); } 60% { clip-path: inset(80% 0 5% 0); }
+  80% { clip-path: inset(30% 0 40% 0); } 100% { clip-path: inset(50% 0 30% 0); }
+}
+@keyframes glitch-anim-2 {
+  0% { clip-path: inset(10% 0 60% 0); } 20% { clip-path: inset(80% 0 5% 0); }
+  40% { clip-path: inset(40% 0 20% 0); } 60% { clip-path: inset(20% 0 80% 0); }
+  80% { clip-path: inset(60% 0 10% 0); } 100% { clip-path: inset(5% 0 70% 0); }
+}
+/* Cyber Progress Bar */
+.loading-bar {
+  width: 160px; height: 2px; background: rgba(255,255,255,0.05);
+  border-radius: 2px; overflow: hidden; position: relative;
+}
+.loading-bar .progress {
+  width: 0%; height: 100%;
+  background: linear-gradient(90deg, #ff004f, #00f0ff);
+  box-shadow: 0 0 10px #00f0ff;
+  animation: loadProgress 1.4s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+}
+@keyframes loadProgress { 0% { width: 0%; } 100% { width: 100%; } }
 
 /* --- CUSTOM CURSOR (DESKTOP) --- */
 .cursor-dot {
@@ -224,7 +261,7 @@ h1{
   .link-btn{padding:16px 18px; border-radius: 14px;}
   .link-left {font-size: 14px;}
   .hero { margin-bottom: 25px; }
-  .cursor-dot, .cursor-ring { display: none; } /* Hide cursor on mobile */
+  .cursor-dot, .cursor-ring { display: none; } 
 }  
 
 /* --- 🌟 STAGGERED ENTRANCE ANIMATION 🌟 --- */
@@ -235,7 +272,12 @@ h1{
 <body>  
 
 <div id="preloader">
-  <h1>GXNGSTA</h1>
+  <div class="loader-content">
+    <h1 class="glitch-logo" data-text="GXNGSTA">GXNGSTA</h1>
+    <div class="loading-bar">
+      <div class="progress"></div>
+    </div>
+  </div>
 </div>
 
 <div class="cursor-dot"></div>
@@ -265,9 +307,7 @@ h1{
 
   <div class="links-grid">
     <a class="link-btn reveal-item magnetic-btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank">
-      <div class="link-left">
-        <i class="fab fa-spotify brand-icon"></i> Spotify 
-      </div>
+      <div class="link-left"><i class="fab fa-spotify brand-icon"></i> Spotify</div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
     <a class="link-btn reveal-item magnetic-btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank">
@@ -352,8 +392,9 @@ h1{
 </div>  
 
 <script>
-  // 1. Cinematic Preloader Logic
+  // 1. Cinematic Preloader & Progress Bar Logic
   window.addEventListener('load', () => {
+    // Waiting 1.5 seconds so the progress bar animation finishes smoothly
     setTimeout(() => {
       const preloader = document.getElementById('preloader');
       preloader.style.opacity = '0';
@@ -364,7 +405,7 @@ h1{
       items.forEach((item, index) => {
         setTimeout(() => { item.classList.add('visible'); }, index * 100); 
       });
-    }, 1200); // Shows loading screen for 1.2 seconds
+    }, 1500); 
   });
 
   // 2. Custom Cursor Logic (Desktop Only)
@@ -376,14 +417,12 @@ h1{
       dot.style.left = `${e.clientX}px`;
       dot.style.top = `${e.clientY}px`;
       
-      // Ring follows with slight delay for smooth effect
       setTimeout(() => {
         ring.style.left = `${e.clientX}px`;
         ring.style.top = `${e.clientY}px`;
       }, 50);
     });
 
-    // Hover effect on cursor
     document.querySelectorAll('a').forEach(link => {
       link.addEventListener('mouseenter', () => {
         dot.style.transform = 'translate(-50%, -50%) scale(2)';
