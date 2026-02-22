@@ -29,14 +29,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX'); </script>
-<script> !function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', 'YOUR_PIXEL_ID'); fbq('track', 'PageView'); </script>
-
-<script type="application/ld+json">
-{ "@context": "https://schema.org", "@type": "MusicGroup", "name": "GXNGSTA", "image": "profile.jpg", "description": "Independent Hip-Hop Artist", "sameAs": [ "https://www.instagram.com/gxngstaofficial", "https://x.com/GxngstaOfficial", "https://www.facebook.com/profile.php?id=61573079602732", "https://youtube.com/@GxngstaOfficial", "https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb", "https://music.apple.com/in/artist/gxngsta/1797817041" ] }
-</script>
-
 <style>  
 /* --- PURE PREMIUM RESET --- */  
 :root { --bg-color: #030303; --card-bg: rgba(20, 20, 20, 0.4); --card-border: rgba(255, 255, 255, 0.06); }
@@ -50,15 +42,13 @@ body{ font-family: 'Inter', sans-serif; background-color: var(--bg-color); color
 @keyframes floatUp { 0% { transform: translate3d(0, 100vh, 0) scale(0); opacity: 0; } 50% { opacity: var(--max-opacity); } 100% { transform: translate3d(0, -10vh, 0) scale(1.5); opacity: 0; } }
 body::before{ content:""; position:fixed; top:0; left:0; width:100vw; height:100vh; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E"); z-index:-1; pointer-events: none; }  
 
-/* --- 🌟 PRELOADER (LIQUID MELT TRANSITION) 🌟 --- */
-#preloader { position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background: var(--bg-color); z-index: 999999; display: flex; justify-content: center; align-items: center; transition: opacity 1s ease-in-out; will-change: opacity; }
-.preloader-avatar { position: relative; padding: 4px; border-radius: 50%; background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8)); box-shadow: 0 0 40px rgba(255,0,79,0.2), 0 0 40px rgba(0,240,255,0.2); transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out; }
+/* --- 🌟 BULLETPROOF PRELOADER 🌟 --- */
+#preloader { position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background: var(--bg-color); z-index: 999999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease; will-change: opacity; }
+.preloader-avatar { position: relative; padding: 4px; border-radius: 50%; background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8)); box-shadow: 0 0 40px rgba(255,0,79,0.2), 0 0 40px rgba(0,240,255,0.2); }
 .preloader-cd { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #050505; overflow: hidden; position: relative; }
 .preloader-cd img { width: 100%; height: 100%; object-fit: cover; display: block; animation: spinImage 4s linear infinite; }
 .preloader-cd::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(rgba(255,255,255,0.05) 0deg, transparent 45deg, rgba(255,255,255,0.15) 90deg, transparent 135deg, rgba(255,255,255,0.05) 180deg, transparent 225deg, rgba(255,255,255,0.15) 270deg, transparent 315deg, rgba(255,255,255,0.05) 360deg); z-index: 5; pointer-events: none; mix-blend-mode: overlay; }
-
 #preloader.hide-anim { opacity: 0; pointer-events: none; }
-#preloader.hide-anim .preloader-avatar { transform: scale(0.85); opacity: 0; }
   
 /* --- CONTAINER & HERO --- */  
 .container{ max-width:500px; margin:40px auto; padding:0 20px; width:100%; position: relative; z-index: 1; }  
@@ -80,7 +70,6 @@ h1 {
   -webkit-background-clip: text; background-clip: text; color: transparent;
   filter: drop-shadow(0 1px 1px rgba(255,255,255,0.8)) drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
-
 .verified { color: #1DA1F2; font-size: clamp(16px, 5vw, 20px); transform: translateZ(30px); animation: badgeBreathe 2s infinite alternate ease-in-out; }
 @keyframes badgeBreathe { 0% { filter: drop-shadow(0 0 2px rgba(29, 161, 242, 0.4)); } 100% { filter: drop-shadow(0 0 10px rgba(29, 161, 242, 1)); } }
 .tagline { color: #e0e0e0; font-size: 12px; margin-top: 5px; letter-spacing: 5px; font-weight: 700; text-transform: uppercase; transform: translateZ(10px); text-shadow: 0 2px 4px rgba(0,0,0,0.9); }  
@@ -95,63 +84,61 @@ h1 {
 
 /* --- BUTTONS --- */  
 .links-grid { display: flex; flex-direction: column; gap: 14px; perspective: 1000px; }
-.link-btn{ display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-radius:16px; text-decoration:none; color:#ffffff; background: var(--card-bg); border: 1px solid var(--card-border); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: relative; overflow: hidden; transition: transform 0.1s ease, box-shadow 0.3s ease; transform-style: preserve-3d; will-change: transform; }  
+.link-btn{ 
+  display:flex; align-items:center; justify-content:space-between; 
+  padding:16px 20px; border-radius:16px; text-decoration:none; color:#ffffff; 
+  background: var(--card-bg); border: 1px solid var(--card-border); 
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); 
+  position: relative; overflow: hidden; 
+  transition: transform 0.1s ease, box-shadow 0.3s ease; 
+  transform-style: preserve-3d; will-change: transform; 
+}  
 .link-btn::before { content: ""; position: absolute; top: var(--y, 50%); left: var(--x, 50%); transform: translate(-50%, -50%); width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s ease; pointer-events: none; z-index: 0; }
 .link-btn:hover::before { opacity: 1; }
 .link-btn .glass-sweep { position: absolute; top: 0; left: 0; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); transform: skewX(-20deg) translateX(-300%); z-index: 1; pointer-events: none; will-change: transform; }
 .link-btn:hover .glass-sweep { animation: sweepGlass 0.8s ease-out forwards; }
 @keyframes sweepGlass { 0% { transform: skewX(-20deg) translateX(-300%); } 100% { transform: skewX(-20deg) translateX(300%); } }
+
+/* Strict Hover Border */
 .link-btn::after { content: ""; position: absolute; inset: 0; border-radius: inherit; border: 1px solid var(--brand-color); box-shadow: 0 0 15px var(--brand-color), inset 0 0 25px var(--brand-color); opacity: 0; transition: opacity 0.3s ease-in-out; pointer-events: none; z-index: 1; }
 .link-btn:hover::after, .link-btn:active::after { opacity: 1; }
 
 .link-left { display: flex; align-items: center; gap: 16px; font-size:15px; font-weight:700; z-index: 2; transform: translateZ(20px); }
 
-/* 🔥 ULTRA 3D PLAY STORE APP ICON STYLING 🔥 */
+/* 🔥 ULTRA PREMIUM 3D APP ICONS & SHIMMER 🔥 */
 .app-icon {
   width: 40px; height: 40px; 
   border-radius: 10px; /* iOS/Play Store Squarcle curve */
   display: flex; align-items: center; justify-content: center; 
-  font-size: 22px;
   position: relative;
-  /* Complex 3D Drop Shadow & Inner Emboss */
-  box-shadow: 
-    0 4px 8px rgba(0,0,0,0.5),           /* Main drop shadow */
-    0 8px 16px rgba(0,0,0,0.3),          /* Deep diffused shadow */
-    inset 0 2px 2px rgba(255,255,255,0.8), /* Top highlight (bevel) */
-    inset 0 -2px 4px rgba(0,0,0,0.3);      /* Bottom inner shadow */
+  /* 3D Drop Shadow & Inner Emboss */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5), inset 0 2px 2px rgba(255,255,255,0.6), inset 0 -2px 4px rgba(0,0,0,0.3);
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease; 
-  flex-shrink: 0;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Glassy Shine Overlay for 3D depth */
-.app-icon::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 100%);
-  pointer-events: none;
-  z-index: 1;
+/* Continuous Shimmer Light Sweep on Icons */
+.app-icon::after {
+  content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  transform: rotate(30deg) translateX(-150%);
+  animation: shimmerSweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none; z-index: 5;
 }
+@keyframes shimmerSweep { 0%, 40% { transform: rotate(30deg) translateX(-150%); } 100% { transform: rotate(30deg) translateX(150%); } }
 
-/* Ensure the FontAwesome icon sits above the glass shine */
-.app-icon i, .app-icon .custom-text-icon, .app-icon svg {
-  position: relative; z-index: 2;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4)); /* Makes inner icon pop */
-}
-
-/* Hover State - Pops Out More */
+/* Colored Brand Aura Glow on Hover */
 .link-btn:hover .app-icon { 
-  transform: scale(1.15) translateY(-3px) rotate(2deg); 
-  box-shadow: 
-    0 8px 15px rgba(0,0,0,0.6), 
-    0 12px 20px rgba(0,0,0,0.4),
-    inset 0 2px 2px rgba(255,255,255,0.9), 
-    inset 0 -2px 4px rgba(0,0,0,0.4); 
+  transform: scale(1.15) translateY(-3px); 
+  box-shadow: 0 10px 25px var(--glow-shadow), inset 0 2px 2px rgba(255,255,255,0.9), inset 0 -2px 4px rgba(0,0,0,0.4); 
 }
 
-/* Custom Text Fallbacks */
-.custom-text-icon { font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -1px; display: inline-block; line-height: 1; transform: skewX(-8deg); }
+/* Moving Live Gradient Animation */
+.anim-grad { background-size: 200% 200% !important; animation: panGrad 3s ease infinite; }
+@keyframes panGrad { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+.link-btn svg { width: 22px; height: 22px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3)); position: relative; z-index: 2; }
+.jiosaavn-svg { width: 100% !important; height: 100% !important; }
 
 .link-btn i.arrow-icon { font-size: 14px; color: #555; background: rgba(255,255,255,0.03); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease; }
 .link-btn:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.6); }  
@@ -161,10 +148,10 @@ h1 {
 /* --- BRIGHTENED FOOTER --- */  
 .footer{ margin-top:50px; font-size:11px; color: #aaaaaa; letter-spacing:2px; text-align:center; padding:20px 0 30px; font-weight: 500; text-transform: uppercase; }  
 .footer span { color: #ffffff; font-family: 'Orbitron', sans-serif; letter-spacing: 3px; }
-@media(max-width:480px){ .container{ padding:0 15px; margin: 25px auto;} .link-btn{padding:14px 18px; border-radius: 14px;} .link-left {font-size: 14px;} .app-icon{width: 36px; height: 36px; font-size: 20px;} .hero { margin-bottom: 25px; } }  
+@media(max-width:480px){ .container{ padding:0 15px; margin: 25px auto;} .link-btn{padding:14px 18px; border-radius: 14px;} .link-left {font-size: 14px;} .app-icon{width: 36px; height: 36px;} .link-btn svg { width: 20px; height: 20px; } .hero { margin-bottom: 25px; } }  
 
-/* --- 🌊 SUPER SMOOTH ENTRANCE 🌊 --- */
-.reveal-item { opacity: 0; transform: translate3d(0, 20px, 0); transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); will-change: opacity, transform; }
+/* --- 🌊 ORIGINAL SMOOTH ENTRANCE 🌊 --- */
+.reveal-item { opacity: 0; transform: translate3d(0, 30px, 0); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: opacity, transform; }
 .reveal-item.visible { opacity: 1; transform: translate3d(0, 0, 0); }
 noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { display: none; }
 </style>  
@@ -205,56 +192,66 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
 
   <div class="links-grid">
     
-    <a class="link-btn reveal-item magnetic-btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank" style="--brand-color: #1DB954;" aria-label="Listen on Spotify">
+    <a class="link-btn reveal-item magnetic-btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank" style="--brand-color: #1DB954; --glow-shadow: rgba(29, 215, 96, 0.5);" aria-label="Listen on Spotify">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #191414;"><i class="fab fa-spotify" style="color: #1ED760;"></i></div>
+        <div class="app-icon" style="background: #191414; color: #1ED760;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.42c-.18.3-.57.38-.87.2-2.39-1.46-5.39-1.79-8.92-.98-.34.08-.67-.13-.74-.47-.08-.34.13-.67.47-.74 3.86-.88 7.18-.52 9.86 1.11.3.18.38.58.2.88zm1.22-3.25c-.23.37-.68.49-1.04.26-2.73-1.68-6.93-2.18-9.45-1.2-.41.16-.85-.04-1.01-.45-.16-.41.04-.85.45-1.01 3.01-1.18 7.64-.62 10.79 1.3.37.23.49.67.26 1.05zm.12-3.41c-3.27-1.94-8.67-2.12-11.78-1.17-.52.16-1.09-.13-1.25-.66-.16-.52.14-1.09.66-1.25 3.56-.11 9.53.1 13.31 2.05.47.28.63.89.35 1.37-.28.47-.89.63-1.37.35z"/></svg>
+        </div>
         Spotify
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #fa243c;" aria-label="Listen on Apple Music">
+    <a class="link-btn reveal-item magnetic-btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #fa243c; --glow-shadow: rgba(250, 36, 60, 0.5);" aria-label="Listen on Apple Music">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #ffffff;"><i class="fab fa-apple" style="color: #fa243c;"></i></div>
+        <div class="app-icon anim-grad" style="background: linear-gradient(135deg, #fa243c, #f51d4e); color: #fff;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.4 6.3c.7-1 1.2-2.3 1.1-3.6-1 .1-2.3.6-3 1.5-.6.7-1.2 2-1.1 3.3 1.1.1 2.2-.4 3-1.2zM15.6 7.4c-1.5 0-2.8 1-3.6 1-1 0-2-.9-3.2-.9-1.6 0-3.1.9-3.9 2.4-1.7 2.9-1.2 7.2.5 9.6.8 1.1 1.7 2.4 2.9 2.4 1.1 0 1.6-.7 3-.7 1.3 0 1.8.7 3 .7 1.2 0 2-1.2 2.8-2.3.9-1.3 1.2-2.5 1.3-2.6 0-.1-2.4-.9-2.4-3.7 0-2.3 1.9-3.4 1.9-3.4-1-1.6-2.7-1.8-3.3-1.9z"/></svg>
+        </div>
         Apple Music
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://youtube.com/@GxngstaOfficial" target="_blank" style="--brand-color: #FF0000;" aria-label="Watch on YouTube">
+    <a class="link-btn reveal-item magnetic-btn" href="https://youtube.com/@GxngstaOfficial" target="_blank" style="--brand-color: #FF0000; --glow-shadow: rgba(255, 0, 0, 0.5);" aria-label="Watch on YouTube">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #ffffff;"><i class="fab fa-youtube" style="color: #FF0000;"></i></div>
+        <div class="app-icon" style="background: #ffffff; color: #FF0000;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/></svg>
+        </div>
         YouTube
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a> 
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://music.youtube.com/channel/UCDYkzqzuppjtsfV4RatUqaA?si=jmzacLufpzK7ECmH" target="_blank" style="--brand-color: #FF0000;" aria-label="Listen on YouTube Music">
+    <a class="link-btn reveal-item magnetic-btn" href="https://music.youtube.com/channel/UCDYkzqzuppjtsfV4RatUqaA?si=jmzacLufpzK7ECmH" target="_blank" style="--brand-color: #FF0000; --glow-shadow: rgba(255, 0, 0, 0.4);" aria-label="Listen on YouTube Music">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #000;"><i class="fab fa-youtube" style="color: #FF0000;"></i></div>
+        <div class="app-icon" style="background: #000; color: #FF0000;">
+           <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="currentColor"/><polygon points="11,10 14,12 11,14" fill="#000"/></svg>
+        </div>
         YouTube Music
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank" style="--brand-color: #00A8E1;" aria-label="Listen on Amazon Music">
+    <a class="link-btn reveal-item magnetic-btn" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank" style="--brand-color: #00A8E1; --glow-shadow: rgba(0, 168, 225, 0.5);" aria-label="Listen on Amazon Music">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #ffffff;"><i class="fab fa-amazon" style="color: #00A8E1;"></i></div>
+        <div class="app-icon" style="background: #ffffff; color: #00A8E1;">
+           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.98 18.23c-2.43 1.05-5.32 1.05-7.85-.02-1.15-.49-1.92-1.07-2.03-1.11-.29-.16-.39-.55-.22-.86.17-.3.54-.4.84-.23.03.02.7.53 1.68.96 2.18.94 4.67.94 6.84-.03.88-.4 1.48-.86 1.5-.88.25-.22.65-.2.87.06.22.25.2.65-.06.87-.07.05-.73.57-1.57.97v.27zM20.25 14.86c-.14.28-.48.4-.76.26l-1.53-.78c-.28-.14-.4-.48-.26-.76.14-.28.48-.4.76-.26l1.53.78c.28.14.4.48.26.76z"/></svg>
+        </div>
         Amazon Music
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
     
-    <a class="link-btn reveal-item magnetic-btn" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank" style="--brand-color: #11c290;" aria-label="Listen on JioSaavn">
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank" style="--brand-color: #11c290; --glow-shadow: rgba(17, 194, 144, 0.5);" aria-label="Listen on JioSaavn">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #ffffff; padding: 2px;">
-            <svg viewBox="0 0 100 100" style="width: 100%; height: 100%;">
+        <div class="app-icon" style="background: #ffffff; padding: 0;">
+            <svg class="jiosaavn-svg" viewBox="0 0 100 100">
                <circle cx="50" cy="50" r="48" fill="#15c290"/>
                <path d="M47 80 C 20 70, 10 45, 25 25 C 38 25, 43 45, 47 60 Z" fill="#ffffff"/>
                <path d="M53 80 C 80 70, 90 45, 75 25 C 62 25, 57 45, 53 60 Z" fill="#ffffff"/>
@@ -266,55 +263,67 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://www.deezer.com/us/artist/304158961" target="_blank" style="--brand-color: #EF5466;" aria-label="Listen on Deezer">
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.deezer.com/us/artist/304158961" target="_blank" style="--brand-color: #A238FF; --glow-shadow: rgba(162, 56, 255, 0.5);" aria-label="Listen on Deezer">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #111;"><i class="fab fa-deezer" style="background-image: linear-gradient(135deg, #A238FF, #E7127D); -webkit-background-clip: text; color: transparent;"></i></div>
+        <div class="app-icon anim-grad" style="background: linear-gradient(135deg, #A238FF, #E7127D); color: #fff;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="16" width="3" height="4"/><rect x="7" y="12" width="3" height="8"/><rect x="12" y="16" width="3" height="4"/><rect x="17" y="8" width="3" height="12"/><rect x="22" y="4" width="3" height="16"/></svg>
+        </div>
         Deezer
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://tidal.com/artist/54713043" target="_blank" style="--brand-color: #00FFFF;" aria-label="Listen on TIDAL">
+    <a class="link-btn reveal-item magnetic-btn" href="https://tidal.com/artist/54713043" target="_blank" style="--brand-color: #ffffff; --glow-shadow: rgba(255, 255, 255, 0.3);" aria-label="Listen on TIDAL">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #000;"><i class="fas fa-wave-square" style="color: #fff;"></i></div>
+        <div class="app-icon" style="background: #000; color: #fff;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 16,6 12,10 8,6"/><polygon points="6,8 10,12 6,16 2,12"/><polygon points="18,8 22,12 18,16 14,12"/><polygon points="12,14 16,18 12,22 8,18"/></svg>
+        </div>
         TIDAL
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://audiomack.com/GxngstaOfficial" target="_blank" style="--brand-color: #FFA200;" aria-label="Listen on Audiomack">
+    <a class="link-btn reveal-item magnetic-btn" href="https://audiomack.com/GxngstaOfficial" target="_blank" style="--brand-color: #FFA200; --glow-shadow: rgba(255, 162, 0, 0.5);" aria-label="Listen on Audiomack">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #FFA200;"><i class="fas fa-play" style="color: #000; font-size: 16px;"></i></div>
+        <div class="app-icon" style="background: #FFA200; color: #000;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 20h20L12 3zm0 4.5l6.5 11h-13L12 7.5z"/></svg>
+        </div>
         Audiomack
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://m.soundcloud.com/gangsta-769519727" target="_blank" style="--brand-color: #FF5500;" aria-label="Listen on SoundCloud">
+    <a class="link-btn reveal-item magnetic-btn" href="https://m.soundcloud.com/gangsta-769519727" target="_blank" style="--brand-color: #FF5500; --glow-shadow: rgba(255, 85, 0, 0.5);" aria-label="Listen on SoundCloud">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #ffffff;"><i class="fab fa-soundcloud" style="color: #FF5500;"></i></div>
+        <div class="app-icon" style="background: #ffffff; color: #FF5500;">
+           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 9.5c-.2 0-.4 0-.6.1-1.3-3.6-4.9-6.1-9.1-5.6C6.6 4.4 4 7 3.6 10.3 1.5 10.7 0 12.5 0 14.7c0 2.4 1.9 4.3 4.3 4.3h15.2c2.5 0 4.5-2 4.5-4.5s-2-4.5-4.5-4.5z"/></svg>
+        </div>
         SoundCloud
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #0088FF;" aria-label="Find on Shazam">
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #0088FF; --glow-shadow: rgba(0, 136, 255, 0.5);" aria-label="Find on Shazam">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #ffffff;"><span class="custom-text-icon" style="color: #0088FF; transform: skewX(0);">S</span></div>
+        <div class="app-icon anim-grad" style="background: linear-gradient(135deg, #0088FF, #0055FF); color: #fff;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.5 15.5c-3 0-5.5-2.5-5.5-5.5S10.5 6.5 13.5 6.5 19 9 19 12h-2c0-1.9-1.6-3.5-3.5-3.5S10 10.1 10 12s1.6 3.5 3.5 3.5v2z"/></svg>
+        </div>
         Shazam
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://www.boomplay.com/share/artist/106853408?srModel=byWH&srList=ANDROID" target="_blank" style="--brand-color: #00E5FF;" aria-label="Listen on Boomplay">
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.boomplay.com/share/artist/106853408?srModel=byWH&srList=ANDROID" target="_blank" style="--brand-color: #00E5FF; --glow-shadow: rgba(0, 229, 255, 0.5);" aria-label="Listen on Boomplay">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #ffffff;"><span class="custom-text-icon" style="color: #0088FF;">B</span></div>
+        <div class="app-icon anim-grad" style="background: linear-gradient(135deg, #0044FF, #00E5FF); color: #fff; font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -1px;">
+           <span style="position:relative; z-index:2; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4));">B</span>
+        </div>
         Boomplay
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
@@ -329,146 +338,8 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
   </div>  
   <div class="links-grid">
     
-    <a class="link-btn reveal-item magnetic-btn" href="https://www.instagram.com/gxngstaofficial" target="_blank" style="--brand-color: #E1306C;" aria-label="Follow on Instagram">
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.instagram.com/gxngstaofficial" target="_blank" style="--brand-color: #E1306C; --glow-shadow: rgba(225, 48, 108, 0.5);" aria-label="Follow on Instagram">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);"><i class="fab fa-instagram" style="color: #fff;"></i></div>
-        Instagram
-      </div>
-      <i class="fas fa-arrow-right arrow-icon"></i>
-    </a>  
-    
-    <a class="link-btn reveal-item magnetic-btn" href="https://x.com/GxngstaOfficial" target="_blank" style="--brand-color: #ffffff;" aria-label="Follow on X (Twitter)">
-      <div class="glass-sweep"></div>
-      <div class="link-left">
-        <div class="app-icon" style="background: #000;"><i class="fab fa-twitter" style="color: #fff;"></i></div>
-        X (Twitter)
-      </div>
-      <i class="fas fa-arrow-right arrow-icon"></i>
-    </a>  
-    
-    <a class="link-btn reveal-item magnetic-btn" href="https://www.facebook.com/profile.php?id=61573079602732" target="_blank" style="--brand-color: #1877F2;" aria-label="Follow on Facebook">
-      <div class="glass-sweep"></div>
-      <div class="link-left">
-        <div class="app-icon" style="background: #1877F2;"><i class="fab fa-facebook-f" style="color: #fff;"></i></div>
-        Facebook
-      </div>
-      <i class="fas fa-arrow-right arrow-icon"></i>
-    </a>  
-  </div>
-
-  <div class="section-title reveal-item">
-    <div class="equalizer">
-      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-    </div>
-    Management
-  </div>  
-  <div class="links-grid">
-    
-    <a class="link-btn reveal-item magnetic-btn" href="mailto:gxngstaofficial@gmail.com" style="--brand-color: #00f0ff;" aria-label="Email Management">
-      <div class="glass-sweep"></div>
-      <div class="link-left">
-        <div class="app-icon" style="background: #ffffff;"><i class="fas fa-envelope" style="color: #3498db;"></i></div>
-        Email
-      </div>
-      <i class="fas fa-arrow-right arrow-icon"></i>
-    </a> 
-  </div>
-
-  <div class="footer reveal-item">  
-    © <script>document.write(new Date().getFullYear())</script> <span>GXNGSTA</span> <br> All Rights Reserved  
-  </div>  
-</div>  
-
-<script>
-  // 🛡️ 1. UNBREAKABLE NATIVE JS (No AddEventListeners for Loading) 🛡️
-  (function() {
-    var preloader = document.getElementById('preloader');
-    var items = document.querySelectorAll('.reveal-item');
-    var isLoaded = false;
-
-    function killLoader() {
-      if(isLoaded) return;
-      isLoaded = true;
-      
-      if(preloader) {
-        preloader.classList.add('hide-anim');
-        setTimeout(function() {
-          preloader.style.display = 'none';
-        }, 1000); 
-      }
-      
-      for(var i = 0; i < items.length; i++) {
-        (function(index) {
-          setTimeout(function() {
-            items[index].classList.add('visible');
-          }, 200 + (index * 80)); 
-        })(i);
-      }
-    }
-
-    // FIRE EXACTLY AFTER 1.2 SECONDS
-    setTimeout(killLoader, 1200);
-    
-    // Tap to skip
-    if(preloader) {
-      preloader.onclick = killLoader;
-    }
-  })();
-
-  // 🌌 2. SPARKS ANIMATION
-  try { 
-    var sparkContainer = document.getElementById('spark-container'); 
-    if(sparkContainer) { 
-      for (var j = 0; j < 15; j++) { 
-        var spark = document.createElement('div'); 
-        spark.classList.add('spark'); 
-        spark.style.left = (Math.random() * 100) + 'vw'; 
-        spark.style.setProperty('--speed', (Math.random() * 4 + 4) + 's'); 
-        spark.style.setProperty('--max-opacity', (Math.random() * 0.4 + 0.1)); 
-        spark.style.animationDelay = (Math.random() * 5) + 's'; 
-        sparkContainer.appendChild(spark); 
-      } 
-    } 
-  } catch(e) {}
-
-  // 💻 3. 3D EFFECTS (Desktop Only)
-  try { 
-    if (window.matchMedia("(pointer: fine)").matches) { 
-      var btns = document.querySelectorAll('.magnetic-btn');
-      for(var k = 0; k < btns.length; k++) {
-        btns[k].addEventListener('mousemove', function(e) { 
-          var rect = this.getBoundingClientRect(); 
-          var x = e.clientX - rect.left; 
-          var y = e.clientY - rect.top; 
-          this.style.setProperty('--x', x + 'px'); 
-          this.style.setProperty('--y', y + 'px'); 
-          var centerX = rect.width / 2; 
-          var centerY = rect.height / 2; 
-          var rotateX = ((y - centerY) / centerY) * -8; 
-          var rotateY = ((x - centerX) / centerX) * 8; 
-          this.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale3d(1.02, 1.02, 1.02)'; 
-        }); 
-        btns[k].addEventListener('mouseleave', function() { 
-          this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)'; 
-        }); 
-      }
-      
-      var hero = document.querySelector('.hero-parallax'); 
-      var parallaxItems = document.querySelectorAll('.parallax-item'); 
-      if (hero) { 
-        document.addEventListener('mousemove', function(e) { 
-          requestAnimationFrame(function() { 
-            var xAxis = (window.innerWidth / 2 - e.pageX) / 30; 
-            var yAxis = (window.innerHeight / 2 - e.pageY) / 30; 
-            if(parallaxItems[0]) parallaxItems[0].style.transform = 'rotateY(' + xAxis + 'deg) rotateX(' + yAxis + 'deg)'; 
-            if(parallaxItems[1]) parallaxItems[1].style.transform = 'translateZ(30px) rotateY(' + (xAxis*0.4) + 'deg) rotateX(' + (yAxis*0.4) + 'deg)'; 
-            if(parallaxItems[2]) parallaxItems[2].style.transform = 'translateZ(10px) rotateY(' + (xAxis*0.2) + 'deg) rotateX(' + (yAxis*0.2) + 'deg)'; 
-          }); 
-        }); 
-      } 
-    } 
-  } catch(e) {}
-</script>
-</body>  
-</html>
+        <div class="app-icon anim-grad" style="background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); color: #fff;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.
