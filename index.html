@@ -83,7 +83,7 @@ body{
   text-rendering: optimizeLegibility;
 }  
 
-/* --- 🌌 CLEAN SPARKS BACKGROUND (Orb Removed) 🌌 --- */
+/* --- 🌌 CLEAN SPARKS BACKGROUND 🌌 --- */
 .ambient-canvas {
   position: fixed; inset: 0; width: 100vw; height: 100vh;
   z-index: -2; pointer-events: none;
@@ -302,27 +302,19 @@ h1 {
 .link-left { display: flex; align-items: center; gap: 16px; font-size:15px; font-weight:700; z-index: 2; transform: translateZ(20px); }
 .link-btn i.arrow-icon { transform: translateZ(20px); z-index: 2; }
 
-/* 🔥 PERFECT ODD-EVEN BLINKING 🔥 */
+/* 🔥 ALWAYS ON BRAND ICONS 🔥 */
 .link-btn i.brand-icon {
-  font-size: clamp(20px, 6vw, 24px); width:26px; text-align: center;
-  /* Base animation for ODD items (starts at 0s) */
-  animation: brandPulse 4s infinite alternate ease-in-out; 
-  transition: transform 0.2s ease;
-  will-change: color, text-shadow, transform;
+  font-size: clamp(20px, 6vw, 24px); width: 26px; text-align: center;
+  color: var(--brand-color); /* Always colored */
+  text-shadow: 0 0 12px var(--brand-color); /* Always glowing */
+  transition: transform 0.2s ease, text-shadow 0.2s ease;
+  will-change: transform, text-shadow;
 }  
 
-@keyframes brandPulse {
-  0%, 30% { color: rgba(255,255,255,0.3); text-shadow: 0 0 0px transparent; }
-  70%, 100% { color: var(--brand-color); text-shadow: 0 0 12px var(--brand-color); }
-}
-
-/* EVEN items start exactly half a cycle later */
-.links-grid > a:nth-child(even) .brand-icon { 
-  animation-delay: -2s; 
-}
-
+/* Hover scales the icon and makes glow slightly stronger */
 .link-btn:hover i.brand-icon, .link-btn:active i.brand-icon {
-  transform: scale(1.15); color: var(--brand-color); animation: none; text-shadow: 0 0 15px var(--brand-color);
+  transform: scale(1.15); 
+  text-shadow: 0 0 20px var(--brand-color);
 }
 
 .link-btn i.arrow-icon {
