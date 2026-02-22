@@ -3,6 +3,7 @@
 <head>  
 <meta charset="UTF-8">  
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">  
+<meta name="theme-color" content="#030303">
 <title>GXNGSTA | Independent Hip-Hop Artist</title>  
 <meta name="description" content="GXNGSTA - Independent Hip-Hop Artist. Stream the latest tracks worldwide.">  
 <meta name="author" content="GXNGSTA">  
@@ -18,7 +19,8 @@
   --card-border: rgba(255, 255, 255, 0.06);
 }
 *{margin:0;padding:0;box-sizing:border-box;}  
-html, body { width: 100%; overflow-x: hidden; }
+html, body { width: 100%; overflow-x: hidden; cursor: none; /* Custom Cursor Ke Liye */ }
+@media (max-width: 768px) { html, body { cursor: auto; } } /* Mobile pe normal cursor */
 html{ scroll-behavior: smooth; }  
 body{  
   font-family: 'Inter', sans-serif;  
@@ -28,6 +30,37 @@ body{
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }  
+
+/* --- 🌟 CINEMATIC PRELOADER 🌟 --- */
+#preloader {
+  position: fixed; inset: 0; background: #030303; z-index: 99999;
+  display: flex; justify-content: center; align-items: center;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s;
+}
+#preloader h1 {
+  font-family: 'Orbitron', sans-serif; font-size: clamp(30px, 10vw, 45px);
+  letter-spacing: 8px; font-weight: 900; text-transform: uppercase;
+  background: linear-gradient(135deg, #ff004f, #00f0ff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  animation: pulseLogo 1.5s infinite alternate ease-in-out;
+}
+@keyframes pulseLogo {
+  0% { transform: scale(0.95); filter: drop-shadow(0 0 10px rgba(255,0,79,0.5)); }
+  100% { transform: scale(1.05); filter: drop-shadow(0 0 30px rgba(0,240,255,0.8)); }
+}
+
+/* --- CUSTOM CURSOR (DESKTOP) --- */
+.cursor-dot {
+  width: 6px; height: 6px; background: #fff; border-radius: 50%;
+  position: fixed; pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%); box-shadow: 0 0 10px #fff;
+  transition: width 0.2s, height 0.2s;
+}
+.cursor-ring {
+  width: 30px; height: 30px; border: 1px solid rgba(255,255,255,0.3); border-radius: 50%;
+  position: fixed; pointer-events: none; z-index: 9998;
+  transform: translate(-50%, -50%); transition: transform 0.1s ease-out;
+}
   
 /* --- CINEMATIC GRAIN & AMBIENT BG --- */  
 body::before{  
@@ -113,8 +146,7 @@ h1{
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   position: relative; overflow: hidden;
   transition: transform 0.1s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  transform-style: preserve-3d;
-  will-change: transform;
+  transform-style: preserve-3d; will-change: transform; cursor: none;
 }  
 
 .link-btn::before {
@@ -128,6 +160,14 @@ h1{
 .link-left { display: flex; align-items: center; gap: 16px; font-size:15px; font-weight:700; z-index: 2; transform: translateZ(20px); }
 .link-btn i.arrow-icon { transform: translateZ(20px); z-index: 2; }
 
+/* 🌟 OUT NOW BADGE 🌟 */
+.out-now-badge {
+  font-size: 9px; background: rgba(255,0,79,0.2); border: 1px solid #ff004f;
+  color: #ff004f; padding: 3px 8px; border-radius: 12px; margin-left: 10px;
+  letter-spacing: 1px; animation: pulseBadge 1.5s infinite alternate;
+}
+@keyframes pulseBadge { 0% { box-shadow: 0 0 5px transparent; } 100% { box-shadow: 0 0 10px #ff004f; } }
+
 /* INTELLIGENT BRAND BLINKING */
 .link-btn i.brand-icon {
   font-size: clamp(20px, 6vw, 24px); width:26px; text-align: center;
@@ -136,7 +176,6 @@ h1{
   will-change: color, text-shadow;
 }  
 
-/* Brand Colors */
 .fa-spotify { --brand-color: #1DB954; }
 .fa-apple, .fa-wave-square { --brand-color: #ffffff; }
 .fa-youtube { --brand-color: #FF0000; }
@@ -155,7 +194,6 @@ h1{
   0%, 30% { color: rgba(255,255,255,0.3); text-shadow: 0 0 0px transparent; }
   70%, 100% { color: var(--brand-color); text-shadow: 0 0 12px var(--brand-color); }
 }
-
 .links-grid > a:nth-child(even) .brand-icon { animation-delay: 1.5s; }
 .links-grid > a:nth-child(3n) .brand-icon { animation-delay: 0.7s; }
 
@@ -167,14 +205,11 @@ h1{
 
 /* Hover & Active States */
 .link-btn:hover {  
-  border-color: rgba(255, 255, 255, 0.2);  
-  box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+  border-color: rgba(255, 255, 255, 0.2); box-shadow: 0 15px 35px rgba(0,0,0,0.8);
 }  
 .link-btn:active {
-  transform: scale(0.96) !important; 
-  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-  background: rgba(40, 40, 40, 0.6);
-  transition: transform 0.05s ease;
+  transform: scale(0.96) !important; box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  background: rgba(40, 40, 40, 0.6); transition: transform 0.05s ease;
 }
 .link-btn:hover i.brand-icon, .link-btn:active i.brand-icon {
   transform: scale(1.15); color: var(--brand-color); animation: none; text-shadow: 0 0 15px var(--brand-color);
@@ -182,7 +217,7 @@ h1{
 .link-btn:hover i.arrow-icon, .link-btn:active i.arrow-icon { 
   background: #ffffff; color: #000; transform: rotate(-45deg) translateZ(20px); 
 }
-
+  
 /* --- FOOTER --- */  
 .footer{  
   margin-top:50px; font-size:11px; color:#555; letter-spacing:2px; 
@@ -196,6 +231,7 @@ h1{
   .link-btn{padding:16px 18px; border-radius: 14px;}
   .link-left {font-size: 14px;}
   .hero { margin-bottom: 25px; }
+  .cursor-dot, .cursor-ring { display: none; } /* Hide cursor on mobile */
 }  
 
 /* --- 🌟 STAGGERED ENTRANCE ANIMATION 🌟 --- */
@@ -204,6 +240,13 @@ h1{
 </style>  
 </head>  
 <body>  
+
+<div id="preloader">
+  <h1>GXNGSTA</h1>
+</div>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
 
 <div class="container">    
   
@@ -229,7 +272,9 @@ h1{
 
   <div class="links-grid">
     <a class="link-btn reveal-item magnetic-btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank">
-      <div class="link-left"><i class="fab fa-spotify brand-icon"></i> Spotify</div>
+      <div class="link-left">
+        <i class="fab fa-spotify brand-icon"></i> Spotify 
+        <span class="out-now-badge">OUT NOW</span> </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
     <a class="link-btn reveal-item magnetic-btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank">
@@ -314,32 +359,69 @@ h1{
 </div>  
 
 <script>
-  // 1. Cinematic Staggered Reveal
-  document.addEventListener("DOMContentLoaded", () => {
-    const items = document.querySelectorAll('.reveal-item');
-    items.forEach((item, index) => {
-      setTimeout(() => { item.classList.add('visible'); }, index * 80); 
-    });
+  // 1. Cinematic Preloader Logic
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const preloader = document.getElementById('preloader');
+      preloader.style.opacity = '0';
+      preloader.style.visibility = 'hidden';
+      
+      // Trigger staggered reveal AFTER loading screen fades
+      const items = document.querySelectorAll('.reveal-item');
+      items.forEach((item, index) => {
+        setTimeout(() => { item.classList.add('visible'); }, index * 100); 
+      });
+    }, 1200); // Shows loading screen for 1.2 seconds
   });
 
-  // 2. 3D Magnetic Tilt & Mouse Spotlight Logic
+  // 2. Custom Cursor Logic (Desktop Only)
+  if (window.innerWidth > 768) {
+    const dot = document.querySelector('.cursor-dot');
+    const ring = document.querySelector('.cursor-ring');
+    
+    window.addEventListener('mousemove', (e) => {
+      dot.style.left = `${e.clientX}px`;
+      dot.style.top = `${e.clientY}px`;
+      
+      // Ring follows with slight delay for smooth effect
+      setTimeout(() => {
+        ring.style.left = `${e.clientX}px`;
+        ring.style.top = `${e.clientY}px`;
+      }, 50);
+    });
+
+    // Hover effect on cursor
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        dot.style.transform = 'translate(-50%, -50%) scale(2)';
+        ring.style.width = '50px';
+        ring.style.height = '50px';
+        ring.style.borderColor = '#ff004f';
+      });
+      link.addEventListener('mouseleave', () => {
+        dot.style.transform = 'translate(-50%, -50%) scale(1)';
+        ring.style.width = '30px';
+        ring.style.height = '30px';
+        ring.style.borderColor = 'rgba(255,255,255,0.3)';
+      });
+    });
+  }
+
+  // 3. 3D Magnetic Tilt & Mouse Spotlight
   document.querySelectorAll('.magnetic-btn').forEach(btn => {
     btn.addEventListener('mousemove', e => {
       const rect = btn.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       
-      // Spotlight position
       btn.style.setProperty('--x', `${x}px`);
       btn.style.setProperty('--y', `${y}px`);
 
-      // 3D Magnetic Tilt (Only on non-touch devices basically)
       if (window.innerWidth > 768) {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         const rotateX = ((y - centerY) / centerY) * -10; 
         const rotateY = ((x - centerX) / centerX) * 10;
-        
         btn.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
       }
     });
@@ -349,7 +431,7 @@ h1{
     });
   });
 
-  // 3. Dynamic Audio Waveform on Scroll
+  // 4. Dynamic Audio Waveform on Scroll
   let scrollTimeout;
   window.addEventListener('scroll', () => {
     document.documentElement.style.setProperty('--eq-speed', '0.2s');
