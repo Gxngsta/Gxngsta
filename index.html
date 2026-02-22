@@ -8,14 +8,14 @@
 <meta name="author" content="GXNGSTA">  
 <link rel="preconnect" href="https://fonts.googleapis.com">  
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Inter:wght@400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  
 <style>  
 /* --- ULTRA-PREMIUM RESET --- */  
 :root {
-  --primary-glow: #00f2ff; /* Electric Blue */
-  --secondary-glow: #ff0055; /* Neon Pink/Red */
-  --bg-dark: #030305; /* Deepest Obsidian */
+  --primary-glow: #00f2ff; 
+  --secondary-glow: #ff0055; 
+  --bg-dark: #030305; 
   --glass-surface: rgba(255, 255, 255, 0.02);
   --glass-border: rgba(255, 255, 255, 0.06);
 }
@@ -32,7 +32,7 @@ body{
   display: flex; justify-content: center;
 }  
   
-/* --- ADVANCED ATMOSPHERIC BACKGROUND (The Smoke Effect) --- */  
+/* --- ADVANCED ATMOSPHERIC BACKGROUND --- */  
 .bg-effects {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
   overflow: hidden;
@@ -74,7 +74,6 @@ body{
 .hero{  
   display:flex; flex-direction: column; align-items:center; margin-bottom:40px;  
 }  
-/* Diamond Cut Energy Ring */
 .profile-wrapper {
   position: relative; padding: 6px; border-radius: 50%; margin-bottom: 25px;
   background: conic-gradient(from 180deg at 50% 50%, var(--primary-glow), transparent 50%, var(--secondary-glow), transparent 100%);
@@ -93,25 +92,42 @@ body{
   box-shadow: inset 0 0 20px rgba(0,0,0,1);
 }  
   
-/* --- CHROME TYPOGRAPHY --- */  
-.name-container { display: flex; align-items: center; gap: 10px; }
+/* --- 💎 ADVANCED HEAVY TYPOGRAPHY (GXNGSTA) 💎 --- */  
+.name-container { 
+  display: flex; align-items: center; gap: 12px; 
+}
 h1{  
-  font-family:'Montserrat',sans-serif;  
-  font-size:38px; letter-spacing:4px; font-weight:900; 
+  font-family:'Orbitron', sans-serif;  
+  font-size: 46px; /* Bada size */
+  letter-spacing: 6px; 
+  font-weight: 900; 
   text-transform: uppercase;
-  /* Chrome Text Effect */
-  background: linear-gradient(to bottom, #ffffff 0%, #a2a2a2 50%, #4a4a4a 51%, #ffffff 100%);
+  margin: 0;
+  
+  /* Split Metal Effect */
+  background: linear-gradient(to bottom, #ffffff 35%, #999999 50%, #222222 51%, #aaaaaa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+  
+  /* Heavy Shadow + Electric Glow */
+  filter: drop-shadow(0px 5px 2px rgba(0,0,0,0.9)) drop-shadow(0px 0px 15px rgba(0, 242, 255, 0.4));
+  
+  /* Bass Pulse Animation */
+  animation: powerPulse 2s infinite alternate ease-in-out;
 }  
-.verified {
-  color: var(--primary-glow); font-size: 22px;
-  filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.6));
+@keyframes powerPulse {
+  0% { transform: scale(1); filter: drop-shadow(0px 5px 2px rgba(0,0,0,0.9)) drop-shadow(0px 0px 15px rgba(0, 242, 255, 0.4)); }
+  100% { transform: scale(1.03); filter: drop-shadow(0px 8px 4px rgba(0,0,0,0.9)) drop-shadow(0px 0px 25px rgba(255, 0, 85, 0.5)); }
 }
+
+.verified {
+  color: var(--primary-glow); font-size: 24px;
+  filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.8));
+}
+
 .tagline{  
-  color:#888; font-size:13px; margin-top: 8px; letter-spacing:3px; font-weight: 600; text-transform: uppercase;
-  background: linear-gradient(90deg, #888, #fff, #888); background-size: 200%;
+  color:#888; font-size:14px; margin-top: 10px; letter-spacing:4px; font-weight: 700; text-transform: uppercase;
+  background: linear-gradient(90deg, #666, #fff, #666); background-size: 200%;
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   animation: shimmerText 5s infinite linear;
 }
@@ -138,7 +154,6 @@ h1{
 .link-btn{  
   display:flex; align-items:center; justify-content:space-between; 
   padding:18px 22px; border-radius:18px; text-decoration:none; color:#ffffff; 
-  /* Obsidian Glass Texture */
   background: linear-gradient(145deg, rgba(20, 20, 25, 0.6), rgba(5, 5, 10, 0.8));
   border: 1px solid var(--glass-border);
   box-shadow: inset 0 1px 1px rgba(255,255,255,0.05), 0 5px 15px rgba(0,0,0,0.5);
@@ -146,7 +161,6 @@ h1{
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   position: relative; overflow: hidden;
 }  
-/* Subtle Light Reflection overlay */
 .link-btn::before {
     content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
@@ -157,17 +171,15 @@ h1{
 .link-btn i.brand-icon { font-size:24px; width:26px; text-align: center; color: #aaa; transition: all 0.3s ease; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.5)); }  
 .link-btn i.arrow-icon { font-size: 14px; color: #555; transition: all 0.3s ease; }
 
-/* Premium Hover Effects */
 .link-btn:hover{  
   border-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-3px) scale(1.01);
   box-shadow: inset 0 1px 1px rgba(255,255,255,0.1), 0 15px 30px rgba(0,0,0,0.6), 0 0 20px rgba(0, 242, 255, 0.05);
 }  
-.link-btn:hover::before { left: 100%; } /* Reflection moves across */
+.link-btn:hover::before { left: 100%; }
 .link-btn:hover i.brand-icon { transform: scale(1.1); color: #fff; filter: drop-shadow(0 0 8px currentColor); }
 .link-btn:hover i.arrow-icon { color: var(--primary-glow); transform: translateX(5px); }
 
-/* Brand Specific Glows */
 .link-btn:hover .fa-spotify { color: #1DB954 !important; }
 .link-btn:hover .fa-youtube { color: #FF0000 !important; }
 .link-btn:hover .fa-apple { color: #ffffff !important; }
@@ -183,11 +195,12 @@ h1{
   margin-top:70px; font-size:11px; color:#555; letter-spacing:2px; 
   text-align:center; padding-bottom: 40px; font-weight: 600; text-transform: uppercase;
 }  
-.footer span { color: #888; font-family: 'Montserrat', sans-serif; font-weight: 800; letter-spacing: 3px; }
+.footer span { color: #888; font-family: 'Orbitron', sans-serif; font-weight: 800; letter-spacing: 3px; }
   
 /* --- RESPONSIVE --- */  
 @media(max-width:480px){  
-  h1{font-size:32px;} .hero img{width:115px;height:115px;}  
+  h1{font-size:38px; letter-spacing: 4px;} /* Mobile pe bhi strong dikhega */
+  .hero img{width:115px;height:115px;}  
   .link-btn{padding:16px 18px; border-radius: 16px;} .link-left {font-size: 14px;}
 }  
 </style>  
