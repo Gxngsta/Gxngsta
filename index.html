@@ -2,301 +2,257 @@
 <html lang="en">  
 <head>  
 <meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">  
-<title>GXNGSTA | Independent Hip-Hop Artist</title>  
-<meta name="description" content="GXNGSTA - Independent Hip-Hop Artist. Stream the latest music worldwide.">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>GXNGSTA | The Blueprint</title>  
+<meta name="description" content="GXNGSTA - International Hip-Hop Artist. Stream the latest music and connect.">  
 <meta name="author" content="GXNGSTA">  
 <link rel="preconnect" href="https://fonts.googleapis.com">  
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Inter:wght@400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  
 <style>  
-/* --- PREMIUM BULLETPROOF RESET --- */  
+/* --- V5 ULTIMATE RESET --- */  
+:root {
+  --accent-red: #ff0033; 
+  --accent-cyan: #00f0ff;
+  --bg-deep: #050505; 
+}
 *{margin:0;padding:0;box-sizing:border-box;}  
-html, body {
-  width: 100%;
-  min-height: 100vh;
-  overflow-x: hidden; 
-  background-color: #020308; /* Deep Midnight Cyber-Onyx Base */
-  font-family: 'Inter', sans-serif;  
-  color: #ffffff;  
+html{scroll-behavior:smooth; height: 100%; cursor: none; /* Custom cursor */}  
+body{  
+  font-family:'Inter',sans-serif;  
+  background-color: var(--bg-deep);  
+  color:#ffffff;  
+  overflow-x:hidden;  
+  min-height: 100%;
+  position:relative;  
   -webkit-font-smoothing: antialiased;
-  position: relative;
+  display: flex; justify-content: center;
+}  
+
+/* --- FILM GRAIN (NOISE OVERLAY) --- */
+.noise-overlay {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none; z-index: 9999; opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* --- 🌌 ULTRA-CINEMATIC 3D ELECTRIC BACKGROUND 🌌 --- */
-.cinematic-bg-container {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  z-index: -3; overflow: hidden; pointer-events: none;
-  background: #020308;
+/* --- DYNAMIC AMBIENT FLARES --- */  
+.flare-1, .flare-2 {
+  position: fixed; border-radius: 50%; filter: blur(100px); z-index: -1; opacity: 0.4;
+  animation: floatFlares 20s infinite alternate ease-in-out;
 }
+.flare-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: rgba(255, 0, 51, 0.15); }
+.flare-2 { bottom: -10%; right: -10%; width: 40vw; height: 40vw; background: rgba(0, 240, 255, 0.1); animation-delay: -10s; }
+@keyframes floatFlares { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(100px, 50px) scale(1.2); } }
 
-/* Layer 1: Slowly Rotating Deep Mesh */
-.bg-mesh-rotate {
-  position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-  background: radial-gradient(ellipse at center, rgba(0, 40, 100, 0.15) 0%, transparent 70%);
-  filter: blur(100px);
-  animation: rotateMesh 90s linear infinite;
-  opacity: 0.8;
+/* --- CUSTOM CURSOR (PC ONLY) --- */
+.cursor-dot, .cursor-outline {
+  position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%;
+  z-index: 10000; pointer-events: none;
 }
-@keyframes rotateMesh { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-/* Layer 2: Floating Plasma Light (Electric Cobalt Blue) */
-.bg-plasma-1 {
-  position: absolute; top: 15%; left: 5%; width: 65vw; height: 65vw;
-  background: radial-gradient(circle, rgba(0, 85, 255, 0.15), transparent 60%);
-  filter: blur(80px); border-radius: 50%;
-  animation: floatPlasma1 25s ease-in-out infinite alternate;
-  mix-blend-mode: screen; 
-}
-@keyframes floatPlasma1 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(25%, 25%) scale(1.15); } }
-
-/* Layer 3: Floating Plasma Light (Neon Cyan) */
-.bg-plasma-2 {
-  position: absolute; bottom: 5%; right: 5%; width: 75vw; height: 75vw;
-  background: radial-gradient(circle, rgba(0, 242, 255, 0.12), transparent 60%);
-  filter: blur(100px); border-radius: 50%;
-  animation: floatPlasma2 30s ease-in-out infinite alternate;
-  mix-blend-mode: screen;
-}
-@keyframes floatPlasma2 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-20%, -15%) scale(1.1); } }
-
+.cursor-dot { width: 6px; height: 6px; background-color: #fff; }
+.cursor-outline { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.4); transition: width 0.2s, height 0.2s, background-color 0.2s; }
 
 /* --- MAIN CONTAINER --- */  
 .container{  
-  max-width:480px; margin: 50px auto; padding: 0 20px; width: 100%; position: relative; z-index: 1;
-  animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  opacity: 0; transform: translateY(20px);
+  max-width:500px; margin:50px 20px; width:100%; position: relative; z-index: 2;
+  animation: introReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }  
-@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+@keyframes introReveal { 0% { opacity: 0; transform: translateY(40px) scale(0.95); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
 
-/* --- HERO & SPINNING PROFILE --- */  
-.hero{ display:flex; flex-direction: column; align-items:center; margin-bottom:35px; }  
-
+/* --- HERO & PROFILE --- */  
+.hero{ display:flex; flex-direction: column; align-items:center; margin-bottom:30px; }  
 .profile-wrapper {
   position: relative; padding: 4px; border-radius: 50%; margin-bottom: 20px;
-  /* Cyber metallic ring */
-  background: linear-gradient(145deg, #112233, #050a14);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.9), inset 0 0 20px rgba(0, 242, 255, 0.1);
-  backdrop-filter: blur(5px);
+  background: linear-gradient(135deg, var(--accent-red), var(--accent-cyan));
+  box-shadow: 0 10px 40px rgba(255,0,51,0.2);
 }
-
-.spin-pic {
-  width: 130px; height: 130px; border-radius: 50%; object-fit: cover;
-  border: 3px solid #030812; display: block;
-  animation: spinRecord 10s linear infinite;
-  box-shadow: inset 0 0 30px rgba(0,0,0,0.9);
+.profile-wrapper::after {
+  content: ''; position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px;
+  border-radius: 50%; border: 1px dashed rgba(255,255,255,0.2); animation: spinDash 15s linear infinite;
 }
-@keyframes spinRecord { 100% { transform: rotate(360deg); } }
+@keyframes spinDash { 100% { transform: rotate(360deg); } }
+.hero img{  
+  width:130px; height:130px; border-radius:50%; object-fit:cover;  
+  border: 4px solid var(--bg-deep); position: relative; z-index: 1; filter: grayscale(20%) contrast(110%);
+}  
   
-/* --- TYPOGRAPHY (COLD CHROME) --- */  
-.name-container { display: flex; align-items: center; justify-content: center; gap: 8px; }
+/* --- GLITCH TYPOGRAPHY (GXNGSTA) --- */  
+.name-container { position: relative; }
 h1{  
-  font-family:'Orbitron', sans-serif; font-size: 38px; letter-spacing: 4px; font-weight: 900; 
+  font-family:'Orbitron', sans-serif; font-size: 48px; letter-spacing: 8px; font-weight: 900; 
   text-transform: uppercase; margin: 0; color: #fff;
-  /* Ice/Cyber Chrome texture */
-  background: linear-gradient(180deg, #ffffff 10%, #b3e0ff 50%, #4a7c99 51%, #88bbdd 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 15px rgba(0,0,0,0.9));
+  text-shadow: 0 5px 20px rgba(0,0,0,0.8); position: relative; display: inline-block;
 }  
-.verified { 
-  color: #00f2ff; font-size: 18px; 
-  filter: drop-shadow(0 0 12px rgba(0, 242, 255, 0.7)); 
+/* Glitch Hover Effect */
+h1:hover::before, h1:hover::after {
+  content: 'GXNGSTA'; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: var(--bg-deep);
 }
-.tagline{  
-  color:#9ab; font-size:12px; margin-top: 8px; letter-spacing:4px; font-weight: 600; 
-  text-transform: uppercase; text-align: center; text-shadow: 0 2px 5px rgba(0,0,0,0.8);
-}  
+h1:hover::before {
+  left: 2px; text-shadow: -2px 0 var(--accent-red); animation: glitch-anim-1 0.2s infinite linear alternate-reverse;
+}
+h1:hover::after {
+  left: -2px; text-shadow: -2px 0 var(--accent-cyan); animation: glitch-anim-2 0.3s infinite linear alternate-reverse;
+}
+@keyframes glitch-anim-1 { 0% { clip-path: inset(20% 0 80% 0); } 100% { clip-path: inset(60% 0 10% 0); } }
+@keyframes glitch-anim-2 { 0% { clip-path: inset(10% 0 60% 0); } 100% { clip-path: inset(80% 0 5% 0); } }
 
-/* --- SECTION TITLES WITH NEON EQUALIZERS --- */  
+.verified { color: #fff; font-size: 20px; margin-left: 5px; filter: drop-shadow(0 0 5px #fff); vertical-align: super; }
+
+/* --- SCROLLING TICKER TAPE --- */
+.ticker-wrap {
+  width: 100%; overflow: hidden; background: rgba(255,0,51,0.1); border-top: 1px solid rgba(255,0,51,0.3); border-bottom: 1px solid rgba(255,0,51,0.3);
+  padding: 8px 0; margin-bottom: 35px; border-radius: 4px;
+}
+.ticker { display: inline-block; white-space: nowrap; animation: tickerScroll 15s linear infinite; font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--accent-red); }
+@keyframes tickerScroll { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+
+/* --- SECTION TITLES --- */  
 .section-title{  
-  margin:35px 0 15px; font-size:11px; color:#68a; letter-spacing:4px; 
-  text-transform: uppercase; font-weight: 800; display: flex; align-items: center; gap: 12px;
+  margin:30px 0 15px; font-size:11px; color:#555; letter-spacing:4px; text-transform: uppercase; font-weight: 800; display: flex; align-items: center; gap: 15px;
 }  
-.section-title::after{ content:""; flex-grow: 1; height: 1px; background: rgba(0, 242, 255, 0.15); box-shadow: 0 0 8px rgba(0, 242, 255, 0.2); }
-
-.equalizer { display: flex; gap: 3px; height: 12px; align-items: flex-end; }
-.bar { width: 3px; background: #0055ff; animation: eqPlay 0.7s infinite ease-in-out alternate; border-radius: 1px 1px 0 0; box-shadow: 0 0 8px rgba(0, 85, 255, 0.6);}
-.bar:nth-child(2) { animation-delay: -0.2s; height: 8px; background: #00f2ff; box-shadow: 0 0 8px rgba(0, 242, 255, 0.6);}
-.bar:nth-child(3) { animation-delay: -0.4s; height: 6px; }
-@keyframes eqPlay { 0% { height: 4px; } 100% { height: 12px; } }
+.section-title::after{ content:""; flex-grow: 1; height: 1px; background: rgba(255,255,255,0.05); }
   
-/* --- HOLOGRAPHIC 3D GLASS BUTTONS --- */  
-.links-grid { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+/* --- MAGNETIC 3D GLASS BUTTONS --- */  
+.links-grid { display: flex; flex-direction: column; gap: 16px; perspective: 1000px; }
 .link-btn{  
   display:flex; align-items:center; justify-content:space-between; 
-  padding:16px 20px; border-radius:14px; text-decoration:none; color:#ffffff; 
-  background: rgba(10, 15, 30, 0.5); 
-  backdrop-filter: blur(15px) saturate(120%); -webkit-backdrop-filter: blur(15px) saturate(120%);
-  border: 1px solid rgba(0, 150, 255, 0.1);
-  border-top: 1px solid rgba(0, 242, 255, 0.2); /* Cyan highlight */
-  border-bottom: 1px solid rgba(0,0,0,0.5);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6), inset 0 0 10px rgba(0, 242, 255, 0.02);
-  transition: all 0.3s ease; width: 100%;
+  padding:18px 22px; border-radius:12px; text-decoration:none; color:#ffffff; 
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  position: relative; overflow: hidden;
+  /* Transitions handled by JS for 3D effect, but base transition here */
+  transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
 }  
-.link-left { display: flex; align-items: center; gap: 16px; font-size:14px; font-weight:600; color: #cceeff; text-shadow: 0 2px 5px rgba(0,0,0,0.5);}
-.link-btn i.brand-icon { font-size:20px; width:24px; text-align: center; color: #68a; transition: all 0.3s ease; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));}  
-.link-btn i.arrow-icon { font-size: 13px; color: #479; transition: all 0.3s ease; }
-
-/* Premium Cyber Hover States */
-.link-btn:hover { 
-  background: rgba(15, 25, 50, 0.7);
-  border-top: 1px solid rgba(0, 242, 255, 0.5);
-  border-color: rgba(0, 150, 255, 0.3);
-  transform: translateY(-3px) scale(1.01);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(0, 242, 255, 0.1);
+.link-btn::after {
+  content: ''; position: absolute; inset: 0; opacity: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.08) 0%, transparent 50%);
+  transition: opacity 0.3s; pointer-events: none;
 }
-.link-btn:hover .link-left { color: #fff; }
-.link-btn:hover i.brand-icon { transform: scale(1.1); filter: drop-shadow(0 0 15px currentColor); }
-.link-btn:hover i.arrow-icon { color: #00f2ff; transform: translateX(5px); filter: drop-shadow(0 0 8px #00f2ff);}
+.link-left { display: flex; align-items: center; gap: 18px; font-size:15px; font-weight:600; transform: translateZ(20px); }
+.link-btn i.brand-icon { font-size:22px; width:24px; text-align: center; color: #888; transition: all 0.3s ease; }  
+.link-btn i.arrow-icon { font-size: 13px; color: #444; transition: all 0.3s ease; transform: translateZ(20px); }
 
-/* Brand Colors on Hover */
-.link-btn:hover .fa-spotify { color: #1DB954; }
-.link-btn:hover .fa-youtube { color: #FF0000; }
-.link-btn:hover .fa-apple { color: #ffffff; }
-.link-btn:hover .fa-amazon { color: #FF9900; }
-.link-btn:hover .fa-music { color: #2BC5B4; }
-.link-btn:hover .fa-deezer { color: #EF5466; }
-.link-btn:hover .fa-wave-square { color: #00f2ff; }
-.link-btn:hover .fa-play { color: #FFA200; }
-.link-btn:hover .fa-soundcloud { color: #FF5500; }
-.link-btn:hover .fa-bolt { color: #00f2ff; }
-.link-btn:hover .fa-instagram { color: #E1306C; }
-.link-btn:hover .fa-twitter { color: #1DA1F2; }
-.link-btn:hover .fa-facebook-f { color: #1877F2; }
-.link-btn:hover .fa-envelope { color: #00f2ff; }
+/* Hover states */
+.link-btn:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); box-shadow: 0 15px 35px rgba(0,0,0,0.5); z-index: 10; cursor: none; }
+.link-btn:hover::after { opacity: 1; }
+.link-btn:hover i.brand-icon { color: #fff; transform: scale(1.1); filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)); }
+.link-btn:hover i.arrow-icon { color: #fff; transform: translateX(5px) translateZ(20px); }
 
 /* Footer */  
-.footer{ 
-  margin-top:40px; font-size:10px; color:#479; letter-spacing:2px; 
-  text-align:center; padding-bottom: 30px; font-weight: 600; text-transform: uppercase; 
-}  
-.footer span { color: #8bb; font-family: 'Orbitron', sans-serif; letter-spacing: 3px;}
+.footer{ margin-top:60px; font-size:10px; color:#444; letter-spacing:3px; text-align:center; padding-bottom: 40px; font-weight: 700; text-transform: uppercase; }  
+.footer span { color: #fff; font-family: 'Orbitron', sans-serif; }
   
-/* --- 📱 STRICT MOBILE OPTIMIZATIONS --- */  
+/* Responsive */  
 @media(max-width:480px){  
-  .container { margin: 30px auto; padding: 0 15px; }
-  .hero { margin-bottom: 25px; }
-  .spin-pic { width: 110px; height: 110px; } 
-  
-  h1 { font-size: 32px; letter-spacing: 3px; } 
-  .tagline { font-size: 11px; letter-spacing: 3px; }
-  
-  .section-title { margin: 25px 0 12px; }
-  
-  .link-btn { padding: 15px 16px; border-radius: 12px; } 
-  .link-left { font-size: 13px; gap: 14px; }
-  .link-btn i.brand-icon { font-size: 18px; width: 20px; }
+  html { cursor: auto; } /* Disable custom cursor on mobile */
+  .cursor-dot, .cursor-outline { display: none; }
+  h1{font-size:36px; letter-spacing: 5px;} 
+  .link-btn{padding:16px; border-radius: 10px;} .link-left {font-size: 14px; gap: 12px;}
+  .ticker { font-size: 10px; }
 }  
 </style>  
 </head>  
 <body>  
 
-<div class="cinematic-bg-container">
-  <div class="bg-mesh-rotate"></div>
-  <div class="bg-plasma-1"></div>
-  <div class="bg-plasma-2"></div>
-</div>
+<div class="noise-overlay"></div>
+<div class="flare-1"></div>
+<div class="flare-2"></div>
+
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-outline" id="cursor-outline"></div>
 
 <div class="container">    
   
   <div class="hero">  
     <div class="profile-wrapper">
-      <img src="profile.jpg" alt="GXNGSTA" class="spin-pic">  
+      <img src="profile.jpg" alt="GXNGSTA">  
     </div>
-    
     <div class="name-container">
-      <h1>GXNGSTA</h1>
-      <i class="fas fa-check-circle verified"></i>  
+      <h1>GXNGSTA<i class="fas fa-check-circle verified"></i></h1>  
     </div>
-    <p class="tagline">Independent Hip-Hop Artist</p>
+  </div>
+
+  <div class="ticker-wrap">
+    <div class="ticker">
+      STREAM WORLDWIDE • INDEPENDENT HIP-HOP ARTIST • NEW RELEASES OUT NOW • BOOKINGS OPEN • GXNGSTA • 
+      STREAM WORLDWIDE • INDEPENDENT HIP-HOP ARTIST • NEW RELEASES OUT NOW • BOOKINGS OPEN • GXNGSTA •
+    </div>
   </div>
   
-  <div class="section-title">
-    <div class="equalizer">
-      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-    </div>
-    Streaming
-  </div>  
+  <div class="section-title">Music</div>  
 
   <div class="links-grid">
-    <a class="link-btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank">
+    <a class="link-btn 3d-card" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank">
       <div class="link-left"><i class="fab fa-spotify brand-icon"></i> Spotify</div>
-      <i class="fas fa-chevron-right arrow-icon"></i>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
-    <a class="link-btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank">
+    <a class="link-btn 3d-card" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank">
       <div class="link-left"><i class="fab fa-apple brand-icon"></i> Apple Music</div>
-      <i class="fas fa-chevron-right arrow-icon"></i>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
-    <a class="link-btn" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank">
+    <a class="link-btn 3d-card" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank">
       <div class="link-left"><i class="fab fa-amazon brand-icon"></i> Amazon Music</div>
-      <i class="fas fa-chevron-right arrow-icon"></i>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
-    <a class="link-btn" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank">
+    <a class="link-btn 3d-card" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank">
       <div class="link-left"><i class="fas fa-music brand-icon"></i> JioSaavn</div>
-      <i class="fas fa-chevron-right arrow-icon"></i>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
-    <a class="link-btn" href="https://www.deezer.com/us/artist/304158961" target="_blank">
+    <a class="link-btn 3d-card" href="https://www.deezer.com/us/artist/304158961" target="_blank">
       <div class="link-left"><i class="fab fa-deezer brand-icon"></i> Deezer</div>
-      <i class="fas fa-chevron-right arrow-icon"></i>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
-    <a class="link-btn" href="https://tidal.com/artist/54713043" target="_blank">
+    <a class="link-btn 3d-card" href="https://tidal.com/artist/54713043" target="_blank">
       <div class="link-left"><i class="fas fa-wave-square brand-icon"></i> TIDAL</div>
-      <i class="fas fa-chevron-right arrow-icon"></i>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
-    <a class="link-btn" href="https://audiomack.com/GxngstaOfficial" target="_blank">
+    <a class="link-btn 3d-card" href="https://audiomack.com/GxngstaOfficial" target="_blank">
       <div class="link-left"><i class="fas fa-play brand-icon"></i> Audiomack</div>
-      <i class="fas fa-chevron-right arrow-icon"></i>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
-    <a class="link-btn" href="https://m.soundcloud.com/gangsta-769519727" target="_blank">
+    <a class="link-btn 3d-card" href="https://m.soundcloud.com/gangsta-769519727" target="_blank">
       <div class="link-left"><i class="fab fa-soundcloud brand-icon"></i> SoundCloud</div>
-      <i class="fas fa-chevron-right arrow-icon"></i>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
-    <a class="link-btn" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank">
+    <a class="link-btn 3d-card" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank">
       <div class="link-left"><i class="fas fa-bolt brand-icon"></i> Shazam</div>
-      <i class="fas fa-chevron-right arrow-icon"></i>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
-    <a class="link-btn" href="https://www.boomplay.com/share/artist/106853408?srModel=byWH&srList=ANDROID" target="_blank">
+    <a class="link-btn 3d-card" href="https://www.boomplay.com/share/artist/106853408?srModel=byWH&srList=ANDROID" target="_blank">
       <div class="link-left"><i class="fas fa-play brand-icon"></i> Boomplay</div>
-      <i class="fas fa-chevron-right arrow-icon"></i>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
   </div>
 
-  <div class="section-title">
-    <div class="equalizer">
-      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-    </div>
-    Connect
-  </div>  
+  <div class="section-title">Connect</div>  
   <div class="links-grid">
-    <a class="link-btn" href="https://www.instagram.com/gxngstaofficial" target="_blank">
+    <a class="link-btn 3d-card" href="https://www.instagram.com/gxngstaofficial" target="_blank">
       <div class="link-left"><i class="fab fa-instagram brand-icon"></i> Instagram</div>
-      <i class="fas fa-chevron-right arrow-icon"></i>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
-    <a class="link-btn" href="https://youtube.com/@GxngstaOfficial" target="_blank">
+    <a class="link-btn 3d-card" href="https://youtube.com/@GxngstaOfficial" target="_blank">
       <div class="link-left"><i class="fab fa-youtube brand-icon"></i> YouTube</div>
-      <i class="fas fa-chevron-right arrow-icon"></i>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a> 
-    <a class="link-btn" href="https://x.com/GxngstaOfficial" target="_blank">
+    <a class="link-btn 3d-card" href="https://x.com/GxngstaOfficial" target="_blank">
       <div class="link-left"><i class="fab fa-twitter brand-icon"></i> X (Twitter)</div>
-      <i class="fas fa-chevron-right arrow-icon"></i>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
-    <a class="link-btn" href="https://www.facebook.com/profile.php?id=61573079602732" target="_blank">
+    <a class="link-btn 3d-card" href="https://www.facebook.com/profile.php?id=61573079602732" target="_blank">
       <div class="link-left"><i class="fab fa-facebook-f brand-icon"></i> Facebook</div>
-      <i class="fas fa-chevron-right arrow-icon"></i>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
   </div>
 
-  <div class="section-title">
-    <div class="equalizer">
-      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-    </div>
-    Management
-  </div>  
+  <div class="section-title">Management</div>  
   <div class="links-grid">
-    <a class="link-btn" href="mailto:gxngstaofficial@gmail.com">
-      <div class="link-left"><i class="fas fa-envelope brand-icon"></i> Email</div>
-      <i class="fas fa-chevron-right arrow-icon"></i>
+    <a class="link-btn 3d-card" href="mailto:gxngstaofficial@gmail.com">
+      <div class="link-left"><i class="fas fa-envelope brand-icon"></i> Booking & Inquiries</div>
+      <i class="fas fa-arrow-right arrow-icon"></i>
     </a> 
   </div>
 
@@ -305,5 +261,70 @@ h1{
   </div>  
 </div>  
 
+<script>
+  // 1. Custom Cursor Logic (Only runs on non-touch devices)
+  if(window.innerWidth > 480) {
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorOutline = document.getElementById('cursor-outline');
+    
+    window.addEventListener('mousemove', function(e) {
+      const posX = e.clientX;
+      const posY = e.clientY;
+      
+      cursorDot.style.left = `${posX}px`;
+      cursorDot.style.top = `${posY}px`;
+      
+      // Slight delay for the outline ring to make it feel smooth
+      cursorOutline.animate({
+        left: `${posX}px`,
+        top: `${posY}px`
+      }, { duration: 500, fill: "forwards" });
+    });
+
+    // Cursor hover effects on links
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        cursorOutline.style.width = '50px';
+        cursorOutline.style.height = '50px';
+        cursorOutline.style.backgroundColor = 'rgba(255,0,51,0.1)';
+        cursorOutline.style.borderColor = '#ff0033';
+      });
+      link.addEventListener('mouseleave', () => {
+        cursorOutline.style.width = '34px';
+        cursorOutline.style.height = '34px';
+        cursorOutline.style.backgroundColor = 'transparent';
+        cursorOutline.style.borderColor = 'rgba(255,255,255,0.4)';
+      });
+    });
+  }
+
+  // 2. Magnetic 3D Tilt Effect for Buttons
+  const cards = document.querySelectorAll('.3d-card');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      // Calculate rotation for 3D effect
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -10; // Max 10 deg tilt
+      const rotateY = ((x - centerX) / centerX) * 10;
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      
+      // Dynamic light reflection effect
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+      card.style.setProperty('--mouse-x', `50%`);
+      card.style.setProperty('--mouse-y', `50%`);
+    });
+  });
+</script>
 </body>  
 </html>
