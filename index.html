@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  
 <style>  
-/* --- PREMIUM RESET & BASE --- */  
+/* --- PREMIUM 60FPS RESET --- */  
 *{margin:0;padding:0;box-sizing:border-box;}  
 html, body {
   width: 100%;
@@ -24,22 +24,25 @@ body{
   color:#ffffff;  
   position:relative;  
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }  
   
-/* --- DYNAMIC AMBIENT BACKGROUND --- */  
+/* --- DYNAMIC AMBIENT BACKGROUND (Optimized) --- */  
 body::before{  
   content:"";  
   position:fixed; top:-50%; left:-50%; width:200%; height:200%;  
   background: 
-    radial-gradient(circle at 30% 70%, rgba(220, 20, 60, 0.15), transparent 40%),
-    radial-gradient(circle at 70% 30%, rgba(138, 43, 226, 0.1), transparent 40%),
+    radial-gradient(circle at 30% 70%, rgba(220, 20, 60, 0.12), transparent 40%),
+    radial-gradient(circle at 70% 30%, rgba(138, 43, 226, 0.08), transparent 40%),
     url('https://www.transparenttextures.com/patterns/stardust.png'); 
   z-index:-1;  
-  animation: breatheBg 15s ease-in-out infinite alternate;
+  animation: breatheBg 20s ease-in-out infinite alternate;
+  will-change: transform;
+  transform: translateZ(0); /* Hardware Acceleration */
 }  
 @keyframes breatheBg {
-  0% { transform: scale(1) rotate(0deg); }
-  100% { transform: scale(1.1) rotate(2deg); }
+  0% { transform: scale(1) translateZ(0); }
+  100% { transform: scale(1.05) translateZ(0); }
 }
 
 /* --- CONTAINER --- */  
@@ -58,30 +61,31 @@ body::before{
   flex-direction: column;
   justify-content:center;  
   align-items:center;  
-  margin-bottom:35px;  
+  margin-bottom:30px;  
 }  
 .profile-wrapper {
   position: relative;
   padding: 4px;
   border-radius: 50%;
   background: linear-gradient(135deg, #ff004f, #00f0ff);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(255,0,79,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(255,0,79,0.2);
   margin-bottom: 20px;
   animation: floatProfile 6s ease-in-out infinite;
+  will-change: transform;
 }
 @keyframes floatProfile {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0) translateZ(0); }
+  50% { transform: translateY(-8px) translateZ(0); }
 }
 
 /* GPU Accelerated Smooth Spin */
 .spin-pic {  
-  width:125px; height:125px;  
+  width: clamp(110px, 30vw, 125px); /* Scales automatically on any phone */
+  height: clamp(110px, 30vw, 125px);  
   border-radius:50%; object-fit:cover;  
   border: 3px solid #050505; 
   display: block;
   animation: spinRecord 10s linear infinite;
-  /* Hardware Acceleration lagane ke liye (Zero Lag) */
   transform: translateZ(0);
   will-change: transform;
 }  
@@ -90,28 +94,29 @@ body::before{
   100% { transform: rotate(360deg) translateZ(0); } 
 }
   
-/* --- TYPOGRAPHY & VERIFIED BADGE --- */  
+/* --- TYPOGRAPHY --- */  
 .name-container { display: flex; align-items: center; gap: 8px; }
 h1{  
   font-family:'Orbitron',sans-serif;  
-  font-size:34px; letter-spacing:5px; font-weight:900; 
+  font-size: clamp(28px, 8vw, 34px); /* Perfect fit for any screen */
+  letter-spacing: 5px; font-weight:900; 
   color: #ffffff;
   text-transform: uppercase;
   text-shadow: 0 4px 15px rgba(0,0,0,0.9);
 }  
 .verified {
   color: #1DA1F2; 
-  font-size: 20px;
+  font-size: clamp(16px, 5vw, 20px);
   filter: drop-shadow(0 0 5px rgba(29, 161, 242, 0.5));
 }
 .tagline{  
-  color:#a0a0a0; font-size:13px; margin-top: 5px; letter-spacing:4px;  
+  color:#a0a0a0; font-size:12px; margin-top: 5px; letter-spacing:4px;  
   font-weight: 600; text-transform: uppercase;
 }  
   
-/* --- SECTION TITLES & EQUALIZERS --- */  
+/* --- SECTION TITLES & OPTIMIZED EQUALIZERS --- */  
 .section-title{  
-  margin:40px 0 15px; font-size:12px; color:#888; letter-spacing:3px;  
+  margin:40px 0 12px; font-size:11px; color:#888; letter-spacing:3px;  
   text-transform: uppercase; font-weight: 800; display: flex; align-items: center; gap: 12px;
 }  
 .section-title::after{  
@@ -120,12 +125,21 @@ h1{
 }  
 
 .equalizer { display: flex; gap: 3px; height: 12px; align-items: flex-end; }
-.bar { width: 3px; background: #ff004f; border-radius: 3px 3px 0 0; animation: eqPlay 1s infinite ease-in-out alternate; }
+.bar { 
+  width: 3px; height: 12px; /* Fixed height, animating scale instead */
+  background: #ff004f; border-radius: 3px 3px 0 0; 
+  transform-origin: bottom;
+  animation: eqPlay 0.8s infinite alternate ease-in-out; 
+  will-change: transform;
+}
 .bar:nth-child(2) { animation-delay: -0.2s; background: #00f0ff; }
 .bar:nth-child(3) { animation-delay: -0.4s; background: #ff004f; }
-@keyframes eqPlay { 0% { height: 3px; } 100% { height: 12px; } }
+@keyframes eqPlay { 
+  0% { transform: scaleY(0.2); } 
+  100% { transform: scaleY(1); } 
+}
   
-/* --- ADVANCED GLASSMORPHISM BUTTONS --- */  
+/* --- ADVANCED BUTTONS WITH TACTILE TOUCH --- */  
 .links-grid { display: flex; flex-direction: column; gap: 14px; }
 
 .link-btn{  
@@ -133,32 +147,38 @@ h1{
   padding:16px 20px; border-radius:16px; text-decoration:none; color:#ffffff; 
   background: rgba(25, 25, 25, 0.4);  
   border: 1px solid rgba(255, 255, 255, 0.08);  
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  position: relative; overflow: hidden; /* Glass Sweep ke liye */
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  position: relative; overflow: hidden;
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
 }  
 
-/* ✨ Glass Sweep Animation on Hover ✨ */
+/* ✨ Optimized Glass Sweep Animation ✨ */
 .link-btn::before {
-  content: ''; position: absolute; top: 0; left: -100%;
-  width: 50%; height: 100%;
-  background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-  transform: skewX(-25deg); transition: 0.5s ease-in-out;
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 60%; height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent);
+  transform: translateX(-250%) skewX(-25deg); 
+  transition: transform 0.6s ease-in-out;
+  pointer-events: none;
+  will-change: transform;
 }
-.link-btn:hover::before { left: 150%; }
+.link-btn:hover::before, .link-btn:active::before { 
+  transform: translateX(300%) skewX(-25deg); 
+}
 
 .link-left { display: flex; align-items: center; gap: 15px; font-size:15px; font-weight:700; z-index: 2;}
 
-/* --- INTELLIGENT BRAND BLINKING --- */
+/* --- INTELLIGENT BRAND BLINKING (Optimized) --- */
 .link-btn i.brand-icon {
-  font-size:24px; width:26px; text-align: center;
-  /* Applying the pulse animation to all icons */
+  font-size: clamp(20px, 6vw, 24px); width:26px; text-align: center;
   animation: brandPulse 3s infinite alternate ease-in-out;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+  will-change: color, text-shadow;
 }  
 
-/* Assigning specific brand colors using CSS variables */
+/* Brand Colors */
 .fa-spotify { --brand-color: #1DB954; }
 .fa-apple, .fa-wave-square { --brand-color: #ffffff; }
 .fa-youtube { --brand-color: #FF0000; }
@@ -173,14 +193,13 @@ h1{
 .fa-facebook-f { --brand-color: #1877F2; }
 .fa-envelope { --brand-color: #00f0ff; }
 
-/* The Pulse Keyframe: Slowly breathes in its own brand color */
+/* Lightweight Pulse using text-shadow instead of drop-shadow */
 @keyframes brandPulse {
-  0% { color: rgba(255,255,255,0.4); filter: drop-shadow(0 0 0px transparent); }
-  50% { color: var(--brand-color); filter: drop-shadow(0 0 10px var(--brand-color)); }
-  100% { color: rgba(255,255,255,0.4); filter: drop-shadow(0 0 0px transparent); }
+  0% { color: rgba(255,255,255,0.4); text-shadow: 0 0 0px transparent; }
+  50% { color: var(--brand-color); text-shadow: 0 0 8px var(--brand-color); }
+  100% { color: rgba(255,255,255,0.4); text-shadow: 0 0 0px transparent; }
 }
 
-/* Staggering the animation so they don't blink all at once */
 .links-grid > a:nth-child(even) .brand-icon { animation-delay: 1.5s; }
 .links-grid > a:nth-child(3n) .brand-icon { animation-delay: 0.7s; }
 
@@ -188,38 +207,46 @@ h1{
   font-size: 14px; color: #666; background: rgba(255,255,255,0.05);
   width: 30px; height: 30px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  transition: all 0.3s ease; z-index: 2;
+  transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease; z-index: 2;
 }
 
-/* Hover Effects */
-.link-btn:hover{  
+/* --- TACTILE TOUCH FOR MOBILE & HOVER FOR PC --- */
+.link-btn:hover {  
   background: rgba(40, 40, 40, 0.4);  
-  border-color: rgba(255, 255, 255, 0.2);  
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border-color: rgba(255, 255, 255, 0.15);  
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
 }  
-.link-btn:hover i.brand-icon {
-  transform: scale(1.1);
-  color: var(--brand-color); /* Locks color on hover */
-  animation: none; /* Stops blinking on hover */
-  filter: drop-shadow(0 0 12px var(--brand-color));
+/* The Bounce Click Effect */
+.link-btn:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  transition: transform 0.1s ease;
 }
-.link-btn:hover i.arrow-icon { background: #ffffff; color: #000; transform: rotate(-45deg); }
+
+.link-btn:hover i.brand-icon, .link-btn:active i.brand-icon {
+  transform: scale(1.1);
+  color: var(--brand-color); 
+  animation: none; 
+  text-shadow: 0 0 10px var(--brand-color);
+}
+.link-btn:hover i.arrow-icon, .link-btn:active i.arrow-icon { 
+  background: #ffffff; color: #000; transform: rotate(-45deg); 
+}
   
 /* --- FOOTER --- */  
 .footer{  
-  margin-top:60px; font-size:12px; color:#666; letter-spacing:2px; 
-  text-align:center; padding:20px 0 40px; font-weight: 500; text-transform: uppercase;
+  margin-top:50px; font-size:11px; color:#555; letter-spacing:2px; 
+  text-align:center; padding:20px 0 30px; font-weight: 500; text-transform: uppercase;
 }  
 .footer span { color: #fff; font-family: 'Orbitron', sans-serif; letter-spacing: 3px; }
   
-/* --- RESPONSIVE FIXES --- */  
+/* --- RESPONSIVE FIXES (Guaranteed to fit) --- */  
 @media(max-width:480px){  
-  .container{ padding:0 15px; margin: 30px auto;}
-  h1{font-size:28px;}   
-  .spin-pic{width:110px;height:110px;}  
+  .container{ padding:0 15px; margin: 25px auto;}
   .link-btn{padding:14px 16px; border-radius: 14px;}
   .link-left {font-size: 14px;}
+  .hero { margin-bottom: 25px; }
 }  
 </style>  
 </head>  
