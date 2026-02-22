@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  
 <style>  
-/* --- PURE PREMIUM RESET --- */  
+/* --- ULTRA-PREMIUM RESET --- */  
 :root {
   --bg-color: #030303;
   --card-bg: rgba(20, 20, 20, 0.4);
@@ -29,6 +29,45 @@ body{
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }  
+
+/* --- 🌟 VIP PROFILE PRELOADER 🌟 --- */
+#preloader {
+  position: fixed; inset: 0; background: var(--bg-color); z-index: 99999;
+  display: flex; justify-content: center; align-items: center; flex-direction: column;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+}
+
+/* Preloader Glowing Base */
+.preloader-avatar {
+  position: relative; padding: 4px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8));
+  box-shadow: 0 0 40px rgba(255,0,79,0.2), 0 0 40px rgba(0,240,255,0.2);
+  animation: preloaderBreathe 1s infinite alternate ease-in-out;
+  will-change: transform, box-shadow;
+}
+
+/* Preloader Breathing Effect */
+@keyframes preloaderBreathe {
+  0% { transform: scale(0.95); box-shadow: 0 0 20px rgba(255,0,79,0.3), 0 0 20px rgba(0,240,255,0.3); }
+  100% { transform: scale(1.05); box-shadow: 0 0 60px rgba(255,0,79,0.7), 0 0 60px rgba(0,240,255,0.7); }
+}
+
+/* Preloader CD Structure */
+.preloader-cd {
+  width: 120px; height: 120px; border-radius: 50%;
+  border: 3px solid #050505; overflow: hidden; position: relative;
+  transform: translateZ(0);
+}
+.preloader-cd img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  animation: spinImage 4s linear infinite; /* Faster spin during load */
+  will-change: transform;
+}
+.preloader-cd::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(rgba(255,255,255,0.05) 0deg, transparent 45deg, rgba(255,255,255,0.15) 90deg, transparent 135deg, rgba(255,255,255,0.05) 180deg, transparent 225deg, rgba(255,255,255,0.15) 270deg, transparent 315deg, rgba(255,255,255,0.05) 360deg);
+  z-index: 5; pointer-events: none; mix-blend-mode: overlay;
+}
   
 /* --- CINEMATIC GRAIN & AMBIENT BG --- */  
 body::before{  
@@ -45,7 +84,7 @@ body::before{
   max-width:500px; margin:40px auto; padding:0 20px; width:100%; position: relative; z-index: 1;
 }  
   
-/* --- HERO SECTION & CD PLAYER --- */  
+/* --- HERO SECTION & MAIN CD PLAYER --- */  
 .hero{ display:flex; flex-direction: column; justify-content:center; align-items:center; margin-bottom:30px; }  
 
 .cd-player-base {
@@ -128,7 +167,7 @@ h1{
 .link-left { display: flex; align-items: center; gap: 16px; font-size:15px; font-weight:700; z-index: 2; transform: translateZ(20px); }
 .link-btn i.arrow-icon { transform: translateZ(20px); z-index: 2; }
 
-/* BRAND BLINKING */
+/* INTELLIGENT BRAND BLINKING */
 .link-btn i.brand-icon {
   font-size: clamp(20px, 6vw, 24px); width:26px; text-align: center;
   animation: brandPulse 4s infinite alternate ease-in-out;
@@ -194,12 +233,20 @@ h1{
   .hero { margin-bottom: 25px; }
 }  
 
-/* --- STAGGERED ENTRANCE ANIMATION --- */
-.reveal-item { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+/* --- 🌟 STAGGERED ENTRANCE ANIMATION 🌟 --- */
+.reveal-item { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
 .reveal-item.visible { opacity: 1; transform: translateY(0); }
 </style>  
 </head>  
 <body>  
+
+<div id="preloader">
+  <div class="preloader-avatar">
+    <div class="preloader-cd">
+      <img src="profile.jpg" alt="GXNGSTA">
+    </div>
+  </div>
+</div>
 
 <div class="container">    
   
@@ -310,12 +357,20 @@ h1{
 </div>  
 
 <script>
-  // 1. Instant Cinematic Staggered Reveal
-  document.addEventListener("DOMContentLoaded", () => {
-    const items = document.querySelectorAll('.reveal-item');
-    items.forEach((item, index) => {
-      setTimeout(() => { item.classList.add('visible'); }, index * 60); // Faster reveal
-    });
+  // 1. VIP Profile Preloader Logic
+  window.addEventListener('load', () => {
+    // 1.2 seconds of letting the user see the glowing profile pic
+    setTimeout(() => {
+      const preloader = document.getElementById('preloader');
+      preloader.style.opacity = '0';
+      preloader.style.visibility = 'hidden';
+      
+      // Trigger staggered reveal exactly when the preloader starts fading
+      const items = document.querySelectorAll('.reveal-item');
+      items.forEach((item, index) => {
+        setTimeout(() => { item.classList.add('visible'); }, index * 80); 
+      });
+    }, 1200); 
   });
 
   // 2. 3D Magnetic Tilt & Mouse Spotlight Logic
