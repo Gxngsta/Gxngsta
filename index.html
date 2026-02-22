@@ -83,7 +83,6 @@ h1 {
 
 .verified { color: #1DA1F2; font-size: clamp(16px, 5vw, 20px); transform: translateZ(30px); animation: badgeBreathe 2s infinite alternate ease-in-out; }
 @keyframes badgeBreathe { 0% { filter: drop-shadow(0 0 2px rgba(29, 161, 242, 0.4)); } 100% { filter: drop-shadow(0 0 10px rgba(29, 161, 242, 1)); } }
-
 .tagline { color: #e0e0e0; font-size: 12px; margin-top: 5px; letter-spacing: 5px; font-weight: 700; text-transform: uppercase; transform: translateZ(10px); text-shadow: 0 2px 4px rgba(0,0,0,0.9); }  
   
 /* --- EQUALIZERS & SECTION TITLES --- */  
@@ -109,22 +108,12 @@ h1 {
 
 /* 🔥 NEW APP ICON STYLING 🔥 */
 .app-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px; /* Play Store Adaptive Squarcle */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
+  width: 36px; height: 36px; border-radius: 8px; 
+  display: flex; align-items: center; justify-content: center; font-size: 20px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; flex-shrink: 0;
 }
-.link-btn:hover .app-icon {
-  transform: scale(1.1) translateY(-2px); /* Physical Pop-out feel */
-  box-shadow: 0 6px 12px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.4);
-}
-
+.link-btn:hover .app-icon { transform: scale(1.1) translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.4); }
 .custom-text-icon { font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -1px; display: inline-block; line-height: 1; transform: skewX(-10deg); }
 
 .link-btn i.arrow-icon { font-size: 14px; color: #555; background: rgba(255,255,255,0.03); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease; }
@@ -346,33 +335,83 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
 </div>  
 
 <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    // 1. SPARKS ANIMATION
-    try { 
-      const sparkContainer = document.getElementById('spark-container'); 
-      if(sparkContainer) { 
-        for (let i = 0; i < 15; i++) { 
-          let spark = document.createElement('div'); 
-          spark.classList.add('spark'); 
-          spark.style.left = `${Math.random() * 100}vw`; 
-          spark.style.setProperty('--speed', `${Math.random() * 4 + 4}s`); 
-          spark.style.setProperty('--max-opacity', `${Math.random() * 0.4 + 0.1}`); 
-          spark.style.animationDelay = `${Math.random() * 5}s`; 
-          sparkContainer.appendChild(spark); 
-        } 
+  // 1. SPARKS ANIMATION
+  try { 
+    const sparkContainer = document.getElementById('spark-container'); 
+    if(sparkContainer) { 
+      for (let i = 0; i < 15; i++) { 
+        let spark = document.createElement('div'); 
+        spark.classList.add('spark'); 
+        spark.style.left = `${Math.random() * 100}vw`; 
+        spark.style.setProperty('--speed', `${Math.random() * 4 + 4}s`); 
+        spark.style.setProperty('--max-opacity', `${Math.random() * 0.4 + 0.1}`); 
+        spark.style.animationDelay = `${Math.random() * 5}s`; 
+        sparkContainer.appendChild(spark); 
       } 
-    } catch(e) {}
+    } 
+  } catch(e) {}
 
-    // 🛡️ 2. LIQUID SMOOTH REVEAL 🛡️
-    const preloader = document.getElementById('preloader'); 
-    let isLoaded = false; 
+  // 🛡️ 2. DIRECT LIQUID SMOOTH REVEAL (NO EVENT WAITING) 🛡️
+  const preloader = document.getElementById('preloader'); 
+  let isLoaded = false; 
 
-    function hideLoader() { 
-      if(isLoaded || !preloader) return; 
-      isLoaded = true; 
+  function hideLoader() { 
+    if(isLoaded || !preloader) return; 
+    isLoaded = true; 
+    
+    preloader.classList.add('hide-anim');
+    
+    const items = document.querySelectorAll('.reveal-item'); 
+    items.forEach((item, index) => { 
+      setTimeout(() => { item.classList.add('visible'); }, 200 + (index * 80)); 
+    }); 
+    
+    setTimeout(() => { 
+      preloader.style.display = 'none'; 
+      document.body.style.overflow = 'auto'; 
+    }, 1200); 
+  }
+
+  // Timer starts instantly as soon as HTML is read.
+  setTimeout(hideLoader, 1200); 
+  if(preloader) preloader.addEventListener('click', hideLoader);
+
+  // 3. 3D EFFECTS (Desktop Only)
+  try { 
+    if (window.matchMedia("(pointer: fine)").matches) { 
+      document.querySelectorAll('.magnetic-btn').forEach(btn => { 
+        btn.addEventListener('mousemove', e => { 
+          const rect = btn.getBoundingClientRect(); 
+          const x = e.clientX - rect.left; 
+          const y = e.clientY - rect.top; 
+          btn.style.setProperty('--x', `${x}px`); 
+          btn.style.setProperty('--y', `${y}px`); 
+          const centerX = rect.width / 2; 
+          const centerY = rect.height / 2; 
+          const rotateX = ((y - centerY) / centerY) * -8; 
+          const rotateY = ((x - centerX) / centerX) * 8; 
+          btn.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`; 
+        }); 
+        btn.addEventListener('mouseleave', () => { 
+          btn.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`; 
+        }); 
+      }); 
       
-      preloader.classList.add('hide-anim');
-      
-      const items = document.querySelectorAll('.reveal-item'); 
-      items.forEach((item, index) => { 
-        setTimeout(() => { item.classList.add('visible'); },
+      const hero = document.querySelector('.hero-parallax'); 
+      const parallaxItems = document.querySelectorAll('.parallax-item'); 
+      if (hero) { 
+        document.addEventListener('mousemove', (e) => { 
+          requestAnimationFrame(() => { 
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 30; 
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 30; 
+            parallaxItems[0].style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`; 
+            if(parallaxItems[1]) parallaxItems[1].style.transform = `translateZ(30px) rotateY(${xAxis*0.4}deg) rotateX(${yAxis*0.4}deg)`; 
+            if(parallaxItems[2]) parallaxItems[2].style.transform = `translateZ(10px) rotateY(${xAxis*0.2}deg) rotateX(${yAxis*0.2}deg)`; 
+          }); 
+        }); 
+      } 
+    } 
+  } catch(e) {}
+</script>
+</body>  
+</html>
