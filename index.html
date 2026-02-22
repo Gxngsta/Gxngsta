@@ -3,248 +3,199 @@
 <head>  
 <meta charset="UTF-8">  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>GXNGSTA | Independent Hip-Hop Artist</title>  
-<meta name="description" content="GXNGSTA - Independent Hip-Hop Artist. Stream the latest tracks worldwide.">  
+<title>GXNGSTA | Official Artist Links</title>  
+<meta name="description" content="GXNGSTA - International Hip-Hop Artist. Stream the latest music and connect.">  
 <meta name="author" content="GXNGSTA">  
 <link rel="preconnect" href="https://fonts.googleapis.com">  
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  
 <style>  
-/* --- PREMIUM RESET & BASE --- */  
+/* --- ULTRA-PREMIUM RESET --- */  
+:root {
+  --primary-glow: #00f2ff; /* Electric Blue */
+  --secondary-glow: #ff0055; /* Neon Pink/Red */
+  --bg-dark: #030305; /* Deepest Obsidian */
+  --glass-surface: rgba(255, 255, 255, 0.02);
+  --glass-border: rgba(255, 255, 255, 0.06);
+}
 *{margin:0;padding:0;box-sizing:border-box;}  
-html{scroll-behavior:smooth;}  
+html{scroll-behavior:smooth; height: 100%;}  
 body{  
   font-family:'Inter',sans-serif;  
-  background-color:#050505;  
+  background-color: var(--bg-dark);  
   color:#ffffff;  
   overflow-x:hidden;  
+  min-height: 100%;
   position:relative;  
   -webkit-font-smoothing: antialiased;
+  display: flex; justify-content: center;
 }  
   
-/* --- DYNAMIC AMBIENT BACKGROUND --- */  
-body::before{  
-  content:"";  
-  position:fixed; top:-50%; left:-50%; width:200%; height:200%;  
-  background: 
-    radial-gradient(circle at 30% 70%, rgba(220, 20, 60, 0.15), transparent 40%),
-    radial-gradient(circle at 70% 30%, rgba(138, 43, 226, 0.1), transparent 40%),
-    url('https://www.transparenttextures.com/patterns/stardust.png'); 
-  z-index:-1;  
-  animation: breatheBg 15s ease-in-out infinite alternate;
-}  
-@keyframes breatheBg {
-  0% { transform: scale(1) rotate(0deg); }
-  100% { transform: scale(1.1) rotate(2deg); }
+/* --- ADVANCED ATMOSPHERIC BACKGROUND (The Smoke Effect) --- */  
+.bg-effects {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+  overflow: hidden;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+}
+.bg-effects::before, .bg-effects::after {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  width: 200vmax; height: 200vmax;
+  background: radial-gradient(circle at center, rgba(0, 242, 255, 0.03), transparent 50%);
+  animation: smokeMove 25s linear infinite; margin-top: -100vmax; margin-left: -100vmax;
+  opacity: 0.6;
+}
+.bg-effects::after {
+  background: radial-gradient(circle at center, rgba(255, 0, 85, 0.03), transparent 50%);
+  animation-direction: reverse; animation-duration: 35s;
+  opacity: 0.4;
+}
+@keyframes smokeMove { 
+  0% { transform: rotate(0deg) translate(0, 0); }
+  100% { transform: rotate(360deg) translate(50px, -50px); }
 }
 
-/* --- CONTAINER --- */  
+/* --- CONTAINER WITH 3D ENTRANCE --- */  
 .container{  
-  max-width:540px; 
-  margin:40px auto;  
-  padding:0 20px;  
+  max-width:500px; 
+  margin:60px 20px;
   width:100%;  
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(30px) perspective(1000px) rotateX(5deg);
+  animation: introFadeUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }  
-  
+@keyframes introFadeUp {
+  to { opacity: 1; transform: translateY(0) perspective(1000px) rotateX(0); }
+}
+
 /* --- HERO SECTION --- */  
 .hero{  
-  display:flex;  
-  flex-direction: column;
-  justify-content:center;  
-  align-items:center;  
-  margin-bottom:35px;  
+  display:flex; flex-direction: column; align-items:center; margin-bottom:40px;  
 }  
+/* Diamond Cut Energy Ring */
 .profile-wrapper {
-  position: relative;
-  padding: 4px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ff004f, #00f0ff);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(255,0,79,0.3);
-  margin-bottom: 20px;
-  animation: floatProfile 6s ease-in-out infinite;
+  position: relative; padding: 6px; border-radius: 50%; margin-bottom: 25px;
+  background: conic-gradient(from 180deg at 50% 50%, var(--primary-glow), transparent 50%, var(--secondary-glow), transparent 100%);
+  animation: spinRing 8s linear infinite;
+  box-shadow: 0 0 50px rgba(0,0,0,0.8);
 }
-@keyframes floatProfile {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.profile-wrapper::before {
+  content:""; position: absolute; inset: 2px; border-radius: 50%;
+  background: var(--bg-dark); z-index: 0;
 }
+@keyframes spinRing { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
 .hero img{  
-  width:120px; height:120px;  
-  border-radius:50%; object-fit:cover;  
-  border: 3px solid #050505; 
-  display: block;
+  width:130px; height:130px; border-radius:50%; object-fit:cover;  
+  border: 4px solid var(--bg-dark); position: relative; z-index: 1;
+  box-shadow: inset 0 0 20px rgba(0,0,0,1);
 }  
   
-/* --- TYPOGRAPHY & VERIFIED BADGE --- */  
-.name-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+/* --- CHROME TYPOGRAPHY --- */  
+.name-container { display: flex; align-items: center; gap: 10px; }
 h1{  
-  font-family:'Orbitron',sans-serif;  
-  font-size:32px; letter-spacing:5px; font-weight:900; 
-  color: #ffffff;
+  font-family:'Montserrat',sans-serif;  
+  font-size:38px; letter-spacing:4px; font-weight:900; 
   text-transform: uppercase;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.9);
+  /* Chrome Text Effect */
+  background: linear-gradient(to bottom, #ffffff 0%, #a2a2a2 50%, #4a4a4a 51%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
 }  
 .verified {
-  color: #1DA1F2; /* Verified Blue */
-  font-size: 20px;
-  filter: drop-shadow(0 0 5px rgba(29, 161, 242, 0.5));
+  color: var(--primary-glow); font-size: 22px;
+  filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.6));
 }
 .tagline{  
-  color:#a0a0a0; 
-  font-size:13px; 
-  margin-top: 5px; 
-  letter-spacing:4px;  
-  font-weight: 600;
-  text-transform: uppercase;
-}  
+  color:#888; font-size:13px; margin-top: 8px; letter-spacing:3px; font-weight: 600; text-transform: uppercase;
+  background: linear-gradient(90deg, #888, #fff, #888); background-size: 200%;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  animation: shimmerText 5s infinite linear;
+}
+@keyframes shimmerText { 0% { background-position: -200%; } 100% { background-position: 200%; } }
   
-/* --- SECTION TITLES & AUDIO VISUALIZER --- */  
+/* --- ADVANCED SECTION DIVIDERS --- */  
 .section-title{  
-  margin:40px 0 15px; 
-  font-size:12px; 
-  color:#888; 
-  letter-spacing:3px;  
-  text-transform: uppercase;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  margin:45px 0 18px; font-size:11px; color:#666; letter-spacing:3px;  
+  text-transform: uppercase; font-weight: 800; display: flex; align-items: center; gap: 15px;
 }  
 .section-title::after{  
-  content:""; 
-  flex-grow: 1; 
-  height: 1px; 
-  background: linear-gradient(90deg, rgba(255,255,255,0.1), transparent); 
-}  
-
-/* Equalizer Animation */
-.equalizer {
-  display: flex;
-  gap: 3px;
-  height: 12px;
-  align-items: flex-end;
+  content:""; flex-grow: 1; height: 2px; 
+  background: linear-gradient(90deg, var(--glass-border), transparent);
+  border-radius: 2px;
 }
-.bar {
-  width: 3px;
-  background: #ff004f;
-  border-radius: 3px 3px 0 0;
-  animation: eqPlay 1s infinite ease-in-out alternate;
-}
-.bar:nth-child(2) { animation-delay: -0.2s; background: #00f0ff; }
-.bar:nth-child(3) { animation-delay: -0.4s; background: #ff004f; }
-@keyframes eqPlay {
-  0% { height: 3px; }
-  100% { height: 12px; }
-}
+.equalizer { display: flex; gap: 3px; height: 14px; align-items: flex-end; }
+.bar { width: 3px; background: var(--primary-glow); animation: eqPlay 0.8s infinite ease-in-out alternate; }
+.bar:nth-child(2) { animation-delay: -0.2s; background: var(--secondary-glow); height: 10px;}
+.bar:nth-child(3) { animation-delay: -0.4s; background: var(--primary-glow); height: 8px;}
+@keyframes eqPlay { 0% { height: 4px; opacity: 0.7; } 100% { height: 14px; opacity: 1; } }
   
-/* --- PREMIUM GLASSMORPHISM BUTTONS --- */  
-.links-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-/* Default Link */
+/* --- OBSIDIAN GLASS BUTTONS --- */  
+.links-grid { display: flex; flex-direction: column; gap: 14px; }
 .link-btn{  
-  display:flex; 
-  align-items:center; 
-  justify-content:space-between; 
-  padding:16px 20px; 
-  border-radius:16px; 
-  text-decoration:none; 
-  color:#ffffff; 
-  background: rgba(255, 255, 255, 0.03);  
-  border: 1px solid rgba(255, 255, 255, 0.08);  
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  display:flex; align-items:center; justify-content:space-between; 
+  padding:18px 22px; border-radius:18px; text-decoration:none; color:#ffffff; 
+  /* Obsidian Glass Texture */
+  background: linear-gradient(145deg, rgba(20, 20, 25, 0.6), rgba(5, 5, 10, 0.8));
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.05), 0 5px 15px rgba(0,0,0,0.5);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative; overflow: hidden;
 }  
-
-.link-left {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  font-size:15px; 
-  font-weight:700;
-}
-.link-btn i.brand-icon {
-  font-size:24px; 
-  width:26px; 
-  text-align: center;
-  color: #dddddd; 
-  transition: all 0.3s ease;
-}  
-.link-btn i.arrow-icon {
-  font-size: 14px;
-  color: #666;
-  background: rgba(255,255,255,0.05);
-  width: 30px; height: 30px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.3s ease;
+/* Subtle Light Reflection overlay */
+.link-btn::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: 0.5s;
 }
 
-/* Hover Effects */
+.link-left { display: flex; align-items: center; gap: 16px; font-size:15px; font-weight:700; }
+.link-btn i.brand-icon { font-size:24px; width:26px; text-align: center; color: #aaa; transition: all 0.3s ease; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.5)); }  
+.link-btn i.arrow-icon { font-size: 14px; color: #555; transition: all 0.3s ease; }
+
+/* Premium Hover Effects */
 .link-btn:hover{  
-  background: rgba(255, 255, 255, 0.08);  
-  border-color: rgba(255, 255, 255, 0.2);  
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1), 0 15px 30px rgba(0,0,0,0.6), 0 0 20px rgba(0, 242, 255, 0.05);
 }  
-.link-btn:hover i.brand-icon {
-  transform: scale(1.1);
-}
-.link-btn:hover i.arrow-icon {
-  background: #ffffff;
-  color: #000;
-  transform: rotate(-45deg); 
-}
+.link-btn:hover::before { left: 100%; } /* Reflection moves across */
+.link-btn:hover i.brand-icon { transform: scale(1.1); color: #fff; filter: drop-shadow(0 0 8px currentColor); }
+.link-btn:hover i.arrow-icon { color: var(--primary-glow); transform: translateX(5px); }
 
-/* Brand Colors on Hover */
-.link-btn:hover .fa-spotify { color: #1DB954; }
-.link-btn:hover .fa-youtube { color: #FF0000; }
-.link-btn:hover .fa-apple { color: #ffffff; }
-.link-btn:hover .fa-instagram { color: #E1306C; }
-.link-btn:hover .fa-amazon { color: #FF9900; }
-.link-btn:hover .fa-soundcloud { color: #FF5500; }
-.link-btn:hover .fa-deezer { color: #EF5466; }
-.link-btn:hover .fa-twitter { color: #1DA1F2; }
-.link-btn:hover .fa-facebook-f { color: #1877F2; }
+/* Brand Specific Glows */
+.link-btn:hover .fa-spotify { color: #1DB954 !important; }
+.link-btn:hover .fa-youtube { color: #FF0000 !important; }
+.link-btn:hover .fa-apple { color: #ffffff !important; }
+.link-btn:hover .fa-instagram { color: #E1306C !important; }
+.link-btn:hover .fa-amazon { color: #FF9900 !important; }
+.link-btn:hover .fa-soundcloud { color: #FF5500 !important; }
+.link-btn:hover .fa-deezer { color: #EF5466 !important; }
+.link-btn:hover .fa-twitter { color: #1DA1F2 !important; }
+.link-btn:hover .fa-facebook-f { color: #1877F2 !important; }
   
 /* --- FOOTER --- */  
 .footer{  
-  margin-top:60px;  
-  font-size:12px; 
-  color:#666; 
-  letter-spacing:2px; 
-  text-align:center; 
-  padding:20px 0 40px;  
-  font-weight: 500;
-  text-transform: uppercase;
+  margin-top:70px; font-size:11px; color:#555; letter-spacing:2px; 
+  text-align:center; padding-bottom: 40px; font-weight: 600; text-transform: uppercase;
 }  
-.footer span {
-  color: #fff;
-  font-family: 'Orbitron', sans-serif;
-  letter-spacing: 3px;
-}
+.footer span { color: #888; font-family: 'Montserrat', sans-serif; font-weight: 800; letter-spacing: 3px; }
   
 /* --- RESPONSIVE --- */  
 @media(max-width:480px){  
-  h1{font-size:28px;}   
-  .hero img{width:105px;height:105px;}  
-  .link-btn{padding:14px 16px; border-radius: 14px;}
-  .link-left {font-size: 14px;}
+  h1{font-size:32px;} .hero img{width:115px;height:115px;}  
+  .link-btn{padding:16px 18px; border-radius: 16px;} .link-left {font-size: 14px;}
 }  
 </style>  
 </head>  
 <body>  
+
+<div class="bg-effects"></div>
+
 <div class="container">    
   
   <div class="hero">  
@@ -255,7 +206,7 @@ h1{
       <h1>GXNGSTA</h1>  
       <i class="fas fa-check-circle verified" title="Verified Artist"></i>
     </div>
-    <p class="tagline">Independent Hip-Hop Artist</p>    
+    <p class="tagline">International Hip-Hop Artist</p>    
   </div>
   
   <div class="section-title">
