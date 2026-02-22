@@ -277,7 +277,7 @@ h1{
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
     <a class="link-btn reveal-item magnetic-btn" href="https://youtube.com/@GxngstaOfficial" target="_blank">
-      <div class="link-left"><i class="fab fa-youtube brand-icon"></i> YouTube Music</div>
+      <div class="link-left"><i class="fab fa-youtube brand-icon"></i> YouTube</div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a> 
     <a class="link-btn reveal-item magnetic-btn" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank">
@@ -354,24 +354,28 @@ h1{
 </div>  
 
 <script>
-  // 1. GUARANTEED PRELOADER LOGIC
+  // 1. GUARANTEED PRELOADER LOGIC (Runs exactly 2 seconds even on direct open)
   document.addEventListener("DOMContentLoaded", () => {
+    // Lock scrolling while preloader is active
     document.body.style.overflow = 'hidden';
     
+    // Force the preloader to stay for 2 seconds
     setTimeout(() => {
       const preloader = document.getElementById('preloader');
       preloader.style.opacity = '0';
       
+      // Wait for fade out, then hide it completely and unlock scrolling
       setTimeout(() => {
         preloader.style.display = 'none';
-        document.body.style.overflow = 'auto'; 
+        document.body.style.overflow = 'auto'; // Unlock Scroll
         
+        // Trigger staggered reveal AFTER preloader is gone
         const items = document.querySelectorAll('.reveal-item');
         items.forEach((item, index) => {
           setTimeout(() => { item.classList.add('visible'); }, index * 80); 
         });
-      }, 800); 
-    }, 2000); 
+      }, 800); // This matches the 0.8s CSS transition time
+    }, 2000); // Exactly 2 seconds forced delay
   });
 
   // 2. 3D Magnetic Tilt & Mouse Spotlight Logic
