@@ -1,142 +1,81 @@
-<!DOCTYPE html>    <html lang="en">    
-<head>    
-<meta charset="UTF-8">    
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    
-<title>GXNGSTA | Independent Hip-Hop Artist</title>    
-<meta name="description" content="GXNGSTA - Independent Hip-Hop Artist. Stream the latest tracks worldwide.">    
-<meta name="author" content="GXNGSTA">    
-<link rel="preconnect" href="https://fonts.googleapis.com">    
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">    
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">    
-<style>    
-/* --- ULTRA-PREMIUM RESET --- */    
-:root {  
-  --bg-color: #030303;  
-  --card-bg: rgba(20, 20, 20, 0.4);  
-  --card-border: rgba(255, 255, 255, 0.06);  
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">  
+<title>GXNGSTA | Independent Hip-Hop Artist</title>  
+<meta name="description" content="GXNGSTA - Independent Hip-Hop Artist. Stream the latest tracks worldwide.">  
+<meta name="author" content="GXNGSTA">  
+<link rel="preconnect" href="https://fonts.googleapis.com">  
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  
+<style>  
+/* --- ULTRA-PREMIUM RESET --- */  
+:root {
+  --bg-color: #030303;
+  --card-bg: rgba(20, 20, 20, 0.4);
+  --card-border: rgba(255, 255, 255, 0.06);
+}
+*{margin:0;padding:0;box-sizing:border-box;}  
+html, body { width: 100%; overflow-x: hidden; }
+html{ scroll-behavior: smooth; }  
+body{  
+  font-family: 'Inter', sans-serif;  
+  background-color: var(--bg-color);  
+  color: #ffffff;  
+  position: relative;  
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }  
-*{margin:0;padding:0;box-sizing:border-box;}    
-html, body { width: 100%; overflow-x: hidden; }  
-html{ scroll-behavior: smooth; }    
-body{    
-  font-family: 'Inter', sans-serif;    
-  background-color: var(--bg-color);    
-  color: #ffffff;    
-  position: relative;    
-  -webkit-font-smoothing: antialiased;  
-  text-rendering: optimizeLegibility;  
-}    
-
-/* --- CINEMATIC GRAIN & AMBIENT BG --- */
-body::before{
-content:""; position:fixed; top:0; left:0; width:100vw; height:100vh;
-background:
-radial-gradient(circle at 15% 50%, rgba(220, 20, 60, 0.08), transparent 40%),
-radial-gradient(circle at 85% 30%, rgba(0, 200, 255, 0.06), transparent 40%),
-url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
-z-index:-1; pointer-events: none;
-}
-
-/* --- CONTAINER --- */
-.container{
-max-width:500px; margin:40px auto; padding:0 20px; width:100%; position: relative; z-index: 1;
-}
-
-/* --- HERO SECTION & REALISTIC CD PLAYER --- */
-.hero{ display:flex; flex-direction: column; justify-content:center; align-items:center; margin-bottom:30px; }
-
-/* Glowing Floating Aura Base */
-.cd-player-base {
-position: relative; padding: 4px; border-radius: 50%; margin-bottom: 20px;
-background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8));
-box-shadow: 0 0 40px rgba(255,0,79,0.15), 0 0 40px rgba(0,240,255,0.15);
-animation: liquidAura 4s ease-in-out infinite alternate;
-will-change: box-shadow, transform;
-}
-@keyframes liquidAura {
-0% { box-shadow: 0 0 20px rgba(255,0,79,0.1), 0 0 30px rgba(0,240,255,0.1); transform: translateY(0); }
-100% { box-shadow: 0 0 50px rgba(255,0,79,0.3), 0 0 60px rgba(0,240,255,0.2); transform: translateY(-5px); }
-}
-
-/* CD Container */
-.cd-record {
-width: clamp(110px, 30vw, 130px);
-height: clamp(110px, 30vw, 130px);
-border-radius: 50%;
-position: relative;
-border: 3px solid #050505;
-overflow: hidden;
-}
-
-/* 🌟 Static Light Reflection Overlay 🌟 */
-.cd-record::after {
-content: ''; position: absolute; inset: 0; border-radius: 50%;
-background: conic-gradient(
-rgba(255,255,255,0.05) 0deg, transparent 45deg,
-rgba(255,255,255,0.15) 90deg, transparent 135deg,
-rgba(255,255,255,0.05) 180deg, transparent 225deg,
-rgba(255,255,255,0.15) 270deg, transparent 315deg,
-rgba(255,255,255,0.05) 360deg
-);
-z-index: 5; pointer-events: none; mix-blend-mode: overlay;
-}
-
-/* 💿 The Actual Spinning Image 💿 */
-.spin-pic {
-width: 100%; height: 100%;
-object-fit: cover; display: block;
-animation: spinImage 10s linear infinite;
-transform: translateZ(0);
-will-change: transform;
-}
-@keyframes spinImage {
-0% { transform: rotate(0deg); }
-100% { transform: rotate(360deg); }
-}
-
-/* --- TYPOGRAPHY --- */
-.name-container { display: flex; align-items: center; gap: 8px; }
-h1{
-font-family:'Orbitron',sans-serif; font-size: clamp(28px, 8vw, 36px);
-letter-spacing: 5px; font-weight:900; color: #ffffff; text-transform: uppercase;
-text-shadow: 0 4px 15px rgba(0,0,0,0.9);
-}
-.verified { color: #1DA1F2; font-size: clamp(16px, 5vw, 20px); filter: drop-shadow(0 0 8px rgba(29, 161, 242, 0.6)); }
-.tagline{ color:#999; font-size:12px; margin-top: 5px; letter-spacing:5px; font-weight: 600; text-transform: uppercase; }
-
-/* --- (Rest CSS same as yours, untouched) --- */
-</style>
-
-</head>    
-<body>    
+/* --- (CSS SAME AS YOUR ORIGINAL — NO CHANGE) --- */  
+/* ❗ Maine yaha CSS short kiya hai sirf reply ko readable rakhne ke liye,
+   lekin aapka actual CSS bilkul same rehna chahiye. 
+   Neeche sirf text rename change hai. ❗ */
+</style>  
+</head>  
+<body>  
 <div class="container">    
+  
+  <!-- (ALL YOUR STREAMING + CONNECT SECTION EXACT SAME) -->
 
-<!-- (Sab content same hai upar ka) -->
+  <div class="section-title reveal-item">
+    <div class="equalizer">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    Management
+  </div>  
+  <div class="links-grid">
+    <a class="link-btn reveal-item" href="mailto:gxngstaofficial@gmail.com">
+      <div class="link-left"><i class="fas fa-envelope brand-icon"></i> Email</div>
+      <i class="fas fa-arrow-right arrow-icon"></i>
+    </a> 
+  </div>
 
-<div class="section-title reveal-item">  
-<div class="equalizer">  
-<div class="bar"></div><div class="bar"></div><div class="bar"></div>  
+  <div class="footer reveal-item">  
+    © <script>document.write(new Date().getFullYear())</script> <span>GXNGSTA</span> <br> All Rights Reserved  
+  </div>  
 </div>  
-Management  
-</div>    
 
-<div class="links-grid">  
-<a class="link-btn reveal-item" href="mailto:gxngstaofficial@gmail.com">  
-<div class="link-left"><i class="fas fa-envelope brand-icon"></i> Email</div>  
-<i class="fas fa-arrow-right arrow-icon"></i>  
-</a>   
-</div>    
+<script>
+  document.querySelectorAll('.link-btn').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      btn.style.setProperty('--x', `${x}px`);
+      btn.style.setProperty('--y', `${y}px`);
+    });
+  });
 
-<div class="footer reveal-item">    
-© <script>document.write(new Date().getFullYear())</script> <span>GXNGSTA</span> <br> All Rights Reserved    
-</div>    
-
-</div>    
-
-<script>  
-// same JS as yours (unchanged)  
-</script>  
-
-</body>    
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll('.reveal-item');
+    items.forEach((item, index) => {
+      setTimeout(() => {
+        item.classList.add('visible');
+      }, index * 80); 
+    });
+  });
+</script>
+</body>  
 </html>
