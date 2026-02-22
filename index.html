@@ -11,12 +11,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  
 <style>  
-/* --- PREMIUM MINIMAL RESET --- */  
+/* --- PREMIUM STUDIO RESET --- */  
 *{margin:0;padding:0;box-sizing:border-box;}  
 html, body {
   max-width: 100%; 
   overflow-x: hidden; 
-  background-color: #030303; /* Studio Pitch Black */
+  background-color: #020202; /* Pure Pitch Black */
 }
 body{  
   font-family:'Inter',sans-serif;  
@@ -27,10 +27,11 @@ body{
   display: flex; justify-content: center;
 }  
 
-/* --- STUDIO AMBIENCE (Ultra Subtle) --- */
+/* --- CINEMATIC STUDIO LIGHTING --- */
 body::before {
   content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(circle at 50% 0%, rgba(50, 50, 50, 0.15), transparent 60%);
+  background: radial-gradient(circle at 50% -10%, rgba(180, 10, 20, 0.12), transparent 50%),
+              radial-gradient(circle at 50% 110%, rgba(255, 255, 255, 0.03), transparent 50%);
   z-index: -1; pointer-events: none;
 }
 
@@ -42,175 +43,126 @@ body::before {
 }  
 @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-/* --- REALISTIC CD / VINYL PLAYER EFFECT --- */  
-.hero{ display:flex; flex-direction: column; align-items:center; margin-bottom:40px; }  
+/* --- HERO & SPINNING PROFILE (NO HOLE) --- */  
+.hero{ display:flex; flex-direction: column; align-items:center; margin-bottom:35px; }  
 
-.cd-player {
-  position: relative;
-  width: 135px;
-  height: 135px;
-  margin-bottom: 25px;
-  border-radius: 50%;
-  padding: 4px;
-  /* Outer rim of the CD player/case */
-  background: linear-gradient(145deg, #1a1a1a, #000000);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.9), inset 0 1px 2px rgba(255,255,255,0.1);
+.profile-wrapper {
+  position: relative; 
+  padding: 4px; 
+  border-radius: 50%; 
+  margin-bottom: 20px;
+  background: linear-gradient(145deg, #333, #050505);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.9), 0 0 30px rgba(180, 10, 20, 0.15);
 }
 
-.cd-record {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: #111;
-  /* The continuous spinning animation */
-  animation: spinRecord 8s linear infinite;
-  box-shadow: inset 0 0 15px rgba(0,0,0,1);
-}
-
-/* The actual image on the CD */
-.cd-record img {
-  width: 100%;
-  height: 100%;
+.spin-pic {
+  width: 135px; 
+  height: 135px; 
+  border-radius: 50%; 
   object-fit: cover;
-  filter: contrast(1.1) brightness(0.9);
+  border: 3px solid #0a0a0a;
+  display: block;
+  /* Smooth continuous spinning */
+  animation: spinRecord 12s linear infinite;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
 }
-
-/* CD Center Hole */
-.cd-record::after {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 24px; height: 24px;
-  background: #030303; /* Matches page background to look like a hole */
-  border-radius: 50%;
-  border: 2px solid #222;
-  box-shadow: inset 0 3px 6px rgba(0,0,0,0.9), 0 0 5px rgba(0,0,0,0.8);
-  z-index: 10;
-}
-
-/* CD Light Reflection Overlay (The Shiny Grooves) */
-.cd-record::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: conic-gradient(
-    rgba(255,255,255,0.05) 0deg,
-    transparent 45deg,
-    rgba(255,255,255,0.15) 90deg,
-    transparent 135deg,
-    rgba(255,255,255,0.05) 180deg,
-    transparent 225deg,
-    rgba(255,255,255,0.15) 270deg,
-    transparent 315deg,
-    rgba(255,255,255,0.05) 360deg
-  );
-  z-index: 5;
-  pointer-events: none;
-  mix-blend-mode: overlay;
-}
-
-@keyframes spinRecord {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+@keyframes spinRecord { 100% { transform: rotate(360deg); } }
   
-/* --- TYPOGRAPHY (CHROME / METAL) --- */  
+/* --- TYPOGRAPHY (HEAVY CHROME) --- */  
 .name-container { display: flex; align-items: center; justify-content: center; gap: 8px; }
 h1{  
-  font-family:'Orbitron', sans-serif; font-size: 40px; letter-spacing: 6px; font-weight: 900; 
+  font-family:'Orbitron', sans-serif; font-size: 40px; letter-spacing: 5px; font-weight: 900; 
   text-transform: uppercase; margin: 0; color: #fff;
-  background: linear-gradient(to bottom, #ffffff 0%, #b0b0b0 50%, #707070 51%, #e0e0e0 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #999999 70%, #555555 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8));
+  filter: drop-shadow(0 4px 15px rgba(0,0,0,1));
 }  
 .verified { 
-  color: #1DA1F2; font-size: 20px; 
-  filter: drop-shadow(0 0 5px rgba(29, 161, 242, 0.4)); 
+  color: #1DA1F2; font-size: 18px; 
+  filter: drop-shadow(0 0 8px rgba(29, 161, 242, 0.5)); 
 }
 .tagline{  
-  color:#777; font-size:12px; margin-top: 10px; letter-spacing:5px; font-weight: 600; 
+  color:#777; font-size:12px; margin-top: 8px; letter-spacing:5px; font-weight: 600; 
   text-transform: uppercase; text-align: center;
 }  
 
-/* --- SECTION TITLES --- */  
+/* --- SECTION TITLES WITH EQUALIZERS --- */  
 .section-title{  
-  margin:35px 0 15px; font-size:11px; color:#555; letter-spacing:4px; 
-  text-transform: uppercase; font-weight: 700; display: flex; align-items: center; gap: 12px;
+  margin:35px 0 15px; font-size:11px; color:#666; letter-spacing:4px; 
+  text-transform: uppercase; font-weight: 800; display: flex; align-items: center; gap: 12px;
 }  
-.section-title::after{ content:""; flex-grow: 1; height: 1px; background: rgba(255,255,255,0.05); }
+.section-title::after{ content:""; flex-grow: 1; height: 1px; background: rgba(255,255,255,0.08); }
 
-/* Streaming Equalizer */
+/* Universal Equalizer Animation */
 .equalizer { display: flex; gap: 3px; height: 12px; align-items: flex-end; }
-.bar { width: 3px; background: #666; animation: eqPlay 0.8s infinite ease-in-out alternate; }
-.bar:nth-child(2) { animation-delay: -0.2s; height: 8px; }
+.bar { width: 3px; background: #888; animation: eqPlay 0.7s infinite ease-in-out alternate; border-radius: 1px 1px 0 0;}
+.bar:nth-child(2) { animation-delay: -0.2s; height: 8px; background: #fff;}
 .bar:nth-child(3) { animation-delay: -0.4s; height: 6px; }
 @keyframes eqPlay { 0% { height: 4px; } 100% { height: 12px; } }
   
-/* --- MATTE BLACK STUDIO BUTTONS --- */  
+/* --- ULTRA-PREMIUM GLASS EDGE BUTTONS --- */  
 .links-grid { display: flex; flex-direction: column; gap: 12px; width: 100%; }
 .link-btn{  
   display:flex; align-items:center; justify-content:space-between; 
-  padding:18px 20px; border-radius:14px; text-decoration:none; color:#ffffff; 
-  background: linear-gradient(180deg, #181818, #0a0a0a); 
-  border: 1px solid #222;
-  box-shadow: inset 0 1px 1px rgba(255,255,255,0.03), 0 5px 15px rgba(0,0,0,0.6);
+  padding:16px 20px; border-radius:14px; text-decoration:none; color:#ffffff; 
+  background: linear-gradient(180deg, rgba(25,25,25,0.8), rgba(10,10,10,0.9)); 
+  border: 1px solid rgba(255,255,255,0.03);
+  border-top: 1px solid rgba(255,255,255,0.1); /* Glass highlight on top edge */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); width: 100%;
 }  
-.link-left { display: flex; align-items: center; gap: 16px; font-size:14px; font-weight:600; color: #ccc;}
-.link-btn i.brand-icon { font-size:22px; width:24px; text-align: center; color: #777; transition: all 0.3s ease; }  
+.link-left { display: flex; align-items: center; gap: 16px; font-size:14px; font-weight:600; color: #ddd;}
+.link-btn i.brand-icon { font-size:20px; width:24px; text-align: center; color: #666; transition: all 0.3s ease; }  
 .link-btn i.arrow-icon { font-size: 13px; color: #444; transition: all 0.3s ease; }
 
 /* Premium Hover States */
 .link-btn:hover { 
-  background: linear-gradient(180deg, #222, #111);
-  border-color: #333; 
+  background: linear-gradient(180deg, rgba(35,35,35,0.9), rgba(15,15,15,1));
+  border-top: 1px solid rgba(255,255,255,0.2);
   transform: translateY(-3px);
-  box-shadow: inset 0 1px 1px rgba(255,255,255,0.05), 0 10px 20px rgba(0,0,0,0.8);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.8);
 }
 .link-btn:hover .link-left { color: #fff; }
-.link-btn:hover i.brand-icon { transform: scale(1.1); filter: drop-shadow(0 0 8px currentColor); }
-.link-btn:hover i.arrow-icon { color: #888; transform: translateX(5px); }
+.link-btn:hover i.brand-icon { transform: scale(1.1); filter: drop-shadow(0 0 10px currentColor); }
+.link-btn:hover i.arrow-icon { color: #aaa; transform: translateX(5px); }
 
 /* Brand Colors on Hover */
 .link-btn:hover .fa-spotify { color: #1DB954; }
 .link-btn:hover .fa-youtube { color: #FF0000; }
 .link-btn:hover .fa-apple { color: #ffffff; }
 .link-btn:hover .fa-amazon { color: #FF9900; }
-.link-btn:hover .fa-music { color: #2BC5B4; } /* JioSaavn approx */
+.link-btn:hover .fa-music { color: #2BC5B4; }
 .link-btn:hover .fa-deezer { color: #EF5466; }
-.link-btn:hover .fa-wave-square { color: #ffffff; } /* TIDAL */
-.link-btn:hover .fa-play { color: #FFA200; } /* Audiomack/Boomplay approx */
+.link-btn:hover .fa-wave-square { color: #ffffff; }
+.link-btn:hover .fa-play { color: #FFA200; }
 .link-btn:hover .fa-soundcloud { color: #FF5500; }
-.link-btn:hover .fa-bolt { color: #0088FF; } /* Shazam approx */
+.link-btn:hover .fa-bolt { color: #0088FF; }
 .link-btn:hover .fa-instagram { color: #E1306C; }
 .link-btn:hover .fa-twitter { color: #1DA1F2; }
 .link-btn:hover .fa-facebook-f { color: #1877F2; }
+.link-btn:hover .fa-envelope { color: #ffffff; }
 
 /* Footer */  
 .footer{ 
   margin-top:50px; font-size:10px; color:#444; letter-spacing:2px; 
   text-align:center; padding-bottom: 30px; font-weight: 600; text-transform: uppercase; 
 }  
-.footer span { color: #666; font-family: 'Orbitron', sans-serif; letter-spacing: 3px;}
+.footer span { color: #777; font-family: 'Orbitron', sans-serif; letter-spacing: 3px;}
   
-/* --- 📱 MOBILE OPTIMIZATIONS --- */  
+/* --- 📱 STRICT MOBILE OPTIMIZATIONS --- */  
 @media(max-width:480px){  
   .container { margin: 30px auto; padding: 0 18px; }
-  .hero { margin-bottom: 30px; }
-  .cd-player { width: 120px; height: 120px; } /* Slightly smaller for mobile */
-  .cd-record::after { width: 20px; height: 20px; }
+  .hero { margin-bottom: 25px; }
+  .spin-pic { width: 115px; height: 115px; } 
   
-  h1 { font-size: 34px; letter-spacing: 4px; } 
+  h1 { font-size: 32px; letter-spacing: 4px; } 
   .tagline { font-size: 11px; letter-spacing: 4px; }
+  
   .section-title { margin: 25px 0 12px; }
   
   .link-btn { padding: 16px 18px; border-radius: 12px; } 
   .link-left { font-size: 13px; gap: 14px; }
-  .link-btn i.brand-icon { font-size: 20px; width: 20px; }
+  .link-btn i.brand-icon { font-size: 18px; width: 20px; }
 }  
 </style>  
 </head>  
@@ -219,10 +171,8 @@ h1{
 <div class="container">    
   
   <div class="hero">  
-    <div class="cd-player">
-      <div class="cd-record">
-        <img src="profile.jpg" alt="GXNGSTA">  
-      </div>
+    <div class="profile-wrapper">
+      <img src="profile.jpg" alt="GXNGSTA" class="spin-pic">  
     </div>
     
     <div class="name-container">
@@ -282,7 +232,12 @@ h1{
     </a>  
   </div>
 
-  <div class="section-title">Connect</div>  
+  <div class="section-title">
+    <div class="equalizer">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    Connect
+  </div>  
   <div class="links-grid">
     <a class="link-btn" href="https://www.instagram.com/gxngstaofficial" target="_blank">
       <div class="link-left"><i class="fab fa-instagram brand-icon"></i> Instagram</div>
@@ -302,7 +257,12 @@ h1{
     </a>  
   </div>
 
-  <div class="section-title">Management</div>  
+  <div class="section-title">
+    <div class="equalizer">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    Management
+  </div>  
   <div class="links-grid">
     <a class="link-btn" href="mailto:gxngstaofficial@gmail.com">
       <div class="link-left"><i class="fas fa-envelope brand-icon"></i> Email</div>
