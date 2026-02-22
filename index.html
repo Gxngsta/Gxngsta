@@ -51,21 +51,12 @@ body{ font-family: 'Inter', sans-serif; background-color: var(--bg-color); color
 body::before{ content:""; position:fixed; top:0; left:0; width:100vw; height:100vh; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E"); z-index:-1; pointer-events: none; }  
 
 /* --- 🌟 PRELOADER (WITH ULTIMATE CSS FAILSAFE) 🌟 --- */
-#preloader { 
-  position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; 
-  background: var(--bg-color); z-index: 999999; 
-  display: flex; justify-content: center; align-items: center; 
-  transition: opacity 1s ease-in-out; will-change: opacity; 
-  /* 🛡️ CSS FAILSAFE: Kills preloader after 3 seconds automatically if JS fails */
-  animation: forceHideLoader 0.5s ease 3s forwards; 
-}
+#preloader { position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background: var(--bg-color); z-index: 999999; display: flex; justify-content: center; align-items: center; transition: opacity 1s ease-in-out; will-change: opacity; animation: forceHideLoader 0.5s ease 3s forwards; }
 @keyframes forceHideLoader { to { opacity: 0; visibility: hidden; z-index: -999; pointer-events: none; } }
-
 .preloader-avatar { position: relative; padding: 4px; border-radius: 50%; background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8)); box-shadow: 0 0 40px rgba(255,0,79,0.2), 0 0 40px rgba(0,240,255,0.2); transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out; }
 .preloader-cd { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #050505; overflow: hidden; position: relative; }
 .preloader-cd img { width: 100%; height: 100%; object-fit: cover; display: block; animation: spinImage 4s linear infinite; }
 .preloader-cd::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(rgba(255,255,255,0.05) 0deg, transparent 45deg, rgba(255,255,255,0.15) 90deg, transparent 135deg, rgba(255,255,255,0.05) 180deg, transparent 225deg, rgba(255,255,255,0.15) 270deg, transparent 315deg, rgba(255,255,255,0.05) 360deg); z-index: 5; pointer-events: none; mix-blend-mode: overlay; }
-
 #preloader.hide-anim { opacity: 0; pointer-events: none; }
 #preloader.hide-anim .preloader-avatar { transform: scale(0.85); opacity: 0; }
   
@@ -102,7 +93,7 @@ h1 {
 .bar:nth-child(2) { animation-delay: -0.2s; } .bar:nth-child(3) { animation-delay: -0.4s; }
 @keyframes eqPlay { 0% { transform: scaleY(0.2); } 100% { transform: scaleY(1); } }
 
-/* --- BUTTONS & 📱 EXACT PLAY STORE ICONS 📱 --- */  
+/* --- BUTTONS --- */  
 .links-grid { display: flex; flex-direction: column; gap: 14px; perspective: 1000px; }
 .link-btn{ display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-radius:16px; text-decoration:none; color:#ffffff; background: var(--card-bg); border: 1px solid var(--card-border); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: relative; overflow: hidden; transition: transform 0.1s ease, box-shadow 0.3s ease; transform-style: preserve-3d; will-change: transform; }  
 .link-btn::before { content: ""; position: absolute; top: var(--y, 50%); left: var(--x, 50%); transform: translate(-50%, -50%); width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s ease; pointer-events: none; z-index: 0; }
@@ -115,14 +106,21 @@ h1 {
 
 .link-left { display: flex; align-items: center; gap: 16px; font-size:15px; font-weight:700; z-index: 2; transform: translateZ(20px); }
 
-/* 🔥 APP ICON STYLING 🔥 */
+/* 🔥 REAL PLAY STORE APP ICON STYLING 🔥 */
 .app-icon {
-  width: 36px; height: 36px; border-radius: 8px; 
-  display: flex; align-items: center; justify-content: center; font-size: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease; flex-shrink: 0;
+  width: 36px; height: 36px; 
+  /* This creates the exact squarcle shape of iOS/Android icons */
+  border-radius: 9px; 
+  display: flex; align-items: center; justify-content: center; 
+  /* Slightly smaller font to fit inside the white box nicely */
+  font-size: 22px;
+  /* Soft drop shadow for 3D realism */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  flex-shrink: 0;
+  overflow: hidden; /* Keeps gradients inside the squarcle */
 }
-.link-btn:hover .app-icon { transform: scale(1.1) translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.4); }
+.link-btn:hover .app-icon { transform: scale(1.1) translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.6); }
 
 .link-btn i.arrow-icon { font-size: 14px; color: #555; background: rgba(255,255,255,0.03); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease; }
 .link-btn:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.6); }  
@@ -135,22 +133,14 @@ h1 {
 @media(max-width:480px){ .container{ padding:0 15px; margin: 25px auto;} .link-btn{padding:14px 18px; border-radius: 14px;} .link-left {font-size: 14px;} .app-icon{width: 32px; height: 32px; font-size: 18px;} .hero { margin-bottom: 25px; } }  
 
 /* --- 🌊 SUPER SMOOTH PARALLAX ENTRANCE 🌊 --- */
-.reveal-item { 
-  opacity: 0; 
-  transform: translate3d(0, 20px, 0); 
-  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1); 
-  will-change: opacity, transform; 
-  
-  /* 🛡️ CSS FAILSAFE: Forces items to show after 3.2s even if JS crashes */
-  animation: forceShowItems 0.5s ease 3.2s forwards;
-}
+.reveal-item { opacity: 0; transform: translate3d(0, 20px, 0); transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1); will-change: opacity, transform; animation: forceShowItems 0.5s ease 3.2s forwards; }
 @keyframes forceShowItems { to { opacity: 1; transform: translate3d(0, 0, 0); } }
-
 .reveal-item.visible { opacity: 1; transform: translate3d(0, 0, 0); }
 noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { display: none; }
 
-/* 🎵 PERFECT JIOSAAVN SVG 🎵 */
-.jiosaavn-svg { width: 60%; height: auto; display: block; }
+/* 🎵 PERFECT CUSTOM SVG SIZES 🎵 */
+.jiosaavn-svg { width: 75%; height: auto; display: block; }
+.amazon-svg { width: 85%; height: auto; display: block; margin-top: 4px; }
 </style>  
 </head>  
 <body>  
@@ -189,19 +179,19 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
 
   <div class="links-grid">
     
-    <a class="link-btn reveal-item magnetic-btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank" style="--brand-color: #1DB954;" aria-label="Listen on Spotify">
+    <a class="link-btn reveal-item magnetic-btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank" style="--brand-color: #1ED760;" aria-label="Listen on Spotify">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #1ED760; color: #000;"><i class="fab fa-spotify"></i></div>
+        <div class="app-icon" style="background: #191414; color: #1ED760;"><i class="fab fa-spotify"></i></div>
         Spotify
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #ff2d55;" aria-label="Listen on Apple Music">
+    <a class="link-btn reveal-item magnetic-btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #fa243c;" aria-label="Listen on Apple Music">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #fa243c, #f51d4e); color: #fff;"><i class="fab fa-apple"></i></div>
+        <div class="app-icon" style="background: #ffffff; color: #fa243c;"><i class="fab fa-apple"></i></div>
         Apple Music
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
@@ -210,7 +200,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     <a class="link-btn reveal-item magnetic-btn" href="https://youtube.com/@GxngstaOfficial" target="_blank" style="--brand-color: #FF0000;" aria-label="Watch on YouTube">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #fff; color: #FF0000;"><i class="fab fa-youtube"></i></div>
+        <div class="app-icon" style="background: #ffffff; color: #FF0000;"><i class="fab fa-youtube"></i></div>
         YouTube
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
@@ -219,16 +209,16 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     <a class="link-btn reveal-item magnetic-btn" href="https://music.youtube.com/channel/UCDYkzqzuppjtsfV4RatUqaA?si=jmzacLufpzK7ECmH" target="_blank" style="--brand-color: #FF0000;" aria-label="Listen on YouTube Music">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #030303; color: #FF0000; border: 1px solid #333;"><i class="fab fa-youtube"></i></div>
+        <div class="app-icon" style="background: #ffffff; color: #FF0000;"><i class="fab fa-youtube"></i></div>
         YouTube Music
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank" style="--brand-color: #FF9900;" aria-label="Listen on Amazon Music">
+    <a class="link-btn reveal-item magnetic-btn" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank" style="--brand-color: #00A8E1;" aria-label="Listen on Amazon Music">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #00A8E1, #007CA6); color: #fff;"><i class="fab fa-amazon"></i></div>
+        <div class="app-icon" style="background: #ffffff; color: #00A8E1;"><i class="fab fa-amazon"></i></div>
         Amazon Music
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
@@ -237,9 +227,9 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     <a class="link-btn reveal-item magnetic-btn" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank" style="--brand-color: #11c290;" aria-label="Listen on JioSaavn">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #11c290; color: #fff;">
+        <div class="app-icon" style="background: #ffffff; color: #11c290;">
             <svg class="jiosaavn-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-               <path d="M11.665 6.925c.042.074.125.116.208.116.085 0 .168-.042.211-.116l3.017-5.355 1.073 1.906-2.697 4.787c-.084.149-.034.339.114.426l.001.001c.148.083.337.031.421-.116l3.215-5.703c.087-.152.034-.344-.118-.428-.046-.026-.097-.038-.148-.038l-.002.001c-.105 0-.204.056-.257.146l-1.348-2.394c-.085-.151-.034-.344.117-.428.15-.082.34-.031.423.117l1.619 2.875c.086.151.035.343-.116.428-.046.025-.097.037-.148.037l-.003.001c-.104 0-.202-.055-.255-.145l-2.369-4.209c-.085-.151-.034-.343.117-.428.15-.083.34-.031.423.116l2.641 4.693c.086.15.035.341-.116.427-.046.025-.097.037-.148.037l-.003.001c-.104 0-.202-.054-.254-.144l-1.828-3.248c-.085-.151-.033-.343.118-.427.15-.084.34-.032.422.116l2.093 3.72c.085.15.034.341-.117.427-.046.025-.097.037-.148.037l-.003.001c-.104 0-.202-.054-.255-.144l-1.285-2.282c-.086-.15-.034-.341.117-.427.15-.083.341-.032.423.116l1.554 2.76c.086.15.034.341-.117.427-.047.025-.098.037-.149.037l-.002.001c-.104 0-.202-.054-.255-.144l-1.785-3.169c-.085-.15-.034-.341.117-.427.15-.083.34-.032.423.116l1.965 3.491c.085.15.033.341-.118.427-.046.025-.097.037-.148.037l-.003.001c-.104 0-.201-.054-.255-.144l-1.517-2.692c-.085-.15-.034-.341.117-.427.15-.083.34-.031.423.116l1.785 3.17c.086.151.035.342-.116.427-.046.025-.097.037-.148.037l-.003.001c-.104 0-.202-.054-.255-.144l-1.786-3.169c-.085-.151-.034-.342.117-.427.151-.083.341-.032.423.116l2.093 3.718c.086.15.035.341-.116.427-.047.025-.098.037-.149.037l-.002.001c-.104 0-.202-.054-.255-.144l-2.369-4.208c-.085-.15-.034-.341.117-.427.15-.083.34-.031.423.116l2.641 4.69c.086.15.035.341-.116.427-.047.025-.098.037-.149.037l-.002.001c-.104 0-.202-.054-.255-.144l-2.87-5.097c-.086-.15-.034-.341.117-.427.15-.083.34-.031.423.116l3.113 5.53c.086.15.035.341-.116.427-.047.025-.098.037-.149.037l-.002.001c-.104 0-.202-.054-.255-.144l-3.331-5.918c-.086-.15-.034-.341.117-.427.15-.083.341-.031.423.116l3.612 6.418c.086.15.035.341-.116.427-.047.025-.098.037-.149.037l-.002.001c-.104 0-.202-.054-.255-.144l-3.793-6.739c-.085-.15-.033-.341.117-.427.151-.083.341-.031.423.116l4.064 7.22c.086.15.035.341-.116.427-.047.025-.098.037-.149.037l-.002.001c-.104 0-.202-.054-.255-.144l-4.256-7.562c-.086-.15-.034-.341.117-.427.15-.083.341-.031.423.116l4.517 8.026c.086.15.035.341-.116.427-.047.025-.098.037-.149.037l-.002.001c-.104 0-.202-.054-.255-.144l-4.678-8.311c-.086-.151-.034-.342.117-.427.15-.083.34-.031.423.116l4.929 8.758c.086.15.035.341-.116.427-.046.025-.097.037-.148.037l-.003.001c-.104 0-.202-.054-.255-.144l-4.86-8.636c-.086-.15-.034-.341.117-.427.15-.083.34-.031.423.116l4.754 8.446c.086.151.035.342-.116.427-.046.025-.097.037-.148.037l-.003.001c-.104 0-.202-.054-.255-.144l-4.399-7.815c-.085-.151-.034-.342.117-.427.15-.083.34-.031.423.116l4.307 7.65c.086.151.035.342-.116.427-.046.025-.097.037-.148.037l-.003.001c-.104 0-.202-.054-.255-.144l-3.982-7.076c-.086-.15-.034-.341.117-.427.15-.083.34-.031.423.116l3.868 6.871c.086.15.035.341-.116.427-.046.025-.097.037-.148.037l-.003.001c-.104 0-.202-.054-.255-.144l-3.565-6.334c-.086-.15-.034-.341.117-.427.15-.083.34-.031.423.116l3.437 6.105c.086.15.035.341-.116.427-.046.025-.097.037-.148.037l-.003.001c-.104 0-.201-.054-.255-.144l-3.135-5.57c-.085-.15-.033-.341.118-.427.15-.084.34-.031.422.116l3.019 5.362c.086.15.035.341-.116.427-.046.025-.097.037-.148.037l-.003.001c-.104 0-.202-.054-.255-.144l-2.704-4.805c-.086-.15-.034-.341.117-.427.15-.083.341-.031.423.116l2.602 4.621c.086.15.034.341-.116.427-.047.025-.098.037-.149.037l-.002.001c-.104 0-.202-.054-.255-.144l-2.272-4.038c-.086-.151-.034-.342.117-.427.151-.083.341-.032.423.116l2.184 3.879c.086.15.035.341-.116.427-.047.025-.098.037-.149.037l-.002.001c-.104 0-.202-.054-.255-.144l-1.84-3.271c-.086-.15-.034-.341.117-.427.15-.083.341-.031.423.116l1.765 3.137c.086.15.034.341-.116.427-.046.025-.097.037-.148.037l-.003.001c-.104 0-.202-.054-.255-.144l-1.408-2.503c-.085-.151-.034-.342.117-.427.15-.083.34-.031.423.116l1.348 2.394c.085.151.035.342-.116.427-.046.025-.098.037-.148.037l-.003.001c-.104 0-.202-.054-.255-.144l-.976-1.734c-.086-.15-.034-.341.117-.427.15-.083.34-.031.423.116l.928 1.649c.086.151.035.342-.116.427-.046.025-.097.037-.148.037l-.003.001c-.104 0-.202-.054-.255-.144l-.544-.966c-.086-.151-.034-.342.117-.427.15-.083.34-.031.423.116l.509.904c.086.15.035.341-.116.427-.046.025-.097.037-.148.037l-.003.001c-.104 0-.202-.054-.255-.144l-.111-.198c-.086-.151-.034-.342.117-.427.15-.083.341-.032.423.116l.111.197c.086.151.035.342-.116.427-.046.025-.098.037-.149.037l-.003.001z"/>
+               <path d="M12.001 2.5c1.884 5.378 1.956 12.015 0 19-1.955-6.985-1.884-13.622 0-19zM6.924 4.544c1.865 4.704.597 11.238-3.411 15.688 3.738-5.32 4.721-11.26 3.411-15.688zM17.078 4.544c-1.865 4.704-.597 11.238 3.411 15.688-3.738-5.32-4.721-11.26-3.411-15.688z"/>
             </svg>
         </div>
         JioSaavn
@@ -247,19 +237,19 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://www.deezer.com/us/artist/304158961" target="_blank" style="--brand-color: #EF5466;" aria-label="Listen on Deezer">
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.deezer.com/us/artist/304158961" target="_blank" style="--brand-color: #A238FF;" aria-label="Listen on Deezer">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #A238FF, #E7127D); color: #fff;"><i class="fab fa-deezer"></i></div>
+        <div class="app-icon" style="background: #121216; background-image: linear-gradient(135deg, #A238FF, #E7127D); -webkit-background-clip: text; color: transparent;"><i class="fab fa-deezer" style="color:#fff;"></i></div>
         Deezer
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://tidal.com/artist/54713043" target="_blank" style="--brand-color: #00FFFF;" aria-label="Listen on TIDAL">
+    <a class="link-btn reveal-item magnetic-btn" href="https://tidal.com/artist/54713043" target="_blank" style="--brand-color: #ffffff;" aria-label="Listen on TIDAL">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #000; color: #fff; border: 1px solid #333;"><i class="fas fa-wave-square"></i></div>
+        <div class="app-icon" style="background: #000000; color: #ffffff; border: 1px solid #333;"><i class="fas fa-wave-square"></i></div>
         TIDAL
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
@@ -268,7 +258,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     <a class="link-btn reveal-item magnetic-btn" href="https://audiomack.com/GxngstaOfficial" target="_blank" style="--brand-color: #FFA200;" aria-label="Listen on Audiomack">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #FFA200; color: #000;"><i class="fas fa-play"></i></div>
+        <div class="app-icon" style="background: #FFA200; color: #000000;"><i class="fas fa-play"></i></div>
         Audiomack
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
@@ -277,7 +267,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     <a class="link-btn reveal-item magnetic-btn" href="https://m.soundcloud.com/gangsta-769519727" target="_blank" style="--brand-color: #FF5500;" aria-label="Listen on SoundCloud">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #FF7700, #FF3300); color: #fff;"><i class="fab fa-soundcloud"></i></div>
+        <div class="app-icon" style="background: #ffffff; color: #FF5500;"><i class="fab fa-soundcloud"></i></div>
         SoundCloud
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
@@ -286,7 +276,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     <a class="link-btn reveal-item magnetic-btn" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #0088FF;" aria-label="Find on Shazam">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #0088FF, #0055FF); color: #fff;"><i class="fab fa-shazam"></i></div>
+        <div class="app-icon" style="background: #ffffff; color: #0088FF;"><i class="fab fa-shazam"></i></div>
         Shazam
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
@@ -295,7 +285,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     <a class="link-btn reveal-item magnetic-btn" href="https://www.boomplay.com/share/artist/106853408?srModel=byWH&srList=ANDROID" target="_blank" style="--brand-color: #00E5FF;" aria-label="Listen on Boomplay">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #0044FF, #00E5FF); color: #fff;"><i class="fab fa-play"></i></div>
+        <div class="app-icon" style="background: #ffffff; color: #0044FF;"><i class="fas fa-play"></i></div>
         Boomplay
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
@@ -321,133 +311,4 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     <a class="link-btn reveal-item magnetic-btn" href="https://x.com/GxngstaOfficial" target="_blank" style="--brand-color: #ffffff;" aria-label="Follow on X (Twitter)">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #000; color: #fff; border: 1px solid #333;"><i class="fab fa-twitter"></i></div>
-        X (Twitter)
-      </div>
-      <i class="fas fa-arrow-right arrow-icon"></i>
-    </a>  
-    
-    <a class="link-btn reveal-item magnetic-btn" href="https://www.facebook.com/profile.php?id=61573079602732" target="_blank" style="--brand-color: #1877F2;" aria-label="Follow on Facebook">
-      <div class="glass-sweep"></div>
-      <div class="link-left">
-        <div class="app-icon" style="background: #1877F2; color: #fff;"><i class="fab fa-facebook-f"></i></div>
-        Facebook
-      </div>
-      <i class="fas fa-arrow-right arrow-icon"></i>
-    </a>  
-  </div>
-
-  <div class="section-title reveal-item">
-    <div class="equalizer">
-      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-    </div>
-    Management
-  </div>  
-  <div class="links-grid">
-    <a class="link-btn reveal-item magnetic-btn" href="mailto:gxngstaofficial@gmail.com" style="--brand-color: #00f0ff;" aria-label="Email Management">
-      <div class="glass-sweep"></div>
-      <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #2c3e50, #3498db); color: #fff;"><i class="fas fa-envelope"></i></div>
-        Email
-      </div>
-      <i class="fas fa-arrow-right arrow-icon"></i>
-    </a> 
-  </div>
-
-  <div class="footer reveal-item">  
-    © <script>document.write(new Date().getFullYear())</script> <span>GXNGSTA</span> <br> All Rights Reserved  
-  </div>  
-</div>  
-
-<script>
-  // 🛡️ 1. UNBREAKABLE NATIVE JS (No AddEventListeners for Loading) 🛡️
-  (function() {
-    var preloader = document.getElementById('preloader');
-    var items = document.querySelectorAll('.reveal-item');
-    var isLoaded = false;
-
-    function killLoader() {
-      if(isLoaded) return;
-      isLoaded = true;
-      
-      if(preloader) {
-        preloader.classList.add('hide-anim');
-        setTimeout(function() {
-          preloader.style.display = 'none';
-        }, 1000); // 1 second CSS fade wait
-      }
-      
-      for(var i = 0; i < items.length; i++) {
-        (function(index) {
-          setTimeout(function() {
-            items[index].classList.add('visible');
-          }, 200 + (index * 80)); // Sweet spot stagger timing
-        })(i);
-      }
-    }
-
-    // THIS WILL FIRE EXACTLY AT 1.2 SECONDS EVERY SINGLE TIME
-    setTimeout(killLoader, 1200);
-    
-    // Tap to skip
-    if(preloader) {
-      preloader.onclick = killLoader;
-    }
-  })();
-
-  // 🌌 2. SPARKS ANIMATION
-  try { 
-    var sparkContainer = document.getElementById('spark-container'); 
-    if(sparkContainer) { 
-      for (var j = 0; j < 15; j++) { 
-        var spark = document.createElement('div'); 
-        spark.classList.add('spark'); 
-        spark.style.left = (Math.random() * 100) + 'vw'; 
-        spark.style.setProperty('--speed', (Math.random() * 4 + 4) + 's'); 
-        spark.style.setProperty('--max-opacity', (Math.random() * 0.4 + 0.1)); 
-        spark.style.animationDelay = (Math.random() * 5) + 's'; 
-        sparkContainer.appendChild(spark); 
-      } 
-    } 
-  } catch(e) {}
-
-  // 💻 3. 3D EFFECTS (Desktop Only)
-  try { 
-    if (window.matchMedia("(pointer: fine)").matches) { 
-      var btns = document.querySelectorAll('.magnetic-btn');
-      for(var k = 0; k < btns.length; k++) {
-        btns[k].addEventListener('mousemove', function(e) { 
-          var rect = this.getBoundingClientRect(); 
-          var x = e.clientX - rect.left; 
-          var y = e.clientY - rect.top; 
-          this.style.setProperty('--x', x + 'px'); 
-          this.style.setProperty('--y', y + 'px'); 
-          var centerX = rect.width / 2; 
-          var centerY = rect.height / 2; 
-          var rotateX = ((y - centerY) / centerY) * -8; 
-          var rotateY = ((x - centerX) / centerX) * 8; 
-          this.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale3d(1.02, 1.02, 1.02)'; 
-        }); 
-        btns[k].addEventListener('mouseleave', function() { 
-          this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)'; 
-        }); 
-      }
-      
-      var hero = document.querySelector('.hero-parallax'); 
-      var parallaxItems = document.querySelectorAll('.parallax-item'); 
-      if (hero) { 
-        document.addEventListener('mousemove', function(e) { 
-          requestAnimationFrame(function() { 
-            var xAxis = (window.innerWidth / 2 - e.pageX) / 30; 
-            var yAxis = (window.innerHeight / 2 - e.pageY) / 30; 
-            if(parallaxItems[0]) parallaxItems[0].style.transform = 'rotateY(' + xAxis + 'deg) rotateX(' + yAxis + 'deg)'; 
-            if(parallaxItems[1]) parallaxItems[1].style.transform = 'translateZ(30px) rotateY(' + (xAxis*0.4) + 'deg) rotateX(' + (yAxis*0.4) + 'deg)'; 
-            if(parallaxItems[2]) parallaxItems[2].style.transform = 'translateZ(10px) rotateY(' + (xAxis*0.2) + 'deg) rotateX(' + (yAxis*0.2) + 'deg)'; 
-          }); 
-        }); 
-      } 
-    } 
-  } catch(e) {}
-</script>
-</body>  
-</html>
+        <div class="app-icon" style="background: #000; color: #fff; border: 1px
