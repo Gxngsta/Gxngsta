@@ -50,29 +50,31 @@ body{ font-family: 'Inter', sans-serif; background-color: var(--bg-color); color
 @keyframes floatUp { 0% { transform: translate3d(0, 100vh, 0) scale(0); opacity: 0; } 50% { opacity: var(--max-opacity); } 100% { transform: translate3d(0, -10vh, 0) scale(1.5); opacity: 0; } }
 body::before{ content:""; position:fixed; top:0; left:0; width:100vw; height:100vh; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E"); z-index:-1; pointer-events: none; }  
 
-/* --- 🌟 PRELOADER (BUTTERY SMOOTH TRANSITION) 🌟 --- */
+/* --- 🌟 PRELOADER (LIQUID MELT TRANSITION) 🌟 --- */
 #preloader { 
   position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; 
   background: var(--bg-color); z-index: 999999; 
   display: flex; justify-content: center; align-items: center; 
-  /* Fades out background slightly after the CD shrinks */
-  transition: opacity 0.5s ease 0.2s; 
+  /* Long, smooth background fade */
+  transition: opacity 1s ease-in-out; 
   will-change: opacity; 
 }
 .preloader-avatar { 
   position: relative; padding: 4px; border-radius: 50%; 
   background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8)); 
   box-shadow: 0 0 40px rgba(255,0,79,0.2), 0 0 40px rgba(0,240,255,0.2); 
-  /* Fast snap-shrink animation for the exit */
-  transition: transform 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045), opacity 0.3s ease 0.1s;
+  /* Very gentle fade out and tiny shrink */
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
 }
 .preloader-cd { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #050505; overflow: hidden; position: relative; }
 .preloader-cd img { width: 100%; height: 100%; object-fit: cover; display: block; animation: spinImage 4s linear infinite; }
 .preloader-cd::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(rgba(255,255,255,0.05) 0deg, transparent 45deg, rgba(255,255,255,0.15) 90deg, transparent 135deg, rgba(255,255,255,0.05) 180deg, transparent 225deg, rgba(255,255,255,0.15) 270deg, transparent 315deg, rgba(255,255,255,0.05) 360deg); z-index: 5; pointer-events: none; mix-blend-mode: overlay; }
 
-/* Triggered by JS */
 #preloader.hide-anim { opacity: 0; pointer-events: none; }
-#preloader.hide-anim .preloader-avatar { transform: scale(0); opacity: 0; }
+#preloader.hide-anim .preloader-avatar { 
+  transform: scale(0.85); /* Barely shrinks, mostly fades */
+  opacity: 0; 
+}
   
 /* --- CONTAINER & HERO --- */  
 .container{ max-width:500px; margin:40px auto; padding:0 20px; width:100%; position: relative; z-index: 1; }  
@@ -138,14 +140,18 @@ h1 {
 .footer span { color: #ffffff; font-family: 'Orbitron', sans-serif; letter-spacing: 3px; }
 @media(max-width:480px){ .container{ padding:0 15px; margin: 25px auto;} .link-btn{padding:16px 18px; border-radius: 14px;} .link-left {font-size: 14px;} .hero { margin-bottom: 25px; } }  
 
-/* --- SMOOTH PARALLAX ENTRANCE (SLIDE UP) --- */
+/* --- 🌊 SUPER SMOOTH PARALLAX ENTRANCE 🌊 --- */
 .reveal-item { 
   opacity: 0; 
-  transform: translate3d(0, 40px, 0); 
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); 
+  transform: translate3d(0, 20px, 0); /* Reduced travel distance for softer feel */
+  /* Very smooth ease-out curve so it glides into place */
+  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1); 
   will-change: opacity, transform; 
 }
-.reveal-item.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+.reveal-item.visible { 
+  opacity: 1; 
+  transform: translate3d(0, 0, 0); 
+}
 noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { display: none; }
 </style>  
 </head>  
@@ -209,11 +215,13 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
       <div class="link-left"><i class="fab fa-amazon brand-icon"></i> Amazon Music</div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
+    
     <a class="link-btn reveal-item magnetic-btn" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank" style="--brand-color: #2BC5B4;" aria-label="Listen on JioSaavn">
       <div class="glass-sweep"></div>
       <div class="link-left"><span class="custom-icon">JS</span> JioSaavn</div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
+
     <a class="link-btn reveal-item magnetic-btn" href="https://www.deezer.com/us/artist/304158961" target="_blank" style="--brand-color: #EF5466;" aria-label="Listen on Deezer">
       <div class="glass-sweep"></div>
       <div class="link-left"><i class="fab fa-deezer brand-icon"></i> Deezer</div>
@@ -290,89 +298,90 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
 </div>  
 
 <script>
-  // 1. SPARKS ANIMATION
-  try { 
-    const sparkContainer = document.getElementById('spark-container'); 
-    if(sparkContainer) { 
-      for (let i = 0; i < 15; i++) { 
-        let spark = document.createElement('div'); 
-        spark.classList.add('spark'); 
-        spark.style.left = `${Math.random() * 100}vw`; 
-        spark.style.setProperty('--speed', `${Math.random() * 4 + 4}s`); 
-        spark.style.setProperty('--max-opacity', `${Math.random() * 0.4 + 0.1}`); 
-        spark.style.animationDelay = `${Math.random() * 5}s`; 
-        sparkContainer.appendChild(spark); 
+  window.addEventListener('DOMContentLoaded', () => {
+    // 1. SPARKS ANIMATION
+    try { 
+      const sparkContainer = document.getElementById('spark-container'); 
+      if(sparkContainer) { 
+        for (let i = 0; i < 15; i++) { 
+          let spark = document.createElement('div'); 
+          spark.classList.add('spark'); 
+          spark.style.left = `${Math.random() * 100}vw`; 
+          spark.style.setProperty('--speed', `${Math.random() * 4 + 4}s`); 
+          spark.style.setProperty('--max-opacity', `${Math.random() * 0.4 + 0.1}`); 
+          spark.style.animationDelay = `${Math.random() * 5}s`; 
+          sparkContainer.appendChild(spark); 
+        } 
       } 
-    } 
-  } catch(e) {}
+    } catch(e) {}
 
-  // 🛡️ 2. CHOREOGRAPHED SMOOTH REVEAL 🛡️
-  const preloader = document.getElementById('preloader'); 
-  let isLoaded = false; 
+    // 🛡️ 2. LIQUID SMOOTH REVEAL 🛡️
+    const preloader = document.getElementById('preloader'); 
+    let isLoaded = false; 
 
-  function hideLoader() { 
-    if(isLoaded || !preloader) return; 
-    isLoaded = true; 
-    
-    // Step 1: Tell CD to shrink and fade out
-    preloader.classList.add('hide-anim');
-    
-    // Step 2: Begin bringing up website items while background fades
-    const items = document.querySelectorAll('.reveal-item'); 
-    items.forEach((item, index) => { 
-      // Delay (300ms) matches the CD shrink time perfectly
-      setTimeout(() => { item.classList.add('visible'); }, 300 + (index * 50)); 
-    }); 
-    
-    // Step 3: Fully remove preloader element to enable clicks
-    setTimeout(() => { 
-      preloader.style.display = 'none'; 
-      document.body.style.overflow = 'auto'; 
-    }, 1000); 
-  }
-
-  // CD spins for EXACTLY 1.3 seconds, then naturally opens the website
-  setTimeout(hideLoader, 1300); 
-  
-  // Allow manual bypass if user taps early
-  if(preloader) preloader.addEventListener('click', hideLoader);
-
-  // 3. 3D EFFECTS (Desktop Only)
-  try { 
-    if (window.matchMedia("(pointer: fine)").matches) { 
-      document.querySelectorAll('.magnetic-btn').forEach(btn => { 
-        btn.addEventListener('mousemove', e => { 
-          const rect = btn.getBoundingClientRect(); 
-          const x = e.clientX - rect.left; 
-          const y = e.clientY - rect.top; 
-          btn.style.setProperty('--x', `${x}px`); 
-          btn.style.setProperty('--y', `${y}px`); 
-          const centerX = rect.width / 2; 
-          const centerY = rect.height / 2; 
-          const rotateX = ((y - centerY) / centerY) * -8; 
-          const rotateY = ((x - centerX) / centerX) * 8; 
-          btn.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`; 
-        }); 
-        btn.addEventListener('mouseleave', () => { 
-          btn.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`; 
-        }); 
+    function hideLoader() { 
+      if(isLoaded || !preloader) return; 
+      isLoaded = true; 
+      
+      // Tell CD and background to start fading
+      preloader.classList.add('hide-anim');
+      
+      // Start bringing up website items simultaneously for a cross-fade effect
+      const items = document.querySelectorAll('.reveal-item'); 
+      items.forEach((item, index) => { 
+        setTimeout(() => { item.classList.add('visible'); }, 200 + (index * 80)); 
       }); 
       
-      const hero = document.querySelector('.hero-parallax'); 
-      const parallaxItems = document.querySelectorAll('.parallax-item'); 
-      if (hero) { 
-        document.addEventListener('mousemove', (e) => { 
-          requestAnimationFrame(() => { 
-            const xAxis = (window.innerWidth / 2 - e.pageX) / 30; 
-            const yAxis = (window.innerHeight / 2 - e.pageY) / 30; 
-            parallaxItems[0].style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`; 
-            if(parallaxItems[1]) parallaxItems[1].style.transform = `translateZ(30px) rotateY(${xAxis*0.4}deg) rotateX(${yAxis*0.4}deg)`; 
-            if(parallaxItems[2]) parallaxItems[2].style.transform = `translateZ(10px) rotateY(${xAxis*0.2}deg) rotateX(${yAxis*0.2}deg)`; 
+      // Fully remove preloader element to enable clicks after 1.2s fade finishes
+      setTimeout(() => { 
+        preloader.style.display = 'none'; 
+        document.body.style.overflow = 'auto'; 
+      }, 1200); 
+    }
+
+    // CD spins for EXACTLY 1.5 seconds, then naturally melts away
+    setTimeout(hideLoader, 1500); 
+    
+    // Allow manual bypass if user taps early
+    if(preloader) preloader.addEventListener('click', hideLoader);
+
+    // 3. 3D EFFECTS (Desktop Only)
+    try { 
+      if (window.matchMedia("(pointer: fine)").matches) { 
+        document.querySelectorAll('.magnetic-btn').forEach(btn => { 
+          btn.addEventListener('mousemove', e => { 
+            const rect = btn.getBoundingClientRect(); 
+            const x = e.clientX - rect.left; 
+            const y = e.clientY - rect.top; 
+            btn.style.setProperty('--x', `${x}px`); 
+            btn.style.setProperty('--y', `${y}px`); 
+            const centerX = rect.width / 2; 
+            const centerY = rect.height / 2; 
+            const rotateX = ((y - centerY) / centerY) * -8; 
+            const rotateY = ((x - centerX) / centerX) * 8; 
+            btn.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`; 
+          }); 
+          btn.addEventListener('mouseleave', () => { 
+            btn.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`; 
           }); 
         }); 
+        
+        const hero = document.querySelector('.hero-parallax'); 
+        const parallaxItems = document.querySelectorAll('.parallax-item'); 
+        if (hero) { 
+          document.addEventListener('mousemove', (e) => { 
+            requestAnimationFrame(() => { 
+              const xAxis = (window.innerWidth / 2 - e.pageX) / 30; 
+              const yAxis = (window.innerHeight / 2 - e.pageY) / 30; 
+              parallaxItems[0].style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`; 
+              if(parallaxItems[1]) parallaxItems[1].style.transform = `translateZ(30px) rotateY(${xAxis*0.4}deg) rotateX(${yAxis*0.4}deg)`; 
+              if(parallaxItems[2]) parallaxItems[2].style.transform = `translateZ(10px) rotateY(${xAxis*0.2}deg) rotateX(${yAxis*0.2}deg)`; 
+            }); 
+          }); 
+        } 
       } 
-    } 
-  } catch(e) {}
+    } catch(e) {}
+  });
 </script>
 </body>  
 </html>
