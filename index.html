@@ -50,8 +50,18 @@ body{ font-family: 'Inter', sans-serif; background-color: var(--bg-color); color
 @keyframes floatUp { 0% { transform: translate3d(0, 100vh, 0) scale(0); opacity: 0; } 50% { opacity: var(--max-opacity); } 100% { transform: translate3d(0, -10vh, 0) scale(1.5); opacity: 0; } }
 body::before{ content:""; position:fixed; top:0; left:0; width:100vw; height:100vh; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E"); z-index:-1; pointer-events: none; }  
 
-/* --- 🌟 PRELOADER (LIQUID MELT TRANSITION) 🌟 --- */
-#preloader { position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background: var(--bg-color); z-index: 999999; display: flex; justify-content: center; align-items: center; transition: opacity 1s ease-in-out; will-change: opacity; }
+/* --- 🌟 PRELOADER (WITH ULTIMATE CSS FAILSAFE) 🌟 --- */
+#preloader { 
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; 
+  background: var(--bg-color); z-index: 999999; 
+  display: flex; justify-content: center; align-items: center; 
+  transition: opacity 1s ease-in-out; will-change: opacity; 
+  
+  /* 🛡️ CSS FAILSAFE: Kills preloader after 3 seconds automatically */
+  animation: forceHideLoader 0.5s ease 3s forwards; 
+}
+@keyframes forceHideLoader { to { opacity: 0; visibility: hidden; z-index: -999; pointer-events: none; } }
+
 .preloader-avatar { position: relative; padding: 4px; border-radius: 50%; background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8)); box-shadow: 0 0 40px rgba(255,0,79,0.2), 0 0 40px rgba(0,240,255,0.2); transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out; }
 .preloader-cd { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #050505; overflow: hidden; position: relative; }
 .preloader-cd img { width: 100%; height: 100%; object-fit: cover; display: block; animation: spinImage 4s linear infinite; }
@@ -127,7 +137,17 @@ h1 {
 @media(max-width:480px){ .container{ padding:0 15px; margin: 25px auto;} .link-btn{padding:14px 18px; border-radius: 14px;} .link-left {font-size: 14px;} .app-icon{width: 32px; height: 32px; font-size: 18px;} .hero { margin-bottom: 25px; } }  
 
 /* --- 🌊 SUPER SMOOTH PARALLAX ENTRANCE 🌊 --- */
-.reveal-item { opacity: 0; transform: translate3d(0, 20px, 0); transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1); will-change: opacity, transform; }
+.reveal-item { 
+  opacity: 0; 
+  transform: translate3d(0, 20px, 0); 
+  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1); 
+  will-change: opacity, transform; 
+  
+  /* 🛡️ CSS FAILSAFE: Forces items to show after 3.2s even if JS crashes */
+  animation: forceShowItems 0.5s ease 3.2s forwards;
+}
+@keyframes forceShowItems { to { opacity: 1; transform: translate3d(0, 0, 0); } }
+
 .reveal-item.visible { opacity: 1; transform: translate3d(0, 0, 0); }
 noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { display: none; }
 
@@ -329,88 +349,4 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     <a class="link-btn reveal-item magnetic-btn" href="mailto:gxngstaofficial@gmail.com" style="--brand-color: #00f0ff;" aria-label="Email Management">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #2c3e50, #3498db); color: #fff;"><i class="fas fa-envelope"></i></div>
-        Email
-      </div>
-      <i class="fas fa-arrow-right arrow-icon"></i>
-    </a> 
-  </div>
-
-  <div class="footer reveal-item">  
-    © <script>document.write(new Date().getFullYear())</script> <span>GXNGSTA</span> <br> All Rights Reserved  
-  </div>  
-</div>  
-
-<script>
-  // 1. SPARKS ANIMATION
-  try { 
-    const sparkContainer = document.getElementById('spark-container'); 
-    if(sparkContainer) { 
-      for (let i = 0; i < 15; i++) { 
-        let spark = document.createElement('div'); 
-        spark.classList.add('spark'); 
-        spark.style.left = `${Math.random() * 100}vw`; 
-        spark.style.setProperty('--speed', `${Math.random() * 4 + 4}s`); 
-        spark.style.setProperty('--max-opacity', `${Math.random() * 0.4 + 0.1}`); 
-        spark.style.animationDelay = `${Math.random() * 5}s`; 
-        sparkContainer.appendChild(spark); 
-      } 
-    } 
-  } catch(e) {}
-
-  // 🛡️ 2. DIRECT LIQUID SMOOTH REVEAL (NO EVENT WAITING) 🛡️
-  const preloader = document.getElementById('preloader'); 
-  let isLoaded = false; 
-
-  function hideLoader() { 
-    if(isLoaded || !preloader) return; 
-    isLoaded = true; 
-    
-    preloader.classList.add('hide-anim');
-    
-    const items = document.querySelectorAll('.reveal-item'); 
-    items.forEach((item, index) => { 
-      setTimeout(() => { item.classList.add('visible'); }, 200 + (index * 80)); 
-    }); 
-    
-    setTimeout(() => { 
-      preloader.style.display = 'none'; 
-      document.body.style.overflow = 'auto'; 
-    }, 1200); 
-  }
-
-  // Timer starts instantly as soon as HTML is read. (1.2 Seconds)
-  setTimeout(hideLoader, 1200); 
-  if(preloader) preloader.addEventListener('click', hideLoader);
-
-  // 3. 3D EFFECTS (Desktop Only)
-  try { 
-    if (window.matchMedia("(pointer: fine)").matches) { 
-      document.querySelectorAll('.magnetic-btn').forEach(btn => { 
-        btn.addEventListener('mousemove', e => { 
-          const rect = btn.getBoundingClientRect(); 
-          const x = e.clientX - rect.left; 
-          const y = e.clientY - rect.top; 
-          btn.style.setProperty('--x', `${x}px`); 
-          btn.style.setProperty('--y', `${y}px`); 
-          const centerX = rect.width / 2; 
-          const centerY = rect.height / 2; 
-          const rotateX = ((y - centerY) / centerY) * -8; 
-          const rotateY = ((x - centerX) / centerX) * 8; 
-          btn.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`; 
-        }); 
-        btn.addEventListener('mouseleave', () => { 
-          btn.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`; 
-        }); 
-      }); 
-      
-      const hero = document.querySelector('.hero-parallax'); 
-      const parallaxItems = document.querySelectorAll('.parallax-item'); 
-      if (hero) { 
-        document.addEventListener('mousemove', (e) => { 
-          requestAnimationFrame(() => { 
-            const xAxis = (window.innerWidth / 2 - e.pageX) / 30; 
-            const yAxis = (window.innerHeight / 2 - e.pageY) / 30; 
-            parallaxItems[0].style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`; 
-            if(parallaxItems[1]) parallaxItems[1].style.transform = `translateZ(30px) rotateY(${xAxis*0.4}deg) rotateX(${yAxis*0.4}deg)`; 
-            if(parallaxItems[2]) parallaxItems[2].style.transform = `translateZ(10px) rotateY(${xAxis*0.2}deg
+        <div class="app-icon" style="background: linear-gradient(135deg, #2c3e50, #3498db); color: #fff;"><i class
