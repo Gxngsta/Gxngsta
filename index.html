@@ -57,8 +57,7 @@ body{
 .preloader-cd {
   width: 120px; height: 120px; border-radius: 50%;
   border: 3px solid #050505; overflow: hidden; position: relative;
-  transform: translateZ(0); 
-  background-color: #111; /* Fixes white flash instantly */
+  transform: translateZ(0);
 }
 .preloader-cd img {
   width: 100%; height: 100%; object-fit: cover; display: block;
@@ -101,7 +100,6 @@ body::before{
   width: clamp(110px, 30vw, 130px); height: clamp(110px, 30vw, 130px);
   border-radius: 50%; position: relative; border: 3px solid #050505;
   overflow: hidden; transform: translateZ(0); 
-  background-color: #111; /* Fixes white flash instantly */
 }
 
 .cd-record::after {
@@ -242,7 +240,7 @@ h1{
 <div id="preloader">
   <div class="preloader-avatar">
     <div class="preloader-cd">
-      <img src="profile.jpg" alt="GXNGSTA" class="spin-pic" fetchpriority="high">
+      <img src="profile.jpg" alt="GXNGSTA" fetchpriority="high">
     </div>
   </div>
 </div>
@@ -360,27 +358,30 @@ h1{
 </div>  
 
 <script>
-  // 1. BULLETPROOF PRELOADER LOGIC (Runs exactly 1.5 seconds)
-  // We run this immediately without waiting for DOMContentLoaded to prevent cache bugs
+  // 1. SEAMLESS PRELOADER LOGIC (No Gap / No Dead Zone)
   document.body.style.overflow = 'hidden';
   
   setTimeout(() => {
     const preloader = document.getElementById('preloader');
     if (preloader) {
-      preloader.style.opacity = '0'; // Start fade out
+      // Step 1: Preloader starts fading out
+      preloader.style.opacity = '0'; 
       
+      // Step 2: START REVEALING CONTENT IMMEDIATELY (Cross-fade effect)
+      // This runs exactly when the preloader starts disappearing, killing the gap!
+      const items = document.querySelectorAll('.reveal-item');
+      items.forEach((item, index) => {
+        // Base delay of 200ms ensures it flows perfectly behind the fading screen
+        setTimeout(() => { item.classList.add('visible'); }, (index * 80) + 200); 
+      });
+      
+      // Step 3: Remove preloader from DOM entirely once fade is done
       setTimeout(() => {
-        preloader.style.display = 'none'; // Completely remove from screen
-        document.body.style.overflow = 'auto'; // Unlock scroll
-        
-        // Trigger staggered reveal of buttons
-        const items = document.querySelectorAll('.reveal-item');
-        items.forEach((item, index) => {
-          setTimeout(() => { item.classList.add('visible'); }, index * 80); 
-        });
+        preloader.style.display = 'none';
+        document.body.style.overflow = 'auto'; 
       }, 800); // 0.8s CSS transition time
     }
-  }, 1500); // 1.5 seconds wait
+  }, 1500); // 1.5 seconds wait time for the spinning CD to show off
 
   // 2. 3D Magnetic Tilt & Mouse Spotlight Logic
   document.querySelectorAll('.magnetic-btn').forEach(btn => {
