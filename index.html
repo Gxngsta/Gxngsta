@@ -16,7 +16,7 @@
 html, body {
   max-width: 100%; 
   overflow-x: hidden; 
-  background-color: #000000; /* Pure Pitch Black */
+  background-color: #030303; /* Studio Pitch Black */
 }
 body{  
   font-family:'Inter',sans-serif;  
@@ -27,49 +27,112 @@ body{
   display: flex; justify-content: center;
 }  
 
-/* --- SUBTLE CINEMATIC GLOW (No distractions) --- */
+/* --- STUDIO AMBIENCE (Ultra Subtle) --- */
 body::before {
   content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(circle at 50% 15%, rgba(138, 3, 3, 0.15), transparent 50%),
-              radial-gradient(circle at 50% 85%, rgba(255, 255, 255, 0.02), transparent 50%);
+  background: radial-gradient(circle at 50% 0%, rgba(50, 50, 50, 0.15), transparent 60%);
   z-index: -1; pointer-events: none;
 }
 
 /* --- MAIN CONTAINER --- */  
 .container{  
   max-width:480px; margin:50px auto; padding: 0 20px; width:100%; position: relative; z-index: 2;
-  animation: fadeUp 1s ease-out forwards;
-  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0; transform: translateY(30px);
 }  
 @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-/* --- HERO & PROFILE --- */  
+/* --- REALISTIC CD / VINYL PLAYER EFFECT --- */  
 .hero{ display:flex; flex-direction: column; align-items:center; margin-bottom:40px; }  
-.profile-wrapper {
-  position: relative; padding: 3px; border-radius: 50%; margin-bottom: 20px;
-  background: linear-gradient(180deg, #444, #111);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.9), 0 0 25px rgba(138, 3, 3, 0.2);
+
+.cd-player {
+  position: relative;
+  width: 135px;
+  height: 135px;
+  margin-bottom: 25px;
+  border-radius: 50%;
+  padding: 4px;
+  /* Outer rim of the CD player/case */
+  background: linear-gradient(145deg, #1a1a1a, #000000);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.9), inset 0 1px 2px rgba(255,255,255,0.1);
 }
-.hero img{  
-  width:120px; height:120px; border-radius:50%; object-fit:cover;  
-  border: 4px solid #000; display: block;
-}  
+
+.cd-record {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #111;
+  /* The continuous spinning animation */
+  animation: spinRecord 8s linear infinite;
+  box-shadow: inset 0 0 15px rgba(0,0,0,1);
+}
+
+/* The actual image on the CD */
+.cd-record img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.1) brightness(0.9);
+}
+
+/* CD Center Hole */
+.cd-record::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px; height: 24px;
+  background: #030303; /* Matches page background to look like a hole */
+  border-radius: 50%;
+  border: 2px solid #222;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.9), 0 0 5px rgba(0,0,0,0.8);
+  z-index: 10;
+}
+
+/* CD Light Reflection Overlay (The Shiny Grooves) */
+.cd-record::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    rgba(255,255,255,0.05) 0deg,
+    transparent 45deg,
+    rgba(255,255,255,0.15) 90deg,
+    transparent 135deg,
+    rgba(255,255,255,0.05) 180deg,
+    transparent 225deg,
+    rgba(255,255,255,0.15) 270deg,
+    transparent 315deg,
+    rgba(255,255,255,0.05) 360deg
+  );
+  z-index: 5;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+@keyframes spinRecord {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
   
-/* --- TYPOGRAPHY (CLEAN & BOLD) --- */  
+/* --- TYPOGRAPHY (CHROME / METAL) --- */  
 .name-container { display: flex; align-items: center; justify-content: center; gap: 8px; }
 h1{  
-  font-family:'Orbitron', sans-serif; font-size: 38px; letter-spacing: 6px; font-weight: 900; 
+  font-family:'Orbitron', sans-serif; font-size: 40px; letter-spacing: 6px; font-weight: 900; 
   text-transform: uppercase; margin: 0; color: #fff;
-  background: linear-gradient(180deg, #ffffff 0%, #a0a0a0 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #b0b0b0 50%, #707070 51%, #e0e0e0 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8));
 }  
 .verified { 
-  color: #1DA1F2; font-size: 18px; 
-  filter: drop-shadow(0 0 8px rgba(29, 161, 242, 0.4)); 
+  color: #1DA1F2; font-size: 20px; 
+  filter: drop-shadow(0 0 5px rgba(29, 161, 242, 0.4)); 
 }
 .tagline{  
-  color:#888; font-size:12px; margin-top: 8px; letter-spacing:4px; font-weight: 600; 
+  color:#777; font-size:12px; margin-top: 10px; letter-spacing:5px; font-weight: 600; 
   text-transform: uppercase; text-align: center;
 }  
 
@@ -82,39 +145,50 @@ h1{
 
 /* Streaming Equalizer */
 .equalizer { display: flex; gap: 3px; height: 12px; align-items: flex-end; }
-.bar { width: 3px; background: #555; animation: eqPlay 0.8s infinite ease-in-out alternate; }
+.bar { width: 3px; background: #666; animation: eqPlay 0.8s infinite ease-in-out alternate; }
 .bar:nth-child(2) { animation-delay: -0.2s; height: 8px; }
 .bar:nth-child(3) { animation-delay: -0.4s; height: 6px; }
 @keyframes eqPlay { 0% { height: 4px; } 100% { height: 12px; } }
   
-/* --- FROSTED OBSIDIAN BUTTONS --- */  
+/* --- MATTE BLACK STUDIO BUTTONS --- */  
 .links-grid { display: flex; flex-direction: column; gap: 12px; width: 100%; }
 .link-btn{  
   display:flex; align-items:center; justify-content:space-between; 
-  padding:16px 20px; border-radius:12px; text-decoration:none; color:#ffffff; 
-  background: rgba(20, 20, 20, 0.6); 
-  border: 1px solid rgba(255,255,255,0.04);
-  backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-  transition: all 0.3s ease; width: 100%;
+  padding:18px 20px; border-radius:14px; text-decoration:none; color:#ffffff; 
+  background: linear-gradient(180deg, #181818, #0a0a0a); 
+  border: 1px solid #222;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.03), 0 5px 15px rgba(0,0,0,0.6);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); width: 100%;
 }  
-.link-left { display: flex; align-items: center; gap: 15px; font-size:14px; font-weight:600; }
-.link-btn i.brand-icon { font-size:20px; width:22px; text-align: center; color: #888; transition: all 0.3s ease; }  
-.link-btn i.arrow-icon { font-size: 12px; color: #333; transition: all 0.3s ease; }
+.link-left { display: flex; align-items: center; gap: 16px; font-size:14px; font-weight:600; color: #ccc;}
+.link-btn i.brand-icon { font-size:22px; width:24px; text-align: center; color: #777; transition: all 0.3s ease; }  
+.link-btn i.arrow-icon { font-size: 13px; color: #444; transition: all 0.3s ease; }
 
 /* Premium Hover States */
 .link-btn:hover { 
-  background: rgba(30, 30, 30, 0.8); 
-  border-color: rgba(255,255,255,0.1); 
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  background: linear-gradient(180deg, #222, #111);
+  border-color: #333; 
+  transform: translateY(-3px);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.05), 0 10px 20px rgba(0,0,0,0.8);
 }
-.link-btn:hover i.brand-icon { color: #fff; transform: scale(1.05); }
-.link-btn:hover i.arrow-icon { color: #888; transform: translateX(4px); }
+.link-btn:hover .link-left { color: #fff; }
+.link-btn:hover i.brand-icon { transform: scale(1.1); filter: drop-shadow(0 0 8px currentColor); }
+.link-btn:hover i.arrow-icon { color: #888; transform: translateX(5px); }
 
-/* Subtle Brand Colors on Hover */
+/* Brand Colors on Hover */
 .link-btn:hover .fa-spotify { color: #1DB954; }
 .link-btn:hover .fa-youtube { color: #FF0000; }
+.link-btn:hover .fa-apple { color: #ffffff; }
+.link-btn:hover .fa-amazon { color: #FF9900; }
+.link-btn:hover .fa-music { color: #2BC5B4; } /* JioSaavn approx */
+.link-btn:hover .fa-deezer { color: #EF5466; }
+.link-btn:hover .fa-wave-square { color: #ffffff; } /* TIDAL */
+.link-btn:hover .fa-play { color: #FFA200; } /* Audiomack/Boomplay approx */
+.link-btn:hover .fa-soundcloud { color: #FF5500; }
+.link-btn:hover .fa-bolt { color: #0088FF; } /* Shazam approx */
 .link-btn:hover .fa-instagram { color: #E1306C; }
+.link-btn:hover .fa-twitter { color: #1DA1F2; }
+.link-btn:hover .fa-facebook-f { color: #1877F2; }
 
 /* Footer */  
 .footer{ 
@@ -125,15 +199,18 @@ h1{
   
 /* --- 📱 MOBILE OPTIMIZATIONS --- */  
 @media(max-width:480px){  
-  .container { margin: 30px auto; padding: 0 15px; }
-  .hero { margin-bottom: 25px; }
-  .hero img { width: 105px; height: 105px; } 
-  h1 { font-size: 32px; letter-spacing: 4px; } 
-  .tagline { font-size: 11px; letter-spacing: 3px; }
+  .container { margin: 30px auto; padding: 0 18px; }
+  .hero { margin-bottom: 30px; }
+  .cd-player { width: 120px; height: 120px; } /* Slightly smaller for mobile */
+  .cd-record::after { width: 20px; height: 20px; }
+  
+  h1 { font-size: 34px; letter-spacing: 4px; } 
+  .tagline { font-size: 11px; letter-spacing: 4px; }
   .section-title { margin: 25px 0 12px; }
-  .link-btn { padding: 15px 18px; border-radius: 10px; } 
+  
+  .link-btn { padding: 16px 18px; border-radius: 12px; } 
   .link-left { font-size: 13px; gap: 14px; }
-  .link-btn i.brand-icon { font-size: 18px; width: 20px; }
+  .link-btn i.brand-icon { font-size: 20px; width: 20px; }
 }  
 </style>  
 </head>  
@@ -142,9 +219,12 @@ h1{
 <div class="container">    
   
   <div class="hero">  
-    <div class="profile-wrapper">
-      <img src="profile.jpg" alt="GXNGSTA">  
+    <div class="cd-player">
+      <div class="cd-record">
+        <img src="profile.jpg" alt="GXNGSTA">  
+      </div>
     </div>
+    
     <div class="name-container">
       <h1>GXNGSTA</h1>
       <i class="fas fa-check-circle verified"></i>  
