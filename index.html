@@ -16,50 +16,50 @@
 html, body {
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden; /* Prevents horizontal scroll */
-  background-color: #020103; /* Very deep base tone */
+  overflow-x: hidden; 
+  background-color: #020308; /* Deep Midnight Cyber-Onyx Base */
   font-family: 'Inter', sans-serif;  
   color: #ffffff;  
   -webkit-font-smoothing: antialiased;
   position: relative;
 }
 
-/* --- 🌌 ULTRA-CINEMATIC 3D ALIVE BACKGROUND 🌌 --- */
+/* --- 🌌 ULTRA-CINEMATIC 3D ELECTRIC BACKGROUND 🌌 --- */
 .cinematic-bg-container {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   z-index: -3; overflow: hidden; pointer-events: none;
-  background: #030205;
+  background: #020308;
 }
 
-/* Layer 1: Slowly Rotating Nebula Mesh */
+/* Layer 1: Slowly Rotating Deep Mesh */
 .bg-mesh-rotate {
   position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-  background: radial-gradient(ellipse at center, rgba(40, 0, 60, 0.2) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(0, 40, 100, 0.15) 0%, transparent 70%);
   filter: blur(100px);
-  animation: rotateMesh 80s linear infinite;
-  opacity: 0.7;
+  animation: rotateMesh 90s linear infinite;
+  opacity: 0.8;
 }
 @keyframes rotateMesh { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-/* Layer 2: Floating Plasma Light (Red/Orange) */
+/* Layer 2: Floating Plasma Light (Electric Cobalt Blue) */
 .bg-plasma-1 {
-  position: absolute; top: 20%; left: 10%; width: 60vw; height: 60vw;
-  background: radial-gradient(circle, rgba(255, 50, 50, 0.15), transparent 60%);
+  position: absolute; top: 15%; left: 5%; width: 65vw; height: 65vw;
+  background: radial-gradient(circle, rgba(0, 85, 255, 0.15), transparent 60%);
   filter: blur(80px); border-radius: 50%;
   animation: floatPlasma1 25s ease-in-out infinite alternate;
-  mix-blend-mode: screen; /* Makes light feel real */
+  mix-blend-mode: screen; 
 }
-@keyframes floatPlasma1 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(20%, 30%) scale(1.2); } }
+@keyframes floatPlasma1 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(25%, 25%) scale(1.15); } }
 
-/* Layer 3: Floating Plasma Light (Cyan/Deep Blue) */
+/* Layer 3: Floating Plasma Light (Neon Cyan) */
 .bg-plasma-2 {
-  position: absolute; bottom: 10%; right: 10%; width: 70vw; height: 70vw;
-  background: radial-gradient(circle, rgba(0, 150, 255, 0.12), transparent 60%);
+  position: absolute; bottom: 5%; right: 5%; width: 75vw; height: 75vw;
+  background: radial-gradient(circle, rgba(0, 242, 255, 0.12), transparent 60%);
   filter: blur(100px); border-radius: 50%;
   animation: floatPlasma2 30s ease-in-out infinite alternate;
   mix-blend-mode: screen;
 }
-@keyframes floatPlasma2 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-20%, -20%) scale(1.1); } }
+@keyframes floatPlasma2 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-20%, -15%) scale(1.1); } }
 
 
 /* --- MAIN CONTAINER --- */  
@@ -75,80 +75,80 @@ html, body {
 
 .profile-wrapper {
   position: relative; padding: 4px; border-radius: 50%; margin-bottom: 20px;
-  /* Background reflects the environment */
-  background: linear-gradient(145deg, rgba(60,60,60,0.5), rgba(5,5,5,0.8));
-  box-shadow: 0 15px 40px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.05);
+  /* Cyber metallic ring */
+  background: linear-gradient(145deg, #112233, #050a14);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.9), inset 0 0 20px rgba(0, 242, 255, 0.1);
   backdrop-filter: blur(5px);
 }
 
 .spin-pic {
   width: 130px; height: 130px; border-radius: 50%; object-fit: cover;
-  border: 3px solid #0a0a0a; display: block;
+  border: 3px solid #030812; display: block;
   animation: spinRecord 10s linear infinite;
   box-shadow: inset 0 0 30px rgba(0,0,0,0.9);
 }
 @keyframes spinRecord { 100% { transform: rotate(360deg); } }
   
-/* --- TYPOGRAPHY --- */  
+/* --- TYPOGRAPHY (COLD CHROME) --- */  
 .name-container { display: flex; align-items: center; justify-content: center; gap: 8px; }
 h1{  
   font-family:'Orbitron', sans-serif; font-size: 38px; letter-spacing: 4px; font-weight: 900; 
   text-transform: uppercase; margin: 0; color: #fff;
-  /* Chrome texture text */
-  background: linear-gradient(180deg, #ffffff 20%, #a0a0a0 50%, #444 51%, #888 100%);
+  /* Ice/Cyber Chrome texture */
+  background: linear-gradient(180deg, #ffffff 10%, #b3e0ff 50%, #4a7c99 51%, #88bbdd 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 4px 15px rgba(0,0,0,0.9));
 }  
 .verified { 
-  color: #1DA1F2; font-size: 18px; 
-  filter: drop-shadow(0 0 10px rgba(29, 161, 242, 0.6)); 
+  color: #00f2ff; font-size: 18px; 
+  filter: drop-shadow(0 0 12px rgba(0, 242, 255, 0.7)); 
 }
 .tagline{  
-  color:#888; font-size:12px; margin-top: 8px; letter-spacing:4px; font-weight: 600; 
+  color:#9ab; font-size:12px; margin-top: 8px; letter-spacing:4px; font-weight: 600; 
   text-transform: uppercase; text-align: center; text-shadow: 0 2px 5px rgba(0,0,0,0.8);
 }  
 
-/* --- SECTION TITLES WITH EQUALIZERS --- */  
+/* --- SECTION TITLES WITH NEON EQUALIZERS --- */  
 .section-title{  
-  margin:35px 0 15px; font-size:11px; color:#777; letter-spacing:4px; 
+  margin:35px 0 15px; font-size:11px; color:#68a; letter-spacing:4px; 
   text-transform: uppercase; font-weight: 800; display: flex; align-items: center; gap: 12px;
 }  
-.section-title::after{ content:""; flex-grow: 1; height: 1px; background: rgba(255,255,255,0.1); box-shadow: 0 0 5px rgba(255,255,255,0.1); }
+.section-title::after{ content:""; flex-grow: 1; height: 1px; background: rgba(0, 242, 255, 0.15); box-shadow: 0 0 8px rgba(0, 242, 255, 0.2); }
 
 .equalizer { display: flex; gap: 3px; height: 12px; align-items: flex-end; }
-.bar { width: 3px; background: #999; animation: eqPlay 0.7s infinite ease-in-out alternate; border-radius: 1px 1px 0 0; box-shadow: 0 0 5px rgba(255,255,255,0.2);}
-.bar:nth-child(2) { animation-delay: -0.2s; height: 8px; background: #fff;}
+.bar { width: 3px; background: #0055ff; animation: eqPlay 0.7s infinite ease-in-out alternate; border-radius: 1px 1px 0 0; box-shadow: 0 0 8px rgba(0, 85, 255, 0.6);}
+.bar:nth-child(2) { animation-delay: -0.2s; height: 8px; background: #00f2ff; box-shadow: 0 0 8px rgba(0, 242, 255, 0.6);}
 .bar:nth-child(3) { animation-delay: -0.4s; height: 6px; }
 @keyframes eqPlay { 0% { height: 4px; } 100% { height: 12px; } }
   
-/* --- ULTRA-PREMIUM 3D GLASS BUTTONS --- */  
+/* --- HOLOGRAPHIC 3D GLASS BUTTONS --- */  
 .links-grid { display: flex; flex-direction: column; gap: 12px; width: 100%; }
 .link-btn{  
   display:flex; align-items:center; justify-content:space-between; 
   padding:16px 20px; border-radius:14px; text-decoration:none; color:#ffffff; 
-  /* Highly transparent glass to let the 3D BG show through */
-  background: rgba(20, 20, 25, 0.5); 
+  background: rgba(10, 15, 30, 0.5); 
   backdrop-filter: blur(15px) saturate(120%); -webkit-backdrop-filter: blur(15px) saturate(120%);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-top: 1px solid rgba(255,255,255,0.2); /* Strong top reflection */
-  border-bottom: 1px solid rgba(0,0,0,0.3);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,255,255,0.02);
+  border: 1px solid rgba(0, 150, 255, 0.1);
+  border-top: 1px solid rgba(0, 242, 255, 0.2); /* Cyan highlight */
+  border-bottom: 1px solid rgba(0,0,0,0.5);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6), inset 0 0 10px rgba(0, 242, 255, 0.02);
   transition: all 0.3s ease; width: 100%;
 }  
-.link-left { display: flex; align-items: center; gap: 16px; font-size:14px; font-weight:600; color: #ddd; text-shadow: 0 2px 5px rgba(0,0,0,0.5);}
-.link-btn i.brand-icon { font-size:20px; width:24px; text-align: center; color: #888; transition: all 0.3s ease; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));}  
-.link-btn i.arrow-icon { font-size: 13px; color: #555; transition: all 0.3s ease; }
+.link-left { display: flex; align-items: center; gap: 16px; font-size:14px; font-weight:600; color: #cceeff; text-shadow: 0 2px 5px rgba(0,0,0,0.5);}
+.link-btn i.brand-icon { font-size:20px; width:24px; text-align: center; color: #68a; transition: all 0.3s ease; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));}  
+.link-btn i.arrow-icon { font-size: 13px; color: #479; transition: all 0.3s ease; }
 
-/* Premium Hover States */
+/* Premium Cyber Hover States */
 .link-btn:hover { 
-  background: rgba(30, 30, 35, 0.65);
-  border-top: 1px solid rgba(255,255,255,0.3);
+  background: rgba(15, 25, 50, 0.7);
+  border-top: 1px solid rgba(0, 242, 255, 0.5);
+  border-color: rgba(0, 150, 255, 0.3);
   transform: translateY(-3px) scale(1.01);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.8), inset 0 0 15px rgba(255,255,255,0.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(0, 242, 255, 0.1);
 }
 .link-btn:hover .link-left { color: #fff; }
-.link-btn:hover i.brand-icon { transform: scale(1.1); filter: drop-shadow(0 0 12px currentColor); }
-.link-btn:hover i.arrow-icon { color: #ccc; transform: translateX(5px); }
+.link-btn:hover i.brand-icon { transform: scale(1.1); filter: drop-shadow(0 0 15px currentColor); }
+.link-btn:hover i.arrow-icon { color: #00f2ff; transform: translateX(5px); filter: drop-shadow(0 0 8px #00f2ff);}
 
 /* Brand Colors on Hover */
 .link-btn:hover .fa-spotify { color: #1DB954; }
@@ -157,21 +157,21 @@ h1{
 .link-btn:hover .fa-amazon { color: #FF9900; }
 .link-btn:hover .fa-music { color: #2BC5B4; }
 .link-btn:hover .fa-deezer { color: #EF5466; }
-.link-btn:hover .fa-wave-square { color: #ffffff; }
+.link-btn:hover .fa-wave-square { color: #00f2ff; }
 .link-btn:hover .fa-play { color: #FFA200; }
 .link-btn:hover .fa-soundcloud { color: #FF5500; }
-.link-btn:hover .fa-bolt { color: #0088FF; }
+.link-btn:hover .fa-bolt { color: #00f2ff; }
 .link-btn:hover .fa-instagram { color: #E1306C; }
 .link-btn:hover .fa-twitter { color: #1DA1F2; }
 .link-btn:hover .fa-facebook-f { color: #1877F2; }
-.link-btn:hover .fa-envelope { color: #ffffff; }
+.link-btn:hover .fa-envelope { color: #00f2ff; }
 
 /* Footer */  
 .footer{ 
-  margin-top:40px; font-size:10px; color:#555; letter-spacing:2px; 
+  margin-top:40px; font-size:10px; color:#479; letter-spacing:2px; 
   text-align:center; padding-bottom: 30px; font-weight: 600; text-transform: uppercase; 
 }  
-.footer span { color: #888; font-family: 'Orbitron', sans-serif; letter-spacing: 3px;}
+.footer span { color: #8bb; font-family: 'Orbitron', sans-serif; letter-spacing: 3px;}
   
 /* --- 📱 STRICT MOBILE OPTIMIZATIONS --- */  
 @media(max-width:480px){  
@@ -258,3 +258,52 @@ h1{
     </a>  
     <a class="link-btn" href="https://www.boomplay.com/share/artist/106853408?srModel=byWH&srList=ANDROID" target="_blank">
       <div class="link-left"><i class="fas fa-play brand-icon"></i> Boomplay</div>
+      <i class="fas fa-chevron-right arrow-icon"></i>
+    </a>  
+  </div>
+
+  <div class="section-title">
+    <div class="equalizer">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    Connect
+  </div>  
+  <div class="links-grid">
+    <a class="link-btn" href="https://www.instagram.com/gxngstaofficial" target="_blank">
+      <div class="link-left"><i class="fab fa-instagram brand-icon"></i> Instagram</div>
+      <i class="fas fa-chevron-right arrow-icon"></i>
+    </a>  
+    <a class="link-btn" href="https://youtube.com/@GxngstaOfficial" target="_blank">
+      <div class="link-left"><i class="fab fa-youtube brand-icon"></i> YouTube</div>
+      <i class="fas fa-chevron-right arrow-icon"></i>
+    </a> 
+    <a class="link-btn" href="https://x.com/GxngstaOfficial" target="_blank">
+      <div class="link-left"><i class="fab fa-twitter brand-icon"></i> X (Twitter)</div>
+      <i class="fas fa-chevron-right arrow-icon"></i>
+    </a>  
+    <a class="link-btn" href="https://www.facebook.com/profile.php?id=61573079602732" target="_blank">
+      <div class="link-left"><i class="fab fa-facebook-f brand-icon"></i> Facebook</div>
+      <i class="fas fa-chevron-right arrow-icon"></i>
+    </a>  
+  </div>
+
+  <div class="section-title">
+    <div class="equalizer">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    Management
+  </div>  
+  <div class="links-grid">
+    <a class="link-btn" href="mailto:gxngstaofficial@gmail.com">
+      <div class="link-left"><i class="fas fa-envelope brand-icon"></i> Email</div>
+      <i class="fas fa-chevron-right arrow-icon"></i>
+    </a> 
+  </div>
+
+  <div class="footer">  
+    © <script>document.write(new Date().getFullYear())</script> <span>GXNGSTA</span> <br> All Rights Reserved  
+  </div>  
+</div>  
+
+</body>  
+</html>
