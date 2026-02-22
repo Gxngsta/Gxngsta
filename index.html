@@ -167,16 +167,6 @@ h1{
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }  
 
-/* Featured Link (Highlighting Spotify) */
-.link-btn.featured {
-  background: rgba(29, 185, 84, 0.1); 
-  border: 1px solid rgba(29, 185, 84, 0.5);
-  box-shadow: 0 0 20px rgba(29, 185, 84, 0.15);
-}
-.link-btn.featured i.brand-icon {
-  color: #1DB954;
-}
-
 .link-left {
   display: flex;
   align-items: center;
@@ -208,10 +198,6 @@ h1{
   transform: translateY(-4px) scale(1.02);
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }  
-.link-btn.featured:hover {
-  background: rgba(29, 185, 84, 0.2);
-  box-shadow: 0 10px 30px rgba(29, 185, 84, 0.3);
-}
 .link-btn:hover i.brand-icon {
   transform: scale(1.1);
 }
@@ -222,14 +208,15 @@ h1{
 }
 
 /* Brand Colors on Hover */
-.link-btn:not(.featured):hover .fa-youtube { color: #FF0000; }
-.link-btn:not(.featured):hover .fa-apple { color: #ffffff; }
-.link-btn:not(.featured):hover .fa-instagram { color: #E1306C; }
-.link-btn:not(.featured):hover .fa-amazon { color: #FF9900; }
-.link-btn:not(.featured):hover .fa-soundcloud { color: #FF5500; }
-.link-btn:not(.featured):hover .fa-deezer { color: #EF5466; }
-.link-btn:not(.featured):hover .fa-twitter { color: #1DA1F2; }
-.link-btn:not(.featured):hover .fa-facebook-f { color: #1877F2; }
+.link-btn:hover .fa-spotify { color: #1DB954; }
+.link-btn:hover .fa-youtube { color: #FF0000; }
+.link-btn:hover .fa-apple { color: #ffffff; }
+.link-btn:hover .fa-instagram { color: #E1306C; }
+.link-btn:hover .fa-amazon { color: #FF9900; }
+.link-btn:hover .fa-soundcloud { color: #FF5500; }
+.link-btn:hover .fa-deezer { color: #EF5466; }
+.link-btn:hover .fa-twitter { color: #1DA1F2; }
+.link-btn:hover .fa-facebook-f { color: #1877F2; }
   
 /* --- FOOTER --- */  
 .footer{  
@@ -279,8 +266,8 @@ h1{
   </div>  
 
   <div class="links-grid">
-    <a class="link-btn featured" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank">
-      <div class="link-left"><i class="fab fa-spotify brand-icon"></i> Listen on Spotify</div>
+    <a class="link-btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank">
+      <div class="link-left"><i class="fab fa-spotify brand-icon"></i> Spotify</div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
     <a class="link-btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank">
