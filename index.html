@@ -19,6 +19,7 @@
 :root {
   --bg-color: #030303;
   --card-bg: rgba(20, 20, 20, 0.4);
+  --card-border: rgba(255, 255, 255, 0.06);
 }
 *{margin:0;padding:0;box-sizing:border-box;}  
 html, body { width: 100%; overflow-x: hidden; }
@@ -142,12 +143,10 @@ h1{
 /* --- 3D MAGNETIC BUTTONS --- */  
 .links-grid { display: flex; flex-direction: column; gap: 14px; perspective: 1000px; }
 
-.link-btn {  
-  display: flex; align-items: center; justify-content: space-between; 
-  padding: 18px 20px; border-radius: 16px; text-decoration: none; color: #ffffff; 
-  background: var(--card-bg); 
-  /* Base border transparent, ::after handles the glowing border */
-  border: 1px solid transparent;  
+.link-btn{  
+  display:flex; align-items:center; justify-content:space-between; 
+  padding:18px 20px; border-radius:16px; text-decoration:none; color:#ffffff; 
+  background: var(--card-bg); border: 1px solid var(--card-border);  
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   position: relative; overflow: hidden;
   transition: transform 0.1s ease, box-shadow 0.3s ease;
@@ -163,64 +162,53 @@ h1{
 }
 .link-btn:hover::before { opacity: 1; }
 
-/* ✨ THE BRAND COLOR GLOW BORDER ✨ */
+/* ✨ STRICT HOVER-ONLY BORDER GLOW ✨ */
 .link-btn::after {
   content: ""; position: absolute; inset: 0; 
   border-radius: inherit;
   border: 1px solid var(--brand-color);
-  box-shadow: 0 0 10px var(--brand-color), inset 0 0 5px rgba(0,0,0,0.5);
-  opacity: 0.15; /* Base light */
-  transition: opacity 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 20px var(--brand-color), inset 0 0 10px rgba(0,0,0,0.5);
+  opacity: 0; /* Default: COMPLETELY OFF */
+  transition: opacity 0.2s ease-in-out;
   pointer-events: none; z-index: 1;
-  animation: borderPulse 3s infinite alternate ease-in-out;
 }
 
-@keyframes borderPulse {
-  0% { opacity: 0.15; box-shadow: 0 0 5px var(--brand-color); }
-  100% { opacity: 0.4; box-shadow: 0 0 15px var(--brand-color); }
+/* Turns on ONLY when hovering/tapping */
+.link-btn:hover::after, .link-btn:active::after {
+  opacity: 0.8; 
 }
 
 .link-left { display: flex; align-items: center; gap: 16px; font-size:15px; font-weight:700; z-index: 2; transform: translateZ(20px); }
 .link-btn i.arrow-icon { transform: translateZ(20px); z-index: 2; }
 
-/* INTELLIGENT BRAND BLINKING (Syncs with the border) */
+/* ✨ STRICT HOVER-ONLY ICON GLOW ✨ */
 .link-btn i.brand-icon {
   font-size: clamp(20px, 6vw, 24px); width:26px; text-align: center;
-  animation: brandPulse 4s infinite alternate ease-in-out;
-  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
-  will-change: color, text-shadow;
+  color: rgba(255,255,255,0.4); /* Default: Dim White/Grey, NO Blink */
+  transition: color 0.2s ease, text-shadow 0.2s ease, transform 0.2s ease;
+  will-change: color, text-shadow, transform;
 }  
 
-@keyframes brandPulse {
-  0%, 30% { color: rgba(255,255,255,0.4); text-shadow: 0 0 0px transparent; }
-  70%, 100% { color: var(--brand-color); text-shadow: 0 0 12px var(--brand-color); }
+/* Icons glow up instantly with color ONLY on hover */
+.link-btn:hover i.brand-icon, .link-btn:active i.brand-icon {
+  color: var(--brand-color);
+  text-shadow: 0 0 15px var(--brand-color);
+  transform: scale(1.15);
 }
-
-/* Delay Syncing for Organic Feel */
-.links-grid > a:nth-child(even) .brand-icon, .links-grid > a:nth-child(even)::after { animation-delay: 1.5s; }
-.links-grid > a:nth-child(3n) .brand-icon, .links-grid > a:nth-child(3n)::after { animation-delay: 0.7s; }
 
 .link-btn i.arrow-icon {
   font-size: 14px; color: #555; background: rgba(255,255,255,0.03);
   width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease; 
+  transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease; 
 }
 
-/* Hover & Active States */
+/* Base Hover & Active Box-Shadow States */
 .link-btn:hover {  
-  box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
 }  
-.link-btn:hover::after {
-  opacity: 0.8; /* Full brightness on hover */
-  box-shadow: 0 0 20px var(--brand-color), inset 0 0 10px var(--brand-color);
-  animation: none; /* Stops the breathing */
-}
 .link-btn:active {
   transform: scale(0.96) !important; box-shadow: 0 2px 10px rgba(0,0,0,0.4);
   background: rgba(40, 40, 40, 0.6); transition: transform 0.05s ease;
-}
-.link-btn:hover i.brand-icon, .link-btn:active i.brand-icon {
-  transform: scale(1.15); color: var(--brand-color); animation: none; text-shadow: 0 0 15px var(--brand-color);
 }
 .link-btn:hover i.arrow-icon, .link-btn:active i.arrow-icon { 
   background: #ffffff; color: #000; transform: rotate(-45deg) translateZ(20px); 
@@ -369,7 +357,7 @@ h1{
 </div>  
 
 <script>
-  // 1. SEAMLESS PRELOADER LOGIC (No Gap / No Dead Zone)
+  // 1. SEAMLESS PRELOADER LOGIC (No Gap)
   document.body.style.overflow = 'hidden';
   
   setTimeout(() => {
