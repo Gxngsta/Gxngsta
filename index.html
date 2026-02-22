@@ -1,3 +1,10 @@
+I have updated the code to include the **inner glow effect** you requested.
+
+The main change is in the CSS under `.link-btn::after`. I added an `inset` box-shadow that uses the specific `--brand-color` of each button. Now, when you hover, the light will appear to glow **inside** the tab as well as on the border.
+
+You can replace your entire `index.html` file on GitHub with the code below.
+
+```html
 <!DOCTYPE html>  
 <html lang="en">  
 <head>  
@@ -8,6 +15,7 @@
 <meta name="description" content="GXNGSTA - Independent Hip-Hop Artist. Stream the latest tracks worldwide.">  
 <meta name="author" content="GXNGSTA">  
 
+<!-- IMAGE PRELOAD -->
 <link rel="preload" href="profile.jpg" as="image" fetchpriority="high">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">  
@@ -162,26 +170,36 @@ h1{
 }
 .link-btn:hover::before { opacity: 1; }
 
-/* ✨ STRICT HOVER-ONLY BORDER GLOW ✨ */
+/* ✨ HOVER BORDER & INNER GLOW (UPDATED) ✨ */
 .link-btn::after {
   content: ""; position: absolute; inset: 0; 
   border-radius: inherit;
+  
+  /* 1. Border Color */
   border: 1px solid var(--brand-color);
-  box-shadow: 0 0 20px var(--brand-color), inset 0 0 10px rgba(0,0,0,0.5);
-  opacity: 0; /* DEFAULT OFF */
-  transition: opacity 0.2s ease-in-out;
+  
+  /* 2. GLOW EFFECT: 
+      - First value: small outer glow
+      - Second value (inset): light glow INSIDE the tab
+  */
+  box-shadow: 
+    0 0 15px var(--brand-color),
+    inset 0 0 25px var(--brand-color);
+    
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease-in-out;
   pointer-events: none; z-index: 1;
 }
 
-/* Toggles border glow ONLY on mouse hover/click */
+/* Activate glow on hover/active */
 .link-btn:hover::after, .link-btn:active::after {
-  opacity: 0.8; 
+  opacity: 1; 
 }
 
 .link-left { display: flex; align-items: center; gap: 16px; font-size:15px; font-weight:700; z-index: 2; transform: translateZ(20px); }
 .link-btn i.arrow-icon { transform: translateZ(20px); z-index: 2; }
 
-/* ✨ CONTINUOUS LOGO BLINKING RESTORED ✨ */
+/* ✨ BRAND ICON ANIMATION ✨ */
 .link-btn i.brand-icon {
   font-size: clamp(20px, 6vw, 24px); width:26px; text-align: center;
   animation: brandPulse 4s infinite alternate ease-in-out; /* Breathing is back! */
@@ -194,11 +212,9 @@ h1{
   70%, 100% { color: var(--brand-color); text-shadow: 0 0 12px var(--brand-color); }
 }
 
-/* Staggered blink delays for organic feel */
 .links-grid > a:nth-child(even) .brand-icon { animation-delay: 1.5s; }
 .links-grid > a:nth-child(3n) .brand-icon { animation-delay: 0.7s; }
 
-/* Force icon to stay bright and pop out when hovered */
 .link-btn:hover i.brand-icon, .link-btn:active i.brand-icon {
   transform: scale(1.15); 
   color: var(--brand-color); 
@@ -249,6 +265,7 @@ h1{
 <div id="preloader">
   <div class="preloader-avatar">
     <div class="preloader-cd">
+      <!-- REPLACE WITH YOUR IMAGE -->
       <img src="profile.jpg" alt="GXNGSTA" fetchpriority="high">
     </div>
   </div>
@@ -259,6 +276,7 @@ h1{
   <div class="hero reveal-item">  
     <div class="cd-player-base">
       <div class="cd-record">
+        <!-- REPLACE WITH YOUR IMAGE -->
         <img src="profile.jpg" alt="GXNGSTA" class="spin-pic" fetchpriority="high">
       </div>  
     </div>
@@ -367,7 +385,7 @@ h1{
 </div>  
 
 <script>
-  // 1. SEAMLESS PRELOADER LOGIC (No Gap)
+  // 1. SEAMLESS PRELOADER LOGIC
   document.body.style.overflow = 'hidden';
   
   setTimeout(() => {
@@ -426,3 +444,4 @@ h1{
 </script>
 </body>  
 </html>
+```
