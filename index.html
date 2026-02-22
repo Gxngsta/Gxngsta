@@ -88,21 +88,21 @@ h1 {
 /* --- 🔥 IMPROVED EQUALIZERS & SECTION TITLES 🔥 --- */  
 .section-title { 
   margin: 45px 0 15px; 
-  font-size: 12px; 
-  color: #ffffff; 
-  letter-spacing: 5px; 
+  font-size: 12px; /* Thoda bada kiya */
+  color: #ffffff; /* Bright white kar diya */
+  letter-spacing: 5px; /* Premium spacing */
   text-transform: uppercase; 
   font-weight: 800; 
   display: flex; 
   align-items: center; 
   gap: 12px; 
-  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3); 
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3); /* Halka sa chamakta glow */
 }  
 .section-title::after { 
   content: ""; 
   flex-grow: 1; 
   height: 1px; 
-  background: linear-gradient(90deg, rgba(255,255,255,0.2), transparent); 
+  background: linear-gradient(90deg, rgba(255,255,255,0.2), transparent); /* Line ko thoda aur visible kiya */
 }  
 .equalizer { display: flex; gap: 3px; height: 12px; align-items: flex-end; }
 .bar { width: 3px; height: 12px; background: linear-gradient(to top, #00f0ff, #ff004f); border-radius: 3px 3px 0 0; transform-origin: bottom; animation: eqPlay 0.8s infinite alternate ease-in-out; will-change: transform; box-shadow: 0 0 5px rgba(255,0,79,0.5); }
@@ -125,14 +125,32 @@ h1 {
 /* 🔥 ULTRA 3D PLAY STORE APP ICON STYLING 🔥 */
 .app-icon {
   width: 40px; height: 40px; 
-  border-radius: 10px; 
+  border-radius: 10px; /* iOS/Play Store Squarcle curve */
   display: flex; align-items: center; justify-content: center; 
+  font-size: 22px;
   position: relative;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.5), inset 0 2px 2px rgba(255,255,255,0.6), inset 0 -2px 4px rgba(0,0,0,0.3);
+  /* Complex 3D Drop Shadow & Inner Emboss */
+  box-shadow: 
+    0 4px 8px rgba(0,0,0,0.5),           /* Main drop shadow */
+    0 8px 16px rgba(0,0,0,0.3),          /* Deep diffused shadow */
+    inset 0 2px 2px rgba(255,255,255,0.8), /* Top highlight (bevel) */
+    inset 0 -2px 4px rgba(0,0,0,0.3);      /* Bottom inner shadow */
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease; 
-  flex-shrink: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
+/* Glassy Shine Overlay for 3D depth */
+.app-icon::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Continuous Shimmer Light Sweep on Icons */
 .app-icon::after {
   content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
   background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
@@ -142,17 +160,24 @@ h1 {
 }
 @keyframes shimmerSweep { 0%, 40% { transform: rotate(30deg) translateX(-150%); } 100% { transform: rotate(30deg) translateX(150%); } }
 
-.link-btn:hover .app-icon { 
-  transform: scale(1.15) translateY(-3px) rotate(2deg); 
-  box-shadow: 0 10px 25px var(--glow-shadow), inset 0 2px 2px rgba(255,255,255,0.9), inset 0 -2px 4px rgba(0,0,0,0.4); 
+/* Ensure the FontAwesome icon sits above the glass shine */
+.app-icon i, .app-icon .custom-text-icon, .app-icon svg {
+  position: relative; z-index: 2;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4)); /* Makes inner icon pop */
 }
 
-.anim-grad { background-size: 200% 200% !important; animation: panGrad 3s ease infinite; }
-@keyframes panGrad { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+/* Hover State - Pops Out More */
+.link-btn:hover .app-icon { 
+  transform: scale(1.15) translateY(-3px) rotate(2deg); 
+  box-shadow: 
+    0 8px 15px rgba(0,0,0,0.6), 
+    0 12px 20px rgba(0,0,0,0.4),
+    inset 0 2px 2px rgba(255,255,255,0.9), 
+    inset 0 -2px 4px rgba(0,0,0,0.4); 
+}
 
-.link-btn svg { width: 22px; height: 22px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3)); position: relative; z-index: 2; }
-.jiosaavn-svg { width: 100% !important; height: 100% !important; }
-.custom-text-icon { font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -1px; display: inline-block; line-height: 1; transform: skewX(-8deg); font-size: 20px; z-index: 2; position: relative;}
+/* Custom Text Fallbacks */
+.custom-text-icon { font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -1px; display: inline-block; line-height: 1; transform: skewX(-8deg); }
 
 .link-btn i.arrow-icon { font-size: 14px; color: #555; background: rgba(255,255,255,0.03); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease; }
 .link-btn:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.6); }  
@@ -162,26 +187,26 @@ h1 {
 /* --- 🔥 IMPROVED BRIGHT FOOTER 🔥 --- */  
 .footer { 
   margin-top: 50px; 
-  font-size: 12px; /* Thoda bada */
-  color: #ffffff; /* Bright white */
-  letter-spacing: 3px; /* Spacing thodi badhayi */
+  font-size: 12px; 
+  color: #ffffff; 
+  letter-spacing: 3px; 
   text-align: center; 
-  padding: 20px 0 40px; 
-  font-weight: 600; /* Thoda bold kiya */
+  padding: 20px 0 30px; 
+  font-weight: 600; 
   text-transform: uppercase; 
-  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3); /* Base text pe glow */
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.4); 
 }  
 .footer span { 
   color: #ffffff; 
   font-family: 'Orbitron', sans-serif; 
   letter-spacing: 4px; 
-  font-weight: 900;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6); /* Artist name pe extreme glow */
+  font-weight: 900; 
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8); 
 }
 
-@media(max-width:480px){ .container{ padding:0 15px; margin: 25px auto;} .link-btn{padding:14px 18px; border-radius: 14px;} .link-left {font-size: 14px;} .app-icon{width: 36px; height: 36px;} .link-btn svg { width: 20px; height: 20px; } .hero { margin-bottom: 25px; } }  
+@media(max-width:480px){ .container{ padding:0 15px; margin: 25px auto;} .link-btn{padding:14px 18px; border-radius: 14px;} .link-left {font-size: 14px;} .app-icon{width: 36px; height: 36px; font-size: 20px;} .hero { margin-bottom: 25px; } }  
 
-/* --- 🌊 SUPER SMOOTH PARALLAX ENTRANCE 🌊 --- */
+/* --- 🌊 SUPER SMOOTH ENTRANCE 🌊 --- */
 .reveal-item { opacity: 0; transform: translate3d(0, 20px, 0); transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); will-change: opacity, transform; }
 .reveal-item.visible { opacity: 1; transform: translate3d(0, 0, 0); }
 noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { display: none; }
@@ -235,7 +260,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     <a class="link-btn reveal-item magnetic-btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #fa243c; --glow-shadow: rgba(250, 36, 60, 0.5);" aria-label="Listen on Apple Music">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon anim-grad" style="background: linear-gradient(135deg, #fa243c, #f51d4e);"><i class="fab fa-apple" style="color: #ffffff;"></i></div>
+        <div class="app-icon" style="background: #ffffff;"><i class="fab fa-apple" style="color: #fa243c;"></i></div>
         Apple Music
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
@@ -323,7 +348,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     <a class="link-btn reveal-item magnetic-btn" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #0088FF; --glow-shadow: rgba(0, 136, 255, 0.5);" aria-label="Find on Shazam">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon anim-grad" style="background: linear-gradient(135deg, #0088FF, #0055FF);"><span class="custom-text-icon" style="color: #ffffff; transform: skewX(0);">S</span></div>
+        <div class="app-icon" style="background: #ffffff;"><span class="custom-text-icon" style="color: #0088FF; transform: skewX(0);">S</span></div>
         Shazam
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
@@ -332,7 +357,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     <a class="link-btn reveal-item magnetic-btn" href="https://www.boomplay.com/share/artist/106853408?srModel=byWH&srList=ANDROID" target="_blank" style="--brand-color: #00E5FF; --glow-shadow: rgba(0, 229, 255, 0.5);" aria-label="Listen on Boomplay">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon anim-grad" style="background: linear-gradient(135deg, #0044FF, #00E5FF);"><span class="custom-text-icon" style="color: #ffffff;">B</span></div>
+        <div class="app-icon" style="background: #ffffff;"><span class="custom-text-icon" style="color: #0088FF;">B</span></div>
         Boomplay
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
@@ -350,7 +375,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     <a class="link-btn reveal-item magnetic-btn" href="https://www.instagram.com/gxngstaofficial" target="_blank" style="--brand-color: #E1306C; --glow-shadow: rgba(225, 48, 108, 0.5);" aria-label="Follow on Instagram">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon anim-grad" style="background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);"><i class="fab fa-instagram" style="color: #fff;"></i></div>
+        <div class="app-icon" style="background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);"><i class="fab fa-instagram" style="color: #fff;"></i></div>
         Instagram
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
@@ -435,3 +460,58 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
   })();
 
   // 🌌 2. SPARKS ANIMATION
+  try { 
+    var sparkContainer = document.getElementById('spark-container'); 
+    if(sparkContainer) { 
+      for (var j = 0; j < 15; j++) { 
+        var spark = document.createElement('div'); 
+        spark.classList.add('spark'); 
+        spark.style.left = (Math.random() * 100) + 'vw'; 
+        spark.style.setProperty('--speed', (Math.random() * 4 + 4) + 's'); 
+        spark.style.setProperty('--max-opacity', (Math.random() * 0.4 + 0.1)); 
+        spark.style.animationDelay = (Math.random() * 5) + 's'; 
+        sparkContainer.appendChild(spark); 
+      } 
+    } 
+  } catch(e) {}
+
+  // 💻 3. 3D EFFECTS (Desktop Only)
+  try { 
+    if (window.matchMedia("(pointer: fine)").matches) { 
+      var btns = document.querySelectorAll('.magnetic-btn');
+      for(var k = 0; k < btns.length; k++) {
+        btns[k].addEventListener('mousemove', function(e) { 
+          var rect = this.getBoundingClientRect(); 
+          var x = e.clientX - rect.left; 
+          var y = e.clientY - rect.top; 
+          this.style.setProperty('--x', x + 'px'); 
+          this.style.setProperty('--y', y + 'px'); 
+          var centerX = rect.width / 2; 
+          var centerY = rect.height / 2; 
+          var rotateX = ((y - centerY) / centerY) * -8; 
+          var rotateY = ((x - centerX) / centerX) * 8; 
+          this.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale3d(1.02, 1.02, 1.02)'; 
+        }); 
+        btns[k].addEventListener('mouseleave', function() { 
+          this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)'; 
+        }); 
+      }
+      
+      var hero = document.querySelector('.hero-parallax'); 
+      var parallaxItems = document.querySelectorAll('.parallax-item'); 
+      if (hero) { 
+        document.addEventListener('mousemove', function(e) { 
+          requestAnimationFrame(function() { 
+            var xAxis = (window.innerWidth / 2 - e.pageX) / 30; 
+            var yAxis = (window.innerHeight / 2 - e.pageY) / 30; 
+            if(parallaxItems[0]) parallaxItems[0].style.transform = 'rotateY(' + xAxis + 'deg) rotateX(' + yAxis + 'deg)'; 
+            if(parallaxItems[1]) parallaxItems[1].style.transform = 'translateZ(30px) rotateY(' + (xAxis*0.4) + 'deg) rotateX(' + (yAxis*0.4) + 'deg)'; 
+            if(parallaxItems[2]) parallaxItems[2].style.transform = 'translateZ(10px) rotateY(' + (xAxis*0.2) + 'deg) rotateX(' + (yAxis*0.2) + 'deg)'; 
+          }); 
+        }); 
+      } 
+    } 
+  } catch(e) {}
+</script>
+</body>  
+</html>
