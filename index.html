@@ -85,15 +85,31 @@ h1 {
 @keyframes badgeBreathe { 0% { filter: drop-shadow(0 0 2px rgba(29, 161, 242, 0.4)); } 100% { filter: drop-shadow(0 0 10px rgba(29, 161, 242, 1)); } }
 .tagline { color: #e0e0e0; font-size: 12px; margin-top: 5px; letter-spacing: 5px; font-weight: 700; text-transform: uppercase; transform: translateZ(10px); text-shadow: 0 2px 4px rgba(0,0,0,0.9); }  
   
-/* --- EQUALIZERS & SECTION TITLES --- */  
-.section-title{ margin:45px 0 15px; font-size:11px; color:#888; letter-spacing:4px; text-transform: uppercase; font-weight: 800; display: flex; align-items: center; gap: 12px; }  
-.section-title::after{ content:""; flex-grow: 1; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,0.08), transparent); }  
+/* --- 🔥 IMPROVED EQUALIZERS & SECTION TITLES 🔥 --- */  
+.section-title { 
+  margin: 45px 0 15px; 
+  font-size: 12px; 
+  color: #ffffff; 
+  letter-spacing: 5px; 
+  text-transform: uppercase; 
+  font-weight: 800; 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3); 
+}  
+.section-title::after { 
+  content: ""; 
+  flex-grow: 1; 
+  height: 1px; 
+  background: linear-gradient(90deg, rgba(255,255,255,0.2), transparent); 
+}  
 .equalizer { display: flex; gap: 3px; height: 12px; align-items: flex-end; }
 .bar { width: 3px; height: 12px; background: linear-gradient(to top, #00f0ff, #ff004f); border-radius: 3px 3px 0 0; transform-origin: bottom; animation: eqPlay 0.8s infinite alternate ease-in-out; will-change: transform; box-shadow: 0 0 5px rgba(255,0,79,0.5); }
 .bar:nth-child(2) { animation-delay: -0.2s; } .bar:nth-child(3) { animation-delay: -0.4s; }
 @keyframes eqPlay { 0% { transform: scaleY(0.2); } 100% { transform: scaleY(1); } }
 
-/* --- BUTTONS & 📱 EXACT PLAY STORE ICONS 📱 --- */  
+/* --- BUTTONS --- */  
 .links-grid { display: flex; flex-direction: column; gap: 14px; perspective: 1000px; }
 .link-btn{ display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-radius:16px; text-decoration:none; color:#ffffff; background: var(--card-bg); border: 1px solid var(--card-border); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: relative; overflow: hidden; transition: transform 0.1s ease, box-shadow 0.3s ease; transform-style: preserve-3d; will-change: transform; }  
 .link-btn::before { content: ""; position: absolute; top: var(--y, 50%); left: var(--x, 50%); transform: translate(-50%, -50%); width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s ease; pointer-events: none; z-index: 0; }
@@ -106,33 +122,99 @@ h1 {
 
 .link-left { display: flex; align-items: center; gap: 16px; font-size:15px; font-weight:700; z-index: 2; transform: translateZ(20px); }
 
-/* 🔥 APP ICON STYLING 🔥 */
+/* 🔥 ULTRA 3D PLAY STORE APP ICON STYLING 🔥 */
 .app-icon {
-  width: 36px; height: 36px; border-radius: 8px; 
-  display: flex; align-items: center; justify-content: center; font-size: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease; flex-shrink: 0;
+  width: 40px; height: 40px; 
+  border-radius: 10px; /* Perfect Play Store / iOS Squarcle */
+  display: flex; align-items: center; justify-content: center; 
+  font-size: 22px;
+  position: relative;
+  /* Complex 3D Drop Shadow & Inner Emboss */
+  box-shadow: 
+    0 4px 8px rgba(0,0,0,0.5),           
+    0 8px 16px rgba(0,0,0,0.3),          
+    inset 0 2px 2px rgba(255,255,255,0.8), 
+    inset 0 -2px 4px rgba(0,0,0,0.3);      
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease; 
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
 }
-.link-btn:hover .app-icon { transform: scale(1.1) translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.4); }
-.custom-text-icon { font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -1px; display: inline-block; line-height: 1; transform: skewX(-10deg); }
+
+/* Glassy Shine Overlay for 3D depth */
+.app-icon::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Continuous Shimmer Light Sweep on Icons */
+.app-icon::after {
+  content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  transform: rotate(30deg) translateX(-150%);
+  animation: shimmerSweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none; z-index: 5;
+}
+@keyframes shimmerSweep { 0%, 40% { transform: rotate(30deg) translateX(-150%); } 100% { transform: rotate(30deg) translateX(150%); } }
+
+/* Ensure icons sit above the glass shine */
+.app-icon i, .app-icon .custom-text-icon, .app-icon svg {
+  position: relative; z-index: 2;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4)); /* Makes inner icon pop */
+}
+
+/* Hover State - Pops Out More with Brand Aura */
+.link-btn:hover .app-icon { 
+  transform: scale(1.15) translateY(-3px) rotate(2deg); 
+  box-shadow: 
+    0 10px 25px var(--glow-shadow, rgba(255,255,255,0.2)), 
+    inset 0 2px 2px rgba(255,255,255,0.9), 
+    inset 0 -2px 4px rgba(0,0,0,0.4); 
+}
+
+/* Moving Live Gradient Animation for Gradient Backgrounds */
+.anim-grad { background-size: 200% 200% !important; animation: panGrad 3s ease infinite; }
+@keyframes panGrad { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+.custom-text-icon { font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -1px; display: inline-block; line-height: 1; transform: skewX(-8deg); font-size: 20px; z-index: 2; position: relative;}
 
 .link-btn i.arrow-icon { font-size: 14px; color: #555; background: rgba(255,255,255,0.03); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease; }
 .link-btn:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.6); }  
 .link-btn:active { transform: scale(0.96) !important; box-shadow: 0 2px 10px rgba(0,0,0,0.4); background: rgba(40, 40, 40, 0.6); transition: transform 0.05s ease; }
 .link-btn:hover i.arrow-icon, .link-btn:active i.arrow-icon { background: #ffffff; color: #000; transform: rotate(-45deg) translateZ(20px); }
   
-/* --- BRIGHTENED FOOTER --- */  
-.footer{ margin-top:50px; font-size:11px; color: #aaaaaa; letter-spacing:2px; text-align:center; padding:20px 0 30px; font-weight: 500; text-transform: uppercase; }  
-.footer span { color: #ffffff; font-family: 'Orbitron', sans-serif; letter-spacing: 3px; }
-@media(max-width:480px){ .container{ padding:0 15px; margin: 25px auto;} .link-btn{padding:14px 18px; border-radius: 14px;} .link-left {font-size: 14px;} .app-icon{width: 32px; height: 32px; font-size: 18px;} .hero { margin-bottom: 25px; } }  
+/* --- 🔥 IMPROVED BRIGHT FOOTER 🔥 --- */  
+.footer { 
+  margin-top: 50px; 
+  font-size: 12px; 
+  color: #ffffff; 
+  letter-spacing: 3px; 
+  text-align: center; 
+  padding: 20px 0 30px; 
+  font-weight: 600; 
+  text-transform: uppercase; 
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.4); 
+}  
+.footer span { 
+  color: #ffffff; 
+  font-family: 'Orbitron', sans-serif; 
+  letter-spacing: 4px; 
+  font-weight: 900; 
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8); 
+}
+
+@media(max-width:480px){ .container{ padding:0 15px; margin: 25px auto;} .link-btn{padding:14px 18px; border-radius: 14px;} .link-left {font-size: 14px;} .app-icon{width: 36px; height: 36px;} .link-btn svg { width: 20px; height: 20px; } .hero { margin-bottom: 25px; } }  
 
 /* --- 🌊 SUPER SMOOTH PARALLAX ENTRANCE 🌊 --- */
-.reveal-item { opacity: 0; transform: translate3d(0, 20px, 0); transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1); will-change: opacity, transform; }
+.reveal-item { opacity: 0; transform: translate3d(0, 20px, 0); transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); will-change: opacity, transform; }
 .reveal-item.visible { opacity: 1; transform: translate3d(0, 0, 0); }
 noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { display: none; }
 
-/* Custom SVG adjustment for JioSaavn */
-.jiosaavn-svg { width: 65%; height: auto; fill: currentColor; }
+/* SVG adjustments */
+.jiosaavn-svg { width: 100%; height: auto; display: block; }
 </style>  
 </head>  
 <body>  
@@ -171,57 +253,60 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
 
   <div class="links-grid">
     
-    <a class="link-btn reveal-item magnetic-btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank" style="--brand-color: #1DB954;" aria-label="Listen on Spotify">
+    <a class="link-btn reveal-item magnetic-btn" href="https://open.spotify.com/artist/0ysGay6NRI9AGPpKwKXmAb" target="_blank" style="--brand-color: #1DB954; --glow-shadow: rgba(29, 215, 96, 0.5);" aria-label="Listen on Spotify">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #1ED760; color: #000;"><i class="fab fa-spotify"></i></div>
+        <div class="app-icon" style="background: #191414;"><i class="fab fa-spotify" style="color: #1ED760;"></i></div>
         Spotify
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #ff2d55;" aria-label="Listen on Apple Music">
+    <a class="link-btn reveal-item magnetic-btn" href="https://music.apple.com/in/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #fa243c; --glow-shadow: rgba(250, 36, 60, 0.5);" aria-label="Listen on Apple Music">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #fa243c, #f51d4e); color: #fff;"><i class="fab fa-apple"></i></div>
+        <div class="app-icon anim-grad" style="background: linear-gradient(135deg, #fa243c, #f51d4e);"><i class="fab fa-apple" style="color: #ffffff;"></i></div>
         Apple Music
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://youtube.com/@GxngstaOfficial" target="_blank" style="--brand-color: #FF0000;" aria-label="Watch on YouTube">
+    <a class="link-btn reveal-item magnetic-btn" href="https://youtube.com/@GxngstaOfficial" target="_blank" style="--brand-color: #FF0000; --glow-shadow: rgba(255, 0, 0, 0.5);" aria-label="Watch on YouTube">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #fff; color: #FF0000;"><i class="fab fa-youtube"></i></div>
+        <div class="app-icon" style="background: #ffffff;"><i class="fab fa-youtube" style="color: #FF0000;"></i></div>
         YouTube
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a> 
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://music.youtube.com/channel/UCDYkzqzuppjtsfV4RatUqaA?si=jmzacLufpzK7ECmH" target="_blank" style="--brand-color: #FF0000;" aria-label="Listen on YouTube Music">
+    <a class="link-btn reveal-item magnetic-btn" href="https://music.youtube.com/channel/UCDYkzqzuppjtsfV4RatUqaA?si=jmzacLufpzK7ECmH" target="_blank" style="--brand-color: #FF0000; --glow-shadow: rgba(255, 0, 0, 0.4);" aria-label="Listen on YouTube Music">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #030303; color: #FF0000; border: 1px solid #333;"><i class="fab fa-youtube"></i></div>
+        <div class="app-icon" style="background: #000;"><i class="fab fa-youtube" style="color: #FF0000;"></i></div>
         YouTube Music
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank" style="--brand-color: #FF9900;" aria-label="Listen on Amazon Music">
+    <a class="link-btn reveal-item magnetic-btn" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank" style="--brand-color: #00A8E1; --glow-shadow: rgba(0, 168, 225, 0.5);" aria-label="Listen on Amazon Music">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #00A8E1, #007CA6); color: #fff;"><i class="fab fa-amazon"></i></div>
+        <div class="app-icon" style="background: #ffffff;"><i class="fab fa-amazon" style="color: #00A8E1;"></i></div>
         Amazon Music
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
     
-    <a class="link-btn reveal-item magnetic-btn" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank" style="--brand-color: #2BC5B4;" aria-label="Listen on JioSaavn">
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.jiosaavn.com/artist/gxngsta-/eZe6Nc98dD4_" target="_blank" style="--brand-color: #11c290; --glow-shadow: rgba(17, 194, 144, 0.5);" aria-label="Listen on JioSaavn">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #fff; color: #2BC5B4;">
-            <svg class="jiosaavn-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.187 16.924c-.23.364-.69.476-1.048.257-2.87-1.748-6.48-2.144-10.743-1.173-.418.095-.826-.172-.921-.592-.094-.418.173-.826.592-.921 4.654-1.06 8.652-.613 11.864 1.011.357.219.47.683.256 1.418zm1.488-3.32c-.29.467-.887.61-1.353.32-3.268-2-7.464-2.585-11.85-1.417-.525.14-1.07-.174-1.21-.7-.14-.524.175-1.07.7-1.21 4.96-1.322 9.61-.663 13.393 1.654.466.29.61.887.32 1.353zm.134-3.46c-3.905-2.316-10.347-2.528-14.072-1.397-.626.19-1.29-.163-1.48-.79-.19-.625.164-1.29.79-1.48 4.25-1.293 11.36-1.05 15.823 1.597.565.334.717 1.066.383 1.63-.334.566-1.066.718-1.63.384z" fill="#2BC5B4" />
+        <div class="app-icon" style="background: #ffffff; padding: 2px;">
+            <svg class="jiosaavn-svg" viewBox="0 0 100 100" style="width: 100%; height: 100%;">
+               <circle cx="50" cy="50" r="46" fill="#15c290"/>
+               <path d="M48 85 C 20 75, 5 45, 25 25 C 38 25, 45 45, 48 65 Z" fill="#ffffff"/>
+               <path d="M52 85 C 80 75, 95 45, 75 25 C 62 25, 55 45, 52 65 Z" fill="#ffffff"/>
+               <path d="M50 85 C 40 60, 40 30, 50 10 C 60 30, 60 60, 50 85 Z" fill="#ffffff"/>
             </svg>
         </div>
         JioSaavn
@@ -229,64 +314,66 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://www.deezer.com/us/artist/304158961" target="_blank" style="--brand-color: #EF5466;" aria-label="Listen on Deezer">
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.deezer.com/us/artist/304158961" target="_blank" style="--brand-color: #EF5466; --glow-shadow: rgba(162, 56, 255, 0.5);" aria-label="Listen on Deezer">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #A238FF, #E7127D); color: #fff;"><i class="fab fa-deezer"></i></div>
+        <div class="app-icon" style="background: #111;"><i class="fab fa-deezer" style="background-image: linear-gradient(135deg, #A238FF, #E7127D); -webkit-background-clip: text; color: transparent;"></i></div>
         Deezer
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://tidal.com/artist/54713043" target="_blank" style="--brand-color: #00FFFF;" aria-label="Listen on TIDAL">
+    <a class="link-btn reveal-item magnetic-btn" href="https://tidal.com/artist/54713043" target="_blank" style="--brand-color: #00FFFF; --glow-shadow: rgba(255, 255, 255, 0.3);" aria-label="Listen on TIDAL">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #000; color: #fff; border: 1px solid #333;"><i class="fas fa-wave-square"></i></div>
+        <div class="app-icon" style="background: #000;"><i class="fas fa-wave-square" style="color: #fff;"></i></div>
         TIDAL
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://audiomack.com/GxngstaOfficial" target="_blank" style="--brand-color: #FFA200;" aria-label="Listen on Audiomack">
+    <a class="link-btn reveal-item magnetic-btn" href="https://audiomack.com/GxngstaOfficial" target="_blank" style="--brand-color: #FFA200; --glow-shadow: rgba(255, 162, 0, 0.5);" aria-label="Listen on Audiomack">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #FFA200; color: #000;"><i class="fas fa-play"></i></div>
+        <div class="app-icon" style="background: #FFA200;"><i class="fas fa-play" style="color: #000; font-size: 16px;"></i></div>
         Audiomack
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://m.soundcloud.com/gangsta-769519727" target="_blank" style="--brand-color: #FF5500;" aria-label="Listen on SoundCloud">
+    <a class="link-btn reveal-item magnetic-btn" href="https://m.soundcloud.com/gangsta-769519727" target="_blank" style="--brand-color: #FF5500; --glow-shadow: rgba(255, 85, 0, 0.5);" aria-label="Listen on SoundCloud">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #FF7700, #FF3300); color: #fff;"><i class="fab fa-soundcloud"></i></div>
+        <div class="app-icon" style="background: #ffffff;"><i class="fab fa-soundcloud" style="color: #FF5500;"></i></div>
         SoundCloud
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #0088FF;" aria-label="Find on Shazam">
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.shazam.com/artist/gxngsta/1797817041" target="_blank" style="--brand-color: #0088FF; --glow-shadow: rgba(0, 136, 255, 0.5);" aria-label="Find on Shazam">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #0088FF, #0055FF); color: #fff;"><span class="custom-text-icon" style="transform: skewX(0);">S</span></div>
+        <div class="app-icon anim-grad" style="background: linear-gradient(135deg, #0088FF, #0055FF);"><span class="custom-text-icon" style="color: #ffffff; transform: skewX(0);">S</span></div>
         Shazam
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://www.boomplay.com/share/artist/106853408?srModel=byWH&srList=ANDROID" target="_blank" style="--brand-color: #00E5FF;" aria-label="Listen on Boomplay">
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.boomplay.com/share/artist/106853408?srModel=byWH&srList=ANDROID" target="_blank" style="--brand-color: #00E5FF; --glow-shadow: rgba(0, 229, 255, 0.5);" aria-label="Listen on Boomplay">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #0044FF, #00E5FF); color: #fff;"><i class="fas fa-play"></i></div>
+        <div class="app-icon anim-grad" style="background: linear-gradient(135deg, #0044FF, #00E5FF);"><span class="custom-text-icon" style="color: #ffffff;">B</span></div>
         Boomplay
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
 
-    <a class="link-btn reveal-item magnetic-btn" href="https://play.anghami.com/artist/23670954" target="_blank" style="--brand-color: #A238FF;" aria-label="Listen on Anghami">
+    <a class="link-btn reveal-item magnetic-btn" href="https://play.anghami.com/artist/23670954" target="_blank" style="--brand-color: #A238FF; --glow-shadow: rgba(162, 56, 255, 0.5);" aria-label="Listen on Anghami">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #A238FF, #E21873); color: #fff;"><span class="custom-text-icon" style="transform: skewX(0);">A</span></div>
+        <div class="app-icon anim-grad" style="background: linear-gradient(135deg, #A238FF, #E21873);">
+           <span class="custom-text-icon" style="color: #ffffff; transform: skewX(0); font-family: 'Inter', sans-serif;">A</span>
+        </div>
         Anghami
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
@@ -300,28 +387,29 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     Connect
   </div>  
   <div class="links-grid">
-    <a class="link-btn reveal-item magnetic-btn" href="https://www.instagram.com/gxngstaofficial" target="_blank" style="--brand-color: #E1306C;" aria-label="Follow on Instagram">
+    
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.instagram.com/gxngstaofficial" target="_blank" style="--brand-color: #E1306C; --glow-shadow: rgba(225, 48, 108, 0.5);" aria-label="Follow on Instagram">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); color: #fff;"><i class="fab fa-instagram"></i></div>
+        <div class="app-icon anim-grad" style="background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);"><i class="fab fa-instagram" style="color: #fff;"></i></div>
         Instagram
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
     
-    <a class="link-btn reveal-item magnetic-btn" href="https://x.com/GxngstaOfficial" target="_blank" style="--brand-color: #ffffff;" aria-label="Follow on X (Twitter)">
+    <a class="link-btn reveal-item magnetic-btn" href="https://x.com/GxngstaOfficial" target="_blank" style="--brand-color: #ffffff; --glow-shadow: rgba(255, 255, 255, 0.3);" aria-label="Follow on X (Twitter)">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #000; color: #fff; border: 1px solid #333;"><i class="fab fa-twitter"></i></div>
+        <div class="app-icon" style="background: #000;"><i class="fab fa-twitter" style="color: #fff;"></i></div>
         X (Twitter)
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
     
-    <a class="link-btn reveal-item magnetic-btn" href="https://www.facebook.com/profile.php?id=61573079602732" target="_blank" style="--brand-color: #1877F2;" aria-label="Follow on Facebook">
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.facebook.com/profile.php?id=61573079602732" target="_blank" style="--brand-color: #1877F2; --glow-shadow: rgba(24, 119, 242, 0.5);" aria-label="Follow on Facebook">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: #1877F2; color: #fff;"><i class="fab fa-facebook-f"></i></div>
+        <div class="app-icon" style="background: #1877F2;"><i class="fab fa-facebook-f" style="color: #fff;"></i></div>
         Facebook
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
@@ -335,10 +423,11 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     Management
   </div>  
   <div class="links-grid">
-    <a class="link-btn reveal-item magnetic-btn" href="mailto:gxngstaofficial@gmail.com" style="--brand-color: #00f0ff;" aria-label="Email Management">
+    
+    <a class="link-btn reveal-item magnetic-btn" href="mailto:gxngstaofficial@gmail.com" style="--brand-color: #00f0ff; --glow-shadow: rgba(52, 152, 219, 0.5);" aria-label="Email Management">
       <div class="glass-sweep"></div>
       <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #2c3e50, #3498db); color: #fff;"><i class="fas fa-envelope"></i></div>
+        <div class="app-icon" style="background: #ffffff;"><i class="fas fa-envelope" style="color: #3498db;"></i></div>
         Email
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
@@ -351,56 +440,94 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
 </div>  
 
 <script>
-  // 1. SPARKS ANIMATION
+  // 🛡️ 1. UNBREAKABLE NATIVE JS (No AddEventListeners for Loading) 🛡️
+  (function() {
+    var preloader = document.getElementById('preloader');
+    var items = document.querySelectorAll('.reveal-item');
+    var isLoaded = false;
+
+    function killLoader() {
+      if(isLoaded) return;
+      isLoaded = true;
+      
+      if(preloader) {
+        preloader.classList.add('hide-anim');
+        setTimeout(function() {
+          preloader.style.display = 'none';
+        }, 1000); 
+      }
+      
+      for(var i = 0; i < items.length; i++) {
+        (function(index) {
+          setTimeout(function() {
+            items[index].classList.add('visible');
+          }, 200 + (index * 80)); 
+        })(i);
+      }
+    }
+
+    // FIRE EXACTLY AFTER 1.2 SECONDS
+    setTimeout(killLoader, 1200);
+    
+    // Tap to skip
+    if(preloader) {
+      preloader.onclick = killLoader;
+    }
+  })();
+
+  // 🌌 2. SPARKS ANIMATION
   try { 
-    const sparkContainer = document.getElementById('spark-container'); 
+    var sparkContainer = document.getElementById('spark-container'); 
     if(sparkContainer) { 
-      for (let i = 0; i < 15; i++) { 
-        let spark = document.createElement('div'); 
+      for (var j = 0; j < 15; j++) { 
+        var spark = document.createElement('div'); 
         spark.classList.add('spark'); 
-        spark.style.left = `${Math.random() * 100}vw`; 
-        spark.style.setProperty('--speed', `${Math.random() * 4 + 4}s`); 
-        spark.style.setProperty('--max-opacity', `${Math.random() * 0.4 + 0.1}`); 
-        spark.style.animationDelay = `${Math.random() * 5}s`; 
+        spark.style.left = (Math.random() * 100) + 'vw'; 
+        spark.style.setProperty('--speed', (Math.random() * 4 + 4) + 's'); 
+        spark.style.setProperty('--max-opacity', (Math.random() * 0.4 + 0.1)); 
+        spark.style.animationDelay = (Math.random() * 5) + 's'; 
         sparkContainer.appendChild(spark); 
       } 
     } 
   } catch(e) {}
 
-  // 🛡️ 2. DIRECT LIQUID SMOOTH REVEAL (NO EVENT WAITING) 🛡️
-  const preloader = document.getElementById('preloader'); 
-  let isLoaded = false; 
-
-  function hideLoader() { 
-    if(isLoaded || !preloader) return; 
-    isLoaded = true; 
-    
-    preloader.classList.add('hide-anim');
-    
-    const items = document.querySelectorAll('.reveal-item'); 
-    items.forEach((item, index) => { 
-      setTimeout(() => { item.classList.add('visible'); }, 200 + (index * 80)); 
-    }); 
-    
-    setTimeout(() => { 
-      preloader.style.display = 'none'; 
-      document.body.style.overflow = 'auto'; 
-    }, 1200); 
-  }
-
-  // Timer starts instantly as soon as HTML is read.
-  setTimeout(hideLoader, 1200); 
-  if(preloader) preloader.addEventListener('click', hideLoader);
-
-  // 3. 3D EFFECTS (Desktop Only)
+  // 💻 3. 3D EFFECTS (Desktop Only)
   try { 
     if (window.matchMedia("(pointer: fine)").matches) { 
-      document.querySelectorAll('.magnetic-btn').forEach(btn => { 
-        btn.addEventListener('mousemove', e => { 
-          const rect = btn.getBoundingClientRect(); 
-          const x = e.clientX - rect.left; 
-          const y = e.clientY - rect.top; 
-          btn.style.setProperty('--x', `${x}px`); 
-          btn.style.setProperty('--y', `${y}px`); 
-          const centerX = rect.width / 2; 
-          const centerY = rect.height /
+      var btns = document.querySelectorAll('.magnetic-btn');
+      for(var k = 0; k < btns.length; k++) {
+        btns[k].addEventListener('mousemove', function(e) { 
+          var rect = this.getBoundingClientRect(); 
+          var x = e.clientX - rect.left; 
+          var y = e.clientY - rect.top; 
+          this.style.setProperty('--x', x + 'px'); 
+          this.style.setProperty('--y', y + 'px'); 
+          var centerX = rect.width / 2; 
+          var centerY = rect.height / 2; 
+          var rotateX = ((y - centerY) / centerY) * -8; 
+          var rotateY = ((x - centerX) / centerX) * 8; 
+          this.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale3d(1.02, 1.02, 1.02)'; 
+        }); 
+        btns[k].addEventListener('mouseleave', function() { 
+          this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)'; 
+        }); 
+      }
+      
+      var hero = document.querySelector('.hero-parallax'); 
+      var parallaxItems = document.querySelectorAll('.parallax-item'); 
+      if (hero) { 
+        document.addEventListener('mousemove', function(e) { 
+          requestAnimationFrame(function() { 
+            var xAxis = (window.innerWidth / 2 - e.pageX) / 30; 
+            var yAxis = (window.innerHeight / 2 - e.pageY) / 30; 
+            if(parallaxItems[0]) parallaxItems[0].style.transform = 'rotateY(' + xAxis + 'deg) rotateX(' + yAxis + 'deg)'; 
+            if(parallaxItems[1]) parallaxItems[1].style.transform = 'translateZ(30px) rotateY(' + (xAxis*0.4) + 'deg) rotateX(' + (yAxis*0.4) + 'deg)'; 
+            if(parallaxItems[2]) parallaxItems[2].style.transform = 'translateZ(10px) rotateY(' + (xAxis*0.2) + 'deg) rotateX(' + (yAxis*0.2) + 'deg)'; 
+          }); 
+        }); 
+      } 
+    } 
+  } catch(e) {}
+</script>
+</body>  
+</html>
