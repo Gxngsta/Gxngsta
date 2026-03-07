@@ -63,8 +63,8 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100vw; height:100
 /* --- CONTAINER & HERO --- */  
 .container{ max-width:500px; margin:40px auto; padding:0 20px; width:100%; position: relative; z-index: 1; }  
 .hero{ display:flex; flex-direction: column; justify-content:center; align-items:center; margin-bottom:30px; perspective: 1000px; }  
-.cd-player-base { position: relative; padding: 4px; border-radius: 50%; margin-bottom: 20px; background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8)); box-shadow: 0 0 40px rgba(255,0,79,0.15), 0 0 40px rgba(0,240,255,0.15); animation: liquidAura 4s ease-in-out infinite alternate; will-change: transform; transform-style: preserve-3d; }
-.cd-record { width: clamp(110px, 30vw, 130px); height: clamp(110px, 30vw, 130px); border-radius: 50%; position: relative; border: 3px solid #050505; overflow: hidden; transform: translateZ(20px); }
+.cd-player-base { position: relative; padding: 4px; border-radius: 50%; margin-bottom: 20px; background: linear-gradient(135deg, rgba(255,0,79,0.8), rgba(0,240,255,0.8)); box-shadow: 0 0 40px rgba(255,0,79,0.15), 0 0 40px rgba(0,240,255,0.15); animation: liquidAura 4s ease-in-out infinite alternate; }
+.cd-record { width: clamp(110px, 30vw, 130px); height: clamp(110px, 30vw, 130px); border-radius: 50%; position: relative; border: 3px solid #050505; overflow: hidden; }
 .cd-record::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(rgba(255,255,255,0.05) 0deg, transparent 45deg, rgba(255,255,255,0.15) 90deg, transparent 135deg, rgba(255,255,255,0.05) 180deg, transparent 225deg, rgba(255,255,255,0.15) 270deg, transparent 315deg, rgba(255,255,255,0.05) 360deg); z-index: 5; pointer-events: none; mix-blend-mode: overlay; }
 .cd-record::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.1) 100%); z-index: 10; pointer-events: none; mix-blend-mode: soft-light; border-radius: 50%; }
 .spin-pic { width: 100%; height: 100%; object-fit: cover; display: block; animation: spinImage 10s linear infinite; will-change: transform; }  
@@ -75,15 +75,15 @@ body::before{ content:""; position:fixed; top:0; left:0; width:100vw; height:100
 h1 {  
   font-family:'Orbitron',sans-serif; font-size: clamp(28px, 8vw, 36px); 
   letter-spacing: 5px; font-weight:900; text-transform: uppercase;
-  position: relative; transform: translateZ(30px);
+  position: relative; 
   background: linear-gradient(180deg, #ffffff 0%, #e0e0e0 50%, #b0b0b0 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   filter: drop-shadow(0 1px 1px rgba(255,255,255,0.8)) drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
-.verified { color: #1DA1F2; font-size: clamp(16px, 5vw, 20px); transform: translateZ(30px); animation: badgeBreathe 2s infinite alternate ease-in-out; }
+.verified { color: #1DA1F2; font-size: clamp(16px, 5vw, 20px); animation: badgeBreathe 2s infinite alternate ease-in-out; }
 @keyframes badgeBreathe { 0% { filter: drop-shadow(0 0 2px rgba(29, 161, 242, 0.4)); } 100% { filter: drop-shadow(0 0 10px rgba(29, 161, 242, 1)); } }
-.tagline { color: #e0e0e0; font-size: 12px; margin-top: 5px; letter-spacing: 5px; font-weight: 700; text-transform: uppercase; transform: translateZ(10px); text-shadow: 0 2px 4px rgba(0,0,0,0.9); }  
+.tagline { color: #e0e0e0; font-size: 12px; margin-top: 5px; letter-spacing: 5px; font-weight: 700; text-transform: uppercase; text-shadow: 0 2px 4px rgba(0,0,0,0.9); }  
   
 /* --- 🔥 IMPROVED EQUALIZERS & SECTION TITLES 🔥 --- */  
 .section-title { 
@@ -160,24 +160,26 @@ h1 {
 }
 @keyframes shimmerSweep { 0%, 40% { transform: rotate(30deg) translateX(-150%); } 100% { transform: rotate(30deg) translateX(150%); } }
 
-/* Ensure the FontAwesome icon sits above the glass shine */
+/* Ensure icons sit above the glass shine */
 .app-icon i, .app-icon .custom-text-icon, .app-icon svg {
   position: relative; z-index: 2;
   filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4)); /* Makes inner icon pop */
 }
 
-/* Hover State - Pops Out More */
+/* Hover State - Pops Out More with Brand Aura */
 .link-btn:hover .app-icon { 
   transform: scale(1.15) translateY(-3px) rotate(2deg); 
   box-shadow: 
-    0 8px 15px rgba(0,0,0,0.6), 
-    0 12px 20px rgba(0,0,0,0.4),
+    0 10px 25px var(--glow-shadow, rgba(255,255,255,0.2)), 
     inset 0 2px 2px rgba(255,255,255,0.9), 
     inset 0 -2px 4px rgba(0,0,0,0.4); 
 }
 
-/* Custom Text Fallbacks */
-.custom-text-icon { font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -1px; display: inline-block; line-height: 1; transform: skewX(-8deg); }
+/* Moving Live Gradient Animation for Gradient Backgrounds */
+.anim-grad { background-size: 200% 200% !important; animation: panGrad 3s ease infinite; }
+@keyframes panGrad { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+.custom-text-icon { font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -1px; display: inline-block; line-height: 1; transform: skewX(-8deg); font-size: 20px; z-index: 2; position: relative;}
 
 .link-btn i.arrow-icon { font-size: 14px; color: #555; background: rgba(255,255,255,0.03); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease; }
 .link-btn:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.6); }  
@@ -229,17 +231,17 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
 
 <div class="container">    
   
-  <div class="hero reveal-item hero-parallax">  
-    <div class="cd-player-base parallax-item">
+  <div class="hero reveal-item">  
+    <div class="cd-player-base">
       <div class="cd-record">
         <img src="profile.jpg" alt="GXNGSTA" class="spin-pic" fetchpriority="high">
       </div>  
     </div>
-    <div class="name-container parallax-item">
+    <div class="name-container">
       <h1>GXNGSTA</h1>  
       <i class="fas fa-check-circle verified" title="Verified Artist"></i>
     </div>
-    <p class="tagline parallax-item">Independent Hip-Hop Artist</p>    
+    <p class="tagline">Independent Hip-Hop Artist</p>    
   </div>
   
   <div class="section-title reveal-item">
@@ -365,6 +367,15 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
+
+    <a class="link-btn reveal-item magnetic-btn" href="https://play.anghami.com/artist/23670954" target="_blank" style="--brand-color: #A238FF; --glow-shadow: rgba(162, 56, 255, 0.5);" aria-label="Listen on Anghami">
+      <div class="glass-sweep"></div>
+      <div class="link-left">
+        <div class="app-icon anim-grad" style="background: linear-gradient(135deg, #A238FF, #E21873);"><span class="custom-text-icon" style="color: #fff; transform: skewX(0);">A</span></div>
+        Anghami
+      </div>
+      <i class="fas fa-arrow-right arrow-icon"></i>
+    </a>
   </div>
 
   <div class="section-title reveal-item">
@@ -508,20 +519,6 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
           this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)'; 
         }); 
       }
-      
-      var hero = document.querySelector('.hero-parallax'); 
-      var parallaxItems = document.querySelectorAll('.parallax-item'); 
-      if (hero) { 
-        document.addEventListener('mousemove', function(e) { 
-          requestAnimationFrame(function() { 
-            var xAxis = (window.innerWidth / 2 - e.pageX) / 30; 
-            var yAxis = (window.innerHeight / 2 - e.pageY) / 30; 
-            if(parallaxItems[0]) parallaxItems[0].style.transform = 'rotateY(' + xAxis + 'deg) rotateX(' + yAxis + 'deg)'; 
-            if(parallaxItems[1]) parallaxItems[1].style.transform = 'translateZ(30px) rotateY(' + (xAxis*0.4) + 'deg) rotateX(' + (yAxis*0.4) + 'deg)'; 
-            if(parallaxItems[2]) parallaxItems[2].style.transform = 'translateZ(10px) rotateY(' + (xAxis*0.2) + 'deg) rotateX(' + (yAxis*0.2) + 'deg)'; 
-          }); 
-        }); 
-      } 
     } 
   } catch(e) {}
 </script>
