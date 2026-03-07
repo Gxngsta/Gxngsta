@@ -88,21 +88,21 @@ h1 {
 /* --- 🔥 IMPROVED EQUALIZERS & SECTION TITLES 🔥 --- */  
 .section-title { 
   margin: 45px 0 15px; 
-  font-size: 12px; /* Thoda bada kiya */
-  color: #ffffff; /* Bright white kar diya */
-  letter-spacing: 5px; /* Premium spacing */
+  font-size: 12px; 
+  color: #ffffff; 
+  letter-spacing: 5px; 
   text-transform: uppercase; 
   font-weight: 800; 
   display: flex; 
   align-items: center; 
   gap: 12px; 
-  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3); /* Halka sa chamakta glow */
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3); 
 }  
 .section-title::after { 
   content: ""; 
   flex-grow: 1; 
   height: 1px; 
-  background: linear-gradient(90deg, rgba(255,255,255,0.2), transparent); /* Line ko thoda aur visible kiya */
+  background: linear-gradient(90deg, rgba(255,255,255,0.2), transparent); 
 }  
 .equalizer { display: flex; gap: 3px; height: 12px; align-items: flex-end; }
 .bar { width: 3px; height: 12px; background: linear-gradient(to top, #00f0ff, #ff004f); border-radius: 3px 3px 0 0; transform-origin: bottom; animation: eqPlay 0.8s infinite alternate ease-in-out; will-change: transform; box-shadow: 0 0 5px rgba(255,0,79,0.5); }
@@ -125,23 +125,21 @@ h1 {
 /* 🔥 ULTRA 3D PLAY STORE APP ICON STYLING 🔥 */
 .app-icon {
   width: 40px; height: 40px; 
-  border-radius: 10px; /* iOS/Play Store Squarcle curve */
+  border-radius: 10px; 
   display: flex; align-items: center; justify-content: center; 
   font-size: 22px;
   position: relative;
-  /* Complex 3D Drop Shadow & Inner Emboss */
   box-shadow: 
-    0 4px 8px rgba(0,0,0,0.5),           /* Main drop shadow */
-    0 8px 16px rgba(0,0,0,0.3),          /* Deep diffused shadow */
-    inset 0 2px 2px rgba(255,255,255,0.8), /* Top highlight (bevel) */
-    inset 0 -2px 4px rgba(0,0,0,0.3);      /* Bottom inner shadow */
+    0 4px 8px rgba(0,0,0,0.5),           
+    0 8px 16px rgba(0,0,0,0.3),          
+    inset 0 2px 2px rgba(255,255,255,0.8), 
+    inset 0 -2px 4px rgba(0,0,0,0.3);      
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease; 
   flex-shrink: 0;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Glassy Shine Overlay for 3D depth */
 .app-icon::before {
   content: '';
   position: absolute; top: 0; left: 0; right: 0; bottom: 0;
@@ -150,7 +148,6 @@ h1 {
   z-index: 1;
 }
 
-/* Continuous Shimmer Light Sweep on Icons */
 .app-icon::after {
   content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
   background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
@@ -160,13 +157,11 @@ h1 {
 }
 @keyframes shimmerSweep { 0%, 40% { transform: rotate(30deg) translateX(-150%); } 100% { transform: rotate(30deg) translateX(150%); } }
 
-/* Ensure the FontAwesome icon sits above the glass shine */
 .app-icon i, .app-icon .custom-text-icon, .app-icon svg {
   position: relative; z-index: 2;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4)); /* Makes inner icon pop */
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4)); 
 }
 
-/* Hover State - Pops Out More */
 .link-btn:hover .app-icon { 
   transform: scale(1.15) translateY(-3px) rotate(2deg); 
   box-shadow: 
@@ -176,7 +171,6 @@ h1 {
     inset 0 -2px 4px rgba(0,0,0,0.4); 
 }
 
-/* Custom Text Fallbacks */
 .custom-text-icon { font-family: 'Inter', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -1px; display: inline-block; line-height: 1; transform: skewX(-8deg); }
 
 .link-btn i.arrow-icon { font-size: 14px; color: #555; background: rgba(255,255,255,0.03); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease; }
@@ -212,7 +206,7 @@ h1 {
 noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { display: none; }
 
 /* SVG adjustments */
-.jiosaavn-svg { width: 100%; height: auto; display: block; }
+.jiosaavn-svg { width: 100%; height: auto; display: block; fill: #11c290; }
 </style>  
 </head>  
 <body>  
@@ -300,7 +294,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
       <div class="glass-sweep"></div>
       <div class="link-left">
         <div class="app-icon" style="background: #ffffff; padding: 2px;">
-            <svg class="jiosaavn-svg" viewBox="0 0 512 512" fill="#11c290"><path d="M256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zm0 106.7c-82.5 0-149.3 66.8-149.3 149.3S173.5 405.3 256 405.3 405.3 338.5 405.3 256 338.5 106.7 256 106.7z"/></svg>
+            <svg class="jiosaavn-svg" viewBox="0 0 512 512"><path d="M256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zm0 106.7c-82.5 0-149.3 66.8-149.3 149.3S173.5 405.3 256 405.3 405.3 338.5 405.3 256 338.5 106.7 256 106.7z"/></svg>
         </div>
         JioSaavn
       </div>
@@ -318,7 +312,33 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
 
   </div>
 
+  <div class="footer reveal-item">
+    GXNGSTA <span>© 2026</span>
+  </div>
+
 </div>
+
+<script>
+  window.addEventListener('load', function() {
+    // 1. Preloader (CD) ko hide karo
+    var preloader = document.getElementById('preloader');
+    if (preloader) {
+      setTimeout(function() {
+        preloader.classList.add('hide-anim');
+      }, 500); // 0.5 second baad CD gayab
+    }
+
+    // 2. Links aur baaki items ko smooth tareeke se dikhao
+    setTimeout(function() {
+      var revealItems = document.querySelectorAll('.reveal-item');
+      revealItems.forEach(function(item, index) {
+        setTimeout(function() {
+          item.classList.add('visible');
+        }, index * 100); // Har link 0.1s ke gap par aayega
+      });
+    }, 800);
+  });
+</script>
 
 </body>
 </html>
