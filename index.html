@@ -318,23 +318,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
 
   </div>
 
-  <div class="footer reveal-item">
-    GXNGSTA <span>© 2024</span>
-  </div>
-
 </div>
-
-<script>
-  // Chhote se JS ke bina pages load hi nahi honge due to preloader
-  window.addEventListener('load', () => {
-    document.getElementById('preloader').classList.add('hide-anim');
-    setTimeout(() => {
-      document.querySelectorAll('.reveal-item').forEach((item, index) => {
-        setTimeout(() => { item.classList.add('visible'); }, index * 100);
-      });
-    }, 500);
-  });
-</script>
 
 </body>
 </html>
