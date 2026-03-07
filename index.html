@@ -365,15 +365,6 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
-
-    <a class="link-btn reveal-item magnetic-btn" href="https://play.anghami.com/artist/23670954" target="_blank" style="--brand-color: #A238FF;" aria-label="Listen on Anghami">
-      <div class="glass-sweep"></div>
-      <div class="link-left">
-        <div class="app-icon" style="background: linear-gradient(135deg, #A238FF, #E21873);"><span class="custom-text-icon" style="color: #fff; transform: skewX(0);">A</span></div>
-        Anghami
-      </div>
-      <i class="fas fa-arrow-right arrow-icon"></i>
-    </a>
   </div>
 
   <div class="section-title reveal-item">
@@ -500,4 +491,39 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
   try { 
     if (window.matchMedia("(pointer: fine)").matches) { 
       var btns = document.querySelectorAll('.magnetic-btn');
-      for(var k
+      for(var k = 0; k < btns.length; k++) {
+        btns[k].addEventListener('mousemove', function(e) { 
+          var rect = this.getBoundingClientRect(); 
+          var x = e.clientX - rect.left; 
+          var y = e.clientY - rect.top; 
+          this.style.setProperty('--x', x + 'px'); 
+          this.style.setProperty('--y', y + 'px'); 
+          var centerX = rect.width / 2; 
+          var centerY = rect.height / 2; 
+          var rotateX = ((y - centerY) / centerY) * -8; 
+          var rotateY = ((x - centerX) / centerX) * 8; 
+          this.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale3d(1.02, 1.02, 1.02)'; 
+        }); 
+        btns[k].addEventListener('mouseleave', function() { 
+          this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)'; 
+        }); 
+      }
+      
+      var hero = document.querySelector('.hero-parallax'); 
+      var parallaxItems = document.querySelectorAll('.parallax-item'); 
+      if (hero) { 
+        document.addEventListener('mousemove', function(e) { 
+          requestAnimationFrame(function() { 
+            var xAxis = (window.innerWidth / 2 - e.pageX) / 30; 
+            var yAxis = (window.innerHeight / 2 - e.pageY) / 30; 
+            if(parallaxItems[0]) parallaxItems[0].style.transform = 'rotateY(' + xAxis + 'deg) rotateX(' + yAxis + 'deg)'; 
+            if(parallaxItems[1]) parallaxItems[1].style.transform = 'translateZ(30px) rotateY(' + (xAxis*0.4) + 'deg) rotateX(' + (yAxis*0.4) + 'deg)'; 
+            if(parallaxItems[2]) parallaxItems[2].style.transform = 'translateZ(10px) rotateY(' + (xAxis*0.2) + 'deg) rotateX(' + (yAxis*0.2) + 'deg)'; 
+          }); 
+        }); 
+      } 
+    } 
+  } catch(e) {}
+</script>
+</body>  
+</html>
