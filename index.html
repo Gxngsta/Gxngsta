@@ -275,7 +275,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a> 
-    <a class="link-btn reveal-item magnetic-btn" href="https://music.youtube.com/channel/UC-gxngsta" target="_blank" style="--brand-color: #FF0000; --glow-shadow: rgba(255, 0, 0, 0.4);" aria-label="Listen to GXNGSTA on YouTube Music">
+    <a class="link-btn reveal-item magnetic-btn" href="https://music.youtube.com/channel/UC-NlTeeE973B-P4WjQ_qfTw" target="_blank" style="--brand-color: #FF0000; --glow-shadow: rgba(255, 0, 0, 0.4);" aria-label="Listen to GXNGSTA on YouTube Music">
       <div class="glass-sweep"></div>
       <div class="link-left">
         <div class="app-icon" style="background: #000;"><i class="fab fa-youtube" style="color: #FF0000;"></i></div>
@@ -443,19 +443,3 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
           preloader.style.display = 'none';
         }, 1000); 
       }
-      
-      for(var i = 0; i < items.length; i++) {
-        (function(index) {
-          setTimeout(function() {
-            items[index].classList.add('visible');
-          }, 200 + (index * 80)); 
-        })(i);
-      }
-    }
-    setTimeout(killLoader, 1200);
-    
-    if(preloader) {
-      preloader.onclick = killLoader;
-    }
-  })();
-  try {
