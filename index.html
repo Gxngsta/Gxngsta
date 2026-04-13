@@ -148,7 +148,7 @@ h1 {
 /* 🔥 ULTRA 3D PLAY STORE APP ICON STYLING 🔥 */
 .app-icon {
   width: 40px; height: 40px; 
-  border-radius: 10px; /* iOS/Play Store Squarcle curve */
+  border-radius: 10px; 
   display: flex; align-items: center; justify-content: center; 
   font-size: 22px;
   position: relative;
@@ -225,7 +225,6 @@ h1 {
 
 @media(max-width:480px){ .container{ padding:0 15px; margin: 25px auto;} .link-btn{padding:14px 18px; border-radius: 14px;} .link-left {font-size: 14px;} .app-icon{width: 36px; height: 36px; font-size: 20px;} .hero { margin-bottom: 25px; } }  
 
-/* --- 🌊 SUPER SMOOTH PARALLAX ENTRANCE 🌊 --- */
 .reveal-item { opacity: 0; transform: translate3d(0, 20px, 0); transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); will-change: opacity, transform; }
 .reveal-item.visible { opacity: 1; transform: translate3d(0, 0, 0); }
 noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { display: none; }
@@ -320,3 +319,63 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     <a class="link-btn reveal-item magnetic-btn" href="https://music.amazon.in/artists/B0DY2VBLFR" target="_blank" style="--brand-color: #00A8E1; --glow-shadow: rgba(0, 168, 225, 0.5);" aria-label="Listen to GXNGSTA on Amazon Music">
       <div class="glass-sweep"></div>
       <div class="link-left">
+        <div class="app-icon" style="background: #ffffff;"><i class="fab fa-amazon" style="color: #00A8E1;"></i></div>
+        Amazon Music
+      </div>
+      <i class="fas fa-arrow-right arrow-icon"></i>
+    </a>
+  </div>
+
+  <div class="footer reveal-item">
+    &copy; 2026 <span>GXNGSTA</span>. ALL RIGHTS RESERVED.
+  </div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const preloader = document.getElementById('preloader');
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      preloader.classList.add('hide-anim');
+      setTimeout(() => { preloader.style.display = 'none'; revealOnScroll(); }, 800);
+    }, 1000);
+  });
+
+  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  function revealOnScroll() {
+    document.querySelectorAll('.reveal-item').forEach(item => observer.observe(item));
+  }
+
+  const container = document.getElementById('spark-container');
+  const sparkCount = 15;
+  for (let i = 0; i < sparkCount; i++) {
+    const spark = document.createElement('div');
+    spark.className = 'spark';
+    spark.style.left = Math.random() * 100 + 'vw';
+    spark.style.setProperty('--speed', (Math.random() * 5 + 5) + 's');
+    spark.style.setProperty('--max-opacity', (Math.random() * 0.3 + 0.1));
+    spark.style.animationDelay = Math.random() * 5 + 's';
+    container.appendChild(spark);
+  }
+
+  document.querySelectorAll('.link-btn').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const rect = btn.getBoundingClientRect();
+      btn.style.setProperty('--x', (e.clientX - rect.left) + 'px');
+      btn.style.setProperty('--y', (e.clientY - rect.top) + 'px');
+    });
+  });
+});
+</script>
+</body>
+</html>
