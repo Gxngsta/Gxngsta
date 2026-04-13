@@ -46,8 +46,8 @@
     "https://www.instagram.com/gxngstaofficial",
     "https://x.com/GxngstaOfficial",
     "https://www.facebook.com/profile.php?id=61573079602732",
-    "https://www.youtube.com/@GxngstaOfficial",
-    "https://open.spotify.com/artist/gxngsta",
+    "https://music.youtube.com/channel/UC_tX4KAcTt4",
+    "https://open.spotify.com/artist/7r6fbg...",
     "https://music.apple.com/in/artist/gxngsta/1797817041",
     "https://www.snapchat.com/add/gxngstamusic"
   ]
@@ -134,7 +134,7 @@ h1 {
 /* 🔥 ULTRA 3D PLAY STORE APP ICON STYLING 🔥 */
 .app-icon {
   width: 40px; height: 40px; 
-  border-radius: 10px; /* iOS/Play Store Squarcle curve */
+  border-radius: 10px; 
   display: flex; align-items: center; justify-content: center; 
   font-size: 22px;
   position: relative;
@@ -251,7 +251,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
   </div>  
   <div class="links-grid">
     
-    <a class="link-btn reveal-item magnetic-btn" href="https://open.spotify.com/artist/gxngsta" target="_blank" style="--brand-color: #1DB954; --glow-shadow: rgba(29, 215, 96, 0.5);" aria-label="Listen to GXNGSTA on Spotify">
+    <a class="link-btn reveal-item magnetic-btn" href="https://open.spotify.com/artist/23670954" target="_blank" style="--brand-color: #1DB954; --glow-shadow: rgba(29, 215, 96, 0.5);" aria-label="Listen to GXNGSTA on Spotify">
       <div class="glass-sweep"></div>
       <div class="link-left">
         <div class="app-icon" style="background: #191414;"><i class="fab fa-spotify" style="color: #1ED760;"></i></div>
@@ -267,7 +267,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
-    <a class="link-btn reveal-item magnetic-btn" href="https://www.youtube.com/@GxngstaOfficial" target="_blank" style="--brand-color: #FF0000; --glow-shadow: rgba(255, 0, 0, 0.5);" aria-label="Watch GXNGSTA on YouTube">
+    <a class="link-btn reveal-item magnetic-btn" href="https://youtube.com/@gxngstaofficial" target="_blank" style="--brand-color: #FF0000; --glow-shadow: rgba(255, 0, 0, 0.5);" aria-label="Watch GXNGSTA on YouTube">
       <div class="glass-sweep"></div>
       <div class="link-left">
         <div class="app-icon" style="background: #ffffff;"><i class="fab fa-youtube" style="color: #FF0000;"></i></div>
@@ -275,7 +275,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a> 
-    <a class="link-btn reveal-item magnetic-btn" href="https://music.youtube.com/channel/UC-K5j7VlY_u_V279V4jB2Vw" target="_blank" style="--brand-color: #FF0000; --glow-shadow: rgba(255, 0, 0, 0.4);" aria-label="Listen to GXNGSTA on YouTube Music">
+    <a class="link-btn reveal-item magnetic-btn" href="https://music.youtube.com/channel/UC_tX4KAcTt4" target="_blank" style="--brand-color: #FF0000; --glow-shadow: rgba(255, 0, 0, 0.4);" aria-label="Listen to GXNGSTA on YouTube Music">
       <div class="glass-sweep"></div>
       <div class="link-left">
         <div class="app-icon" style="background: #000;"><i class="fab fa-youtube" style="color: #FF0000;"></i></div>
@@ -398,7 +398,7 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
       </div>
       <i class="fas fa-arrow-right arrow-icon"></i>
     </a>  
-    <a class="link-btn reveal-item magnetic-btn" href="https://www.snapchat.com/add/gxngstamusic?share_id=u_tX4KAcTt4&locale=en-GB" target="_blank" style="--brand-color: #FFFC00; --glow-shadow: rgba(255, 252, 0, 0.5);" aria-label="Follow GXNGSTA on Snapchat">
+    <a class="link-btn reveal-item magnetic-btn" href="https://www.snapchat.com/add/gxngstamusic" target="_blank" style="--brand-color: #FFFC00; --glow-shadow: rgba(255, 252, 0, 0.5);" aria-label="Follow GXNGSTA on Snapchat">
       <div class="glass-sweep"></div>
       <div class="link-left">
         <div class="app-icon" style="background: #FFFC00;"><i class="fab fa-snapchat-ghost" style="color: #000;"></i></div>
@@ -436,15 +436,55 @@ noscript .reveal-item { opacity: 1; transform: none; } noscript #preloader { dis
     function killLoader() {
       if(isLoaded) return;
       isLoaded = true;
-      
       if(preloader) {
         preloader.classList.add('hide-anim');
-        setTimeout(function() {
-          preloader.style.display = 'none';
-        }, 1000); 
+        setTimeout(function() { preloader.style.display = 'none'; }, 1000); 
       }
-      
       for(var i = 0; i < items.length; i++) {
         (function(index) {
-          setTimeout(function() {
-            items[index].classList.add('visible
+          setTimeout(function() { items[index].classList.add('visible'); }, 200 + (index * 80)); 
+        })(i);
+      }
+    }
+    setTimeout(killLoader, 1200);
+    if(preloader) { preloader.onclick = killLoader; }
+  })();
+  try { 
+    var sparkContainer = document.getElementById('spark-container'); 
+    if(sparkContainer) { 
+      for (var j = 0; j < 15; j++) { 
+        var spark = document.createElement('div'); 
+        spark.classList.add('spark'); 
+        spark.style.left = (Math.random() * 100) + 'vw'; 
+        spark.style.setProperty('--speed', (Math.random() * 4 + 4) + 's'); 
+        spark.style.setProperty('--max-opacity', (Math.random() * 0.4 + 0.1)); 
+        spark.style.animationDelay = (Math.random() * 5) + 's'; 
+        sparkContainer.appendChild(spark); 
+      } 
+    } 
+  } catch(e) {}
+  try { 
+    if (window.matchMedia("(pointer: fine)").matches) { 
+      var btns = document.querySelectorAll('.magnetic-btn');
+      for(var k = 0; k < btns.length; k++) {
+        btns[k].addEventListener('mousemove', function(e) { 
+          var rect = this.getBoundingClientRect(); 
+          var x = e.clientX - rect.left; 
+          var y = e.clientY - rect.top; 
+          this.style.setProperty('--x', x + 'px'); 
+          this.style.setProperty('--y', y + 'px'); 
+          var centerX = rect.width / 2; 
+          var centerY = rect.height / 2; 
+          var rotateX = ((y - centerY) / centerY) * -8; 
+          var rotateY = ((x - centerX) / centerX) * 8; 
+          this.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale3d(1.02, 1.02, 1.02)'; 
+        }); 
+        btns[k].addEventListener('mouseleave', function() { 
+          this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)'; 
+        }); 
+      }
+    } 
+  } catch(e) {}
+</script>
+</body>  
+</html>
