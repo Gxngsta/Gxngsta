@@ -1,0 +1,16 @@
+{
+  "name": "GXNGSTA Official",
+  "short_name": "GXNGSTA",
+  "description": "Official Website of Gxngsta - Punjabi Hip-Hop Artist",
+  "start_url": "/Gxngsta/",
+  "display": "standalone",
+  "background_color": "#030303",
+  "theme_color": "#030303",
+  "icons": [
+    {
+      "src": "profile.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
